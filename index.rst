@@ -10,7 +10,12 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-
+   
+   About_Pyramid
+   Setting_Up_Development_Environment
+   Opinionated_Tutorial
+   Unopinionated_Tutorial
+   
 Indices and tables
 ==================
 
