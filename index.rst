@@ -15,6 +15,7 @@ Contents:
    Setting_Up_Development_Environment
    Opinionated_Tutorial
    Unopinionated_Tutorial
+   cmf/index
    
 Indices and tables
 ==================
