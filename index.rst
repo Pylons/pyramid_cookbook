@@ -1,7 +1,7 @@
 Pyramid Cookbook
 ================
 
-The Pyramid Cookbook presents topical usages of :mod:`Pyramid` usage.
+The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
 
 .. toctree::
    :maxdepth: 2
