@@ -19,7 +19,7 @@ TODO
 - Provide an example of adding a database connection to ``settings`` in
   __init__ and using it from a view.
 
-
+- Provide an example of a catchall 500 error view.
 
 Indices and tables
 ==================
