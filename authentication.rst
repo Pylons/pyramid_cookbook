@@ -53,3 +53,22 @@ there aren't any user credentials associated with the request, or if there
 are user credentials associated with the request but the userid doesn't exist
 in your database.  No inappropriate execution of ``authenticated_userid`` is
 done (as would be if you used a ``NewRequest`` subscriber).
+
+After doing such a thing, if your user object has a "groups" attribute, which
+returns a list of groups that have ``name`` attributes, you can use the
+following as a ``callback`` (aka ``groupfinder``) argument to most builtin
+authentication policies.  For example:
+
+.. code-block:: python
+   :linenos:
+
+   from pyramid.authentication import AuthTktAuthenticationPolicy
+
+   def groupfinder(request, userid):
+       user = request.user
+       if user is not None:
+           return [ group.name for group in request.user.groups ]
+       return None
+
+   authn_policy = AuthTktAuthenticationPolicy('seekrITT', callback=groupfinder)
+
