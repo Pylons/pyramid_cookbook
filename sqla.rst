@@ -4,15 +4,16 @@ Importing all SQLAlchemy Models
 If you really want to have a directory for SQLAlchemy models rather than a
 file, you can of course create a Python package full of model modules,
 replacing the ``models.py`` file with a ``models`` directory which is a
-Python package (a directory with an ``__init__.py`` in it).  However, all
-modules which hold active SQLAlchemy models need to be imported before they
-can successfully be used.  So you need to figure out a way to get all your
-model modules imported.
+Python package (a directory with an ``__init__.py`` in it).  However, due to
+the behavior of SQLAlchemy's "declarative" configuration mode, all modules
+which hold active SQLAlchemy models need to be imported before those models
+can successfully be used.  So, if you use declarative mode, you need to
+figure out a way to get all your model modules imported.
 
-For example, you might create a ``models`` directory, replacing the
-``models.py`` file, and within it a file named ``models/__init__.py``.  At
-that point, you can add a submodule named ``models/mymodel.py`` that holds a
-single ``MyModel`` model class.  The ``models/__init__.py`` will define the
+You might first create a ``models`` directory, replacing the ``models.py``
+file, and within it a file named ``models/__init__.py``.  At that point, you
+can add a submodule named ``models/mymodel.py`` that holds a single
+``MyModel`` model class.  The ``models/__init__.py`` will define the
 declarative base class and the global ``DBSession`` object, which each model
 submodule (like ``models/mymodel.py``) will need to import.  Then all you
 need is to add imports of each submodule within ``models/__init__.py``.
@@ -20,22 +21,22 @@ need is to add imports of each submodule within ``models/__init__.py``.
 However, when you add ``models`` package submodule import statements to
 ``models/__init__.py``, this will lead to a circular import dependency.  The
 ``models/__init__.py`` module imports ``mymodel`` and ``models/mymodel.py``
-imports the ``models`` package.  When you try to start your application, it
-will fail with an import error.
+imports the ``models`` package.  When you next try to start your application,
+it will fail with an import error due to this circular dependency.
 
 Pylons 1 solves this by creating a ``models/meta.py`` module, in which the
 DBSession and declarative base objects are created.  The
 ``models/__init__.py`` file and each submodule of ``models`` imports
-``DBSession`` and ``declarative_base`` from it.  Whenver you create a model
-file, you're expected to add an import for it to ``models/__init__.py``.
-Then at a top level the ``models`` package is imported, which has the side
-effect of ensuring that all models have been imported.  You can do this too,
-it works fine.
+``DBSession`` and ``declarative_base`` from it.  Whenver you create a ``.py``
+file in the ``models`` package, you're expected to add an import for it to
+``models/__init__.py``.  The the main program imports the ``models`` package,
+which has the side effect of ensuring that all model classes have been
+imported.  You can do this too, it works fine.
 
-However, you can alternately using ``config.scan()`` for its side effects.
-This allows you to avoid a circdep between ``models/__init__.py`` and
-``models/themodel.py`` without creating a ``models/meta.py`` and treating it
-specially.
+However, you can alternately use ``config.scan()`` for its side effects.
+Using ``config.scan()`` allows you to avoid a circdep between
+``models/__init__.py`` and ``models/themodel.py`` without creating a special
+``models/meta.py``.
 
 For example, if you do this in ``myapp/models/__init__.py``:
 
