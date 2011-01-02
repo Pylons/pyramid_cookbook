@@ -6,11 +6,13 @@ models will, dy default, reside in a single file.  This is just by
 convention.  If you'd rather have a directory for SQLAlchemy models rather
 than a file, you can of course create a Python package full of model modules,
 replacing the ``models.py`` file with a ``models`` directory which is a
-Python package (a directory with an ``__init__.py`` in it).  However, due to
-the behavior of SQLAlchemy's "declarative" configuration mode, all modules
-which hold active SQLAlchemy models need to be imported before those models
-can successfully be used.  So, if you use declarative mode, you need to
-figure out a way to get all your model modules imported.
+Python package (a directory with an ``__init__.py`` in it), as per
+:ref:`modifying_package_structure`.  However, due to the behavior of
+SQLAlchemy's "declarative" configuration mode, all modules which hold active
+SQLAlchemy models need to be imported before those models can successfully be
+used.  So, if you use model classes with a declarative base, you need to
+figure out a way to get all your model modules imported to be able to use
+them in your application.
 
 You might first create a ``models`` directory, replacing the ``models.py``
 file, and within it a file named ``models/__init__.py``.  At that point, you
