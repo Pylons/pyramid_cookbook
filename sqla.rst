@@ -82,10 +82,11 @@ And this in ``myapp/__init__.py``:
    def main(global_config, **settings):
        """ This function returns a Pyramid WSGI application.
        """
+       config = Configurator(settings=settings)
        config.scan('myapp.models') # the "important" line
        engine = engine_from_config(settings, 'sqlalchemy.')
        initialize_sql(engine)
-       config = Configurator(settings=settings)
+       # other statements here
        config.add_handler('main', '/{action}',
                         'myapp.handlers:MyHandler')
        return config.make_wsgi_app()
