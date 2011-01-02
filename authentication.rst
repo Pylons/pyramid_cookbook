@@ -5,7 +5,7 @@ This is you: your application wants a "user object".  Pyramid is only willing
 to supply you with a user *id* (via
 ``pyramid.security.authenticated_userid``). You don't want to create a
 function that takes accepts a request object and returns a user object from
-your domain model for efficiency reasons, so you want the user object to be
+your domain model for efficiency reasons, and you want the user object to be
 omnipresent as ``request.user``.
 
 You've tried using a ``NewRequest`` subscriber to attach a user object to the
