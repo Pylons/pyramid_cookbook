@@ -9,6 +9,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    static
    exceptions
    authentication
+   templates
 
 TODO
 ----
