@@ -62,7 +62,7 @@ In the ``foo.pt`` Chameleon template, you can do this:
 .. code-block:: text
    :linenos:
 
-    ${h.string.uppercase)}
+    ${h.string.uppercase}
 
 The value inserted into the template as the result of this statement will be
 ``ABCDEFGHIJKLMNOPQRSTUVWXYZ`` (at least if you are using an English system).
