@@ -58,7 +58,7 @@ For example, if you do this in ``myapp/models/__init__.py``:
        Base.metadata.bind = engine
        Base.metadata.create_all(engine)
 
-And this in ``myapp/models/mymodel.py``::
+And this in ``myapp/models/mymodel.py``:
 
 .. code-block:: python
    :linenos:

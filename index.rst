@@ -10,6 +10,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    exceptions
    authentication
    templates
+   sqla
 
 TODO
 ----
