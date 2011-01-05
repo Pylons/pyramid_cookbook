@@ -33,7 +33,7 @@ custom request factory:
             if userid is not None:
                 # this should return None if the user doesn't exist
                 # in the database
-                return dbconn['users'].query({'id':userid)})
+                return dbconn['users'].query({'id':userid})
 
 ``pyramid.decorator.reify`` is like the built-in Python ``property``
 decorator, but makes sure that "user" turns into a "real" attribute of the
