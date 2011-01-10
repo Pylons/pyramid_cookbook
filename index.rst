@@ -38,6 +38,18 @@ TODO
   [22:07] <mcdonc> its a url
   [22:07] <mcdonc> like you'd type into the browser
 
+- [22:47] <AGreatJewel> I am having some trouble with the session 
+  [22:47] <AGreatJewel> http://pylonshq.com/pasties/743848dc31cc6230a7ba1abe80562550
+  [22:47] <AGreatJewel> on line 30, I get ou = None. Inspite of setting the 
+          session in the forbidden view.
+  [22:47] <AGreatJewel> Any clues as to why this is happening?
+  [22:53] <mcdonc> AGreatJewel: set session.cookie_on_exception = True in 
+          your .ini configuration
+  [22:54] <mcdonc> it depends how you're creating a session factory really
+  [22:54] <mcdonc> but basically you have to make sure the session factory is 
+          configured with cookie_on_exception = True
+  [22:56] <mcdonc> if you're using a session factory from pyramid_beaker, 
+          you'll need to make sure you're running version 0.4 of pyramid_beaker
 
 Indices and tables
 ==================
