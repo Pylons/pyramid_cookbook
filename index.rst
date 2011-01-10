@@ -24,6 +24,21 @@ TODO
 
 - Provide an example of a catchall 500 error view.
 
+- [22:17] <AGreatJewel> In the forbidden view, is it possible to get the 
+  permission that the user did not have?
+  [22:18] <mcdonc> its in the exception
+  [22:18] <mcdonc> request.exception
+  [22:18] <mcdonc> request.exception.permission likely
+
+- [22:04] <AGreatJewel> How do I redirect to a url and set some GET params? 
+  some thing like return HTTPFound(location="whatever", params={ params here })
+  [22:05] <mcdonc> return HTTPFound(location="whatever?a=1&b=2")
+  [22:06] <AGreatJewel> ok. and I would need to urlencode the entire string?
+  [22:06] <AGreatJewel> or is that handled automatically
+  [22:07] <mcdonc> its a url
+  [22:07] <mcdonc> like you'd type into the browser
+
+
 Indices and tables
 ==================
 
