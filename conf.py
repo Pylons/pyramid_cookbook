@@ -29,7 +29,7 @@ extensions = [
     'sphinx.ext.intersphinx'
     ]
 
-intersphinx_mapping = {'http://docs.pylonshq.com/pyramid/dev': None}
+intersphinx_mapping = {'http://docs.pylonsproject.org/projects/pyramid/dev': None}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -45,7 +45,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Pyramid Cookbook'
-copyright = u'2010, Pylons Project Contributors'
+copyright = u'2011, Pylons Project Contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
