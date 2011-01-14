@@ -51,6 +51,10 @@ TODO
   [22:56] <mcdonc> if you're using a session factory from pyramid_beaker, 
           you'll need to make sure you're running version 0.4 of pyramid_beaker
 
+- http://blog.abourget.net/2011/1/13/pyramid-and-mako:-how-to-do-i18n-the-pylons-way/
+
+- http://blog.dannynavarro.net/2011/01/14/async-web-apps-with-pyramid/
+
 Indices and tables
 ==================
 
