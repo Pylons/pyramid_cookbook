@@ -59,6 +59,8 @@ TODO
 
 - http://pylonshq.com/pasties/c549d2be586797da17c7fad5ae875372 (twitter)
 
+- http://alexmarandon.com/articles/zodb_bfg_pyramid_notes/
+
 Indices and tables
 ==================
 
