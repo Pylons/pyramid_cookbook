@@ -61,6 +61,8 @@ TODO
 
 - http://alexmarandon.com/articles/zodb_bfg_pyramid_notes/
 
+- http://www.serverzen.net/2010/11/20/pyramid-setting-up-debug-werkzeug
+
 Indices and tables
 ==================
 
