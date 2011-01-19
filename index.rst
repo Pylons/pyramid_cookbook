@@ -63,6 +63,10 @@ TODO
 
 - http://www.serverzen.net/2010/11/20/pyramid-setting-up-debug-werkzeug
 
+- http://groups.google.com/group/pylons-devel/msg/ab58353594b135c9
+  (pyramid_jinja2 i18n), also
+  https://github.com/Pylons/pyramid_jinja2/pull/14
+
 Indices and tables
 ==================
 
