@@ -11,6 +11,8 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    authentication
    templates
    sqla
+   i18n
+   glossary
 
 TODO
 ----
@@ -24,34 +26,15 @@ TODO
 
 - Provide an example of a catchall 500 error view.
 
-- [22:17] <AGreatJewel> In the forbidden view, is it possible to get the 
-  permission that the user did not have?
-  [22:18] <mcdonc> its in the exception
-  [22:18] <mcdonc> request.exception
-  [22:18] <mcdonc> request.exception.permission likely
+- Redirecting to a URL with Parameters::
 
-- [22:04] <AGreatJewel> How do I redirect to a url and set some GET params? 
-  some thing like return HTTPFound(location="whatever", params={ params here })
-  [22:05] <mcdonc> return HTTPFound(location="whatever?a=1&b=2")
-  [22:06] <AGreatJewel> ok. and I would need to urlencode the entire string?
-  [22:06] <AGreatJewel> or is that handled automatically
-  [22:07] <mcdonc> its a url
-  [22:07] <mcdonc> like you'd type into the browser
-
-- [22:47] <AGreatJewel> I am having some trouble with the session 
-  [22:47] <AGreatJewel> http://pylonshq.com/pasties/743848dc31cc6230a7ba1abe80562550
-  [22:47] <AGreatJewel> on line 30, I get ou = None. Inspite of setting the 
-          session in the forbidden view.
-  [22:47] <AGreatJewel> Any clues as to why this is happening?
-  [22:53] <mcdonc> AGreatJewel: set session.cookie_on_exception = True in 
-          your .ini configuration
-  [22:54] <mcdonc> it depends how you're creating a session factory really
-  [22:54] <mcdonc> but basically you have to make sure the session factory is 
-          configured with cookie_on_exception = True
-  [22:56] <mcdonc> if you're using a session factory from pyramid_beaker, 
-          you'll need to make sure you're running version 0.4 of pyramid_beaker
-
-- http://blog.abourget.net/2011/1/13/pyramid-and-mako:-how-to-do-i18n-the-pylons-way/
+    [22:04] <AGreatJewel> How do I redirect to a url and set some GET params? 
+    some thing like return HTTPFound(location="whatever", params={ params here })
+    [22:05] <mcdonc> return HTTPFound(location="whatever?a=1&b=2")
+    [22:06] <AGreatJewel> ok. and I would need to urlencode the entire string?
+    [22:06] <AGreatJewel> or is that handled automatically
+    [22:07] <mcdonc> its a url
+    [22:07] <mcdonc> like you'd type into the browser
 
 - http://blog.dannynavarro.net/2011/01/14/async-web-apps-with-pyramid/
 
