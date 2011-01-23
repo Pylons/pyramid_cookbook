@@ -50,6 +50,8 @@ TODO
   (pyramid_jinja2 i18n), also
   https://github.com/Pylons/pyramid_jinja2/pull/14
 
+- Simple asynchronous task queue: http://blog.dannynavarro.net/2011/01/23/async-pyramid-example-done-right/
+
 Indices and tables
 ==================
 
