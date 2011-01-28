@@ -6,8 +6,8 @@ This chapter contains information about using Pyramid with SQLAlchemy.
 Using a Non-Global Session
 --------------------------
 
-We'll assume you have an ``.ini`` file with proper ``sqlalchemy.`` settings
-that specify your database properly.
+We'll assume you have an ``.ini`` file with ``sqlalchemy.`` settings that
+specify your database properly.
 
 Create a file in your application's package directory named ``request.py``, and
 add a subclass of :class:`pyramid.request.Request` to it.
