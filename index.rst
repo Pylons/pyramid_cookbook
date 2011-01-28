@@ -11,6 +11,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    authentication
    templates
    sqla
+   mongo
    i18n
    glossary
 
