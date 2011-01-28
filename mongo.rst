@@ -1,4 +1,4 @@
-MongDB and Pyramid
+MongoDB and Pyramid
 ====================
 
 If you want to use MongoDB (via PyMongo and perhaps GridFS) via Pyramid, you
