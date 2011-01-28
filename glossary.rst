@@ -131,3 +131,6 @@ Glossary
      the extension ``.py`` or ``.pyc``.  Modules often live in a 
      :term:`package`.
 
+   static view
+      A view added to a Pyramid application via
+      :meth:`pyramid.config.Configurator.add_static_view`.
