@@ -43,6 +43,7 @@ Use MyRequest as a :term:`request factory` within your ``__init__.py``
        engine = engine_from_config(settings, prefix='sqlalchemy.')
        maker = sessionmaker(bind=engine)
        settings['db.sessionmaker'] = maker
+       # .. rest of configuration ...
 
 The db connection is now available in view code as ``request.db`` or
 ``config.registry.settings['db.sessionmaker']()``
