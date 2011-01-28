@@ -134,3 +134,7 @@ Glossary
    static view
       A view added to a Pyramid application via
       :meth:`pyramid.config.Configurator.add_static_view`.
+
+   request factory
+     An object which, provided a WSGI environment as a single
+     positional argument, returns a ``WebOb`` compatible request.

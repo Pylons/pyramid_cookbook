@@ -1,3 +1,52 @@
+SQLAlchemy
+==========
+
+This chapter contains information about using Pyramid with SQLAlchemy.
+
+Using a Non-Global Session
+--------------------------
+
+We'll assume you have an ``.ini`` file with proper ``sqlalchemy.`` settings
+that specify your database properly.
+
+Create a file in your application's package directory named ``request.py``, and
+add a subclass of :class:`pyramid.request.Request` to it.
+
+.. code-block:: python
+   :linenos:
+
+   # request.py
+   from pyramid.request import Request
+   from pyramid.decorator import reify
+
+   class MyRequest(Request):
+       @reify
+       def db(self):
+           maker = self.registry.settings['db.sessionmaker']
+           return maker()
+
+Use MyRequest as a :term:`request factory` within your ``__init__.py``
+``main`` function:
+
+.. code-block:: python
+   :linenos:
+
+    # __init__.py
+
+   from sqlalchemy import engine_from_config
+   from sqlalchemy.orm import sessionmaker
+
+   from myapp.request import MyRequest
+
+   def main(global_config, **settings):
+       config = Configurator(settings=settings, request_factory=MyRequest)
+       engine = engine_from_config(settings, prefix='sqlalchemy.')
+       maker = sessionmaker(bind=engine)
+       settings['db.sessionmaker'] = maker
+
+The db connection is now available in view code as ``request.db`` or
+``config.registry.settings['db.sessionmaker']()``
+
 Importing all SQLAlchemy Models
 -------------------------------
 
