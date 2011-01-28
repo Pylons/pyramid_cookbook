@@ -32,8 +32,13 @@ add a subclass of :class:`pyramid.request.Request` to it.
            maker = self.registry.settings['db.sessionmaker']
            return maker()
 
-Use MyRequest as a :term:`request factory` within your ``__init__.py``
-``main`` function:
+The ``reify`` decorator used above works a bit like Python's ``property``
+decorator, but it is only called once per request: effectively the first time
+it's called, the result of ``maker()`` replaces the decorator as
+``request.db``.
+
+You can then use MyRequest as a :term:`request factory` within your
+``__init__.py`` ``main`` function:
 
 .. code-block:: python
    :linenos:
