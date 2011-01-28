@@ -6,6 +6,13 @@ This chapter contains information about using Pyramid with SQLAlchemy.
 Using a Non-Global Session
 --------------------------
 
+It's sometimes advantageous to not use SQLAlchemy's thread-scoped sessions
+(such as when you need to use Pyramid in an asynchronous system).
+Thankfully, doing so is easy.  You can store a session factory in the
+application's ``settings`` object, and have the session factory called as a
+side effect of asking the request object for an attribute.  The session
+object will then have a lifetime matching that of the request.
+
 We'll assume you have an ``.ini`` file with ``sqlalchemy.`` settings that
 specify your database properly.
 
