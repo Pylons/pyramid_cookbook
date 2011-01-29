@@ -12,6 +12,8 @@
 # serve to show the default.
 
 import sys, os
+from docutils import nodes
+from docutils import utils
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -25,7 +27,12 @@ sys.path.append(os.path.abspath('_themes'))
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = []
+
+extensions = [
+    'sphinx.ext.intersphinx'
+    ]
+
+intersphinx_mapping = {'http://docs.pylonsproject.org/projects/pyramid/dev': None}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -219,3 +226,16 @@ man_pages = [
     ('index', 'pyramidtutorials', u'Pyramid Tutorials Documentation',
      [u'Pylons Project Contributors'], 1)
 ]
+
+def app_role(role, rawtext, text, lineno, inliner, options={}, content=[]):
+    """custom role for :app: marker, does nothing in particular except allow
+    :app:`Pyramid` to work (for later search and replace)."""
+    if 'class' in options:
+        assert 'classes' not in options
+        options['classes'] = options['class']
+        del options['class']
+    return [nodes.inline(rawtext, utils.unescape(text), **options)], []
+
+
+def setup(app):
+    app.add_role('app', app_role)

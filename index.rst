@@ -16,6 +16,9 @@ Contents:
    Opinionated_Tutorial
    Unopinionated_Tutorial
    cmf/index
+   zeo/index
+   catalog/index
+   glossary
    
 Indices and tables
 ==================
@@ -23,4 +26,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
+* :ref:`glossary`
