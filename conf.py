@@ -48,7 +48,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Pyramid Tutorials'
-copyright = u'2010, Pylons Project Contributors'
+copyright = u'2011, Pylons Project Contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
