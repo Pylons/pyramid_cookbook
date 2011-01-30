@@ -1,23 +1,17 @@
-.. Pyramid Tutorials documentation master file, created by
-   sphinx-quickstart on Thu Nov 11 23:40:28 2010.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Pyramid Tutorials
+=================
 
-Welcome to Pyramid Tutorials's documentation!
-=============================================
+This site contains tutorial-like content for the Pyramid web framework.
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
-   
-   About_Pyramid
-   Setting_Up_Development_Environment
-   Opinionated_Tutorial
-   Unopinionated_Tutorial
-   cmf/index
+
+   wiki2_auth/index
    zeo/index
    catalog/index
+   cmf/index
    glossary
    
 Indices and tables
