@@ -39,7 +39,7 @@ served by a view which hooks up the static file's URL.
    _fi_response = Response(content_type='image/x-icon', 
                            body=_icon)
 
-   # _robots = /app/location/myapp/static/favicon.txt
+   # _robots = /app/location/myapp/static/robots.txt
 
    _robots = open(os.path.join(
                   _here, 'static', 'robots.txt')).read()
