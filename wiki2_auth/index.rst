@@ -5,6 +5,8 @@ This tutorial describes the "flow of authentication" of the result of the
 completing the :ref:`wiki2_adding_authorization` tutorial chapter from the
 main Pyramid documentation.
 
+This text was contributed by John Shipman.
+
 .. _wiki2_flow_of_authentication:
 
 Overall flow of an authentication
