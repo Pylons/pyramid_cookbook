@@ -89,6 +89,16 @@ Repeat the ``init_catalog`` step for each of the langauges you need.
    not ``i18n/`` as it was in Pylons. You'll notice that in the default
    setup.cfg of a Pyramid project.
 
+At this point you'll also need to add your local directory to your 
+project's configuration:
+
+.. code-block:: python
+   :linenos:
+
+    def main(...):
+       ...
+       config.add_translation_dirs('YOURPROJECT:locale')
+
 Lastly, you'll want to have your Mako files extracted when you run
 extract_messages, so add these to your setup.py (yes, you read me right, in
 setup.py so that Babel can use it when invoking it's commands):
