@@ -79,7 +79,7 @@ here.
 * `pyramid_who </projects/pyramid_who/dev/>`_: Authentication policy for 
   pyramid using repoze.who 2.0 API.
 
-  - Maintained by: Tres Seaver & Chris McDonough
+  - Maintained by: Chris McDonough, Tres Seaver
 
   - Version Control: https://github.com/Pylons/pyramid_who
 
