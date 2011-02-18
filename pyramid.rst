@@ -76,10 +76,18 @@ here.
 
   - Version Control: https://github.com/Pylons/pyramid_zcml
 
+* `pyramid_who </projects/pyramid_who/dev/>`_: Authentication policy for 
+  pyramid using repoze.who 2.0 API.
+
+  - Maintained by: Tres Seaver & Chris McDonough
+
+  - Version Control: https://github.com/Pylons/pyramid_who
+
 * `pyramid_mailer </thirdparty/pyramid_mailer/dev/>`_: a package for the
   Pyramid framework to take the pain out of sending emails.
 
   - Maintained by:  Dan Jacobs
 
   - Version Control: https://bitbucket.org/danjac/pyramid_mailer
+
 
