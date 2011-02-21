@@ -25,13 +25,6 @@ Pyramid supports extensibility through add-ons.  The following add-ons are
 officially endorsed by the Pylons Project, and their documentation is hosted
 here.
 
-* `khufu_sqlalchemy </projects/khufu_sqlalchemy/dev/>`_: SQLAlchemy based 
-  database connection for Pyramid.
-
-  - Maintained by: Rocky Burt
-
-  - Version Control: https://github.com/serverzen/khufu_sqlalchemy
-
 * `pyramid_beaker </projects/pyramid_beaker/dev/>`_: Beaker session backend
   plug-in.
 
