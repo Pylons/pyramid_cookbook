@@ -26,7 +26,7 @@ officially endorsed by the Pylons Project, and their documentation is hosted
 here.
 
 * `khufu_sqlalchemy </projects/khufu_sqlalchemy/dev/>`_: SQLAlchemy based 
-database connection for Pyramid.
+  database connection for Pyramid.
 
   - Maintained by: Rocky Burt
 
