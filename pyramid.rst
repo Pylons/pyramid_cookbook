@@ -69,6 +69,13 @@ here.
 
   - Version Control: https://github.com/Pylons/pyramid_rpc
 
+* `pyramid_tm </projects/pyramid_tm/dev/>`_: Centralized transaction 
+  management for Pyramid applications (without middleware).
+
+  - Maintained by: Rocky Burt
+
+  - Version Control: https://github.com/Pylons/pyramid_tm
+
 * `pyramid_who </projects/pyramid_who/dev/>`_: Authentication policy for 
   pyramid using repoze.who 2.0 API.
 
