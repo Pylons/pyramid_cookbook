@@ -63,7 +63,7 @@ here.
 
 * `pyramid_rpc </projects/pyramid_rpc/dev/>`_: RPC service add-on for
   Pyramid, supports XML-RPC in a more extensible manner than `pyramid_xmlrpc`
-  with planned support for JSON-RPC and AMF.
+  with support for JSON-RPC and AMF.
 
   - Maintained by: Ben Bangert
 
