@@ -13,6 +13,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    sqla
    mongo
    i18n
+   interfaces
    glossary
 
 TODO
