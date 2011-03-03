@@ -7,6 +7,8 @@ Pyramid.
 Dynamically Compute the Interfaces Provided by an Object
 --------------------------------------------------------
 
+(Via Marius Gedminas)
+
 When persisting the interfaces that are provided by an object in a pickle or
 in ZODB is not reasonable for your application, you can use this trick to
 dynamically return the set of interfaces provided by an object based on other
