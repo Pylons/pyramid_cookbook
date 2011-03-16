@@ -13,6 +13,9 @@
 
 import sys, os
 
+from docutils import nodes
+from docutils import utils
+
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -224,5 +227,16 @@ man_pages = [
      [u'Pylons Project Contributors'], 1)
 ]
 
+def app_role(role, rawtext, text, lineno, inliner, options={}, content=[]):
+    """custom role for :app: marker, does nothing in particular except allow
+    :app:`Pyramid` to work (for later search and replace)."""
+    if 'class' in options:
+        assert 'classes' not in options
+        options['classes'] = options['class']
+        del options['class']
+    return [nodes.inline(rawtext, utils.unescape(text), **options)], []
 
+
+def setup(app):
+    app.add_role('app', app_role)
 

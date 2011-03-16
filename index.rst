@@ -9,11 +9,15 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    static
    exceptions
    authentication
+   wiki2_auth
    templates
+   catalog
    sqla
    mongo
    i18n
    interfaces
+   zeo
+   cmf/index.rst
    glossary
 
 TODO
