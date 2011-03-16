@@ -11,7 +11,7 @@ speed right away:
   `install guide <pyramid_install.html>`_. 
 
 * To get the feel for how Pyramid works, go to the
-  `quick start <pyramid_overview.html>`_ page. 
+  `quick tutorial <pyramid_quick_tutorial.html>`_ page. 
 
 * Once you are a little more comfortable with Pyramid, you might want to code
   along to the `wiki tutorial
