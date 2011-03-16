@@ -1,8 +1,29 @@
 Pyramid Documentation
 =====================
 
-Main Documentation Sources
---------------------------
+Getting Started
+---------------
+
+If you are new to Pyramid, we have a few resources that can help you get up to
+speed right away:
+
+* For help getting Pyramid set up, try the
+  `install guide <pyramid_install.html>`_. 
+
+* To get the feel for how Pyramid works, go to the
+  `quick start <pyramid_overview.html>`_ page. 
+
+* Once you are a little more comfortable with Pyramid, you might want to code
+  along to the `wiki tutorial
+  <http://docs.pylonsproject.org/projects/pyramid/1.0/tutorials/wiki2/index.html>`_.
+
+* If you require support or are looking for immediate answers,  you may want
+  to consult our `FAQ <http://docs.pylonsproject.org/faq/pyramid.html>`_ first,
+  then probably try our mailing lists or visit our IRC channels, #pyramid or
+  #pylons. 
+
+Main Documentation
+------------------
 
 * `Pyramid documentation 1.0 </projects/pyramid/1.0/>`_ (`PDF
   <http://static.pylonsproject.org/pyramid-1.0.pdf>`_) (`Epub
@@ -12,11 +33,6 @@ Main Documentation Sources
 * `The Pyramid Cookbook
   <http://docs.pylonsproject.org/projects/pyramid_cookbook/dev/>`_ presents
   topical, practical usages of Pyramid.  Unfinished.
-
-* `Pyramid Tutorials
-  <http://docs.pylonsproject.org/projects/pyramid_tutorials/dev/>`_ presents
-  tutorials dealing with Pyramid integrations with other technologies.  Very
-  unfinished.
 
 Pyramid Add-Ons
 ---------------
