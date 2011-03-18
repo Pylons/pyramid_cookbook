@@ -110,7 +110,7 @@ Here's an implementation of an HTTP basic auth Pyramid authentication policy:
 
        return None
 
-   class RemoteUserAuthenticationPolicy(object):
+   class BasicAuthenticationPolicy(object):
        """ A :app:`Pyramid` :term:`authentication policy` which
        obtains data from basic authentication headers.
 
