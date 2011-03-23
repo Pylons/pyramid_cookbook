@@ -36,8 +36,8 @@ Database And Schema
 
 To make things simple and straightforward we'll use the widely installed 
 SQLite database for our project. The schema for our tasks is also simple, 
-an id to uniquely identify the task, a name not longer than 100 characters 
-and a closed boolean to indicate if the task is closed or not.
+an **id** to uniquely identify the task, a **name** not longer than 100 characters 
+and a **closed** boolean to indicate if the task is closed or not.
 
 Add to the tasks directory a file named schema.sql with the following content:
 
@@ -56,12 +56,70 @@ Add to the tasks directory a file named schema.sql with the following content:
 Application Setup
 -----------------
 
-text
+To begin with our application we'll add a few basic imports
+
+.. code-block:: python
+
+    import os
+    import logging
+    
+    from pyramid.config import Configurator
+       
+    from paste.httpserver import serve
+
+Then setup logging and current working directory path
+
+.. code-block:: python
+    
+    logging.basicConfig()
+    log = logging.getLogger(__file__)
+    
+    here = os.path.dirname(os.path.abspath(__file__))
+
+Then configure the Pyramid application registry
+
+.. code-block:: python
+    
+    if __name__ == '__main__':
+        # configuration settings
+        settings = {}
+        # configuration setup
+        config = Configurator(settings=settings)
+
+And finally define the app and serve it.
+
+..code-block:: python
+        # serve app
+        app = config.make_wsgi_app()
+        serve(app, host='0.0.0.0')
+
+We now have the basic application layout to build our project by adding 
+database support, routing, views and templates.
 
 Creating The Database
 ---------------------
 
-text
+To make the process of creating the database a bit more friendly than 
+executing the import manually with SQLite, we'll subscribe a function to a 
+Pyramid system event for this purpose.
+
+.. code-block:: python
+
+    ...
+    from paste.httpserver import serve
+    import sqlite3
+    ...
+    
+    @subscriber(ApplicationCreated)
+    def db_init(event):
+        log.warn('Initializing database...')
+        f = open(os.path.join(here, 'schema.sql'), 'r')
+        stmt = f.read()
+        settings = event.app.registry.settings
+        db = sqlite3.connect(settings['db'])
+        db.executescript(stmt)
+        db.commit()
+        f.close()
 
 Making The Database Available
 -----------------------------
