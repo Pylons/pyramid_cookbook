@@ -13,6 +13,9 @@ speed right away:
 * To get the feel for how Pyramid works, go to the
   `quick tutorial <pyramid_quick_tutorial.html>`_ page. 
 
+* Coming from Pylons? You might want to check out the `Pylons migration guide
+  <https://bytebucket.org/sluggo/pyramid-docs/wiki/html/migration.html>`_.
+
 * Once you are a little more comfortable with Pyramid, you might want to code
   along to the `wiki tutorial
   <http://docs.pylonsproject.org/projects/pyramid/1.0/tutorials/wiki2/index.html>`_.
@@ -25,10 +28,16 @@ speed right away:
 Main Documentation
 ------------------
 
-* `Pyramid documentation 1.0 </projects/pyramid/1.0/>`_ (`PDF
-  <http://static.pylonsproject.org/pyramid-1.0.pdf>`_) (`Epub
-  <http://static.pylonsproject.org/pyramid-1.0.epub>`_) is comprehensive
-  narrative and API documentation for pyramid.
+* Comprehensive documentation:
+
+  * `Pyramid documentation 1.0 </projects/pyramid/1.0/>`_ (`PDF
+    <http://static.pylonsproject.org/pyramid-1.0.pdf>`_) (`Epub
+    <http://static.pylonsproject.org/pyramid-1.0.epub>`_) narrative and API
+    documentation for Pyramid's currently released version.
+
+  * We are always working on improving both Pyramid and its documentation. If
+    you are using an unrealeased version of Pyramid you might need to
+    consult the `development documentation </projects/pyramid/dev/>`_.
 
 * `The Pyramid Cookbook
   <http://docs.pylonsproject.org/projects/pyramid_cookbook/dev/>`_ presents
