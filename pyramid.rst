@@ -10,8 +10,8 @@ speed right away:
 * For help getting Pyramid set up, try the
   `install guide <pyramid_install.html>`_. 
 
-* To get the feel for how Pyramid works, go to the
-  `quick tutorial <pyramid_quick_tutorial.html>`_ page. 
+.. * To get the feel for how Pyramid works, go to the
+..   `quick tutorial <pyramid_quick_tutorial.html>`_ page. 
 
 * Coming from Pylons? You might want to check out the `Pylons migration guide
   <https://bytebucket.org/sluggo/pyramid-docs/wiki/html/migration.html>`_.
