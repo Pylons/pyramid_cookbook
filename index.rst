@@ -59,6 +59,8 @@ TODO
 
 - Simple asynchronous task queue: http://blog.dannynavarro.net/2011/01/23/async-pyramid-example-done-right/
 
+- Uploading files: http://www.reddit.com/r/Python/comments/gd9s8/uploading_files_with_pyramid/
+
 Indices and tables
 ==================
 
