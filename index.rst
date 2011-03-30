@@ -17,6 +17,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    i18n
    interfaces
    zeo
+   deployment
    cmf/index.rst
    glossary
 
