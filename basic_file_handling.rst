@@ -19,29 +19,29 @@ The second part is handling the file upload in your view callable.  The uploaded
 .. code-block:: python
     :linenos:
     
-    ## Note that there are many form libraries available for Pyramid
-    ## so in this example all form handling besides the actual file handling
-    ## is pseudo code.
+    # Note that there are many form libraries available for Pyramid
+    # so in this example all form handling besides the actual file handling
+    # is pseudo code.
     
     def store_mp3_view(request):
         form = MP3Form(request.params)
         
         if request.method == 'POST' and form.validate():
         
-            ## param.filename contains the name of the file in string format.
+            # param.filename contains the name of the file in string format.
             filename = request.params['mp3'].filename
             
-            ## param.file contains the actual file data which needs to be
-            ## written to stored somewhere.            
+            # param.file contains the actual file data which needs to be
+            # written to stored somewhere.            
             file_data = request.params['mp3'].file
             
-            ## Using the filename like this without cleaning it is very
-            ## insecure so please keep that in mind when writing your own
-            ## file handling.
+            # Using the filename like this without cleaning it is very
+            # insecure so please keep that in mind when writing your own
+            # file handling.
             file_path = '/tmp/%s' % filename
             file_obj = open(filepath, 'w')
             
-            ## Finally write the object to disk
+            # Finally write the object to disk
             file_obj.write(file_data)
             file_obj.close()
             
