@@ -23,7 +23,7 @@ added an ``input`` element of the ``file`` type.
 The second part is handling the file upload in your view callable (above,
 assumed to answer on ``/store_mp3_view``).  The uploaded file is added to the
 request object as a ``cgi.FieldStorage`` object accessible through the
-``request.params`` multidict.  The two properties we're interested in are the
+``request.POST`` multidict.  The two properties we're interested in are the
 ``file`` and ``filename`` and we'll use those to write the file to disk.
 
 .. code-block:: python
@@ -33,13 +33,13 @@ request object as a ``cgi.FieldStorage`` object accessible through the
     from pyramid.response import Response
 
     def store_mp3_view(request):
-        mp3 = request.params['mp3']
+        mp3 = request.POST['mp3']
         # ``filename`` contains the name of the file in string format.
-        filename = request.params['mp3'].filename
+        filename = request.POST['mp3'].filename
         
         # ``input_file`` contains the actual file data which needs to be
         # stored somewhere.            
-        input_file = request.params['mp3'].file
+        input_file = request.POST['mp3'].file
 
         # Using the filename like this without cleaning it is very
         # insecure so please keep that in mind when writing your own
