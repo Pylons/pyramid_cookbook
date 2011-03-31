@@ -49,8 +49,11 @@ request object as a ``cgi.FieldStorage`` object accessible through the
         
         # Finally write the data to the output file
         input_file.seek(0)
-        for line in input_file:
-            output_file.write(line)
+        while 1:
+            data = input_file.read(2<<16)
+            if not data:
+                break
+            output_file.write(data)
         file_obj.close()
 
         return Response('OK')
