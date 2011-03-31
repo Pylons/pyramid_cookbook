@@ -40,7 +40,7 @@ request object as a ``cgi.FieldStorage`` object accessible through the
         # ``input_file`` contains the actual file data which needs to be
         # stored somewhere.            
         input_file = request.params['mp3'].file
-        
+
         # Using the filename like this without cleaning it is very
         # insecure so please keep that in mind when writing your own
         # file handling.
@@ -48,6 +48,7 @@ request object as a ``cgi.FieldStorage`` object accessible through the
         output_file = open(filepath, 'wb')
         
         # Finally write the data to the output file
+        input_file.seek(0)
         for line in input_file:
             output_file.write(line)
         file_obj.close()
