@@ -54,7 +54,7 @@ request object as a ``cgi.FieldStorage`` object accessible through the
             if not data:
                 break
             output_file.write(data)
-        file_obj.close()
+        output_file.close()
 
         return Response('OK')
         
