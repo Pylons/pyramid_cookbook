@@ -62,7 +62,7 @@ request object as a ``cgi.FieldStorage`` object accessible through the
 File Handling in Practice        
 -------------------------
 
-The previous example was very simple to illustrate the basics of accepting files and handling them with a view callable.  In practice there are a few issues surrounding file handling that one should be aware of.
+The previous example was simply to illustrate the basics of accepting files and handling them with a view callable.  In practice there are a few issues surrounding file handling that one should be aware of.
 
 Memory Leaks
 ============
