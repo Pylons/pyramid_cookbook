@@ -70,6 +70,7 @@ Memory Leaks
 When accepting files there's always the potential for someone to upload a file larger than your server has RAM to handle.  A simple way to solve this is to use a file buffer.  Consuming the file in smaller chunks will keep your application from running out of memory when consuming large files.  Below we'll create a generator named file_buffer and use that to store an incoming as it's uploaded.
 
 .. code-block:: python
+   :linenos:
     
     def file_buffer(file_obj, chunk_size=1024):
         """
