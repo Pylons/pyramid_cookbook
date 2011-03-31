@@ -90,13 +90,13 @@ When accepting files there's always the potential for someone to upload a file l
     input_file = request.POST['mp3'].file
     
     # Opening a new file object that will be written to disk.
-    file_obj = open(final_dest, 'wb')
+    output_file = open(final_dest, 'wb')
     
-    # Iterate over our file_buffer generator and write the results to our file object.
+    # Iterate over our file_buffer generator and write the results to our output_file.
     for chunk in file_buffer(input_file):
-        file_obj.write(chunk)
+        output_file.write(chunk)
         
-    file_obj.close()
+    output_file.close()
 
 
 Temporary Location
