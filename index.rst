@@ -9,6 +9,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    static
    exceptions
    authentication
+   files
    wiki2_auth
    templates
    catalog
@@ -58,8 +59,6 @@ TODO
   https://github.com/Pylons/pyramid_jinja2/pull/14
 
 - Simple asynchronous task queue: http://blog.dannynavarro.net/2011/01/23/async-pyramid-example-done-right/
-
-- Uploading files: http://www.reddit.com/r/Python/comments/gd9s8/uploading_files_with_pyramid/
 
 Indices and tables
 ==================
