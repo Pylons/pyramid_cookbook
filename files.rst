@@ -34,11 +34,11 @@ request object as a ``cgi.FieldStorage`` object accessible through the
 
     def store_mp3_view(request):
         mp3 = request.params['mp3']
-        # param.filename contains the name of the file in string format.
+        # ``filename`` contains the name of the file in string format.
         filename = request.params['mp3'].filename
         
-        # param.file contains the actual file data which needs to be
-        # written to stored somewhere.            
+        # ``input_file`` contains the actual file data which needs to be
+        # stored somewhere.            
         input_file = request.params['mp3'].file
         
         # Using the filename like this without cleaning it is very
