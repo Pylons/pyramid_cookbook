@@ -60,6 +60,9 @@ TODO
 
 - Simple asynchronous task queue: http://blog.dannynavarro.net/2011/01/23/async-pyramid-example-done-right/
 
+- `Installing Pyramid on Red Hat Enterprise Linux 6
+  <http://jfulton.org/pyramid1-rhel6-install.html>`_ (John Fulton).
+
 Indices and tables
 ==================
 
