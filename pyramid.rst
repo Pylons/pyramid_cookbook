@@ -7,65 +7,41 @@ Getting Started
 If you are new to Pyramid, we have a few resources that can help you get up to
 speed right away:
 
-* For help getting Pyramid set up, try the
-  `install guide <pyramid_install.html>`_. 
+* Check out  our `FAQ <http://docs.pylonsproject.org/faq/pyramid.html>`_.
+
+* For help getting Pyramid set up, try the `install guide
+  <pyramid_install.html>`_.
+
+* Coming from Pylons?  Start with :ref:`Akhet <akhet-desc>`.
+
+* Like learning by example? Check out to the `wiki tutorial
+  <http://docs.pylonsproject.org/projects/pyramid/1.0/tutorials/wiki2/index.html>`_.
+
+* Need support?  Try the `pylons-discuss maillist
+  <http://groups.google.com/group/pylons-discuss>`_ or visit the ``#pyramid``
+  or ``#pylons`` channels on `irc://irc.freenode.net
+  <irc://irc.freenode.net>`_.
 
 .. * To get the feel for how Pyramid works, go to the
 ..   `quick tutorial <pyramid_quick_tutorial.html>`_ page. 
 
-* Coming from Pylons? You might want to check out the `Akhet documentation
-  </projects/akhet/dev/>`_.  Akhet is a Pyramid-based development environment 
-  that works more like Pylons than "raw" Pyramid does.
-
-* Once you are a little more comfortable with Pyramid, you might want to code
-  along to the `wiki tutorial
-  <http://docs.pylonsproject.org/projects/pyramid/1.0/tutorials/wiki2/index.html>`_.
-
-* If you require support or are looking for immediate answers,  you may want
-  to consult our `FAQ <http://docs.pylonsproject.org/faq/pyramid.html>`_ first,
-  then probably try our mailing lists or visit our IRC channels, #pyramid or
-  #pylons. 
 
 Main Documentation
 ------------------
 
-* Comprehensive documentation:
-
-  * `Pyramid documentation 1.0 </projects/pyramid/1.0/>`_ (`PDF
-    <http://static.pylonsproject.org/pyramid-1.0.pdf>`_) (`Epub
-    <http://static.pylonsproject.org/pyramid-1.0.epub>`_) narrative and API
-    documentation for Pyramid's currently released version.
-
-  * We are always working on improving both Pyramid and its documentation. If
-    you are using an unrealeased version of Pyramid you might need to
-    consult the `development documentation </projects/pyramid/dev/>`_.
+* `Pyramid documentation 1.0 </projects/pyramid/1.0/>`_ (`PDF
+  <http://static.pylonsproject.org/pyramid-1.0.pdf>`_) (`Epub
+  <http://static.pylonsproject.org/pyramid-1.0.epub>`_) is narrative and API
+  documentation for Pyramid's currently released version.  If you are using
+  an unrealeased version of Pyramid you might need to consult the `Pyramid
+  development documentation </projects/pyramid/dev/>`_.
 
 * `The Pyramid Cookbook
   <http://docs.pylonsproject.org/projects/pyramid_cookbook/dev/>`_ presents
-  topical, practical usages of Pyramid.  Unfinished.
+  topical, practical usages of Pyramid.  The cookbook is unfinished.
 
-Development Environments
-------------------------
-
-Development environments are packages which use Pyramid as a core, but offer
-alternate services and scaffolding.  Each development environment presents a
-set of opinions and a "personality" to its users.  Although users of a
-development environment can still use all of the services offered by the
-Pyramid core, they are usually guided to a more focused set of opinions
-offered by the development environment itself.  Development environments
-often have dependencies beyond those of the Pyramid core.
-
-* `Akhet </projects/akhet/dev/>`_: Akhet is an application scaffolding for
-  Pyramid that's closer to the Pylons 1 style than Pyramid's built-in
-  scaffolding. The manual also tries to be a gentler introduction to Pyramid
-  for those from a Pylons-ish background.
-
-  - Maintained by: Mike Orr
-
-  - Version Control: https://bitbucket.org/sluggo/akhet
-
-Pyramid Add-Ons
----------------
+Pyramid Add-On Documentation
+----------------------------
 
 Pyramid supports extensibility through add-ons.  The following add-ons are
 officially endorsed by the Pylons Project, and their documentation is hosted
@@ -143,4 +119,26 @@ here.
 
   - Version Control: https://github.com/Pylons/pyramid_zcml
 
+
+Pyramid Development Environment Documentation
+---------------------------------------------
+
+Development environments are packages which use Pyramid as a core, but offer
+alternate services and scaffolding.  Each development environment presents a
+set of opinions and a "personality" to its users.  Although users of a
+development environment can still use all of the services offered by the
+Pyramid core, they are usually guided to a more focused set of opinions
+offered by the development environment itself.  Development environments
+often have dependencies beyond those of the Pyramid core.
+
+.. _akhet-desc:
+
+* `Akhet </projects/akhet/dev/>`_: Akhet is an application scaffolding for
+  Pyramid that's closer to the Pylons 1 style than Pyramid's built-in
+  scaffolding. The manual also tries to be a gentler introduction to Pyramid
+  for those from a Pylons-ish background.
+
+  - Maintained by: Mike Orr
+
+  - Version Control: https://bitbucket.org/sluggo/akhet
 
