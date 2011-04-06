@@ -45,6 +45,26 @@ Main Documentation
   <http://docs.pylonsproject.org/projects/pyramid_cookbook/dev/>`_ presents
   topical, practical usages of Pyramid.  Unfinished.
 
+Development Environments
+------------------------
+
+Development environments are packages which use Pyramid as a core, but offer
+alternate services and scaffolding.  Each development environment presents a
+set of opinions and a "personality" to its users.  Although users of a
+development environment can still use all of the services offered by the
+Pyramid core, they are usually guided to a more focused set of opinions
+offered by the development environment itself.  Development environments
+often have dependencies beyond those of the Pyramid core.
+
+* `Akhet </projects/akhet/dev/>`_: Akhet is an application scaffolding for
+  Pyramid that's closer to the Pylons 1 style than Pyramid's built-in
+  scaffolding. The manual also tries to be a gentler introduction to Pyramid
+  for those from a Pylons-ish background.
+
+  - Maintained by: Mike Orr
+
+  - Version Control: https://bitbucket.org/sluggo/akhet
+
 Pyramid Add-Ons
 ---------------
 
