@@ -41,3 +41,10 @@ Pyramid add-ons.
 
   - Version Control: https://github.com/Pylons/venusian
 
+* `webhelpers </projects/webhelpers/dev/>`_, a library for
+  python web helpers.
+
+  - Maintained by:  Ben Bangert & Mike Orr
+
+  - Version Control: https://bitbucket.org/bbangert/webhelpers
+
