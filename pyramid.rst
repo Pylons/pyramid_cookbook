@@ -17,10 +17,7 @@ speed right away:
 * Like learning by example? Check out to the `wiki tutorial
   <http://docs.pylonsproject.org/projects/pyramid/1.0/tutorials/wiki2/index.html>`_.
 
-* Need support?  Try the `pylons-discuss maillist
-  <http://groups.google.com/group/pylons-discuss>`_ or visit the ``#pyramid``
-  or ``#pylons`` channels on `irc://irc.freenode.net
-  <irc://irc.freenode.net>`_.
+* Need help?  See :ref:`support-desc`.
 
 .. * To get the feel for how Pyramid works, go to the
 ..   `quick tutorial <pyramid_quick_tutorial.html>`_ page. 
