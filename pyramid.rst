@@ -14,9 +14,8 @@ speed right away:
 ..   `quick tutorial <pyramid_quick_tutorial.html>`_ page. 
 
 * Coming from Pylons? You might want to check out the `Akhet documentation
-  <http://sluggo.scrapping.cc/python/Akhet/index.html>`_.  Akhet is a
-  Pyramid-based development environment that works more like Pylons than
-  "raw" Pyramid does.
+  </projects/akhet/dev/>`_.  Akhet is a Pyramid-based development environment 
+  that works more like Pylons than "raw" Pyramid does.
 
 * Once you are a little more comfortable with Pyramid, you might want to code
   along to the `wiki tutorial
@@ -101,7 +100,7 @@ here.
 
   - Version Control: https://github.com/Pylons/pyramid_jinja2
 
-* `pyramid_mailer </thirdparty/pyramid_mailer/dev/>`_: a package for the
+* `pyramid_mailer </projects/pyramid_mailer/dev/>`_: a package for the
   Pyramid framework to take the pain out of sending emails.
 
   - Maintained by:  Dan Jacobs
