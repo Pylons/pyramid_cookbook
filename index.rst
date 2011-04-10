@@ -44,6 +44,10 @@ TODO
     [22:07] <mcdonc> its a url
     [22:07] <mcdonc> like you'd type into the browser
 
+- Add an example of using a cascade to serve static assets from the root.
+
+- Explore static file return from handler action using wsgiapp2 + fileapp.
+
 - http://blog.dannynavarro.net/2011/01/14/async-web-apps-with-pyramid/
 
 - http://pylonshq.com/pasties/e4b933da7f577c541cc2f2489f825fdd (facebook)
