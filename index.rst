@@ -67,6 +67,8 @@ TODO
 - `Installing Pyramid on Red Hat Enterprise Linux 6
   <http://jfulton.org/pyramid1-rhel6-install.html>`_ (John Fulton).
 
+- Chameleon main template injected via BeforeRender.
+
 Indices and tables
 ==================
 
