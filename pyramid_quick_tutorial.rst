@@ -76,7 +76,7 @@ the Pyramid application, obtain the WSGI app, and serve it.
         serve(app, host='0.0.0.0')
 
 We now have the basic application layout needed to run our application, but
-we still need to add database support, routing, views and templates.
+we still need to add database support, routing, views, and templates.
 
 Step 3 - Database And Schema
 ----------------------------
