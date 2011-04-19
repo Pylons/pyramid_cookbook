@@ -248,7 +248,7 @@ message is flashed and the *new_view* is displayed again.
 Close View
 ++++++++++
 
-This view lets the user mark a task as closed, flahes a success message and
+This view lets the user mark a task as closed, flashes a success message, and
 redirects back to the *list_view* page.
 
 .. code-block:: python
