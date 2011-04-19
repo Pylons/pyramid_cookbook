@@ -50,7 +50,7 @@ within the newly created file:
        
     from paste.httpserver import serve
 
-Then we'll set up logging and current working directory path:
+Then we'll set up logging and the current working directory path:
 
 .. code-block:: python
     
@@ -60,7 +60,7 @@ Then we'll set up logging and current working directory path:
     here = os.path.dirname(os.path.abspath(__file__))
 
 Finally, in a block that runs only when the file is executed, we'll configure
-the Pyramid application, obtain the WSGI app and serve it.
+the Pyramid application, obtain the WSGI app, and serve it.
 
 .. code-block:: python
     
@@ -76,14 +76,14 @@ the Pyramid application, obtain the WSGI app and serve it.
         serve(app, host='0.0.0.0')
 
 We now have the basic application layout needed to run our application, but
-we still need to add database support, routing, views and templates.
+we still need to add database support, routing, views, and templates.
 
 Step 3 - Database And Schema
 ----------------------------
 
 To make things straightforward, we'll use the widely installed SQLite
-database for our project. The schema for our tasks is also simple: an **id**
-to uniquely identify the task, a **name** not longer than 100 characters and
+database for our project. The schema for our tasks is simple: an **id**
+to uniquely identify the task, a **name** not longer than 100 characters, and
 a **closed** boolean to indicate if the task is closed or not.
 
 Add to the ``tasks`` directory a file named ``schema.sql`` with the following
@@ -115,8 +115,8 @@ We'll also need to add a few more imports to the ``tasks.py`` file:
     ...
 
 To make the process of creating the database slightly easier, rather than
-requiring a user to execute the data import manually with SQLite, we'll
-subscribe a function to a Pyramid system event for this purpose. By
+requiring a user to execute the data import manually with SQLite, we'll create
+a function that subscribes to a Pyramid system event for this purpose. By
 subscribing a function to the ``ApplicationCreated`` event, each time we'll
 start the application, our subscribed function will be executed.
 Consequently, our database will be created or updated as necessary when the
@@ -187,18 +187,18 @@ let the application discover and register views.
     from pyramid.view import view_config
     ...
 
-We'll now add some view functions to our application for listing, adding and
+We'll now add some view functions to our application for listing, adding, and
 closing todos. 
 
 List View
 +++++++++
 
-This view is intended to show all open entries, according to our schema, from
-the database. It uses the ``list.mako`` template available under the
+This view is intended to show all open entries, according to our ``tasks``
+table in the database. It uses the ``list.mako`` template available under the
 ``templates`` directory by defining it as the ``renderer`` in the
-``view_config`` decorator. The results returned by the query are tuples but
-we convert them into a dictionary for easier accessibility within the
-template.  The view function will pass a dictionary defining ``tasks`` to the
+``view_config`` decorator. The results returned by the query are tuples but we
+convert them into a dictionary for easier accessibility within the template.
+The view function will pass a dictionary defining ``tasks`` to the
 ``list.mako`` template.
 
 .. code-block:: python
@@ -210,19 +210,19 @@ template.  The view function will pass a dictionary defining ``tasks`` to the
         return {'tasks': tasks}
 
 When using the ``view_config`` decorator, it's important to specify a
-``route_name`` to match a defined route and a ``renderer`` if the function is
+``route_name`` to match a defined route, and a ``renderer`` if the function is
 intended to render a template. The view function should then return a
-dictionary expected by the renderer to access variables.  Our ``list_view``
+dictionary defining the variables for the renderer to use.  Our ``list_view``
 above does both.
 
 New View
 ++++++++
 
 This view lets the user add new tasks to the application. If a ``name`` is
-provided to the form, a task is added to the database, an information message
-is flashed to be displayed on the next request and the requesting user's
-browser is redirected back to the *list_view*. If nothing is provided, a
-warning message is flashed and the *new_view* is displayed again.
+provided to the form, a task is added to the database. Then an information
+message is flashed to be displayed on the next request, and the user's browser
+is redirected back to the *list_view*. If nothing is provided, a warning
+message is flashed and the *new_view* is displayed again.
 
 .. code-block:: python
 
@@ -248,7 +248,7 @@ warning message is flashed and the *new_view* is displayed again.
 Close View
 ++++++++++
 
-This view lets the user mark a task as closed, flahes a success message and
+This view lets the user mark a task as closed, flashes a success message, and
 redirects back to the *list_view* page.
 
 .. code-block:: python
@@ -264,9 +264,9 @@ redirects back to the *list_view* page.
 NotFound View
 +++++++++++++
 
-This view lets us customize the default ``NotFound`` view provided by
-Pyramid, which is displayed by Pyramid when a URL cannot be mapped to a
-Pyramid view, by using our own template.  We'll add the template in a
+This view lets us customize the default ``NotFound`` view provided by Pyramid,
+by using our own template. The ``NotFound`` view is displayed by Pyramid when
+a URL cannot be mapped to a Pyramid view.  We'll add the template in a
 subsequent step.
 
 .. code-block:: python
@@ -297,9 +297,9 @@ through the routes system.
 Step 5 - View Templates
 -----------------------
 
-Next step is to provide the application something to render what a web
+The next step is to provide the application something to render what a web
 browser understands: **HTML**.  To ease template development, we'll use one of
-the default templating engines supported out of the box by Pyramid; *Mako
+the default templating engines supported out of the box by Pyramid: *Mako
 Templates*.
 
 We'll also use Mako template inheritance.  Template inheritance makes it
@@ -358,7 +358,7 @@ Configuring Template Locations
 
 To make it possible for views to find the templates they need by renderer
 name, we now need to specify where the Mako templates can be found by
-modifying the application configuration settings.
+modifying the application configuration settings in ``tasks.py``.
 
 .. code-block:: python
 
@@ -407,6 +407,6 @@ Conclusion
 ----------
 
 This introduction to Pyramid was inspired by **flask** and **bottle** 
-tutorials with the same minimalistic approach in mind. Big thanks to Chris 
-McDonough, Carlos De La Guardia and Casey Duncan for their support and 
+tutorials with the same minimalistic approach in mind. Big thanks Chris 
+McDonough, Carlos De La Guardia, and Casey Duncan for their support and 
 friendship.
