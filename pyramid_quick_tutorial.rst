@@ -115,8 +115,8 @@ We'll also need to add a few more imports to the ``tasks.py`` file:
     ...
 
 To make the process of creating the database slightly easier, rather than
-requiring a user to execute the data import manually with SQLite, we'll
-subscribe a function to a Pyramid system event for this purpose. By
+requiring a user to execute the data import manually with SQLite, we'll create
+a function that subscribes to a Pyramid system event for this purpose. By
 subscribing a function to the ``ApplicationCreated`` event, each time we'll
 start the application, our subscribed function will be executed.
 Consequently, our database will be created or updated as necessary when the
