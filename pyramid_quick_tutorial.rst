@@ -358,7 +358,7 @@ Configuring Template Locations
 
 To make it possible for views to find the templates they need by renderer
 name, we now need to specify where the Mako templates can be found by
-modifying the application configuration settings.
+modifying the application configuration settings in ``tasks.py``.
 
 .. code-block:: python
 
