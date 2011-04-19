@@ -34,7 +34,7 @@ filesystem:
         /templates
 
 Note that the ``tasks`` directory will not be used as a python package,
-it'll just serve as a container in which we can put our project
+it'll just serve as a container in which we can put our project.
 
 Step 2 - Application Setup
 --------------------------
@@ -77,7 +77,7 @@ the Pyramid application, obtain the WSGI app, and serve it.
         app = config.make_wsgi_app()
         serve(app, host='0.0.0.0')
 
-We now have the basic proejct layout needed to run our application, but
+We now have the basic project layout needed to run our application, but
 we still need to add database support, routing, views, and templates.
 
 Step 3 - Database And Schema
