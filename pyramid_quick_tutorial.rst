@@ -193,12 +193,12 @@ closing todos.
 List View
 +++++++++
 
-This view is intended to show all open entries, according to our ``task`` table
-in the database. It uses the ``list.mako`` template available under the
+This view is intended to show all open entries, according to our ``task``
+table in the database. It uses the ``list.mako`` template available under the
 ``templates`` directory by defining it as the ``renderer`` in the
-``view_config`` decorator. The results returned by the query are tuples but
-we convert them into a dictionary for easier accessibility within the
-template.  The view function will pass a dictionary defining ``tasks`` to the
+``view_config`` decorator. The results returned by the query are tuples but we
+convert them into a dictionary for easier accessibility within the template.
+The view function will pass a dictionary defining ``tasks`` to the
 ``list.mako`` template.
 
 .. code-block:: python
@@ -210,9 +210,9 @@ template.  The view function will pass a dictionary defining ``tasks`` to the
         return {'tasks': tasks}
 
 When using the ``view_config`` decorator, it's important to specify a
-``route_name`` to match a defined route and a ``renderer`` if the function is
+``route_name`` to match a defined route, and a ``renderer`` if the function is
 intended to render a template. The view function should then return a
-dictionary expected by the renderer to access variables.  Our ``list_view``
+dictionary defining the variables for the renderer to use.  Our ``list_view``
 above does both.
 
 New View
