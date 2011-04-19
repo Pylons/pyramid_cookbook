@@ -1,28 +1,32 @@
 Pyramid Quick Tutorial
 ======================
 
-This tutorial is intended to give you a quick overview of the Pyramid Web 
-Application Framework. Because Pyramid has few opinions on how to 
-organize and develop your application, this tutorial focus on a minimal 
-single file approach with common idioms to get a feel of basic Pyramid 
-patterns. While those idioms and patterns are common, it is not suited to use 
-this minimal approach to create a full fledged application. For this purpose 
-Pyramid provides starter scaffolds, read more advanced documentation and 
-tutorials.
+This tutorial is intended to provide you with a feel of how a Pyramid web
+application is created. The tutorial is very short, and focuses on the
+creation of a minimal application using common idioms.  For brevity, the
+tutorial uses a "single-file" application development approach instead of the
+more complex (but more common) "scaffolds" described in the main Pyramid
+documentation.
 
-Here's what you'll get at the end of the tutorial, a minimal application to 
-view, insert and close tasks, backed by an SQLite database for storing your 
-data, presented by Mako Templates to render your views and using the routes 
-pattern to match your URLs to code functions.
+At the end of the tutorial, you'll have a minimal application which:
+
+- provides views to insert and close tasks
+
+- uses route patterns to match your URLs to view code functions
+
+- uses Mako Templates to render your views
+
+- stores data in an SQLite database
 
 .. image:: pyramid_quick_tutorial.png
 
 Step 1 - Organizing The Project
 -------------------------------
 
-Before getting started, create the directory hierarchy needed for our 
-application layout. The tasks directory will not be used as a python package, 
-it'll just serves as a container to put and organize our project files.
+Before getting started, we need to create a directory hierarchy needed for
+our application layout. The ``tasks`` directory will not be used as a python
+package, it'll just serve as a container in which we can put our project
+files.  Create the follow directory layout on your filesystem:
 
 .. code-block:: text
 
@@ -31,10 +35,11 @@ it'll just serves as a container to put and organize our project files.
         /templates
 
 Step 2 - Application Setup
------------------
+--------------------------
 
-To begin with our application we'll start by creating a file name tasks.py 
-to the tasks directory and add a few basic imports to the newly created file:
+To begin our application, start by adding a Python source file named
+``tasks.py`` to the ``tasks`` directory.  We'll add a few basic imports
+within the newly created file:
 
 .. code-block:: python
 
@@ -45,7 +50,7 @@ to the tasks directory and add a few basic imports to the newly created file:
        
     from paste.httpserver import serve
 
-Then setup logging and current working directory path:
+Then we'll set up logging and current working directory path:
 
 .. code-block:: python
     
@@ -54,8 +59,8 @@ Then setup logging and current working directory path:
     
     here = os.path.dirname(os.path.abspath(__file__))
 
-Finally configure the Pyramid application registry, define the wsgi app 
-and serve it.
+Finally, in a block that runs only when the file is executed, we'll configure
+the Pyramid application, obtain the WSGI app and serve it.
 
 .. code-block:: python
     
@@ -70,18 +75,19 @@ and serve it.
         app = config.make_wsgi_app()
         serve(app, host='0.0.0.0')
 
-We now have the basic application layout needed to build our project by 
-adding database support, routing, views and templates.
+We now have the basic application layout needed to run our application, but
+we still need to add database support, routing, views and templates.
 
 Step 3 - Database And Schema
 ----------------------------
 
-To make things simple and straightforward we'll use the widely installed 
-SQLite database for our project. The schema for our tasks is also simple, 
-an **id** to uniquely identify the task, a **name** not longer than 100 characters 
-and a **closed** boolean to indicate if the task is closed or not.
+To make things straightforward, we'll use the widely installed SQLite
+database for our project. The schema for our tasks is also simple: an **id**
+to uniquely identify the task, a **name** not longer than 100 characters and
+a **closed** boolean to indicate if the task is closed or not.
 
-Add to the tasks directory a file named schema.sql with the following content:
+Add to the ``tasks`` directory a file named ``schema.sql`` with the following
+content:
 
 .. code-block:: sql
 
@@ -95,7 +101,7 @@ Add to the tasks directory a file named schema.sql with the following content:
     INSERT OR IGNORE INTO tasks (id, name, closed) VALUES (2, 'Do quick tutorial', 0);
     INSERT OR IGNORE INTO tasks (id, name, closed) VALUES (3, 'Have some beer!', 0);
 
-We'll continue by adding a few more imports to the tasks.py file:
+We'll also need to add a few more imports to the ``tasks.py`` file:
 
 .. code-block:: python
 
@@ -108,12 +114,13 @@ We'll continue by adding a few more imports to the tasks.py file:
     import sqlite3
     ...
 
-To make the process of creating the database a bit more friendly than 
-executing the import manually with SQLite, we'll subscribe a function to a 
-Pyramid system event for this purpose. By subscribing to the 
-ApplicationCreated event, each time we'll start the application, our subscribed 
-function will be executed and will create or update the database depending if 
-it's the first time or not.
+To make the process of creating the database slightly easier, rather than
+requiring a user to execute the data import manually with SQLite, we'll
+subscribe a function to a Pyramid system event for this purpose. By
+subscribing a function to the ``ApplicationCreated`` event, each time we'll
+start the application, our subscribed function will be executed.
+Consequently, our database will be created or updated as necessary when the
+application is started.
 
 .. code-block:: python
     
@@ -128,11 +135,12 @@ it's the first time or not.
         db.commit()
         f.close()
 
-We also need to make our database connection available to the application and 
-a way to do it is through the application request. By subscribing to the 
-Pyramid *NewRequest* event we'll initialize a connection to the database when 
-the request begins and we'll manage to close it down by the end of its 
-lifecycle using the *add_finished_callback* function.  
+We also need to make our database connection available to the application.
+We'll provide the connection object as an attribute of the application's
+request. By subscribing to the Pyramid ``NewRequest`` event we'll initialize
+a connection to the database when a Pyramid request begins.  It will be
+available as ``request.db``.  We'll arrange to close it down by the end of
+the request lifecycle using the ``request.add_finished_callback`` method.
 
 .. code-block:: python
 
@@ -146,9 +154,9 @@ lifecycle using the *add_finished_callback* function.
     def close_db_connection(request):
         request.db.close()
 
-To make those changes working we have to specify where is the database 
-location in the configuration settings and to make sure our @subscriber 
-decorators are scanned by the application at runtime.
+To make those changes active, we'll have to specify the database location in
+the configuration settings and to make sure our ``@subscriber`` decorator is
+scanned by the application at runtime.
 
 .. code-block:: python
 
@@ -160,15 +168,15 @@ decorators are scanned by the application at runtime.
         ...
 
 We now have the basic mechanism in place to create and talk to the database 
-in the application through *request.db*.
+in the application through ``request.db``.
 
 Step 4 - Views Functions And Routes
 -----------------------------------
 
-It's now time to provide a way for the application to expose some 
-functionalities to the world. We'll start by adding a few imports and 
-specially the @view_config decorator to let the application discover 
-and register our upcoming views.
+It's now time to expose some functionality to the world in the form of view
+functions. We'll start by adding a few imports to our ``tasks.py`` file.  In
+particular, we're going to import the ``view_config`` decorator, which will
+let the application discover and register views.
 
 .. code-block:: python
 
@@ -179,22 +187,19 @@ and register our upcoming views.
     from pyramid.view import view_config
     ...
 
-Then we'll add some functions to our application for listing, adding and 
-closing todos. When using the @view_config decorator it's important to 
-specify a route_name to match a defined route and a renderer file if the 
-function is intended to return a template. The view function should then 
-return a dictionary expected by the renderer to access variables.
+We'll now add some view functions to our application for listing, adding and
+closing todos. 
 
 List View
 +++++++++
 
-This view is intended to show up all open entries, not closed ones according 
-to our schema, from the database. It uses the *list.mako* template available 
-under the templates directory and defined as the renderer in the *view_config* 
-decorator. The results returned by the query are tuples but we might want to 
-convert them into a dict for easier accessibility within the template. 
-The view function will pass a dict defining *tasks* to the *list.mako* 
-template.
+This view is intended to show all open entries, according to our schema, from
+the database. It uses the ``list.mako`` template available under the
+``templates`` directory by defining it as the ``renderer`` in the
+``view_config`` decorator. The results returned by the query are tuples but
+we convert them into a dictionary for easier accessibility within the
+template.  The view function will pass a dictionary defining ``tasks`` to the
+``list.mako`` template.
 
 .. code-block:: python
 
@@ -204,14 +209,20 @@ template.
         tasks = [dict(id=row[0], name=row[1]) for row in rs.fetchall()]
         return {'tasks': tasks}
 
+When using the ``view_config`` decorator, it's important to specify a
+``route_name`` to match a defined route and a ``renderer`` if the function is
+intended to render a template. The view function should then return a
+dictionary expected by the renderer to access variables.  Our ``list_view``
+above does both.
+
 New View
 ++++++++
 
-This view lets the user add new tasks to the application. If a *name* is 
-provided to the form, a task is added to the database, an information 
-message is flashed to be displayed on the next request and the request is 
-redirected back to the *list_view*. If nothing is provided a warning message 
-is flashed and the *new_view* is displayed again.
+This view lets the user add new tasks to the application. If a ``name`` is
+provided to the form, a task is added to the database, an information message
+is flashed to be displayed on the next request and the requesting user's
+browser is redirected back to the *list_view*. If nothing is provided, a
+warning message is flashed and the *new_view* is displayed again.
 
 .. code-block:: python
 
@@ -230,14 +241,14 @@ is flashed and the *new_view* is displayed again.
 
 .. warning::
 
-    Be sure to use question marks when building SQL statements, otherwise 
-    your application will be vulnerable to SQL injection when using string 
-    formatting.
+    Be sure to use question marks when building SQL statements via
+    ``db.execute``, otherwise your application will be vulnerable to SQL
+    injection when using string formatting.
 
 Close View
 ++++++++++
 
-This view lets the user mark a task as closed, flsh a success message and 
+This view lets the user mark a task as closed, flahes a success message and
 redirects back to the *list_view* page.
 
 .. code-block:: python
@@ -253,8 +264,10 @@ redirects back to the *list_view* page.
 NotFound View
 +++++++++++++
 
-This view lets customize the default NotFound view provided by Pyramid by 
-using your own template.
+This view lets us customize the default ``NotFound`` view provided by
+Pyramid, which is displayed by Pyramid when a URL cannot be mapped to a
+Pyramid view, by using our own template.  We'll add the template in a
+subsequent step.
 
 .. code-block:: python
 
@@ -263,8 +276,11 @@ using your own template.
     def notfound_view(self):
         return {}
 
-We finally need to add some routing elements in our application configuration 
-if we want our view functions to be exposed.
+Adding Routes
++++++++++++++
+
+We finally need to add some routing elements to our application configuration
+if we want our view functions to be matched to application URLs.
 
 .. code-block:: python
 
@@ -275,31 +291,32 @@ if we want our view functions to be exposed.
     config.add_route('close', '/close/{id}')
     ...
 
-We now have the basic mechanism in place to add functionality to the 
-application by defining views and expose them through the routes system.
+We've now added functionality to the application by defining views exposed
+through the routes system.
 
 Step 5 - View Templates
 -----------------------
 
-Next step is to provide the application what web browser knows; **HTML**. 
-To ease HTML development we'll use one of the default templating engines 
-supported out of the box by Pyramid; *Mako Templates*.
+Next step is to provide the application something to render what a web
+browser understands: **HTML**.  To ease HTML development, we'll use one of
+the default templating engines supported out of the box by Pyramid; *Mako
+Templates*.
 
-We'll also use template inheritance which makes it possible to reuse a 
-generic layout across multiple templates, easing layout maintenance and 
-uniformity.
+We'll also use Mako template inheritance.  Template inheritance makes it
+possible to reuse a generic layout across multiple templates, easing layout
+maintenance and uniformity.
 
-Create the following templates into the *templates* directory with their 
+Create the following templates in the ``templates`` directory with the
 respective content:
 
 layout.mako
 +++++++++++
 
-This template contains the basic layout structure to be shared with other 
-templates. Inside the body tag we have defined a block to display flash 
-messages sent by the application and another block to display the content of 
-the page inheriting this master layout using the mako directive 
-*${next.body()}*.
+This template contains the basic layout structure that will be shared with
+other templates. Inside the body tag we've defined a block to display flash
+messages sent by the application and another block to display the content of
+the page inheriting this master layout by using the mako directive
+``${next.body()}``.
 
 .. literalinclude:: pyramid_quick_tutorial/templates/layout.mako
    :language: html+mako
@@ -307,11 +324,12 @@ the page inheriting this master layout using the mako directive
 list.mako
 +++++++++
 
-This template extends the master *layout.mako* template by providing a 
-listing of tasks. The loop is done using the passed tasks dict sent from 
-the *list_view* using the pythonic mako syntax. We also use the 
-*request.route_url* function to generate a url based on a route name and its 
-arguments instead of statically defining the url path.
+This template is used by the ``list_view`` view function.  This template
+extends the master ``layout.mako`` template by providing a listing of
+tasks. The loop uses the passed ``tasks`` dictionary sent from the
+``list_view`` function using Mako syntax. We also use the
+``request.route_url`` function to generate a url based on a route name and
+its arguments instead of statically defining the url path.
 
 .. literalinclude:: pyramid_quick_tutorial/templates/list.mako
    :language: html+mako
@@ -319,8 +337,9 @@ arguments instead of statically defining the url path.
 new.mako
 ++++++++
 
-This template extends the master *layout.mako* template by providing a basic 
-form to add new tasks.
+This template is used by the ``new_view`` view function.  The template
+extends the master ``layout.mako`` template by providing a basic form to add
+new tasks.
 
 .. literalinclude:: pyramid_quick_tutorial/templates/new.mako
    :language: html+mako
@@ -328,14 +347,18 @@ form to add new tasks.
 notfound.mako
 +++++++++++++
 
-This template extends the master *layout.mako* template by customizing the 
-default *NotFound* view provided by Pyramid.
+This template extends the master ``layout.mako`` template.  We use it as the
+template for our custom ``NotFound`` view.
 
 .. literalinclude:: pyramid_quick_tutorial/templates/notfound.mako
    :language: html+mako
 
-To make those templates working we now have to specify where are the 
-templates to mako into the application configuration settings.
+Configuring Template Locations
+++++++++++++++++++++++++++++++
+
+To make it possible for views to find the templates they need by renderer
+name, we now need to specify where the Mako templates can be found by
+modifying the application configuration settings.
 
 .. code-block:: python
 
@@ -346,15 +369,15 @@ templates to mako into the application configuration settings.
 Step 6 - Styling Your Templates
 -------------------------------
 
-It's now time to add some styling to the application templates by adding a 
-**CSS** file named *style.css* to the *static* directory with the following 
-content:
+It's now time to add some styling to the application templates by adding a
+**CSS** file named ``style.css`` to the ``static`` directory with the
+following content:
 
 .. literalinclude:: pyramid_quick_tutorial/static/style.css
    :language: css
 
-To make this static file served by the application we must add a static view 
-directive to the application configuration:
+To cause this static file to be served by the application, we must add a
+"static view" directive to the application configuration:
 
 .. code-block:: python
 
@@ -365,14 +388,14 @@ directive to the application configuration:
 Step 7 - Running The Application
 --------------------------------
 
-We have now completed every steps needed to run the application in its final 
-version. Before running it, here's the complete main code for *task.py* for 
+We have now completed all steps needed to run the application in its final
+version. Before running it, here's the complete main code for ``task.py`` for
 review:
 
 .. literalinclude:: pyramid_quick_tutorial/tasks.py
    :language: python
 
-And now let's run *tasks*:
+And now let's run ``tasks.py``:
 
 .. code-block:: bash
 
