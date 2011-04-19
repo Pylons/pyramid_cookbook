@@ -193,8 +193,8 @@ closing todos.
 List View
 +++++++++
 
-This view is intended to show all open entries, according to our schema, from
-the database. It uses the ``list.mako`` template available under the
+This view is intended to show all open entries, according to our ``task`` table
+in the database. It uses the ``list.mako`` template available under the
 ``templates`` directory by defining it as the ``renderer`` in the
 ``view_config`` decorator. The results returned by the query are tuples but
 we convert them into a dictionary for easier accessibility within the
