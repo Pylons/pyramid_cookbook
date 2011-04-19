@@ -23,16 +23,18 @@ At the end of the tutorial, you'll have a minimal application which:
 Step 1 - Organizing The Project
 -------------------------------
 
-Before getting started, we need to create a directory hierarchy needed for
-our application layout. The ``tasks`` directory will not be used as a python
-package, it'll just serve as a container in which we can put our project
-files.  Create the follow directory layout on your filesystem:
+Before getting started, we will create the directory hierarchy needed for
+our application layout. Create the following directory layout on your
+filesystem:
 
 .. code-block:: text
 
     /tasks
         /static
         /templates
+
+Note that the ``tasks`` directory will not be used as a python package,
+it'll just serve as a container in which we can put our project
 
 Step 2 - Application Setup
 --------------------------
@@ -75,7 +77,7 @@ the Pyramid application, obtain the WSGI app, and serve it.
         app = config.make_wsgi_app()
         serve(app, host='0.0.0.0')
 
-We now have the basic application layout needed to run our application, but
+We now have the basic proejct layout needed to run our application, but
 we still need to add database support, routing, views, and templates.
 
 Step 3 - Database And Schema
@@ -155,7 +157,7 @@ the request lifecycle using the ``request.add_finished_callback`` method.
         request.db.close()
 
 To make those changes active, we'll have to specify the database location in
-the configuration settings and to make sure our ``@subscriber`` decorator is
+the configuration settings and make sure our ``@subscriber`` decorator is
 scanned by the application at runtime.
 
 .. code-block:: python
@@ -170,8 +172,8 @@ scanned by the application at runtime.
 We now have the basic mechanism in place to create and talk to the database 
 in the application through ``request.db``.
 
-Step 4 - Views Functions And Routes
------------------------------------
+Step 4 - View Functions And Routes
+----------------------------------
 
 It's now time to expose some functionality to the world in the form of view
 functions. We'll start by adding a few imports to our ``tasks.py`` file.  In
@@ -297,8 +299,9 @@ through the routes system.
 Step 5 - View Templates
 -----------------------
 
-The next step is to provide the application something to render what a web
-browser understands: **HTML**.  To ease template development, we'll use one of
+The views perform the work, but they need to render something that the web
+browser understands: **HTML**.  We have seen that the view configuration
+accepts a renderer argument with the name of a template. We'll use one of
 the default templating engines supported out of the box by Pyramid: *Mako
 Templates*.
 
@@ -408,5 +411,6 @@ Conclusion
 
 This introduction to Pyramid was inspired by **flask** and **bottle** 
 tutorials with the same minimalistic approach in mind. Big thanks Chris 
-McDonough, Carlos De La Guardia, and Casey Duncan for their support and 
+McDonough, Carlos de la Guardia, and Casey Duncan for their support and 
 friendship.
+
