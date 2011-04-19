@@ -14,14 +14,13 @@ speed right away:
 
 * Coming from Pylons?  Start with :ref:`Akhet <akhet-desc>`.
 
+* To get the feel of how a Pyramid web application is created, go to the 
+  `quick tutorial <pyramid_quick_tutorial.html>`_ page. 
+
 * Like learning by example? Check out to the `wiki tutorial
   <http://docs.pylonsproject.org/projects/pyramid/1.0/tutorials/wiki2/index.html>`_.
 
 * Need help?  See :ref:`support-desc`.
-
-.. * To get the feel for how Pyramid works, go to the
-..   `quick tutorial <pyramid_quick_tutorial.html>`_ page. 
-
 
 Main Documentation
 ------------------
