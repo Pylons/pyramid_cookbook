@@ -50,7 +50,7 @@ within the newly created file:
        
     from paste.httpserver import serve
 
-Then we'll set up logging and current working directory path:
+Then we'll set up logging and the current working directory path:
 
 .. code-block:: python
     
