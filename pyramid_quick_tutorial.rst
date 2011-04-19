@@ -264,9 +264,9 @@ redirects back to the *list_view* page.
 NotFound View
 +++++++++++++
 
-This view lets us customize the default ``NotFound`` view provided by
-Pyramid, which is displayed by Pyramid when a URL cannot be mapped to a
-Pyramid view, by using our own template.  We'll add the template in a
+This view lets us customize the default ``NotFound`` view provided by Pyramid,
+by using our own template. The ``NotFound`` view is displayed by Pyramid when
+a URL cannot be mapped to a Pyramid view.  We'll add the template in a
 subsequent step.
 
 .. code-block:: python
