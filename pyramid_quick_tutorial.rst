@@ -60,7 +60,7 @@ Then we'll set up logging and the current working directory path:
     here = os.path.dirname(os.path.abspath(__file__))
 
 Finally, in a block that runs only when the file is executed, we'll configure
-the Pyramid application, obtain the WSGI app and serve it.
+the Pyramid application, obtain the WSGI app, and serve it.
 
 .. code-block:: python
     
