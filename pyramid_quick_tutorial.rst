@@ -298,7 +298,7 @@ Step 5 - View Templates
 -----------------------
 
 Next step is to provide the application something to render what a web
-browser understands: **HTML**.  To ease HTML development, we'll use one of
+browser understands: **HTML**.  To ease template development, we'll use one of
 the default templating engines supported out of the box by Pyramid; *Mako
 Templates*.
 
@@ -389,7 +389,7 @@ Step 7 - Running The Application
 --------------------------------
 
 We have now completed all steps needed to run the application in its final
-version. Before running it, here's the complete main code for ``task.py`` for
+version. Before running it, here's the complete main code for ``tasks.py`` for
 review:
 
 .. literalinclude:: pyramid_quick_tutorial/tasks.py
@@ -407,6 +407,6 @@ Conclusion
 ----------
 
 This introduction to Pyramid was inspired by **flask** and **bottle** 
-tutorials with the same minimalistic approach in mind. Big thanks Chris 
+tutorials with the same minimalistic approach in mind. Big thanks to Chris 
 McDonough, Carlos De La Guardia and Casey Duncan for their support and 
 friendship.
