@@ -187,7 +187,7 @@ let the application discover and register views.
     from pyramid.view import view_config
     ...
 
-We'll now add some view functions to our application for listing, adding and
+We'll now add some view functions to our application for listing, adding, and
 closing todos. 
 
 List View
