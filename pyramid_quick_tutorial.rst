@@ -219,10 +219,10 @@ New View
 ++++++++
 
 This view lets the user add new tasks to the application. If a ``name`` is
-provided to the form, a task is added to the database, an information message
-is flashed to be displayed on the next request and the requesting user's
-browser is redirected back to the *list_view*. If nothing is provided, a
-warning message is flashed and the *new_view* is displayed again.
+provided to the form, a task is added to the database. Then an information
+message is flashed to be displayed on the next request, and the user's browser
+is redirected back to the *list_view*. If nothing is provided, a warning
+message is flashed and the *new_view* is displayed again.
 
 .. code-block:: python
 
