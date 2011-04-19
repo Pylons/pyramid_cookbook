@@ -408,5 +408,5 @@ Conclusion
 
 This introduction to Pyramid was inspired by **flask** and **bottle** 
 tutorials with the same minimalistic approach in mind. Big thanks Chris 
-McDonough, Carlos De La Guardia and Casey Duncan for their support and 
+McDonough, Carlos De La Guardia, and Casey Duncan for their support and 
 friendship.
