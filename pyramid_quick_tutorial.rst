@@ -82,8 +82,8 @@ Step 3 - Database And Schema
 ----------------------------
 
 To make things straightforward, we'll use the widely installed SQLite
-database for our project. The schema for our tasks is also simple: an **id**
-to uniquely identify the task, a **name** not longer than 100 characters and
+database for our project. The schema for our tasks is simple: an **id**
+to uniquely identify the task, a **name** not longer than 100 characters, and
 a **closed** boolean to indicate if the task is closed or not.
 
 Add to the ``tasks`` directory a file named ``schema.sql`` with the following
