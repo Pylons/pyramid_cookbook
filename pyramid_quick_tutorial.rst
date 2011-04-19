@@ -297,9 +297,9 @@ through the routes system.
 Step 5 - View Templates
 -----------------------
 
-Next step is to provide the application something to render what a web
+The next step is to provide the application something to render what a web
 browser understands: **HTML**.  To ease HTML development, we'll use one of
-the default templating engines supported out of the box by Pyramid; *Mako
+the default templating engines supported out of the box by Pyramid: *Mako
 Templates*.
 
 We'll also use Mako template inheritance.  Template inheritance makes it
