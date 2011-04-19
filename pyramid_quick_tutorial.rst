@@ -10,7 +10,7 @@ documentation.
 
 At the end of the tutorial, you'll have a minimal application which:
 
-- provides views to insert and close tasks
+- provides views to list, insert and close tasks
 
 - uses route patterns to match your URLs to view code functions
 
@@ -18,10 +18,17 @@ At the end of the tutorial, you'll have a minimal application which:
 
 - stores data in an SQLite database
 
+Here's a screenshot of the final application:
+
 .. image:: pyramid_quick_tutorial.png
 
 Step 1 - Organizing The Project
 -------------------------------
+
+.. note::
+
+    For help getting Pyramid set up, try the `install guide
+    <pyramid_install.html>`_.
 
 Before getting started, we will create the directory hierarchy needed for
 our application layout. Create the following directory layout on your
