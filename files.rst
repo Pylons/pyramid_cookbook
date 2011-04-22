@@ -28,15 +28,15 @@ request object as a ``cgi.FieldStorage`` object accessible through the
 
 .. code-block:: python
    :linenos:
-    
+
     import os
     from pyramid.response import Response
 
     def store_mp3_view(request):
-        mp3 = request.POST['mp3']
+        input_file = request.POST['mp3']
         # ``filename`` contains the name of the file in string format.
         filename = request.POST['mp3'].filename
-        
+
         # ``input_file`` contains the actual file data which needs to be
         # stored somewhere.            
         input_file = request.POST['mp3'].file
@@ -44,9 +44,9 @@ request object as a ``cgi.FieldStorage`` object accessible through the
         # Using the filename like this without cleaning it is very
         # insecure so please keep that in mind when writing your own
         # file handling.
-        file_path = os.path.join('/tmp', 'filename')
-        output_file = open(filepath, 'wb')
-        
+        file_path = os.path.join('/tmp', filename)
+        output_file = open(file_path, 'wb')
+
         # Finally write the data to the output file
         input_file.seek(0)
         while 1:
@@ -54,8 +54,6 @@ request object as a ``cgi.FieldStorage`` object accessible through the
             if not data:
                 break
             output_file.write(data)
-        file_obj.close()
+        output_file.close()
 
         return Response('OK')
-        
-   
