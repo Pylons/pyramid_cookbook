@@ -33,12 +33,17 @@ request object as a ``cgi.FieldStorage`` object accessible through the
     from pyramid.response import Response
 
     def store_mp3_view(request):
-        input_file = request.POST['mp3']
         # ``filename`` contains the name of the file in string format.
+        #
+        # WARNING: this example does not deal with the fact that IE sends an
+        # absolute file *path* as the filename.  This example is naive; it 
+        # trusts user input.
+
         filename = request.POST['mp3'].filename
 
         # ``input_file`` contains the actual file data which needs to be
         # stored somewhere.            
+
         input_file = request.POST['mp3'].file
 
         # Using the filename like this without cleaning it is very
