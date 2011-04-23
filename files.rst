@@ -10,14 +10,14 @@ added an ``input`` element of the ``file`` type.
 
 .. code-block:: html
     :linenos:
-    
-    <form action="/store_mp3_view" method="post" accept-charset="utf-8" 
-          enctype="multipart/form-data"> 
-        
-        <label for="mp3">Mp3</label> 
-        <input id="mp3" name="mp3" type="file" value="" /> 
-        
-        <input type="submit" value="submit" /> 
+
+    <form action="/store_mp3_view" method="post" accept-charset="utf-8"
+          enctype="multipart/form-data">
+
+        <label for="mp3">Mp3</label>
+        <input id="mp3" name="mp3" type="file" value="" />
+
+        <input type="submit" value="submit" />
     </form>
 
 The second part is handling the file upload in your view callable (above,
@@ -36,13 +36,13 @@ request object as a ``cgi.FieldStorage`` object accessible through the
         # ``filename`` contains the name of the file in string format.
         #
         # WARNING: this example does not deal with the fact that IE sends an
-        # absolute file *path* as the filename.  This example is naive; it 
+        # absolute file *path* as the filename.  This example is naive; it
         # trusts user input.
 
         filename = request.POST['mp3'].filename
 
         # ``input_file`` contains the actual file data which needs to be
-        # stored somewhere.            
+        # stored somewhere.
 
         input_file = request.POST['mp3'].file
 
@@ -62,9 +62,9 @@ request object as a ``cgi.FieldStorage`` object accessible through the
         output_file.close()
 
         return Response('OK')
-        
-      
-File Handling in Practice        
+
+
+File Handling in Practice
 -------------------------
 
 The previous example was simply to illustrate the basics of accepting files and handling them with a view callable.  In practice there are a few issues surrounding file handling that one should be aware of.
@@ -76,15 +76,15 @@ When accepting files there's always the potential for someone to upload a file l
 
 .. code-block:: python
    :linenos:
-    
+
     def file_buffer(file_obj, chunk_size=1024):
         """
         Reads a file object yielding the specified chunk size. Default chunk
         size is 1024.
         """
-        
+
         file_obj.seek(0)
-        
+
         while True:
             chunk = file_obj.read(chunk_size)
             if not chunk:
@@ -93,14 +93,14 @@ When accepting files there's always the potential for someone to upload a file l
 
     # Our incoming file.
     input_file = request.POST['mp3'].file
-    
+
     # Opening a new file object that will be written to disk.
     output_file = open(final_dest, 'wb')
-    
+
     # Iterate over our file_buffer generator and write the results to our output_file.
     for chunk in file_buffer(input_file):
         output_file.write(chunk)
-        
+
     output_file.close()
 
 
