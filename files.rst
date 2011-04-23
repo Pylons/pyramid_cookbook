@@ -62,3 +62,54 @@ request object as a ``cgi.FieldStorage`` object accessible through the
         output_file.close()
 
         return Response('OK')
+        
+      
+File Handling in Practice        
+-------------------------
+
+The previous example was simply to illustrate the basics of accepting files and handling them with a view callable.  In practice there are a few issues surrounding file handling that one should be aware of.
+
+Memory Leaks
+============
+
+When accepting files there's always the potential for someone to upload a file larger than your server has RAM to handle.  A simple way to solve this is to use a file buffer.  Consuming the file in smaller chunks will keep your application from running out of memory when consuming large files.  Below we'll create a generator named file_buffer and use that to store an incoming as it's uploaded.
+
+.. code-block:: python
+   :linenos:
+    
+    def file_buffer(file_obj, chunk_size=1024):
+        """
+        Reads a file object yielding the specified chunk size. Default chunk
+        size is 1024.
+        """
+        
+        file_obj.seek(0)
+        
+        while True:
+            chunk = file_obj.read(chunk_size)
+            if not chunk:
+                break
+            yield chunk
+
+    # Our incoming file.
+    input_file = request.POST['mp3'].file
+    
+    # Opening a new file object that will be written to disk.
+    output_file = open(final_dest, 'wb')
+    
+    # Iterate over our file_buffer generator and write the results to our output_file.
+    for chunk in file_buffer(input_file):
+        output_file.write(chunk)
+        
+    output_file.close()
+
+
+Temporary Location
+==================
+
+TODO
+
+Secure Filenames
+================
+
+TODO
