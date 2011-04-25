@@ -77,7 +77,7 @@ features available in your templates.
 Using a BeforeRender Event to Expose Chameleon ``base`` template
 ------------------------------------------------------------
 
-To avoid defining the same basic things in each template in you application,
+To avoid defining the same basic things in each template in your application,
 you can define one ``base`` tamplate, and inherit from it in other templates.
 
 .. note:: Pyramid example application - `shootout
@@ -121,7 +121,7 @@ templates. For example, for the ``base`` template that looks like this:
        </body>
    </html>
 
-Each template which using the ``base`` template will look like this:
+Each template which is using the ``base`` template will look like this:
 
 .. code-block:: html
    :linenos:
