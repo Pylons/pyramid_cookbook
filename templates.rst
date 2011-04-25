@@ -91,7 +91,7 @@ First, add subscriber within your Pyramid project's __init__.py:
    config.add_subscriber('YOURPROJECT.subscribers.add_base_template',
                          'pyramid.events.BeforeRender')
 
-Then add a ``subscribers.py`` module to your project's directory:
+Then add the ``subscribers.py`` module to your project's directory:
 
 .. code-block:: python
    :linenos:
@@ -103,7 +103,7 @@ Then add a ``subscribers.py`` module to your project's directory:
        event.update({'base': base})
 
 After this has been done, you can use your ``base`` template to extend other
-templates. For example, for the ``base`` template that looks like this:
+templates. For example, the ``base`` template looks like this:
 
 .. code-block:: html
    :linenos:
@@ -121,7 +121,7 @@ templates. For example, for the ``base`` template that looks like this:
        </body>
    </html>
 
-Each template which is using the ``base`` template will look like this:
+Each template using the ``base`` template will look like this:
 
 .. code-block:: html
    :linenos:
