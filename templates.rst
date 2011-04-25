@@ -1,3 +1,6 @@
+Templates
+=========
+
 Using a Before Render Event to Expose an ``h`` Helper Object
 ------------------------------------------------------------
 
@@ -69,3 +72,72 @@ The value inserted into the template as the result of this statement will be
 
 You can add more imports and functions to ``helpers.py`` as necessary to make
 features available in your templates.
+
+
+Using a BeforeRender Event to Expose Chameleon ``base`` template
+------------------------------------------------------------
+
+To avoid defining the same basic things in each template in you application,
+you can define one ``base`` tamplate, and inherit from it in other templates.
+
+.. note:: Pyramid example application - `shootout
+   <https://github.com/Pylons/shootout>`_ using this approach.
+
+First, add subscriber within your Pyramid project's __init__.py:
+
+.. code-block:: python
+   :linenos:
+
+   config.add_subscriber('YOURPROJECT.subscribers.add_base_template',
+                         'pyramid.events.BeforeRender')
+
+Then add a ``subscribers.py`` module to your project's directory:
+
+.. code-block:: python
+   :linenos:
+
+   from pyramid.renderers import get_renderer
+
+   def add_base_template(event):
+       base = get_renderer('templates/base.pt').implementation()
+       event.update({'base': base})
+
+After this has been done, you can use your ``base`` template to extend other
+templates. For example, for the ``base`` template that looks like this:
+
+.. code-block:: html
+   :linenos:
+
+   <html xmlns="http://www.w3.org/1999/xhtml"
+         xmlns:tal="http://xml.zope.org/namespaces/tal"
+         xmlns:metal="http://xml.zope.org/namespaces/metal">
+       <head>
+           <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+           <title>My page</title>
+       </head>
+       <body>
+           <tal:block metal:define-slot="content">
+           </tal:block>
+       </body>
+   </html>
+
+Each template which using the ``base`` template will look like this:
+
+.. code-block:: html
+   :linenos:
+
+   <html xmlns="http://www.w3.org/1999/xhtml"
+         xmlns:tal="http://xml.zope.org/namespaces/tal"
+         xmlns:metal="http://xml.zope.org/namespaces/metal"
+         metal:use-macro="base">
+       <tal:block metal:fill-slot="content">
+           My awesome content.
+       </tal:block>
+   </html>
+
+The ``metal:use-macro="base"`` statement is essential here.
+Content inside ``<tal:block metal:fill-slot="content"></tal:block>`` tags
+will replace corresponding block in ``base`` template. You can define
+as many slots in as you want. For more information please see
+`Macro Expansion Template Attribute Language
+<http://chameleon.repoze.org/docs/latest/metal.html>`_ documentation.
