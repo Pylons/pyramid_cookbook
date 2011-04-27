@@ -69,6 +69,8 @@ TODO
 
 - Chameleon main template injected via BeforeRender.
 
+- Hybrid authorization: https://github.com/mmerickel/pyramid_auth_demo
+
 Indices and tables
 ==================
 
