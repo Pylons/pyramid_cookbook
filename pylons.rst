@@ -4,7 +4,7 @@ Pylons Documentation
 Main Documentation Sources
 --------------------------
 
-* `Pylons documentation 1.0 <http://pylonshq.com/docs/en/1.0/>`_: official
+* `Pylons documentation 1.0 <http://docs.pylonsproject.org/projects/pylons_framework/dev/>`_: official
   Pylons documentation.
 
 * `Pylons wiki <http://wiki.pylonshq.com/dashboard.action>`_:
