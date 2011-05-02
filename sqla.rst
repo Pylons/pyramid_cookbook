@@ -126,6 +126,9 @@ And this in ``myapp/models/mymodel.py``:
    :linenos:
 
    from myapp.models import Base
+   from sqlalchemy import Column
+   from sqlalchemy import Unicode
+   from sqlalchemy import Integer
 
    class MyModel(Base):
        __tablename__ = 'models'
