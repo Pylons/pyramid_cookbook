@@ -20,6 +20,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    zeo
    deployment
    cmf/index.rst
+   mac_install
    glossary
 
 TODO
