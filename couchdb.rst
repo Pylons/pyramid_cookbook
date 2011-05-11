@@ -32,6 +32,8 @@ attached to each new request:
 
     @subscriber(NewRequest)
     def add_couchdb_to_request(event):
+        request = event.request
+        settings = request.registry.settings
         db = settings['db_server'][settings['db_name']]
         event.request.db = db
 
@@ -56,6 +58,8 @@ connection.  For example:
 .. code-block:: python
    :linenos:
 
+    from pyramid.view import view_config
+
     @view_config(route_name='home', renderer="home.pt")
     def home_view(request):
         map_func = '''
@@ -63,7 +67,7 @@ connection.  For example:
             if (doc.type == 'MyDocumentType')
                 emit(doc._id, doc);
             }'''
-        documents = request.db.query(map_func)
+        documents = ((doc.key, doc.value) for doc in request.db.query(map_func))
         return {'documents': documents}
 
 
@@ -78,6 +82,8 @@ example, to create a CouchDB view at startup:
 
 .. code-block:: python
    :linenos:
+
+    from pyramid.events import ApplicationCreated
 
     DESIGN_DOC_ID = '_design/myapp'
 
@@ -117,5 +123,5 @@ Then you can update your Pyramid view code to call that view:
     @view_config(route_name='home', renderer="home.pt")
     def home_view(request):
         view_id = '%s/_view/home' % DESIGN_DOC_ID
-        documents = request.db.view(view_id)
+        documents = ((doc.key, doc.value) for doc in request.db.view(view_id))
         return {'documents': documents}
