@@ -15,6 +15,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    catalog
    sqla
    mongo
+   couchdb
    i18n
    interfaces
    zeo
