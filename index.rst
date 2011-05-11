@@ -21,6 +21,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    deployment
    porting
    cmf/index.rst
+   mac_install
    glossary
 
 TODO
