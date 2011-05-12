@@ -98,6 +98,68 @@ configuration is shown here:
 .. code-block:: ini
     :linenos:
 
+    # nginx.conf
+
+    user www-data;
+    worker_processes 4;
+    pid /var/run/nginx.pid;
+
+    events {
+        worker_connections 1024;
+        # multi_accept on;
+    }
+
+    http {
+
+        ##
+        # Basic Settings
+        ##
+
+        sendfile on;
+        tcp_nopush on;
+        tcp_nodelay on;
+        keepalive_timeout 65;
+        types_hash_max_size 2048;
+        # server_tokens off;
+
+        # server_names_hash_bucket_size 64;
+        # server_name_in_redirect off;
+
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+
+        ##
+        # Logging Settings
+        ##
+
+        access_log /var/log/nginx/access.log;
+        error_log /var/log/nginx/error.log;
+
+        ##
+        # Gzip Settings
+        ##
+
+        gzip on;
+        gzip_disable "msie6";
+
+        ##
+        # Virtual Host Configs
+        ##
+
+        server {
+            server_name _;
+            return 444;
+        }
+
+        include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/*;
+    }
+
+.. code-block:: ini
+    :linenos:
+
+    # myapp.conf
+
     upstream myapp-site {
         server 127.0.0.1:5000;
         server 127.0.0.1:5001;
@@ -126,6 +188,9 @@ configuration is shown here:
         }
     }
 
+.. note:: myapp.conf is actually included into the ``http {}`` section of the
+    main nginx.conf file.
+
 The ``upstream`` directive sets up a round-robin load-balancer between two
 processes. The proxy is then configured to pass requests through the balancer
 with the ``proxy_pass`` directive. It's important to investigate the
@@ -139,9 +204,9 @@ setup. They will help the WSGI server configure our environment's
 Step 2: Starting Paster
 =======================
 
-*** Important *** Be sure to create a ``production.ini`` file to use for
-deployment that has debugging turned off, including removing the
-``WebError#evalerror`` middleware.
+.. warning:: Be sure to create a ``production.ini`` file to use for
+    deployment that has debugging turned off, including removing the
+    ``WebError#evalerror`` middleware.
 
 WebError provides a production version of the debugging middleware that can be
 used instead of ``WebError#evalerror``. This is important because with
@@ -198,8 +263,8 @@ hosting the application under a different URL than ``/``.
 
 Running the paster processes::
 
-    paster serve --daemon production.ini http_port=5000
-    paster serve --daemon production.ini http_port=5001
+    paster serve --daemon --pid-file=paster_5000.pid production.ini http_port=5000
+    paster serve --daemon --pid-file=paster_5001.pid production.ini http_port=5001
 
 Step 3: Serving Static Files with Nginx (Optional)
 ==================================================
@@ -209,9 +274,9 @@ they can be easily served using nginx's highly optimized web server. This will
 greatly improve performance because requests for this content will not need to
 be proxied to your WSGI application and can be served directly.
 
-*** Important *** This is only a good idea if your static content is intended
-to be public. It will not respect any view permissions you've placed on this
-directory.
+.. warning:: This is only a good idea if your static content is intended
+    to be public. It will not respect any view permissions you've placed on
+    this directory.
 
 .. code-block:: ini
     :linenos:
@@ -279,7 +344,7 @@ for a full breakdown of all of the great options provided.
     serverurl=unix://%(here)s/env/supervisor.sock
 
     [program:myapp]
-    command=%(here)s/env/bin/paster serve %(here)s/production.ini http_port=50%(process_num)01d
+    command=%(here)s/env/bin/paster serve %(here)s/production.ini http_port=50%(process_num)02d
     process_name=%(program_name)s-%(process_num)01d
     numprocs=2
     numprocs_start=0
