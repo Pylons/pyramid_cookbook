@@ -354,7 +354,7 @@ for a full breakdown of all of the great options provided.
 Apach + mod_wsgi
 ++++++++++++++++
 
-TODO
+`Pyramid mod_wsgi tutorial <http://docs.pylonsproject.org/projects/pyramid/1.0/tutorials/modwsgi/index.html>`_
 
 gevent + pyramid_socketio
 +++++++++++++++++++++++++
