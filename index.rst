@@ -74,6 +74,8 @@ TODO
 
 - Hybrid authorization: https://github.com/mmerickel/pyramid_auth_demo
 
+- http://whippleit.blogspot.com/2011/04/pyramid-on-google-app-engine-take-1-for.html
+
 Indices and tables
 ==================
 
