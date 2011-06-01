@@ -383,7 +383,7 @@ Install the heroku gem `per their instructions
 Step 1: Add files needed for heroku
 ===================================
 
-You will need to add the following 3 files with the contents as shown to the
+You will need to add the following files with the contents as shown to the
 root of your project directory (the directory containing the setup.py).
 
 ``requirements.txt``:
@@ -423,6 +423,12 @@ root of your project directory (the directory containing the setup.py).
         wsgi_app = loadapp('config:production.ini', relative_to='.')
         cpwsgi_server(wsgi_app, host='0.0.0.0', port=port,
                       numthreads=10, request_queue_size=200)
+
+.. note::
+    
+    This assumes the INI file to use is ``production.ini``, change as
+    necessary. The server section of the INI will be ignored as the server
+    needs to listen on the port supplied in the OS environ.
 
 Step 2: Setup git repo and heroku app
 =====================================
