@@ -360,3 +360,98 @@ gevent + pyramid_socketio
 +++++++++++++++++++++++++
 
 TODO - where's our long polling/websockets demo???
+
+heroku
+++++++
+
+`heroku <http://www.heroku.com/>`_ recently added `support for a process model
+<http://blog.heroku.com/archives/2011/5/31/celadon_cedar/>`_ which allows
+deployment of Pyramid applications. While there is currently **no official
+support** for Python/Pyramid web applications, the current stack does support
+it.
+
+This recipe assumes that you have a pyramid app setup using a Paste INI file,
+inside a package called 'myapp'. This type of structure is found in the
+pyramid_starter template, and other templates.
+
+Step 0: Install heroku
+======================
+
+Install the heroku gem `per their instructions
+<http://devcenter.heroku.com/articles/quickstart>`_.
+
+Step 1: Add files needed for heroku
+===================================
+
+You will need to add the following 3 files with the contents as shown to the
+root of your project directory (the directory containing the setup.py).
+
+``requirements.txt``:
+
+.. code-block:: text
+    
+    Pyramid==1.0
+    # Add any other dependencies that should be installed as well
+
+``Procfile``:
+
+.. code-block:: text
+    
+    web: ./run
+
+``run``:
+
+.. code-block:: text
+    
+    #!/bin/bash
+    bin/python setup.py develop
+    bin/python runapp.py
+
+.. note::
+    
+    Make sure to ``chmod +x run`` before continuing.
+
+``runapp.py``::
+    
+    import os
+
+    from paste.deploy import loadapp
+    from paste.script.cherrypy_server import cpwsgi_server
+
+    if __name__ == "__main__":
+        port = int(os.environ.get("PORT", 5000))
+        wsgi_app = loadapp('config:production.ini', relative_to='.')
+        cpwsgi_server(wsgi_app, host='0.0.0.0', port=port,
+                      numthreads=10, request_queue_size=200)
+
+Step 2: Setup git repo and heroku app
+=====================================
+
+Inside your projects directory, if this project is not tracked under git, run:
+
+.. code-block:: bash
+    
+    $ git init
+    $ git add .
+    $ git commit -m init
+
+Next, initialize the heroku stack:
+
+.. code-block:: bash
+    
+    $ heroku create --stack cedar
+
+Step 3: Deploy
+==============
+
+To deploy a new version, push it to heroku:
+
+.. code-block:: bash
+    
+    $ git push heroku master
+
+If your app is not up and running, take a look at the logs:
+
+.. code-block:: bash
+    
+    $ heroku logs
