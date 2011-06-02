@@ -138,3 +138,11 @@ often have dependencies beyond those of the Pyramid core.
 
   - Version Control: https://bitbucket.org/sluggo/akhet
 
+* `Khufu Project <http://khufuproject.github.com/>`_: Khufu is an application
+  scaffolding for Pyramid that provides an environment to work with Jinja2 and
+  SQLAlchemy.
+
+  - Maintained by: Rocky Burt
+
+  - Version Control: https://github.com/khufuproject
+
