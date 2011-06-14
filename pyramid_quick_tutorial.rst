@@ -110,18 +110,15 @@ content:
     INSERT OR IGNORE INTO tasks (id, name, closed) VALUES (2, 'Do quick tutorial', 0);
     INSERT OR IGNORE INTO tasks (id, name, closed) VALUES (3, 'Have some beer!', 0);
 
-We'll also need to add a few more imports to the ``tasks.py`` file:
+Add a few more imports to the very top of the ``tasks.py`` file:
 
 .. code-block:: python
 
-    ...
     from pyramid.events import NewRequest
     from pyramid.events import subscriber
     from pyramid.events import ApplicationCreated
-    ...
     from paste.httpserver import serve
     import sqlite3
-    ...
 
 To make the process of creating the database slightly easier, rather than
 requiring a user to execute the data import manually with SQLite, we'll create
