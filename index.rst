@@ -76,6 +76,12 @@ TODO
 
 - http://whippleit.blogspot.com/2011/04/pyramid-on-google-app-engine-take-1-for.html
 
+- Custom events: http://blog.dannynavarro.net/2011/06/12/using-custom-events-in-pyramid/
+
+- Pyramid traversal and MongoDB: http://kusut.web.id/2011/03/27/pyramid-traversal-and-mongodb/
+
+- Pyramid, Aket and MongoDB: http://niallohiggins.com/2011/05/18/mongodb-python-pyramid-akhet/
+
 Indices and tables
 ==================
 
