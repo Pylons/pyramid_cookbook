@@ -83,6 +83,8 @@ TODO
 
 - Pyramid, Aket and MongoDB: http://niallohiggins.com/2011/05/18/mongodb-python-pyramid-akhet/
 
+- TicTacToe and Long Polling With Pyramid: http://www.merickel.org/2011/6/21/tictactoe-and-long-polling-with-pyramid/
+
 Indices and tables
 ==================
 
