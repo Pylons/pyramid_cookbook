@@ -3,8 +3,8 @@
 Django-Style "settings.py" Configuration
 ----------------------------------------
 
-If you enjoy accessing global configuration via import statemtns ala Django's
-``settings.py``, you can do something similar in Pyramid.
+If you enjoy accessing global configuration via import statemetns ala
+Django's ``settings.py``, you can do something similar in Pyramid.
 
 - Create a ``settings.py`` file in your application's package (for example,
   if your application is named "myapp", put it in the filesystem directory
