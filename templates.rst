@@ -74,8 +74,8 @@ You can add more imports and functions to ``helpers.py`` as necessary to make
 features available in your templates.
 
 
-Using a BeforeRender Event to Expose Chameleon ``base`` template
-------------------------------------------------------------
+Using a BeforeRender Event to Expose Chameleon ``base`` Template
+----------------------------------------------------------------
 
 To avoid defining the same basic things in each template in your application,
 you can define one ``base`` tamplate, and inherit from it in other templates.
@@ -141,3 +141,35 @@ will replace corresponding block in ``base`` template. You can define
 as many slots in as you want. For more information please see
 `Macro Expansion Template Attribute Language
 <http://chameleon.repoze.org/docs/latest/metal.html>`_ documentation.
+
+Rendering ``None`` as the Empty String in Mako Templates
+--------------------------------------------------------
+
+For the following Mako template:
+
+.. code-block:: html
+
+   <p>${nunn}</p>
+
+By default, Pyramid will render:
+
+.. code-block:: html
+
+   <p>None</p>
+
+Some folks prefer the the value ``None`` to be rendered as the empty string
+in a Mako template.  In other words, they'd rather the output be:
+
+.. code-block:: html
+
+   <p></p>
+
+Use the following settings in your Pyramid configuration file to obtain this
+behavior:
+
+.. code-block:: ini
+
+   [app:myapp]
+   mako.imports = from markupsafe import escape_silent
+   mako.default_filters = escape_silent
+
