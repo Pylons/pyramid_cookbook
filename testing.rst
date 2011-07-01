@@ -42,3 +42,19 @@ Note the relationship between the query string and ``request.GET``.  Note the
 relationship between the POST body values (provided as the argument to the
 ``-d`` flag of ``curl``) and ``request.POST``.  Note that ``request.params``
 is an amalgamation of ``request.GET`` and ``request.POST`` values.
+
+For bonus points, here's a simple Python program that will do the same as the
+``curl`` command above does:
+
+.. code-block:: python
+
+    import httplib, urllib
+    params = urllib.urlencode({'param1': 'value1', 'param2': 'value2'})
+    headers = {"Content-type": "application/x-www-form-urlencoded",
+               "Accept": "text/plain"}
+    conn = httplib.HTTPConnection("localhost:8080")
+    conn.request("POST", "/", params, headers)
+    response = conn.getresponse()
+    print response.status, response.reason
+    data = response.read()
+    conn.close()
