@@ -53,7 +53,7 @@ For bonus points, here's a simple Python program that will do the same as the
     headers = {"Content-type": "application/x-www-form-urlencoded",
                "Accept": "text/plain"}
     conn = httplib.HTTPConnection("localhost:8080")
-    conn.request("POST", "/", params, headers)
+    conn.request("POST", "/?param3=value3", params, headers)
     response = conn.getresponse()
     print response.status, response.reason
     data = response.read()
