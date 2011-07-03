@@ -24,6 +24,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    deployment/index.rst
    porting
    testing
+   traversal
    cmf/index.rst
    mac_install
    glossary
