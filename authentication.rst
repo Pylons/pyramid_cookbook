@@ -54,8 +54,8 @@ are user credentials associated with the request but the userid doesn't exist
 in your database.  No inappropriate execution of ``authenticated_userid`` is
 done (as would be if you used a ``NewRequest`` subscriber).
 
-After doing such a thing, if your user object has a "groups" attribute, which
-returns a list of groups that have ``name`` attributes, you can use the
+After doing such a thing, if your user object has a ``groups`` attribute,
+which returns a list of groups that have ``name`` attributes, you can use the
 following as a ``callback`` (aka ``groupfinder``) argument to most builtin
 authentication policies.  For example:
 
@@ -71,6 +71,57 @@ authentication policies.  For example:
        return None
 
    authn_policy = AuthTktAuthenticationPolicy('seekrITT', callback=groupfinder)
+
+Custom Authentication Policy
+----------------------------
+
+Here is an example of a custom AuthenticationPolicy, based off of
+the native ``AuthTktAuthenticationPolicy``, but with added groups support.
+This example implies you have a ``user`` attribute on your request, like
+the ``RequestWithUserAttribute`` version of the request above, and it has
+a groups relation on it:
+
+.. code-block:: python
+   :linenos:
+
+   class MyAuthenticationPolicy(object):
+       implements(IAuthenticationPolicy)
+
+       def __init__(self, settings):
+           self.cookie = AuthTktCookieHelper(
+               settings.get('auth.secret'),
+               cookie_name=settings.get('auth.token') or 'auth_tkt',
+               secure=asbool(settings.get('auth.secure')),
+               timeout=asint(settings.get('auth.timeout')),
+               reissue_time=asint(settings.get('auth.reissue_time')),
+               max_age=asint(settings.get('auth.max_age')),
+           )
+
+       def remember(self, request, principal, **kw):
+           return self.cookie.remember(request, principal, **kw)
+
+       def forget(self, request):
+           return self.cookie.forget(request)
+
+       def unauthenticated_userid(self, request):
+           result = self.cookie.identify(request)
+           if result:
+               return result['userid']
+
+       def authenticated_userid(self, request):
+           if request.user:
+               return request.user.id
+
+       def effective_principals(self, request):
+           principals = [Everyone]
+           user = request.user
+           if user:
+               principals += [Authenticated, 'u:%s' % user.id]
+               principals.extend(('g:%s' % g.name for g in user.groups))
+           return principals
+
+
+Thanks to `raydeo` for this one.
 
 Basic Authentication Policy
 ---------------------------
@@ -183,51 +234,3 @@ Use it something like:
    config = Configurator(
                  authentication_policy=BasicAuthenticationPolicy(mycheck))
 
-
-Here is another example of a custom AuthenticationPolicy, based off of
-the native ``AuthTktAuthenticationPolicy``, but with added groups support.
-This example implies you have a ``user`` attribute on your request, like
-the ``RequestWithUserAttribute`` version of the request above, and it has
-a groups relation on it:
-
-.. code-block:: python
-   :linenos:
-
-   class MyAuthenticationPolicy(object):
-       implements(IAuthenticationPolicy)
-
-       def __init__(self, settings):
-           self.cookie = AuthTktCookieHelper(
-               settings.get('auth.secret'),
-               cookie_name=settings.get('auth.token') or 'auth_tkt',
-               secure=asbool(settings.get('auth.secure')),
-               timeout=asint(settings.get('auth.timeout')),
-               reissue_time=asint(settings.get('auth.reissue_time')),
-               max_age=asint(settings.get('auth.max_age')),
-           )
-
-       def remember(self, request, principal, **kw):
-           return self.cookie.remember(request, principal, **kw)
-
-       def forget(self, request):
-           return self.cookie.forget(request)
-
-       def unauthenticated_userid(self, request):
-           result = self.cookie.identify(request)
-           if result:
-               return result['userid']
-
-       def authenticated_userid(self, request):
-           if request.user:
-               return request.user.id
-
-       def effective_principals(self, request):
-           principals = [Everyone]
-           user = request.user
-           if user:
-               principals += [Authenticated, 'u:%s' % user.id]
-               principals.extend(('g:%s' % g.name for g in user.groups))
-           return principals
-
-
-Thanks to `raydeo` for this one.
