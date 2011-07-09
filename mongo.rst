@@ -77,3 +77,13 @@ Video
 Niall O'Higgins provides a presentation he gave at a Mongo conference in San
 Francisco at
 https://www.10gen.com/presentation/mongosf-2011/mongodb-with-python-pylons-pyramid
+
+Other Information
+------------------
+
+- Pyramid traversal and MongoDB:
+  http://kusut.web.id/2011/03/27/pyramid-traversal-and-mongodb/
+
+- Pyramid, Aket and MongoDB:
+  http://niallohiggins.com/2011/05/18/mongodb-python-pyramid-akhet/
+
