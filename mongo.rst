@@ -1,6 +1,9 @@
 MongoDB and Pyramid
 ====================
 
+Basics
+------
+
 If you want to use MongoDB (via PyMongo and perhaps GridFS) via Pyramid, you
 can use the following pattern to make your Mongo database available as a
 request attribute.
@@ -60,3 +63,17 @@ connection.  For example:
     def dashboard(request):
         vendors = request.db['vendors'].find()
         return {'vendors':vendors}
+
+Scaffolds
+---------
+
+Niall O'Higgins provides a `pyramid_mongodb
+<http://pypi.python.org/pypi/pyramid_mongodb/1.0>`_ scaffold for Pyramid that
+provides an easy way to get started with Pyramid and MongoDB.
+
+Video
+-----
+
+Niall O'Higgins provides a presentation he gave at a Mongo conference in San
+Francisco at
+https://www.10gen.com/presentation/mongosf-2011/mongodb-with-python-pylons-pyramid
