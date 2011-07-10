@@ -26,7 +26,7 @@ Using the following Pyramid application:
 Once your run the above application, you can test a POST request to the
 application via ``curl`` (available on most UNIX systems):
 
-.. code-block: text
+.. code-block:: text
 
    $ curl -d "param1=value1&param2=value2" http://localhost:8080/?param3=value3
 
