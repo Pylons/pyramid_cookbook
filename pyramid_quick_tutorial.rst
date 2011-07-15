@@ -162,7 +162,7 @@ the request lifecycle using the ``request.add_finished_callback`` method.
 
 To make those changes active, we'll have to specify the database location in
 the configuration settings and make sure our ``@subscriber`` decorator is
-scanned by the application at runtime.
+scanned by the application at runtime using config.scan().
 
 .. code-block:: python
 

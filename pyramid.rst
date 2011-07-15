@@ -27,10 +27,14 @@ Main Documentation
 
 * `Pyramid documentation 1.0 </projects/pyramid/1.0/>`_ (`PDF
   <http://static.pylonsproject.org/pyramid-1.0.pdf>`_) (`Epub
-  <http://static.pylonsproject.org/pyramid-1.0.epub>`_) is narrative and API
-  documentation for Pyramid's currently released version.  If you are using
-  an unrealeased version of Pyramid you might need to consult the `Pyramid
-  development documentation </projects/pyramid/dev/>`_.
+  <http://static.pylonsproject.org/pyramid-1.0.epub>`_) - narrative and API
+  documentation for Pyramid's currently released version.
+
+* `Pyramid documentation 1.1 </projects/pyramid/1.1/>`_ - narrative and API
+  documentation for Pyramid's upcoming version.
+
+* `Pyramid development documentation </projects/pyramid/dev/>`_ - narrative 
+  and API documentation for Pyramid's unrealeased version.
 
 * `The Pyramid Cookbook
   <http://docs.pylonsproject.org/projects/pyramid_cookbook/dev/>`_ presents
