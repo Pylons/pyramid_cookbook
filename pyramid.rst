@@ -115,6 +115,12 @@ here.
 
   - Version Control: https://github.com/Pylons/pyramid_zcml
 
+* `pyramid_jqm </projects/pyramid_jqm/dev/>`_, scaffolding for developing
+  jQuery Mobile apps with Pyramid.
+
+  - Maintained by:  Chris McDonough
+
+  - Version Control: https://github.com/Pylons/pyramid_jqm
 
 Pyramid Development Environment Documentation
 ---------------------------------------------
