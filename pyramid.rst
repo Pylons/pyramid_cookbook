@@ -34,7 +34,7 @@ Main Documentation
   documentation for Pyramid's currently released version.
 
 * `Pyramid development documentation </projects/pyramid/dev/>`_ - narrative 
-  and API documentation for Pyramid's unrealeased version.
+  and API documentation for Pyramid's unreleased version.
 
 * `The Pyramid Cookbook
   <http://docs.pylonsproject.org/projects/pyramid_cookbook/dev/>`_ presents
