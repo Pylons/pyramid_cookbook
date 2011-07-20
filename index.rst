@@ -6,10 +6,9 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
 .. toctree::
    :maxdepth: 2
 
-   static
+   files
    exceptions
    authentication
-   files
    wiki2_auth
    templates
    catalog
