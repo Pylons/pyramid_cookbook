@@ -351,8 +351,8 @@ for a full breakdown of all of the great options provided.
     redirect_stderr=true
     stdout_logfile=%(here)s/env/%(program_name)s-%(process_num)01d.log
 
-Apach + mod_wsgi
-++++++++++++++++
+Apache + mod_wsgi
++++++++++++++++++
 
 `Pyramid mod_wsgi tutorial <http://docs.pylonsproject.org/projects/pyramid/1.0/tutorials/modwsgi/index.html>`_
 
@@ -590,3 +590,11 @@ example::
                         renderer='myproject:templates/mytemplate.pt')
         config.add_static_view('static', 'myproject:static')
         return config.make_wsgi_app()
+
+OpenShift Express Cloud
++++++++++++++++++++++++
+
+`This blog entry
+<https://www.redhat.com/openshift/blogs/deploying-a-pyramid-application-in-a-virtual-python-wsgi-environment-on-red-hat-openshift-expr>`_
+describes deploying a Pyramid application to RedHat's OpenShift Express Cloud
+platform.
