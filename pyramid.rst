@@ -18,7 +18,7 @@ speed right away:
   `quick tutorial <pyramid_quick_tutorial.html>`_ page. 
 
 * Like learning by example? Check out to the `wiki tutorial
-  <http://docs.pylonsproject.org/projects/pyramid/1.0/tutorials/wiki2/index.html>`_.
+  <http://docs.pylonsproject.org/projects/pyramid/1.1/tutorials/wiki2/index.html>`_.
 
 * Need help?  See :ref:`support-desc`.
 
@@ -33,10 +33,10 @@ Main Documentation
 * `Pyramid documentation 1.0 </projects/pyramid/1.0/>`_ (`PDF
   <http://static.pylonsproject.org/pyramid-1.0.pdf>`_) (`Epub
   <http://static.pylonsproject.org/pyramid-1.0.epub>`_) - narrative and API
-  documentation for Pyramid's previously released version.
+  documentation for Pyramid's 1.0 version.
 
-* `Pyramid development documentation </projects/pyramid/dev/>`_ - narrative 
-  and API documentation for Pyramid's unreleased version.
+* `Pyramid development documentation </projects/pyramid/dev/>`_ - narrative
+  and API documentation for Pyramid's unreleased in-development version.
 
 * `The Pyramid Cookbook
   <http://docs.pylonsproject.org/projects/pyramid_cookbook/dev/>`_ presents
