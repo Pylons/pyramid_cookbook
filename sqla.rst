@@ -64,7 +64,7 @@ Importing all SQLAlchemy Models
 -------------------------------
 
 If you've created a Pyramid project using a paster template, your SQLAlchemy
-models will, dy default, reside in a single file.  This is just by
+models will, by default, reside in a single file.  This is just by
 convention.  If you'd rather have a directory for SQLAlchemy models rather
 than a file, you can of course create a Python package full of model modules,
 replacing the ``models.py`` file with a ``models`` directory which is a
