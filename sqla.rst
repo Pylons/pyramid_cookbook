@@ -93,7 +93,7 @@ it will fail with an import error due to this circular dependency.
 Pylons 1 solves this by creating a ``models/meta.py`` module, in which the
 DBSession and declarative base objects are created.  The
 ``models/__init__.py`` file and each submodule of ``models`` imports
-``DBSession`` and ``declarative_base`` from it.  Whenver you create a ``.py``
+``DBSession`` and ``declarative_base`` from it.  Whenever you create a ``.py``
 file in the ``models`` package, you're expected to add an import for it to
 ``models/__init__.py``.  The the main program imports the ``models`` package,
 which has the side effect of ensuring that all model classes have been
