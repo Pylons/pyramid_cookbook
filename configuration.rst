@@ -81,7 +81,7 @@ Pyramid has a ``decorator=`` argument to its view configuration.  It accepts
 a single decorator that will wrap the *mapped* view callable represented by
 the view configuration.  That means that, no matter what the signature and
 return value of the original view callable, the decorated view callable will
-receive two arguments: ``context`` and ``request`` and will return a request
+receive two arguments: ``context`` and ``request`` and will return a response
 object:
 
 .. code-block:: python
