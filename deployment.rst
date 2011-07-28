@@ -359,7 +359,9 @@ Apache + mod_wsgi
 gevent + pyramid_socketio
 +++++++++++++++++++++++++
 
-TODO - where's our long polling/websockets demo???
+Alexandre Bourget explains how he uses gevent + socketio to add functionality
+to a Pyramid application at
+http://blog.abourget.net/2011/3/17/new-and-hot-part-4-pyramid-socket-io-gevent/
 
 heroku
 ++++++
