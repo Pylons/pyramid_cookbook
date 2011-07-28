@@ -79,7 +79,7 @@ Here is an example of a custom AuthenticationPolicy, based off of
 the native ``AuthTktAuthenticationPolicy``, but with added groups support.
 This example implies you have a ``user`` attribute on your request, like
 the ``RequestWithUserAttribute`` version of the request above, and it has
-a groups relation on it:
+a ``groups`` relation on it:
 
 .. code-block:: python
    :linenos:
