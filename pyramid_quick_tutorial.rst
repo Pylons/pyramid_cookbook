@@ -56,6 +56,7 @@ within the newly created file:
     import logging
     
     from pyramid.config import Configurator
+    from pyramid.session import UnencryptedCookieSessionFactoryConfig
        
     from paste.httpserver import serve
 
@@ -69,7 +70,8 @@ Then we'll set up logging and the current working directory path:
     here = os.path.dirname(os.path.abspath(__file__))
 
 Finally, in a block that runs only when the file is executed, we'll configure
-the Pyramid application, obtain the WSGI app, and serve it.
+the Pyramid application, establish rudimentary sessions, obtain the WSGI app,
+and serve it.
 
 .. code-block:: python
     
@@ -78,8 +80,10 @@ the Pyramid application, obtain the WSGI app, and serve it.
         settings = {}
         settings['reload_all'] = True
         settings['debug_all'] = True
+        # session factory
+        session_factory = UnencryptedCookieSessionFactoryConfig('itsaseekreet')
         # configuration setup
-        config = Configurator(settings=settings)
+        config = Configurator(settings=settings, session_factory=session_factory)
         # serve app
         app = config.make_wsgi_app()
         serve(app, host='0.0.0.0')
@@ -117,7 +121,6 @@ Add a few more imports to the very top of the ``tasks.py`` file:
     from pyramid.events import NewRequest
     from pyramid.events import subscriber
     from pyramid.events import ApplicationCreated
-    from paste.httpserver import serve
     import sqlite3
 
 To make the process of creating the database slightly easier, rather than
@@ -189,7 +192,6 @@ let the application discover and register views.
     ...
     from pyramid.exceptions import NotFound
     from pyramid.httpexceptions import HTTPFound
-    from pyramid.session import UnencryptedCookieSessionFactoryConfig
     from pyramid.view import view_config
     ...
 
