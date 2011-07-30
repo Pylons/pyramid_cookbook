@@ -93,7 +93,7 @@ virtualenvwrapper_ for you. [#]_
 Execute the following commands in Terminal::
 
   cd ~
-  curl -s https://github.com/brainsik/virtualenv-burrito/raw/master/virtualenv-burrito.sh | bash
+  curl -s https://raw.github.com/brainsik/virtualenv-burrito/master/virtualenv-burrito.sh | bash
 
 If successful, you will see this::
 
