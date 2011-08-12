@@ -6,6 +6,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
 .. toctree::
    :maxdepth: 2
 
+   debugging
    files
    exceptions
    authentication
