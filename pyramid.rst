@@ -135,6 +135,13 @@ here.
 
   - Version Control: https://github.com/Pylons/pyramid_debugtoolbar
 
+* `pyramid_exclog </projects/pyramid_exclog/dev/>`_, a package which logs
+  exceptions from Pyramid applications.
+
+  - Maintained by:  Chris McDonough
+
+  - Version Control: https://github.com/Pylons/pyramid_exclog
+
 Pyramid Development Environment Documentation
 ---------------------------------------------
 
