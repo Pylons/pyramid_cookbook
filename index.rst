@@ -85,6 +85,8 @@ TODO
 
 - TicTacToe and Long Polling With Pyramid: http://www.merickel.org/2011/6/21/tictactoe-and-long-polling-with-pyramid/
 
+- Jim Penny's rolodex tutorial: http://jpenny.im/
+
 Indices and tables
 ==================
 
