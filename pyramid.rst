@@ -25,13 +25,15 @@ speed right away:
 Main Documentation
 ------------------
 
-* `Pyramid documentation 1.2 </projects/pyramid/1.2/>`_ - narrative and API
-  documentation for Pyramid's current alpha/beta release.
+* `Pyramid documentation 1.2 </projects/pyramid/1.2/>`_ (`PDF
+  <http://static.pylonsproject.org/pyramid-1.2.pdf>`_) (`Epub
+  <http://static.pylonsproject.org/pyramid-1.2.epub>`_) - narrative and API
+  documentation for Pyramid's current stable release.
 
 * `Pyramid documentation 1.1 </projects/pyramid/1.1/>`_ (`PDF
   <http://static.pylonsproject.org/pyramid-1.1.pdf>`_) (`Epub
   <http://static.pylonsproject.org/pyramid-1.1.epub>`_) - narrative and API
-  documentation for Pyramid's current stable release.
+  documentation for Pyramid's 1.1 version.
 
 * `Pyramid documentation 1.0 </projects/pyramid/1.0/>`_ (`PDF
   <http://static.pylonsproject.org/pyramid-1.0.pdf>`_) (`Epub
