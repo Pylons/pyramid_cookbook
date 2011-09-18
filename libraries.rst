@@ -5,6 +5,12 @@ The following packages are hosted within the Pylons Project GitHub
 organization repository structure, and are officially endorsed, but are not
 Pyramid add-ons.
 
+* `WebOb <http://webob.org>`_, WSGI request/response library
+
+  - Maintained by:  Sergey Schetenin
+
+  - Version Control: https://github.com/Pylons/webob
+
 * `colander </projects/colander/dev/>`_,
   serialization/deserialization/validation library.
 
