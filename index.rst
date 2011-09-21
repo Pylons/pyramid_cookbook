@@ -87,6 +87,8 @@ TODO
 
 - Jim Penny's rolodex tutorial: http://jpenny.im/
 
+- Thorsten Lockert's formhelpers/Pyramid example: https://github.com/tholo/formhelpers2
+
 Indices and tables
 ==================
 
