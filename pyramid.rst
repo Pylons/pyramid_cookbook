@@ -86,9 +86,9 @@ here.
 * `pyramid_mailer </projects/pyramid_mailer/dev/>`_: a package for the
   Pyramid framework to take the pain out of sending emails.
 
-  - Maintained by:  Dan Jacobs
+  - Maintained by:  Dan Jacobs, Chris McDonough
 
-  - Version Control: https://bitbucket.org/danjac/pyramid_mailer
+  - Version Control: https://github.com/Pylons/pyramid_mailer
 
 * `pyramid_rpc </projects/pyramid_rpc/dev/>`_: RPC service add-on for
   Pyramid, supports XML-RPC in a more extensible manner than `pyramid_xmlrpc`
