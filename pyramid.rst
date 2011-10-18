@@ -98,7 +98,7 @@ here.
 
   - Version Control: https://github.com/Pylons/pyramid_rpc
 
-* `pyramid_tm </projects/pyramid_tm/dev/>`_: Centralized transaction 
+* `pyramid_tm </projects/pyramid_tm/en/latest/>`_: Centralized transaction 
   management for Pyramid applications (without middleware).
 
   - Maintained by: Rocky Burt
@@ -140,7 +140,7 @@ here.
 
   - Version Control: https://github.com/Pylons/pyramid_debugtoolbar
 
-* `pyramid_exclog </projects/pyramid_exclog/dev/>`_, a package which logs
+* `pyramid_exclog </projects/pyramid_exclog/en/latest/>`_, a package which logs
   exceptions from Pyramid applications.
 
   - Maintained by:  Chris McDonough
