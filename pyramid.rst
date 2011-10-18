@@ -133,10 +133,10 @@ here.
 
   - Version Control: https://github.com/Pylons/pyramid_jqm
 
-* `pyramid_debugtoolbar </projects/pyramid_debugtoolbar/dev/>`_, an interactive
+* `pyramid_debugtoolbar </projects/pyramid_debugtoolbar/en/latest/>`_, an interactive
   HTML debug toolbar for Pyramid.
 
-  - Maintained by:  Chris McDonough
+  - Maintained by:  Chris McDonough, Blaise Laflamme
 
   - Version Control: https://github.com/Pylons/pyramid_debugtoolbar
 
