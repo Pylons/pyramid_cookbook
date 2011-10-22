@@ -54,7 +54,7 @@ Pyramid supports extensibility through add-ons.  The following add-ons are
 officially endorsed by the Pylons Project, and their documentation is hosted
 here.
 
-* `pyramid_beaker </projects/pyramid_beaker/dev/>`_: Beaker session backend
+* `pyramid_beaker </projects/pyramid_beaker/en/latest/>`_: Beaker session backend
   plug-in.
 
   - Maintained by: Ben Bangert, Chris McDonough
