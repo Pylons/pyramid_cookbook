@@ -247,5 +247,5 @@ See `Wayne Witzel III's blog post
 about using Velruse and Pyramid together to do Google OAuth authentication.
 
 See Matthew Housden and Chris Davies pyramid_apex project for any basic and openid
-authentication such as Google, Facebook, Tweeter and more at 
+authentication such as Google, Facebook, Twitter and more at 
 https://github.com/cd34/pyramid_apex.
