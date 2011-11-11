@@ -4,8 +4,8 @@ Chameleon Internationalization
 ==============================
 
 .. note:: This recipe was created to document the process of internationalization
-   (i18n) and localization (l10n) of chameleon templates. There is not much to 
-   it, really, but as the author was baffled by this fact, it seems a good idea 
+   (i18n) and localization (l10n) of chameleon templates. There is not much to
+   it, really, but as the author was baffled by this fact, it seems a good idea
    to describe the few necessary steps.
 
 We start off with a virtualenv and a fresh Pyramid project created via paster:
@@ -15,7 +15,7 @@ We start off with a virtualenv and a fresh Pyramid project created via paster:
 
    $ virtualenv --no-site-packages env
    $ env/bin/pip install pyramid
-   $ env bin/paster create -t pyramid_routesalchemy ChameleonI18n 
+   $ env bin/paster create -t pyramid_routesalchemy ChameleonI18n
 
 
 Dependencies
@@ -36,9 +36,9 @@ First, add dependencies to your Pyramid project's ``setup.py``:
        ('**.py',   'lingua_python', None ),
        ('**.pt',   'lingua_xml', None ),
        ]},
-   
 
-You will have to run ``../env/bin/python setup.py develop`` after this to get 
+
+You will have to run ``../env/bin/python setup.py develop`` after this to get
 Babel and lingua into your virtualenv and make the message extraction work.
 
 A Folder for the locales
@@ -55,7 +55,7 @@ Next, add a folder for the locales POT & PO files:
 What to translate
 -----------------
 
-Well, let's translate some parts of the given template ``mytemplate.pt``. Add a 
+Well, let's translate some parts of the given template ``mytemplate.pt``. Add a
 namespace and an i18n:domain to the <html> tag:
 
 .. code-block:: text
@@ -63,9 +63,9 @@ namespace and an i18n:domain to the <html> tag:
    +<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal"
    +      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
    +      i18n:domain="ChameleonI18n">
-    
 
-The important bit -- the one the author was missing -- is that the i18n:domain 
+
+The important bit -- the one the author was missing -- is that the i18n:domain
 must be spelled exactely like the POT/PO/MO files created later on, including
 case. Without this, the translations will not be picked up.
 
@@ -99,12 +99,17 @@ Now you need to run these commands in your project's directory:
 Repeat the ``init_catalog`` step for each of the langauges you need.
 
 The first command will extract the strings for translation to your projects
-locale/<project-name>.pot file, in this case ChameleonI18n.pot 
+locale/<project-name>.pot file, in this case ChameleonI18n.pot
 
 The ``init`` commands create new catalogs for different languages and the
 ``update`` command will sync entries from the main POT to the languages POs.
 
-Finally, the ``compile`` command will translate the POs to binary MO files 
+
+At this point you can tell your translators to go edit the po files :-)
+Otherwise the translations will remain empty and defaults will be used.
+
+
+Finally, the ``compile`` command will translate the POs to binary MO files
 that are actually used to get the relevant translations.
 
 .. note::
@@ -118,7 +123,7 @@ that are actually used to get the relevant translations.
 Add locale directory to projects config
 ---------------------------------------
 
-At this point you'll also need to add your local directory to your 
+At this point you'll also need to add your local directory to your
 project's configuration:
 
 .. code-block:: python
@@ -144,3 +149,7 @@ and see if the translations are being picked up.
    -  pyramid.default_locale_name = en
    +  pyramid.default_locale_name = de
 
+Of course, you need to have edited your relevant PO file and added a
+translation of the relevant string, in this example ``search_documentation``
+and have the PO file compiled to a MO file. Now you can fire up you app and
+check out the translated headline.
