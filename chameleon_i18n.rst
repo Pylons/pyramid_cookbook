@@ -1,7 +1,7 @@
 .. _chameleon_i18n:
 
 Chameleon Internationalization
-------------------------------
+==============================
 
 .. note:: This recipe was created to document the process of internationalization
    (i18n) and localization (l10n) of chameleon templates. There is not much to 
@@ -18,7 +18,8 @@ We start off with a virtualenv and a fresh Pyramid project created via paster:
    $ env bin/paster create -t pyramid_routesalchemy ChameleonI18n 
 
 
-
+Dependencies
+------------
 
 First, add dependencies to your Pyramid project's ``setup.py``:
 
@@ -37,6 +38,8 @@ First, add dependencies to your Pyramid project's ``setup.py``:
        ]},
    
 
+A Folder for the locales
+------------------------
 
 Next, add a folder for the locales POT & PO files:
 
@@ -45,6 +48,9 @@ Next, add a folder for the locales POT & PO files:
 
    $ mkdir chameleoni18n/locale
 
+
+What to translate
+-----------------
 
 Well, let's translate some parts of the given template ``mytemplate.pt``. Add a 
 namespace and an i18n:domain to the <html> tag:
@@ -71,13 +77,16 @@ to the catalog POT. You don't have to add a description (like in this example
 'search_documentation'), but it makes it easier for translators.
 
 
+Commands for Translations
+-------------------------
+
 Now you need to run these commands in your project's directory:
 
 .. code-block:: text
    :linenos:
 
    (env)$ python setup.py extract_messages
-   (env)$ python setup.py init_catalog -l en
+   (env)$ python setup.py init_catalog -l de
    (env)$ python setup.py init_catalog -l fr
    (env)$ python setup.py init_catalog -l es
    (env)$ python setup.py init_catalog -l it
@@ -89,13 +98,22 @@ Repeat the ``init_catalog`` step for each of the langauges you need.
 The first command will extract the strings for translation to your projects
 locale/<project-name>.pot file, in this case ChameleonI18n.pot 
 
+The ``init`` commands create new catalogs for different languages and the
+``update`` command will sync entries from the main POT to the languages POs.
+
+Finally, the ``compile`` command will translate the POs to binary MO files 
+that are actually used to get the relevant translations.
+
 .. note::
 
    The gettext sub-directory of your project is ``locale/`` in Pyramid, and
    not ``i18n/`` as it was in Pylons. You'll notice that in the default
    setup.cfg of a Pyramid project, which has all the necessary settings to
-   make the above commands work.
+   make the above commands work without parameters.
 
+
+Add locale directory to projects config
+---------------------------------------
 
 At this point you'll also need to add your local directory to your 
 project's configuration:
@@ -107,6 +125,12 @@ project's configuration:
        ...
        config.add_translation_dirs('YOURPROJECT:locale')
 
+
+where YOURPROJECT in our example would be 'chameleoni18n'.
+
+
+Set a default locale
+--------------------
 
 You can now change the default locale for your project in ``development.ini``
 and see if the translations are being picked up.
