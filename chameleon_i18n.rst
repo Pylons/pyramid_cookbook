@@ -38,6 +38,9 @@ First, add dependencies to your Pyramid project's ``setup.py``:
        ]},
    
 
+You will have to run ``../env/bin/python setup.py develop`` after this to get 
+Babel and lingua into your virtualenv and make the message extraction work.
+
 A Folder for the locales
 ------------------------
 
