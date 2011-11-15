@@ -25,19 +25,19 @@ speed right away:
 Main Documentation
 ------------------
 
-* `Pyramid documentation 1.2 </projects/pyramid/en/1.2/>`_ (`1.2 PDF
-  <http://media.readthedocs.org/pdf/pyramid/1.2/pyramid.pdf>`_) (`1.2 Epub
-  <http://media.readthedocs.org/epub/pyramid/1.2/pyramid.epub>`_) - narrative and API
+* `Pyramid documentation 1.2 </projects/pyramid/en/1.2-branch/>`_ (`1.2 PDF
+  <http://media.readthedocs.org/pdf/pyramid/1.2-branch/pyramid.pdf>`_) (`1.2 Epub
+  <http://media.readthedocs.org/epub/pyramid/1.2-branch/pyramid.epub>`_) - narrative and API
   documentation for Pyramid's current stable release.
 
-* `Pyramid documentation 1.1 </projects/pyramid/en/1.1/>`_ (`1.1 PDF
-  <http://media.readthedocs.org/pdf/pyramid/1.1/pyramid.pdf>`_) (`1.1 Epub
-  <http://media.readthedocs.org/epub/pyramid/1.1/pyramid.epub>`_) - narrative and API
+* `Pyramid documentation 1.1 </projects/pyramid/en/1.1-branch/>`_ (`1.1 PDF
+  <http://media.readthedocs.org/pdf/pyramid/1.1-branch/pyramid.pdf>`_) (`1.1 Epub
+  <http://media.readthedocs.org/epub/pyramid/1.1-branch/pyramid.epub>`_) - narrative and API
   documentation for Pyramid's 1.1 version.
 
-* `Pyramid documentation 1.0 </projects/pyramid/en/1.0/>`_ (`1.0 PDF
-  <http://media.readthedocs.org/pdf/pyramid/1.0/pyramid.pdf>`_) (`1.0 Epub
-  <http://media.readthedocs.org/epub/pyramid/1.0/pyramid.epub>`_) - narrative and API
+* `Pyramid documentation 1.0 </projects/pyramid/en/1.0-branch/>`_ (`1.0 PDF
+  <http://media.readthedocs.org/pdf/pyramid/1.0-branch/pyramid.pdf>`_) (`1.0 Epub
+  <http://media.readthedocs.org/epub/pyramid/1.0-branch/pyramid.epub>`_) - narrative and API
   documentation for Pyramid's 1.0 version.
 
 * `Pyramid development documentation </projects/pyramid/en/latest/>`_ - narrative
@@ -69,6 +69,20 @@ here.
 
   - Version Control: https://github.com/Pylons/pyramid_chameleon_genshi
 
+* `pyramid_debugtoolbar </projects/pyramid_debugtoolbar/en/latest/>`_, an interactive
+  HTML debug toolbar for Pyramid.
+
+  - Maintained by:  Chris McDonough, Blaise Laflamme
+
+  - Version Control: https://github.com/Pylons/pyramid_debugtoolbar
+
+* `pyramid_exclog </projects/pyramid_exclog/en/latest/>`_, a package which logs
+  exceptions from Pyramid applications.
+
+  - Maintained by:  Chris McDonough
+
+  - Version Control: https://github.com/Pylons/pyramid_exclog
+
 * `pyramid_handlers </projects/pyramid_handlers/en/latest/>`_: analogue of
   Pylons-style "controllers" for Pyramid.
 
@@ -82,6 +96,13 @@ here.
   - Maintained by: Rocky Burt
 
   - Version Control: https://github.com/Pylons/pyramid_jinja2
+
+* `pyramid_jqm </projects/pyramid_jqm/en/latest/>`_, scaffolding for developing
+  jQuery Mobile apps with Pyramid.
+
+  - Maintained by:  Chris McDonough
+
+  - Version Control: https://github.com/Pylons/pyramid_jqm
 
 * `pyramid_mailer </projects/pyramid_mailer/en/latest/>`_: a package for the
   Pyramid framework to take the pain out of sending emails.
@@ -125,27 +146,6 @@ here.
   - Maintained by: Chris McDonough
 
   - Version Control: https://github.com/Pylons/pyramid_zcml
-
-* `pyramid_jqm </projects/pyramid_jqm/en/latest/>`_, scaffolding for developing
-  jQuery Mobile apps with Pyramid.
-
-  - Maintained by:  Chris McDonough
-
-  - Version Control: https://github.com/Pylons/pyramid_jqm
-
-* `pyramid_debugtoolbar </projects/pyramid_debugtoolbar/en/latest/>`_, an interactive
-  HTML debug toolbar for Pyramid.
-
-  - Maintained by:  Chris McDonough, Blaise Laflamme
-
-  - Version Control: https://github.com/Pylons/pyramid_debugtoolbar
-
-* `pyramid_exclog </projects/pyramid_exclog/en/latest/>`_, a package which logs
-  exceptions from Pyramid applications.
-
-  - Maintained by:  Chris McDonough
-
-  - Version Control: https://github.com/Pylons/pyramid_exclog
 
 Pyramid Development Environment Documentation
 ---------------------------------------------
