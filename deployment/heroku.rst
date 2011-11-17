@@ -3,9 +3,7 @@ heroku
 
 `heroku <http://www.heroku.com/>`_ recently added `support for a process model
 <http://blog.heroku.com/archives/2011/5/31/celadon_cedar/>`_ which allows
-deployment of Pyramid applications. While there is currently **no official
-support** for Python/Pyramid web applications, the current stack does support
-it.
+deployment of Pyramid applications. 
 
 This recipe assumes that you have a pyramid app setup using a Paste INI file,
 inside a package called 'myapp'. This type of structure is found in the
