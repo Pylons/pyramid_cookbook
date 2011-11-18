@@ -59,6 +59,7 @@ Well, let's translate some parts of the given template ``mytemplate.pt``. Add a
 namespace and an i18n:domain to the <html> tag:
 
 .. code-block:: text
+
    -<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal">
    +<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal"
    +      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
@@ -72,6 +73,7 @@ case. Without this, the translations will not be picked up.
 So now we can mark a part of the template for translation:
 
 .. code-block:: text
+
    -          <h2>Search documentation</h2>
    +          <h2 i18n:translate="search_documentation">Search documentation</h2>
 

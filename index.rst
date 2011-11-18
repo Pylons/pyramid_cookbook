@@ -10,6 +10,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    files
    exceptions
    authentication
+   deployment
    wiki2_auth
    templates
    catalog
@@ -22,6 +23,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    zeo
    configuration
    events
+   chameleon_i18n
    deployment/index.rst
    porting
    testing
