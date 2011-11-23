@@ -18,7 +18,7 @@ speed right away:
   `quick tutorial <pyramid_quick_tutorial.html>`_ page. 
 
 * Like learning by example? Check out to the `wiki tutorial
-  </projects/pyramid/en/1.1/tutorials/wiki2/index.html>`_.
+  </projects/pyramid/en/1.2-branch/tutorials/wiki2/index.html>`_.
 
 * Need help?  See :ref:`support-desc`.
 
