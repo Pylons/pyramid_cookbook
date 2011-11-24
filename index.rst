@@ -1,19 +1,18 @@
 Pyramid Tutorials
 =================
 
-This site contains tutorial-like content for the Pyramid web framework.
+This is the home of tutorial and patterns content for the Pyramid web framework.
 
-Contents:
+Contents
+---------
 
 .. toctree::
-   :maxdepth: 2
-
-   wiki2_auth/index
-   zeo/index
-   catalog/index
-   cmf/index
-   glossary
+   :maxdepth: 1
    
+   quick_tutorial/quick_tutorial
+   wiki_tutorials
+   patterns/index
+
 Indices and tables
 ==================
 

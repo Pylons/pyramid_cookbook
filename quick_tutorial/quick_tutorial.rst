@@ -20,7 +20,7 @@ At the end of the tutorial, you'll have a minimal application which:
 
 Here's a screenshot of the final application:
 
-.. image:: pyramid_quick_tutorial.png
+.. image:: quick_tutorial.png
 
 Step 1 - Organizing The Project
 -------------------------------
@@ -28,7 +28,7 @@ Step 1 - Organizing The Project
 .. note::
 
     For help getting Pyramid set up, try the `install guide
-    <pyramid_install.html>`_.
+    <http://docs.pylonsproject.org/en/latest/docs/pyramid_install.html>`_.
 
 Before getting started, we will create the directory hierarchy needed for
 our application layout. Create the following directory layout on your
@@ -327,7 +327,7 @@ messages sent by the application and another block to display the content of
 the page inheriting this master layout by using the mako directive
 ``${next.body()}``.
 
-.. literalinclude:: pyramid_quick_tutorial/templates/layout.mako
+.. literalinclude:: src/templates/layout.mako
    :language: html+mako
 
 list.mako
@@ -340,7 +340,7 @@ tasks. The loop uses the passed ``tasks`` dictionary sent from the
 ``request.route_url`` function to generate a url based on a route name and
 its arguments instead of statically defining the url path.
 
-.. literalinclude:: pyramid_quick_tutorial/templates/list.mako
+.. literalinclude:: src/templates/list.mako
    :language: html+mako
 
 new.mako
@@ -350,7 +350,7 @@ This template is used by the ``new_view`` view function.  The template
 extends the master ``layout.mako`` template by providing a basic form to add
 new tasks.
 
-.. literalinclude:: pyramid_quick_tutorial/templates/new.mako
+.. literalinclude:: src/templates/new.mako
    :language: html+mako
 
 notfound.mako
@@ -359,7 +359,7 @@ notfound.mako
 This template extends the master ``layout.mako`` template.  We use it as the
 template for our custom ``NotFound`` view.
 
-.. literalinclude:: pyramid_quick_tutorial/templates/notfound.mako
+.. literalinclude:: src/templates/notfound.mako
    :language: html+mako
 
 Configuring Template Locations
@@ -382,7 +382,7 @@ It's now time to add some styling to the application templates by adding a
 **CSS** file named ``style.css`` to the ``static`` directory with the
 following content:
 
-.. literalinclude:: pyramid_quick_tutorial/static/style.css
+.. literalinclude:: src/static/style.css
    :language: css
 
 To cause this static file to be served by the application, we must add a
@@ -401,7 +401,7 @@ We have now completed all steps needed to run the application in its final
 version. Before running it, here's the complete main code for ``tasks.py`` for
 review:
 
-.. literalinclude:: pyramid_quick_tutorial/tasks.py
+.. literalinclude:: src/tasks.py
    :language: python
 
 And now let's run ``tasks.py``:
