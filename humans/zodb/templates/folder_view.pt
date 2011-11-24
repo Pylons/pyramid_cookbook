@@ -1,0 +1,15 @@
+<div>
+    <h2>Folder Title: ${context.title}</h2>
+    <p tal:condition="context.__parent__">
+        <a href="${request.resource_url(context.__parent__)}">
+           Up to ${context.__parent__.title}
+        </a>
+    </p>
+    <ul>
+        <li tal:repeat="child context.values()">
+            <a href="${request.resource_url(child)}">${child.title}</a>
+        </li>
+    </ul>
+    <p><a href="add_folder">Add folder</a><br/>
+    <a href="add_document">Add document</a></p>
+</div>

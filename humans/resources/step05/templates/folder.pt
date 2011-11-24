@@ -1,0 +1,18 @@
+<div metal:use-macro="view.global_template">
+    <div metal:fill-slot="content">
+        <h2>Folder Contents</h2>
+        <div metal:use-macro="view.global_macros['children_listing']"></div>
+        <form action="." method="POST">
+            <label for="title">Title:</label>
+            <input name="title"/>
+            <input name="folder" type="submit" value="Add Folder"/>
+        </form>
+        <form action="." method="POST">
+            <label for="title">Title:</label>
+            <input name="title"/>
+            <input name="document" type="submit" value="Add Document"/>
+        </form>
+        <div metal:use-macro="view.global_macros['company_menu']"></div>
+        
+    </div>
+</div>

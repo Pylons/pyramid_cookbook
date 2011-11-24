@@ -1,0 +1,14 @@
+<html>
+<head>
+    <title>Projector - Home</title>
+</head>
+<body>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about.html">About Projector</a></li>
+    <li><a href="/acme">ACME, Inc.</a></li>
+    <li><a href="/people">People</a></li>
+</ul>
+<h1>Projector - Home</h1>
+</body>
+</html>

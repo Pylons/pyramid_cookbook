@@ -1,0 +1,9 @@
+<div>
+    <p tal:condition="context.__parent__">
+        <a href="${request.resource_url(context.__parent__)}">
+           Up to ${context.__parent__.title}
+        </a>
+    </p>
+    <h2>${context.title}</h2>
+    <p>${context.content}</p>
+</div>

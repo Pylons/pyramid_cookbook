@@ -1,0 +1,13 @@
+<div>
+    <h2>Search for ${term}</h2>
+    <p>
+        <a href="/">
+           Back to site root
+        </a>
+    </p>
+    <ol>
+        <li tal:repeat="result results">
+            <a href="${request.resource_url(result)}">${result.title}</a>
+        </li>
+    </ol>
+</div>

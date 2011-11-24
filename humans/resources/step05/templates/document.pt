@@ -1,0 +1,7 @@
+<div metal:use-macro="view.global_template">
+    <div metal:fill-slot="content">
+        <div tal:replace="structure view.context.body"/>
+        <div metal:use-macro="view.global_macros['company_menu']"></div>
+        
+    </div>
+</div>

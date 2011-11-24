@@ -1,0 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal">
+<head>
+    <title>${page_title}</title>
+</head>
+<body>
+<h1>${page_title}</h1>
+
+<p>This is the home page, only visible to <code>group:editors</code></p>
+
+<p><a href="edit">Edit</a> | <a href="/logout.html">Logout</a></p>
+</body>
+</html>

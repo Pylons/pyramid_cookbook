@@ -1,0 +1,20 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/static/css/form.css" type="text/css" />
+  <!-- JavaScript -->
+  <script type="text/javascript"
+          src="/static/scripts/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript"
+          src="/static/scripts/deform.js"></script>
+</head>
+<body>
+<div>
+    <h2>SiteFolder Title: ${context.title}</h2>
+    <ul>
+        <li tal:repeat="child children">
+            <a href="${child.__name__}">${child.title}</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

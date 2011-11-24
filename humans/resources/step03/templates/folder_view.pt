@@ -1,0 +1,8 @@
+<div>
+    <h2>Folder Title: ${context.title}</h2>
+    <ul>
+        <li tal:repeat="child children">
+            <a href="${child.__name__}">${child.title}</a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:define-macro="layout">
+<head>
+    <title>Projector - ${context.title}</title>
+</head>
+<body>
+<ul>
+    <li><a href="/">Site Folder</a></li>
+    <li><a href="/doc1">Document 01</a></li>
+    <li><a href="/doc2">Document 02</a></li>
+    <li><a href="/folder1">Folder 01</a></li>
+    <li><a href="/folder1/doc1">Document 01 in Folder 01</a></li>
+</ul>
+<h1>${page_title}</h1>
+
+<div>__name__: ${name}</div>
+<div>__parent__: ${parent_title}</div>
+</body>
+</html>

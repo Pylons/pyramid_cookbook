@@ -1,0 +1,9 @@
+<div metal:use-macro="view.global_template">
+    <div metal:fill-slot="content">
+        <ul>
+            <li tal:repeat="person people">
+                <a href="${person.name}">${person.title}</a>
+            </li>
+        </ul>
+    </div>
+</div>

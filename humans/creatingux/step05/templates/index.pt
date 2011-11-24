@@ -1,0 +1,5 @@
+<div metal:use-macro="layout">
+    <div metal:fill-slot="content">
+        <p>Home page content goes here.</p>
+    </div>
+</div>

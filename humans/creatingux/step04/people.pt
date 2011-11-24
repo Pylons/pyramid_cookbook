@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Projector - People</title>
+</head>
+<body>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about.html">About Projector</a></li>
+    <li><a href="/acme">ACME Inc.</a></li>
+    <li><a href="/people">People</a></li>
+</ul>
+<h1>People</h1>
+<ul>
+    <li tal:repeat="person people">
+        <a href="${person.name}">${person.title}</a>
+    </li>
+</ul>
+</body>
+</html>

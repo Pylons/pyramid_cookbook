@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:define-macro="layout">
+<head>
+    <title>Projector - ${page_title}</title>
+</head>
+<body>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about.html">About Projector</a></li>
+    <li><a href="/acme">ACME, Inc.</a></li>
+    <li><a href="/people">People</a></li>
+</ul>
+<h1>${page_title}</h1>
+<div metal:define-slot="content">
+</div>
+</body>
+</html>

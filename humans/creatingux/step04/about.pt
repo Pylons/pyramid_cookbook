@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>Projector - About</title>
+</head>
+<body>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about.html">About Projector</a></li>
+    <li><a href="/acme">ACME, Inc.</a></li>
+    <li><a href="/people">People</a></li>
+</ul>
+<h1>Projector - About</h1>
+<p>Projector is a simple project management tool capable of hosting
+    multiple projects for multiple independent companies,
+    sharing a developer pool between autonomous companies.</p>
+</body>
+</html>

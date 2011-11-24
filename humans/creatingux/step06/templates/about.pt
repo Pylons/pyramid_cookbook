@@ -1,0 +1,7 @@
+<div metal:use-macro="view.global_template">
+    <div metal:fill-slot="content">
+        <p>Projector is a simple project management tool capable of hosting
+            multiple projects for multiple independent companies,
+            sharing a developer pool between autonomous companies.</p>
+    </div>
+</div>

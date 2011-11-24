@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal">
+<head>
+    <title>${page_title}</title>
+</head>
+<body>
+<h1>${page_title}</h1>
+
+<p><em>${message}</em></p>
+
+<form action="${url}" method="post">
+    <input type="hidden" name="came_from" value="${came_from}"/>
+    <input type="text" name="login" value="${login}"/><br/>
+    <input type="password" name="password"
+           value="${password}"/><br/>
+    <input type="submit" name="form.submitted" value="Log In"/>
+</form>
+</body>
+</html>

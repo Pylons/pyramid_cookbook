@@ -1,0 +1,6 @@
+<div metal:use-macro="view.global_template">
+    <div metal:fill-slot="content">
+        <p>Welcome to our company project management system.</p>
+        <div metal:use-macro="view.global_macros['company_menu']"></div>
+    </div>
+</div>
