@@ -18,7 +18,6 @@ from docutils import utils
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.append(os.path.abspath('_themes'))
 
 # -- General configuration -----------------------------------------------------
 
@@ -29,6 +28,7 @@ sys.path.append(os.path.abspath('_themes'))
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 
 extensions = [
+    'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx'
     ]
 
@@ -88,7 +88,7 @@ exclude_patterns = ['_build']
 #show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+#pygments_style = 'sphinx'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
@@ -100,6 +100,7 @@ pygments_style = 'sphinx'
 sys.path.append(os.path.abspath('_themes'))
 html_theme_path = ['_themes']
 html_theme = 'pyramid'
+html_theme_options = dict(github_url='https://github.com/Pylons/pyramid_tutorials')
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
