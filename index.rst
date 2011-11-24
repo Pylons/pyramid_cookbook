@@ -11,8 +11,8 @@ Contents
    
    quick_tutorial/quick_tutorial
    wiki_tutorials
-   patterns/index
    humans/index
+   patterns/index
 
 Indices and tables
 ==================
