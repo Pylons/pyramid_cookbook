@@ -1,5 +1,5 @@
-Pyramid Quick Tutorial
-======================
+Pyramid Single File Tasks Tutorial
+===================================
 
 This tutorial is intended to provide you with a feel of how a Pyramid web
 application is created. The tutorial is very short, and focuses on the
@@ -20,7 +20,7 @@ At the end of the tutorial, you'll have a minimal application which:
 
 Here's a screenshot of the final application:
 
-.. image:: quick_tutorial.png
+.. image:: single_file_tasks.png
 
 Step 1 - Organizing The Project
 -------------------------------

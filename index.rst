@@ -9,7 +9,7 @@ Contents
 .. toctree::
    :maxdepth: 1
    
-   quick_tutorial/quick_tutorial
+   single_file_tasks/single_file_tasks
    wiki_tutorials
    humans/index
 
