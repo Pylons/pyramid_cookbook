@@ -19,13 +19,6 @@ from docutils import utils
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-rtd = os.environ.get('READTHEDOCS', None) == 'True'
-if rtd:
-    from subprocess import Popen, PIPE
-    p = Popen('which git', shell=True, stdout=PIPE)
-    git = p.stdout.read().strip()
-    os.system('rm -Rf _themes; {0} submodule update --init;'.format(git))
-
 # -- General configuration -----------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -104,10 +97,28 @@ exclude_patterns = ['_build']
 # -- Options for HTML output ---------------------------------------------------
 
 # Add and use Pylons theme
+from subprocess import call, Popen, PIPE
+
+p = Popen('which git', shell=True, stdout=PIPE)
+git = p.stdout.read().strip()
+cwd = os.getcwd()
+_themes = os.path.join(cwd, '_themes')
+
+if not os.path.isdir(_themes):
+    call(['git', 'clone', 'git://github.com/Pylons/pylons_sphinx_theme.git',
+            '_themes'])
+else:
+    os.chdir(_themes)
+    call(['git', 'checkout', 'master'])
+    call(['git', 'pull'])
+    os.chdir(cwd)
+
 sys.path.append(os.path.abspath('_themes'))
 html_theme_path = ['_themes']
 html_theme = 'pyramid'
-html_theme_options = dict(github_url='https://github.com/Pylons/pyramid_tutorials')
+html_theme_options = dict(
+    github_url='https://github.com/Pylons/pyramid_tutorials'
+    )
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
