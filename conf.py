@@ -19,6 +19,13 @@ from docutils import utils
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
+rtd = os.environ.get('READTHEDOCS', None) == 'True'
+if rtd:
+    from subprocess import Popen, PIPE
+    p = Popen('which git', shell=True, stdout=PIPE)
+    git = p.stdout.read().strip()
+    os.system('rm -Rf _themes; {0} submodule update --init;'.format(git))
+
 # -- General configuration -----------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
