@@ -91,6 +91,8 @@ TODO
 
 - Thorsten Lockert's formhelpers/Pyramid example: https://github.com/tholo/formhelpers2
 
+- The Python Ecosystem, an Introduction: http://mirnazim.org/writings/python-ecosystem-introduction/
+
 Indices and tables
 ==================
 
