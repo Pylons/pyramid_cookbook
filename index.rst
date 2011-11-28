@@ -93,6 +93,8 @@ TODO
 
 - The Python Ecosystem, an Introduction: http://mirnazim.org/writings/python-ecosystem-introduction/
 
+- Outgrowing Pyramid Handlers: http://michael.merickel.org/2011/8/23/outgrowing-pyramid-handlers/
+
 Indices and tables
 ==================
 
