@@ -15,6 +15,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    templates
    catalog
    sqla
+   sqlalchemy_logger
    mongo
    legacy
    couchdb
