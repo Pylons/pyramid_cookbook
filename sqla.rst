@@ -167,3 +167,11 @@ given.  This side effect ensures that each file in ``myapp.models`` is
 imported without requiring that you import each "by hand" within
 ``models/__init__.py``.  It won't import any models that live outside the
 ``myapp.models`` package, however.
+
+Writing Tests For Pyramid + SQLAlchemy
+--------------------------------------
+
+John Anderson's blog entry at
+http://sontek.net/writing-tests-for-pyramid-and-sqlalchemy describes a
+strategy for writing tests for systems which integrate Pyramid and
+SQLAlchemy.
