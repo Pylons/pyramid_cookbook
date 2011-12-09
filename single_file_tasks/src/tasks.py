@@ -8,6 +8,7 @@ from pyramid.events import ApplicationCreated
 from pyramid.httpexceptions import HTTPFound
 from pyramid.session import UnencryptedCookieSessionFactoryConfig
 from pyramid.view import view_config
+from pyramid.exceptions import NotFound
 
 from paste.httpserver import serve
 import sqlite3
