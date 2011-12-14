@@ -1,4 +1,5 @@
-from paste.httpserver import serve
+from wsgiref.simple_server import make_server
+
 from pyramid.config import Configurator
 from pyramid.response import Response
 
@@ -16,4 +17,5 @@ def main():
 if __name__ == '__main__':
     # When run from command line, launch a WSGI server and app
     app = main()
-    serve(app, host='0.0.0.0')
+    server = make_server('0.0.0.0', 8080, app)
+    server.serve_forever()
