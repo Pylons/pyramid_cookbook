@@ -8,9 +8,9 @@ from pyramid.events import ApplicationCreated
 from pyramid.httpexceptions import HTTPFound
 from pyramid.session import UnencryptedCookieSessionFactoryConfig
 from pyramid.view import view_config
-from pyramid.exceptions import NotFound
 
-from paste.httpserver import serve
+from wsgiref.simple_server import make_server
+
 import sqlite3
 
 logging.basicConfig()
@@ -93,4 +93,5 @@ if __name__ == '__main__':
     config.scan()
     # serve app
     app = config.make_wsgi_app()
-    serve(app, host='0.0.0.0')
+    server = make_server('0.0.0.0', 8080, app)
+    server.serve_forever()
