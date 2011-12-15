@@ -58,7 +58,7 @@ within the newly created file:
     from pyramid.config import Configurator
     from pyramid.session import UnencryptedCookieSessionFactoryConfig
        
-    from paste.httpserver import serve
+    from wsgiref.simple_server import make_server
 
 Then we'll set up logging and the current working directory path:
 
@@ -86,7 +86,8 @@ and serve it.
         config = Configurator(settings=settings, session_factory=session_factory)
         # serve app
         app = config.make_wsgi_app()
-        serve(app, host='0.0.0.0')
+        server = make_server('0.0.0.0', 8080, app)
+        server.serve_forever()
 
 We now have the basic project layout needed to run our application, but
 we still need to add database support, routing, views, and templates.
