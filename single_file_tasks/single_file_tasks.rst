@@ -411,7 +411,8 @@ And now let's run ``tasks.py``:
 
     $ python tasks.py 
     WARNING:tasks.py:Initializing database...
-    serving on 0.0.0.0:8080 view at http://127.0.0.1:8080
+
+It will be listening on port 8080.
 
 Conclusion
 ----------
