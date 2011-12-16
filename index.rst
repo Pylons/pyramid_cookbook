@@ -31,6 +31,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    traversal
    cmf/index.rst
    mac_install
+   gae
    glossary
 
 TODO
