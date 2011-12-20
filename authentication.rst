@@ -64,7 +64,7 @@ authentication policies.  For example:
 
    from pyramid.authentication import AuthTktAuthenticationPolicy
 
-   def groupfinder(request, userid):
+   def groupfinder(userid, request):
        user = request.user
        if user is not None:
            return [ group.name for group in request.user.groups ]
