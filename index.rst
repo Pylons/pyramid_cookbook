@@ -8,7 +8,6 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
 
    debugging
    files
-   exceptions
    authentication
    deployment
    wiki2_auth
