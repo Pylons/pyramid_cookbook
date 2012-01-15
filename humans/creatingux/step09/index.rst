@@ -6,7 +6,7 @@ Modern web development means AJAX. Through its renderer support,
 Pyramid makes return JSON data from a view very easy and coherent with
 the rest of the Pyramid architecture.
 
-In this step we add a box to ach screen which fetches, format,
+In this step we add a box to each screen which fetches, formats,
 and re-fetches site news updates.
 
 .. note::
