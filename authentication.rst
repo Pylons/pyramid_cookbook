@@ -22,6 +22,8 @@ multiple times (this is done by setting ``reify=True``.
 .. code-block:: python
    :linenos:
 
+   from pyramid.security import unauthenticated_userid
+
    def get_user(request):
        # the below line is just an example, use your own method of
        # accessing a database connection here (this could even be another
