@@ -16,9 +16,8 @@ application to run under multiprocess configurations, such as those
 exposed by :term:`mod_wsgi`.
 
 The easiest way to get started with ZODB in a :app:`Pyramid` application is
-to use the ZODB ``pyramid_zodb`` paster template.  See
-:ref:`additional_paster_templates` for more information about using this
-template.  However, the Paster template does not set up a ZEO-capable
+to use the ZODB ``pyramid_zodb`` paster template.
+However, the Paster template does not set up a ZEO-capable
 application.  This chapter shows you how to do that "from scratch".
 
 Installing Dependencies

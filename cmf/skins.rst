@@ -13,7 +13,7 @@ particular skin to provide the site with additional features.
 
 To override static resources using a "search path" much like a set of
 skin layers, :app:`Pyramid` provides the concept of
-:term:`resource` overrides.  See :ref:`overriding_resources_section`
+:term:`resource` overrides.  See `Overriding Resources`_
 for more information about resource overrides.
 
 While there is no analogue to a skin layer search path for locating
@@ -21,3 +21,4 @@ Python code (as opposed to resources), :term:`view` code combined with
 differing :term:`predicate` arguments can provide a good deal of
 the same sort of behavior.
 
+.. _Overriding Resources: http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/assets.html#overriding-assets
