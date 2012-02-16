@@ -98,7 +98,9 @@ instance of this class is actually used by the
 :meth:`pyramid.config.Configurator.add_static_view` configuration method, so
 its behavior is almost exactly the same once it's configured.
 
-.. warning:: The following example *will not work* for applications that use
+.. warning:: 
+
+   The following example *will not work* for applications that use
    :term:`traversal`, it will only work if you use :term:`URL dispatch`
    exclusively.  The root-relative route we'll be registering will always be
    matched before traversal takes place, subverting any views registered via
