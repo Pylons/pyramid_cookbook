@@ -6,11 +6,12 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
 .. toctree::
    :maxdepth: 2
 
+   auth/index
    debugging
+   deployment/index
+   Deplying Your Pyramid Application (TODO: consolidate into previous section) <deployment>
+
    files
-   authentication
-   deployment
-   wiki2_auth
    templates
    catalog
    sqla
@@ -24,7 +25,6 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    configuration
    events
    chameleon_i18n
-   deployment/index.rst
    porting
    testing
    traversal
