@@ -110,7 +110,8 @@ templates. For example, the ``base`` template looks like this:
 
    <html xmlns="http://www.w3.org/1999/xhtml"
          xmlns:tal="http://xml.zope.org/namespaces/tal"
-         xmlns:metal="http://xml.zope.org/namespaces/metal">
+         xmlns:metal="http://xml.zope.org/namespaces/metal"
+	 metal:define-macro="base">
        <head>
            <meta http-equiv="content-type" content="text/html; charset=utf-8" />
            <title>My page</title>
@@ -129,18 +130,87 @@ Each template using the ``base`` template will look like this:
    <html xmlns="http://www.w3.org/1999/xhtml"
          xmlns:tal="http://xml.zope.org/namespaces/tal"
          xmlns:metal="http://xml.zope.org/namespaces/metal"
-         metal:use-macro="base">
+         metal:use-macro="base.macros['base']">
        <tal:block metal:fill-slot="content">
            My awesome content.
        </tal:block>
    </html>
 
-The ``metal:use-macro="base"`` statement is essential here.
+The ``metal:use-macro="base.macros['base']"`` statement is essential here.
 Content inside ``<tal:block metal:fill-slot="content"></tal:block>`` tags
 will replace corresponding block in ``base`` template. You can define
 as many slots in as you want. For more information please see
 `Macro Expansion Template Attribute Language
 <http://chameleon.repoze.org/docs/latest/metal.html>`_ documentation.
+
+Using Building Blocks with Chameleon
+------------------------------------
+
+If you understood the ``base`` template chapter, using building blocks
+is very simple and straight forward. In the ``subscribers.py``module
+extend the ``add_base_template`` function like this:
+
+.. code-block:: python
+   :linenos:
+
+   from pyramid.renderers import get_renderer
+   
+   @subscriber(BeforeRender)
+   def add_base_template(event):
+       base = get_renderer('templates/base.pt').implementation()
+       blocks = get_renderer('templates/blocks.pt').implementation()
+       event.update({'base': base,
+                     'blocks': blocks,
+                     })
+
+Now, define your building blocks in ``templates/blocks.pt``. For
+example:
+.. code-block:: html
+   :linenos:
+
+   <html xmlns="http://www.w3.org/1999/xhtml"
+         xmlns:tal="http://xml.zope.org/namespaces/tal"
+         xmlns:metal="http://xml.zope.org/namespaces/metal">
+     <tal:block metal:define-macro="base-paragraph">
+       <p class="foo bar">
+         <tal:block metal:define-slot="body">
+         </tal:block>
+       </p>
+     </tal:block>
+   
+     <tal:block metal:define-macro="bold-paragraph"
+                metal:extend-macro="macros['base-paragraph']">
+       <tal:block metal:fill-slot="body">
+         <b class="strong-class">
+           <tal:block metal:define-slot="body"></tal:block>
+         </b>
+       </tal:block>
+     </tal:block>
+   </html>
+
+You can now use these building blocks like this:
+.. code-block:: html
+   :linenos:
+
+   <html xmlns="http://www.w3.org/1999/xhtml"
+         xmlns:tal="http://xml.zope.org/namespaces/tal"
+         xmlns:metal="http://xml.zope.org/namespaces/metal"
+   	 metal:use-macro="base.macros['base']">
+     <tal:block metal:fill-slot="content">
+       <tal:block metal:use-macro="blocks.macros['base-paragraph']">
+         <tal:block metal:fill-slot="body">
+           My awesome paragraph.
+         </tal:block>
+       </tal:block>
+   
+       <tal:block metal:use-macro="blocks.macros['bold-paragraph']">
+         <tal:block metal:fill-slot="body">
+           My awesome paragraph in bold.
+         </tal:block>
+       </tal:block>
+   
+     </tal:block>
+   </html>
 
 Rendering ``None`` as the Empty String in Mako Templates
 --------------------------------------------------------
