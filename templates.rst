@@ -110,7 +110,8 @@ templates. For example, the ``base`` template looks like this:
 
    <html xmlns="http://www.w3.org/1999/xhtml"
          xmlns:tal="http://xml.zope.org/namespaces/tal"
-         xmlns:metal="http://xml.zope.org/namespaces/metal">
+         xmlns:metal="http://xml.zope.org/namespaces/metal"
+	 metal:define-macro="base">
        <head>
            <meta http-equiv="content-type" content="text/html; charset=utf-8" />
            <title>My page</title>
@@ -129,13 +130,13 @@ Each template using the ``base`` template will look like this:
    <html xmlns="http://www.w3.org/1999/xhtml"
          xmlns:tal="http://xml.zope.org/namespaces/tal"
          xmlns:metal="http://xml.zope.org/namespaces/metal"
-         metal:use-macro="base">
+         metal:use-macro="base.macros['base']">
        <tal:block metal:fill-slot="content">
            My awesome content.
        </tal:block>
    </html>
 
-The ``metal:use-macro="base"`` statement is essential here.
+The ``metal:use-macro="base.macros['base']"`` statement is essential here.
 Content inside ``<tal:block metal:fill-slot="content"></tal:block>`` tags
 will replace corresponding block in ``base`` template. You can define
 as many slots in as you want. For more information please see
