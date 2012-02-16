@@ -12,40 +12,36 @@ You've tried using a ``NewRequest`` subscriber to attach a user object to the
 request, but the ``NewRequest`` susbcriber is called on every request, even
 ones for static resources, and this bothers you (which it should).
 
-Use a combination of a custom request factory and the
-``pyramid.configuration.Config.set_request_factory`` method.  Here's the
-custom request factory:
+A lazy property can be registered to the request via the
+``Configurator.set_request_property`` API. This allows you to specify a
+callable that will be available on the request object, but will not actually
+execute the function until accessed. The result of this function can also
+be cached per-request, to eliminate the overhead of running the function
+multiple times (this is done by setting ``reify=True``.
 
 .. code-block:: python
    :linenos:
 
-    from pyramid.decorator import reify
-    from pyramid.request import Request
-    from pyramid.security import unauthenticated_userid
+   from pyramid.security import unauthenticated_userid
 
-    class RequestWithUserAttribute(Request):
-        @reify
-        def user(self):
-            # <your database connection, however you get it, the below line
-            # is just an example>
-            dbconn = self.registry.settings['dbconn'] 
-            userid = unauthenticated_userid(self)
-            if userid is not None:
-                # this should return None if the user doesn't exist
-                # in the database
-                return dbconn['users'].query({'id':userid})
+   def get_user(request):
+       # the below line is just an example, use your own method of
+       # accessing a database connection here (this could even be another
+       # request property such as request.db, implemented using this same
+       # pattern).
+       dbconn = request.registry.settings['dbconn']
+       userid = unauthenticated_userid(request)
+       if userid is not None:
+           # this should return None if the user doesn't exist
+           # in the database
+           return dbconn['users'].query({'id':userid})
 
-``pyramid.decorator.reify`` is like the built-in Python ``property``
-decorator, but makes sure that "user" turns into a "real" attribute of the
-request after the first call rather than a property, which executes over and
-over for each access.
-
-Here's how you should use your new request factory in configuration code:
+Here's how you should add your new request property in configuration code:
 
 .. code-block:: python
    :linenos:
 
-   config.set_request_factory(RequestWithUserAttribute)
+   config.set_request_property(get_user, 'user', reify=True)
 
 Then in your view code, you should be able to happily do ``request.user`` to
 obtain the "user object" related to that request.  It will return ``None`` if
@@ -71,6 +67,43 @@ authentication policies.  For example:
        return None
 
    authn_policy = AuthTktAuthenticationPolicy('seekrITT', callback=groupfinder)
+
+Prior to Pyramid 1.3
+~~~~~~~~~~~~~~~~~~~~
+
+``Configurator.set_request_property`` was introduced in Pyramid 1.3. Prior
+to this, a similar pattern could be used but it required registering a
+new request factory via ``Configurator.set_request_factory``. This works
+in the same way, but each application can only have one request factory
+and so it is not very extensible for arbitrary properties.
+
+The code for this method is below:
+
+.. code-block:: python
+   :linenos:
+
+    from pyramid.decorator import reify
+    from pyramid.request import Request
+    from pyramid.security import unauthenticated_userid
+
+    class RequestWithUserAttribute(Request):
+        @reify
+        def user(self):
+            # <your database connection, however you get it, the below line
+            # is just an example>
+            dbconn = self.registry.settings['dbconn']
+            userid = unauthenticated_userid(self)
+            if userid is not None:
+                # this should return None if the user doesn't exist
+                # in the database
+                return dbconn['users'].query({'id':userid})
+
+Here's how you should use your new request factory in configuration code:
+
+.. code-block:: python
+   :linenos:
+
+   config.set_request_factory(RequestWithUserAttribute)
 
 Custom Authentication Policy
 ----------------------------
