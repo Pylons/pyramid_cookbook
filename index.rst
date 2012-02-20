@@ -10,7 +10,6 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    database/index
    debugging
    deployment/index
-   Deplying (TODO: consolidate into previous section) <deployment>
 
 .. toctree::
    :maxdepth: 2
@@ -30,7 +29,6 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    traversal
    cmf/index.rst
    mac_install
-   gae
    glossary
    todo
 
