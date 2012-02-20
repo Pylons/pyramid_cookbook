@@ -11,19 +11,16 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    database/index
    debugging
    deployment/index
+   forms/index
    logging/index
    porting/index
    pylons/index
    routing/index
+   static_assets/index
    templates/index
    testing/index
    views/index
    misc/index
-
-.. toctree::
-   :maxdepth: 2
-
-   files
    glossary
    todo
 
