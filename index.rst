@@ -10,20 +10,18 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    database/index
    debugging
    deployment/index
+   templates/index
 
 .. toctree::
    :maxdepth: 2
 
    files
-   templates
    catalog
    sqlalchemy_logger
    legacy
-   i18n
    interfaces
    configuration
    events
-   chameleon_i18n
    porting
    testing
    traversal
