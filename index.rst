@@ -16,7 +16,6 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    :maxdepth: 2
 
    files
-   catalog
    sqlalchemy_logger
    legacy
    interfaces
