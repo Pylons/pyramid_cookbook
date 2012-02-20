@@ -7,24 +7,23 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    :maxdepth: 2
 
    auth/index
+   configuration/index
    database/index
    debugging
    deployment/index
    logging/index
    porting/index
    pylons/index
+   routing/index
    templates/index
+   testing/index
+   views/index
+   misc/index
 
 .. toctree::
    :maxdepth: 2
 
    files
-   interfaces
-   configuration
-   events
-   testing
-   traversal
-   mac_install
    glossary
    todo
 
