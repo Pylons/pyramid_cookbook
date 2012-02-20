@@ -6,7 +6,7 @@ These cookbook recipes deal with serving files  and handling file uploads.
 Serving File Content Dynamically
 --------------------------------
 
-Usually you'll use a :term:`static view` (via "config.add_static_view") to
+Usually you'll use a static view (via "config.add_static_view") to
 serve file content that lives on the filesystem.  But sometimes files need to
 be composed and read from a nonstatic area, or composed on the fly by view
 code and served out (for example, a view callable might construct and return
@@ -43,7 +43,7 @@ Serving a Single File from the Root
 
 If you need to serve a single file such as ``/robots.txt`` or
 ``/favicon.ico`` that *must* be served from the root, you cannot use a
-:term:`static view` to do it, as static views cannot serve files from the
+static view to do it, as static views cannot serve files from the
 root (a static view must have a nonempty prefix such as ``/static``).  To
 work around this limitation, create views "by hand" that serve up the raw
 file data.  Below is an example of creating two views: one serves up a
@@ -101,7 +101,7 @@ its behavior is almost exactly the same once it's configured.
 .. warning:: 
 
    The following example *will not work* for applications that use
-   :term:`traversal`, it will only work if you use :term:`URL dispatch`
+   traversal, it will only work if you use URL dispatch
    exclusively.  The root-relative route we'll be registering will always be
    matched before traversal takes place, subverting any views registered via
    ``add_view`` (at least those without a ``route_name``).  A
@@ -121,8 +121,8 @@ application root as below.
    from pyramid.static import static_view
    www = static_view('/path/to/static/dir', use_subpath=True)
 
-.. note:: For better cross-system flexibility, use an :term:`asset
-   specification` as the argument to :class:`pyramid.static.static_view`
+.. note:: For better cross-system flexibility, use an asset
+   specification as the argument to :class:`pyramid.static.static_view`
    instead of a physical absolute filesystem path, e.g. ``mypackage:static``
    instead of ``/path/to/mypackage/static``.
 

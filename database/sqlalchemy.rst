@@ -37,7 +37,7 @@ decorator, but it is only called once per request: effectively the first time
 it's called, the result of ``maker()`` replaces the decorator as
 ``request.db``.
 
-You can then use MyRequest as a :term:`request factory` within your
+You can then use MyRequest as a request factory within your
 ``__init__.py`` ``main`` function:
 
 .. code-block:: python

@@ -21,8 +21,9 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    testing/index
    views/index
    misc/index
-   glossary
    todo
+
+:ref:`Pyramid Glossary <glossary>`
 
 Indices and tables
 ==================
