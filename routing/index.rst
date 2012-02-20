@@ -5,3 +5,4 @@ Traversal and URL dispatch
    :maxdepth: 2
 
    combining
+   traversal_sqlalchemy
