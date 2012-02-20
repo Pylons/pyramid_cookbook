@@ -7,21 +7,21 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    :maxdepth: 2
 
    auth/index
+   database/index
    debugging
    deployment/index
-   Deplying Your Pyramid Application (TODO: consolidate into previous section) <deployment>
+   Deplying (TODO: consolidate into previous section) <deployment>
+
+.. toctree::
+   :maxdepth: 2
 
    files
    templates
    catalog
-   sqla
    sqlalchemy_logger
-   mongo
    legacy
-   couchdb
    i18n
    interfaces
-   zeo
    configuration
    events
    chameleon_i18n

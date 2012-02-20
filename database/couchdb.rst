@@ -5,7 +5,7 @@ If you want to use CouchDB (via the
 `CouchDB package <http://pypi.python.org/pypi/CouchDB>`_)
 in Pyramid, you
 can use the following pattern to make your CouchDB database available as a
-request attribute.  (This follows the same pattern as the :doc:`mongo` example.)
+request attribute.  (This follows the same pattern as the :doc:`mongodb` example.)
 
 First add some hair to your ``development.ini`` file, including a CouchDB URI
 and a "db_name" (the CouchDB database name, can be anything).
