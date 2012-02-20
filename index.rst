@@ -4,7 +4,7 @@ Pyramid Cookbook
 The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    auth/index
    configuration/index
