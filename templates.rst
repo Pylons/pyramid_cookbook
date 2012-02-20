@@ -165,6 +165,7 @@ extend the ``add_base_template`` function like this:
 
 Now, define your building blocks in ``templates/blocks.pt``. For
 example:
+
 .. code-block:: html
    :linenos:
 
@@ -189,6 +190,7 @@ example:
    </html>
 
 You can now use these building blocks like this:
+
 .. code-block:: html
    :linenos:
 
