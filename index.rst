@@ -11,20 +11,19 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    debugging
    deployment/index
    logging/index
+   porting/index
+   pylons/index
    templates/index
 
 .. toctree::
    :maxdepth: 2
 
    files
-   legacy
    interfaces
    configuration
    events
-   porting
    testing
    traversal
-   cmf/index.rst
    mac_install
    glossary
    todo
