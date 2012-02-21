@@ -1,9 +1,14 @@
 Deployment
-%%%%%%%%%%
+++++++++++
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    deployment
-   Deploying (TODO: consolidate into previous section) <deployment_long>
+   nginx
+   apache
+   gevent
+   heroku
+   dotcloud
+   expresscloud
    gae

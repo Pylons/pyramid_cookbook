@@ -47,11 +47,3 @@ A short list includes:
 + ``gevent``
 
 + ``mod_wsgi``
-
-.. toctree::
-   :maxdepth: 2
-
-   nginx
-   apache
-   gevent
-   heroku
