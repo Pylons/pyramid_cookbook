@@ -9,11 +9,18 @@ Authentication and Authorization
    basic
    wiki2_auth
 
+Auth Tutorial
+=============
+
+See Michael Merickel's authentication/authorization tutorial at
+http://michael.merickel.org/projects/pyramid_auth_demo/ with code on Github at
+https://github.com/mmerickel/pyramid_auth_demo.
+
 Pyramid Auth with Akhet and SQLAlchemy
 ======================================
 
 Learn how to set up Pyramid authorization using Akhet and SQLAlchemy at
-http://pyramid.chromaticleaves.com/simpleauth/
+http://pyramid.chromaticleaves.com/simpleauth/.
 
 Google, Facebook, Tweeter, and any OpenID Authentication
 ========================================================
