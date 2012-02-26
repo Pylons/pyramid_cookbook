@@ -49,6 +49,48 @@ function view callables and method view callables.
         func_defaults = 'func_defaults'
         func_code = 'func_code'
 
+    def mapply(ob, positional, keyword):
+
+        f = ob
+        im = False
+
+        if hasattr(f, im_func):
+            im = True
+
+        if im:
+            f = getattr(f, im_func)
+            c = getattr(f, func_code)
+            defaults = getattr(f, func_defaults)
+            names = c.co_varnames[1:c.co_argcount]
+        else:
+            defaults = getattr(f, func_defaults)
+            c = getattr(f, func_code)
+            names = c.co_varnames[:c.co_argcount]
+
+        nargs = len(names)
+        args = []
+        if positional:
+            positional = list(positional)
+            if len(positional) > nargs:
+                raise TypeError('too many arguments')
+            args = positional
+
+        get = keyword.get
+        nrequired = len(names) - (len(defaults or ()))
+        for index in range(len(args), len(names)):
+            name = names[index]
+            v = get(name, args)
+            if v is args:
+                if index < nrequired:
+                    raise TypeError('argument %s was omitted' % name)
+                else:
+                    v = defaults[index-nrequired]
+            args.append(v)
+
+        args = tuple(args)
+        return ob(*args)
+
+        
     class MapplyViewMapper(object): 
         def __init__(self, **kw):
             self.attr = kw.get('attr')
@@ -59,54 +101,13 @@ function view callables and method view callables.
                 if inspect.isclass(view):
                     inst = view(request)
                     meth = getattr(inst, self.attr)
-                    response = self.mapply(meth, (), keywords)
+                    response = mapply(meth, (), keywords)
                 else:
                     # it's a function
-                    response = self.mapply(view, (request,), keywords)
+                    response = mapply(view, (request,), keywords)
                 return response
 
             return wrapper
-
-        def mapply(self, ob, positional, keyword):
-
-            f = ob
-            im = False
-
-            if hasattr(f, im_func):
-                im = True
-
-            if im:
-                f = getattr(f, im_func)
-                c = getattr(f, func_code)
-                defaults = getattr(f, func_defaults)
-                names = c.co_varnames[1:c.co_argcount]
-            else:
-                defaults = getattr(f, func_defaults)
-                c = getattr(f, func_code)
-                names = c.co_varnames[:c.co_argcount]
-
-            nargs = len(names)
-            args = []
-            if positional:
-                positional = list(positional)
-                if len(positional) > nargs:
-                    raise TypeError('too many arguments')
-                args = positional
-
-            get = keyword.get
-            nrequired = len(names) - (len(defaults or ()))
-            for index in range(len(args), len(names)):
-                name = names[index]
-                v = get(name, args)
-                if v is args:
-                    if index < nrequired:
-                        raise TypeError('argument %s was omitted' % name)
-                    else:
-                        v = defaults[index-nrequired]
-                args.append(v)
-
-            args = tuple(args)
-            return ob(*args)
 
     @view_config(name='function', mapper=MapplyViewMapper)
     def view_function(request, one, two=False):
@@ -138,4 +139,3 @@ function view callables and method view callables.
     # http://localhost:8080/method?one=1 --> one: '1', two: False
 
     # http://localhost:8080/method?one=1&two=2 --> one: '1', two: '2'
-
