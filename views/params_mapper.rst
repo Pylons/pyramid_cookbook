@@ -135,13 +135,13 @@ function view callables and method view callables.
 
     # http://localhost:8080/function --> (exception; no "one" arg supplied)
 
-    # http://localhost:8080/function?one=1 --> one: 1, two: False
+    # http://localhost:8080/function?one=1 --> one: '1', two: False
 
-    # http://localhost:8080/function?one=1&two=2 --> one: 1, two: 2
+    # http://localhost:8080/function?one=1&two=2 --> one: '1', two: '2'
 
     # http://localhost:8080/method --> (exception; no "one" arg supplied)
 
-    # http://localhost:8080/method?one=1 --> one: 1, two: False
+    # http://localhost:8080/method?one=1 --> one: '1', two: False
 
-    # http://localhost:8080/method?one=1&two=2 --> one: 1, two: 2
+    # http://localhost:8080/method?one=1&two=2 --> one: '1', two: '2'
 
