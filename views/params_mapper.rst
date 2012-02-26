@@ -75,12 +75,6 @@ function view callables and method view callables.
             if hasattr(f, im_func):
                 im = True
 
-            elif not hasattr(f, func_defaults):
-                if hasattr(f, '__call__'):
-                    f = f.__call__
-                    if hasattr(f, im_func):
-                        im = True
-
             if im:
                 f = getattr(f, im_func)
                 c = getattr(f, func_code)
