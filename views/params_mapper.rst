@@ -30,13 +30,24 @@ function view callables and method view callables.
 .. code-block:: python
    :linenos:
 
-
     import inspect
+    import sys
 
     from pyramid.view import view_config
     from pyramid.response import Response
     from pyramid.config import Configurator
     from waitress import serve
+
+    PY3 = sys.version_info[0] == 3
+
+    if PY3:
+        im_func = '__func__'
+        func_defaults = '__defaults__'
+        func_code = '__code__'
+    else:
+        im_func = 'im_func'
+        func_defaults = 'func_defaults'
+        func_code = 'func_code'
 
     class MapplyViewMapper(object): 
         def __init__(self, **kw):
@@ -53,7 +64,7 @@ function view callables and method view callables.
                     # it's a function
                     response = self.mapply(view, (request,), keywords)
                 return response
-                    
+
             return wrapper
 
         def mapply(self, ob, positional, keyword):
@@ -61,23 +72,23 @@ function view callables and method view callables.
             f = ob
             im = False
 
-            if hasattr(f, 'im_func'):
+            if hasattr(f, im_func):
                 im = True
 
-            elif not hasattr(f, 'func_defaults'):
+            elif not hasattr(f, func_defaults):
                 if hasattr(f, '__call__'):
                     f = f.__call__
-                    if hasattr(f, 'im_func'):
+                    if hasattr(f, im_func):
                         im = True
 
             if im:
-                f = f.im_func
-                c = f.func_code
-                defaults = f.func_defaults
+                f = getattr(f, im_func)
+                c = getattr(f, func_code)
+                defaults = getattr(f, func_defaults)
                 names = c.co_varnames[1:c.co_argcount]
             else:
-                defaults = f.func_defaults
-                c = f.func_code
+                defaults = getattr(f, func_defaults)
+                c = getattr(f, func_code)
                 names = c.co_varnames[:c.co_argcount]
 
             nargs = len(names)
@@ -122,7 +133,6 @@ function view callables and method view callables.
         app = config.make_wsgi_app()
         serve(app)
 
-        
     # http://localhost:8080/function --> (exception; no "one" arg supplied)
 
     # http://localhost:8080/function?one=1 --> one: 1, two: False
