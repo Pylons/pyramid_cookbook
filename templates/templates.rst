@@ -147,12 +147,14 @@ Using Building Blocks with Chameleon
 ------------------------------------
 
 If you understood the ``base`` template chapter, using building blocks
-is very simple and straight forward. In the ``subscribers.py``module
+is very simple and straight forward. In the ``subscribers.py`` module
 extend the ``add_base_template`` function like this:
 
 .. code-block:: python
    :linenos:
 
+   from pyramid.events import subscriber
+   from pyramid.events import BeforeRender
    from pyramid.renderers import get_renderer
    
    @subscriber(BeforeRender)
@@ -162,6 +164,18 @@ extend the ``add_base_template`` function like this:
        event.update({'base': base,
                      'blocks': blocks,
                      })
+
+Make Pyramid scan the module so that it finds the ``BeforeRender``
+event:
+
+.. code-block:: python
+   :linenos:
+
+   def main(global_settings, **settings):
+       config = Configurator(....) # existing code
+       # .. existing config statements ... #
+       config.scan('subscriber')
+       # .. other existing config statements and eventual config.make_app()
 
 Now, define your building blocks in ``templates/blocks.pt``. For
 example:
