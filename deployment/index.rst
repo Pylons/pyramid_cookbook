@@ -12,3 +12,4 @@ Deployment
    dotcloud
    expresscloud
    gae
+   windows
