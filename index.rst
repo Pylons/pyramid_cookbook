@@ -19,6 +19,7 @@ The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
    static_assets/index
    templates/index
    testing/index
+   traversal_in_views
    views/index
    misc/index
    todo

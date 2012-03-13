@@ -152,3 +152,7 @@ This is simpler and more readable because we are using URL dispatch to take
 care of the hardcoded URLs at the top of the tree, and we are using traversal
 only for the arbitrarily nested subdirectories.
 
+See Also
+~~~~~~~~
+
+- :doc:`traversal_in_views`
