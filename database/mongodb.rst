@@ -8,16 +8,14 @@ If you want to use MongoDB (via PyMongo and perhaps GridFS) via Pyramid, you
 can use the following pattern to make your Mongo database available as a
 request attribute.
 
-First add some hair to your ``development.ini`` file, including a MongoDB URI
-and a "db_name" (the Mongo database name, can be anything).
+First add the MongoDB URI to your ``development.ini`` file. (Note: ``user``, ``password`` and ``port`` are not required.)
 
 .. code-block:: ini
    :linenos:
 
     [app:myapp]
     # ... other settings ...
-    db_uri = mongodb://localhost/
-    db_name = myapp
+    mongo_uri = mongodb://user:password@host:port/database
 
 Then in your ``__init__.py``, set things up such that the database is
 attached to each new request:
@@ -30,27 +28,35 @@ attached to each new request:
    from pyramid.events import NewRequest
 
    from gridfs import GridFS
+   from urlparse import urlparse
    import pymongo
 
+
    def main(global_config, **settings):
-       config = Configurator(settings=settings)
+      """ This function returns a Pyramid WSGI application.
+      """
+      config = Configurator(settings=settings)
+      config.add_static_view('static', 'static', cache_max_age=3600)
 
-       db_uri = settings['db_uri']
-       conn = pymongo.Connection(db_uri)
-       config.registry.settings['db_conn'] = conn
-       config.add_subscriber(add_mongo_db, NewRequest)
+      db_url = urlparse(settings['mongo_uri'])
+      conn = pymongo.Connection(host=db_url.hostname,
+                                port=db_url.port)
+      config.registry.settings['db_conn'] = conn
 
-       config.add_route('dashboard', '/')
-       # other routes and more config...
-       config.scan('myapp')
+      def add_mongo_db(event):
+          settings = event.request.registry.settings
+          db = settings['db_conn'][db_url.path[1:]]
+          if db_url.username and db_url.password:
+              db.authenticate(db_url.username, db_url.password)
+          event.request.db = db
+          event.request.fs = GridFS(db)
 
-       return config.make_wsgi_app()
+      config.add_subscriber(add_mongo_db, NewRequest)
 
-   def add_mongo_db(event):
-       settings = event.request.registry.settings
-       db = settings['db_conn'][settings['db_name']]
-       event.request.db = db
-       event.request.fs = GridFS(db)
+      config.add_route('dashboard', '/')
+      # other routes and more config...
+      config.scan()
+      return config.make_wsgi_app()
 
 At this point, in view code, you can use request.db as the PyMongo database
 connection.  For example:
@@ -86,4 +92,3 @@ Other Information
 
 - Pyramid, Aket and MongoDB:
   http://niallohiggins.com/2011/05/18/mongodb-python-pyramid-akhet/
-
