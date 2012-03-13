@@ -1,5 +1,5 @@
-Startup
-+++++++
+Launching
+%%%%%%%%%
 
 Launching a Pyramid application is almost identical to launching a Pylons
 application, because they're both based on PasteDeploy and its INI-format
@@ -31,7 +31,8 @@ Akhet Demo:
 
 The "use=" line tells which Python callable to load. "egg:" says to look up a
 Python object by entry point. "akhet_demo" is the name of the Python
-distribution to look in, and "main" is the entry point. The launcher calls
+distribution to look in (the Pyramid application), and "main" is the entry 
+point. The launcher calls
 ``pkg_resources.require("akhet_demo#main")`` in Setuptools, and Setuptools
 returns the Python object.  Entry points are defined in the distribution's
 setup.py, and the installer writes them to an entry points file. Here's the
