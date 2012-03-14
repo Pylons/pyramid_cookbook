@@ -1,12 +1,12 @@
-Pyramid Todo Application in a Single File
+Todo List Application in One File
 ===================================
 
 This tutorial is intended to provide you with a feel of how a Pyramid web
 application is created. The tutorial is very short, and focuses on the
-creation of a minimal application using common idioms.  For brevity, the
-tutorial uses a "single-file" application development approach instead of the
-more complex (but more common) "scaffolds" described in the main Pyramid
-documentation.
+creation of a minimal todo list application using common idioms. For brevity,
+the tutorial uses a "single-file" application development approach
+instead of the more complex (but more common) "scaffolds" described in
+the main Pyramid documentation. 
 
 At the end of the tutorial, you'll have a minimal application which:
 
