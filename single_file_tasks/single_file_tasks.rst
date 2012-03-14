@@ -1,4 +1,4 @@
-Pyramid Single File Tasks Tutorial
+Pyramid Todo Application in a Single File
 ===================================
 
 This tutorial is intended to provide you with a feel of how a Pyramid web
