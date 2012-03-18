@@ -32,7 +32,7 @@ extensions = [
     'sphinx.ext.intersphinx'
     ]
 
-intersphinx_mapping = {'http://docs.pylonsproject.org/projects/pyramid/dev': None}
+intersphinx_mapping = {'http://docs.pylonsproject.org/projects/pyramid/en/latest/': None}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -71,7 +71,8 @@ release = '0.1'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build', 'README.rst', 'unfinished', 'links.rst']
+exclude_patterns = ['_build', 'README.rst', 'unfinished', 'links.rst', 
+                    '_themes/README.rst']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
