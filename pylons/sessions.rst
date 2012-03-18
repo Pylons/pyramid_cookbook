@@ -59,9 +59,10 @@ are also methods to set a secure form token, which prevent form submissions
 that didn't come from a form requested earlier in the session (and thus may be
 a cross-site forgery attack). 
 
-See the :ref:`sessions` chapter in the Pyramid manual for the API of all these
-features and other features.  The Beaker_ manual will help you configure a
-backend. The Akhet_ Demo is an example of using Pyramid with Beaker.
+See the :ref:`sessions_chapter` chapter in the Pyramid manual for the API of
+all these features and other features.  The Beaker_ manual will help you
+configure a backend. The Akhet_ Demo is an example of using Pyramid with
+Beaker.
 
 
 

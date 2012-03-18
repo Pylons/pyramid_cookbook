@@ -38,7 +38,7 @@ commit or roll back the request-wide transaction at any time, or to "doom" it
 to prevent any other code from committing anything.
 
 The other "pyramid.\*" options are for debugging. Set any of the
-"pyramid.debug_\*" options to true to tell that subsystem to log what it's
+"pyramid.debug\_\*" options to true to tell that subsystem to log what it's
 doing. The messages will be logged at the DEBUG level. You might wonder why the
 configuration doesn't just use logging stanzas for these, but the reason is
 that these variables were established early in Pyramid's history when it hadn't

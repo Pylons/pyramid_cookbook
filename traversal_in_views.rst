@@ -1,3 +1,5 @@
+.. _traversal_in_views:
+
 Using Traversal in Pyramid Views
 =================================
 
@@ -67,7 +69,9 @@ view code from a specific resource implementation::
 See Also
 --------
 
-- :doc:`traversal`
+- :ref:`much_ado_about_traversal_chapter`
+
+- :ref:`comparing_traversal_and_dispatch`
 
 - The "Virginia" sample application: https://github.com/Pylons/virginia/blob/master/virginia/views.py
 

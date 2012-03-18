@@ -1,3 +1,5 @@
+.. _comparing_traversal_and_dispatch:
+
 Comparing and Combining Traversal and URL Dispatch
 --------------------------------------------------
 
@@ -155,4 +157,4 @@ only for the arbitrarily nested subdirectories.
 See Also
 ~~~~~~~~
 
-- :doc:`traversal_in_views`
+- :ref:`traversal_in_views`
