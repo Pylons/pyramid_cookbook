@@ -126,7 +126,8 @@ Once that is done, run:
     $ git commit -m "initial commit"
 
 Step 3: Initialize the heroku stack
-==============
+===================================
+
 .. code-block:: bash
     
     $ heroku create --stack cedar
