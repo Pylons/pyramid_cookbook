@@ -1,5 +1,3 @@
-from random import randint
-
 from pyramid.view import view_config
 
 from dummy_data import COMPANY
