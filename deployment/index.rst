@@ -11,5 +11,6 @@ Deployment
    heroku
    dotcloud
    expresscloud
+   gae_buildout
    gae
    windows
