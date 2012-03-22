@@ -1,7 +1,12 @@
 .. _appengine_tutorial:
 
-Running :app:`Pyramid` on Google's App Engine
-================================================
+:app:`Pyramid` on Google's App Engine (using appengine-monkey)
+==============================================================
+
+This is but one way to develop applications to run on Google's `App
+Engine <http://code.google.com/appengine/>`_. This one uses
+`appengine-monkey`. For a different approach, you may want to look at
+:ref:`appengine_buildout_tutorial`.
 
 It is possible to run a :app:`Pyramid` application on Google's `App
 Engine <http://code.google.com/appengine/>`_.  Content from this
