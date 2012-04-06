@@ -1,7 +1,7 @@
 Django-Style "settings.py" Configuration
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-If you enjoy accessing global configuration via import statemetns ala
+If you enjoy accessing global configuration via import statements ala
 Django's ``settings.py``, you can do something similar in Pyramid.
 
 - Create a ``settings.py`` file in your application's package (for example,
