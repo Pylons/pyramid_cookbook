@@ -162,7 +162,11 @@ Take a look at the logs to debug any errors if necessary:
 Tips & Tricks
 =============
 
-The CherryPy WSGI server is fast, efficient, and multi-threaded to easily handle many requests at once. If you want to use it you can setup your runapp.py to look like:
+The CherryPy WSGI server is fast, efficient, and multi-threaded to easily 
+handle many requests at once. If you want to use it you can add `cherrpy` 
+and `pastescript` to your setup.py:requires section (be sure to re-run 
+`pip freeze` to update the requirements.txt file as explained above) and 
+setup your runapp.py to look like:
 
 example::
 
