@@ -91,34 +91,3 @@ of your app::
     $ dotcloud push your_app_name
 
 At the end of the push, you'll see the URL(s) for your new app. Have fun!
-
-Tips & Tricks
-=============
-
-The CherryPy WSGI server is fast, efficient, and multi-threaded to easily
-handle many requests at once. If you're deploying small and/or low-traffic
-websites you can use the `PasteDeploy composite capabilities
-<http://pythonpaste.org/deploy/#composite-applications>`_ to serve multiple
-web applications with a single Heroku web dyno.
-
-Heroku add-on's generally communicate their settings via OS environ variables.
-These can be easily incorporated into your applications settings, for
-example::
-    
-    # In your pyramid apps main init
-    import os
-    
-    from pyramid.config import Configurator
-    from myproject.resources import Root
-
-    def main(global_config, **settings):
-        """ This function returns a Pyramid WSGI application.
-        """
-        memcache_server = os.environ.get('MEMCACHE_SERVERS')
-        settings['beaker.cache.url'] = memcache_server
-        config = Configurator(root_factory=Root, settings=settings)
-        config.add_view('myproject.views.my_view',
-                        context='myproject.resources.Root',
-                        renderer='myproject:templates/mytemplate.pt')
-        config.add_static_view('static', 'myproject:static')
-        return config.make_wsgi_app()
