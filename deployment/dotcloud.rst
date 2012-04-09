@@ -50,8 +50,7 @@ root directory of your app. Here are some samples for a basic Pyramid app:
     db:
         type: postgresql
 
-Learn more about the `dotcloud.yml
-<http://docs.dotcloud.com/guides/build-file/> here`_.
+Learn more about the `DotCloud buildfile <http://docs.dotcloud.com/guides/build-file/>`_.
 
 ``wsgi.py``
 
