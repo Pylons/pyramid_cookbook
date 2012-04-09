@@ -17,14 +17,28 @@ Step 0: Install DotCloud
 Step 1: Add files needed for DotCloud
 =====================================
 
+Dotcloud expects Python applications to have a few files in the root of the
+project. First, you need a pip ``requirements.txt`` file to instruct Dotcloud
+which Python library dependencies to install for your app. Secondly you need a
+``dotcloud.yaml`` file which informs Dotcloud that your application has (at a minimum)
+a Python service. You may also want additional services such as a MongoDB
+database or PostgreSQL database and so on - these things are all specified in
+YAML.
+
+Finally, you will need a file named ``wsgi.py`` which is what the Dotcloud
+uWSGI server is configured to look for. This wsgi.py script needs to create a
+WSGI callable for your Pyramid app which must be present in a global named
+"application".
+
 You'll need to add a requirements.txt, dotcloud.yml, and wsgi.py file to the
-root directory of your app.
+root directory of your app. Here are some samples for a basic Pyramid app:
 
 ``requirements.txt``:
 
 .. code-block:: text
 
-    Pyramid==1.0
+    cherrypy
+    Pyramid==1.3
     # Add any other dependencies that should be installed as well
 
 ``dotcloud.yml``:
@@ -46,11 +60,16 @@ Learn more about the `dotcloud.yml
     # Your WSGI callable should be named “application”, be located in a
     # "wsgi.py" file, itself located at the top directory of the service.
     #
-    # For example, this file might contain:
-    from your_main_app_file import app as application
-    #
-    # or it might include something like:
-    # application = config.make_wsgi_app()
+    # For example, to load the app from your "production.ini" file in the same
+    # directory:
+    import os.path
+    from pyramid.scripts.pserve import cherrypy_server_runner
+    from pyramid.paster import get_app
+
+    application = get_app(os.path.join(os.path.dirname(__file__), 'production.ini'))
+
+    if __name__ == "__main__":
+        cherrypy_server_runner(application, host="0.0.0.0")
 
 
 Step 2: Configure your database
@@ -66,16 +85,14 @@ your pyramid app:
 
     import json
 
-    from pyramid.Config import Configurator
+    # if dotcloud, read PostgreSQL URL from environment.json
+    db_uri = settings['postgresql.url']
+    DOTCLOUD_ENV_FILE = "/home/dotcloud/environment.json"
+    if os.path.exists(DOTCLOUD_ENV_FILE):
+        with open(DOTCLOUD_ENV_FILE) as f:
+            env = json.load(f)
+            db_uri = env["DOTCLOUD_DATA_POSTGRESQL_URL"]
 
-    with open('/home/dotcloud/environment.json') as f:
-        env = json.loads(f.read())
-
-    if __name__ == '__main__':
-        settings = {}
-        settings['db'] = env['DOTCLOUD_DB_POSTGRESQL_URL']
-        config = Configurator(settings=settings)
-        application = config.make_wsgi_app()
 
 Learn more about the `DotCloud environment.json
 <http://docs.dotcloud.com/#environmentfile.html>`.
