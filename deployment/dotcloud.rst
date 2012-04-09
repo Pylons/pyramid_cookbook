@@ -17,15 +17,15 @@ Step 0: Install DotCloud
 Step 1: Add files needed for DotCloud
 =====================================
 
-Dotcloud expects Python applications to have a few files in the root of the
-project. First, you need a pip ``requirements.txt`` file to instruct Dotcloud
+DotCloud expects Python applications to have a few files in the root of the
+project. First, you need a pip ``requirements.txt`` file to instruct DotCloud
 which Python library dependencies to install for your app. Secondly you need a
-``dotcloud.yaml`` file which informs Dotcloud that your application has (at a minimum)
+``dotcloud.yaml`` file which informs DotCloud that your application has (at a minimum)
 a Python service. You may also want additional services such as a MongoDB
 database or PostgreSQL database and so on - these things are all specified in
 YAML.
 
-Finally, you will need a file named ``wsgi.py`` which is what the Dotcloud
+Finally, you will need a file named ``wsgi.py`` which is what the DotCloud
 uWSGI server is configured to look for. This wsgi.py script needs to create a
 WSGI callable for your Pyramid app which must be present in a global named
 "application".
