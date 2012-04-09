@@ -3,7 +3,7 @@ DotCloud
 
 `DotCloud <http://www.dotcloud.com/>`_ offers support for all WSGI frameworks.
 Below is a quickstart guide for Pyramid apps. You can also read the `DotCloud
-Python documentation <http://newdocs.dotcloud.com/services/python/>` for
+Python documentation <http://docs.dotcloud.com/services/python/>`_ for
 a complete overview.
 
 Step 0: Install DotCloud
@@ -50,8 +50,7 @@ root directory of your app. Here are some samples for a basic Pyramid app:
     db:
         type: postgresql
 
-Learn more about the `dotcloud.yml
-<http://docs.dotcloud.com/guides/build-file/> here`.
+Learn more about the `DotCloud buildfile <http://docs.dotcloud.com/guides/build-file/>`_.
 
 ``wsgi.py``
 
@@ -95,7 +94,7 @@ your pyramid app:
 
 
 Learn more about the `DotCloud environment.json
-<http://docs.dotcloud.com/guides/environment/>`.
+<http://docs.dotcloud.com/guides/environment/>`_.
 
 Step 3: Deploy your app
 =======================
