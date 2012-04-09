@@ -10,7 +10,7 @@ Step 0: Install DotCloud
 ========================
 
 `Install DotCloud's CLI
-<http://docs.dotcloud.com/#installation.html>`_ by running::
+<http://docs.dotcloud.com/firststeps/install/>`_ by running::
 
     $ pip install dotcloud
 
@@ -51,7 +51,7 @@ root directory of your app. Here are some samples for a basic Pyramid app:
         type: postgresql
 
 Learn more about the `dotcloud.yml
-<http://docs.dotcloud.com/#buildfile.html> here`.
+<http://docs.dotcloud.com/guides/build-file/> here`.
 
 ``wsgi.py``
 
@@ -95,7 +95,7 @@ your pyramid app:
 
 
 Learn more about the `DotCloud environment.json
-<http://docs.dotcloud.com/#environmentfile.html>`.
+<http://docs.dotcloud.com/guides/environment/>`.
 
 Step 3: Deploy your app
 =======================
