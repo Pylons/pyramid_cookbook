@@ -42,7 +42,7 @@ Step 2: Create a Windows Service
 
 Create a new file called pyramidsvc.py file with the following code to define your service.
 
-..code-block::
+.. code-block:: python
 
     # uncomment the next import line to get print to show up or see early
     # exceptions if there are errors then run 
