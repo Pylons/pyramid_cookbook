@@ -8,7 +8,7 @@ There are 3 possible deployment scenarios for windows:
 2.  Run as a windows service behind another web server (either IIS or Apache)
     using a reverse proxy.
 3.  Inside IIS using a in IIS WSGI bridge, either ISAPI-WSGI or PyISAPIe. These
-    methods are more complicated and won't me covered by this guide.
+    methods are more complicated and won't be covered by this guide.
 
 
 Step 1: Install Dependencies
@@ -40,7 +40,8 @@ To install cherrypy run::
 Step 2: Create a Windows Service
 ================================
 
-Create a new file called pyramidsvc.py file with the following code to define your service.
+Create a new file called ``pyramidsvc.py`` file with the following code to
+define your service.
 
 .. code-block:: python
 
