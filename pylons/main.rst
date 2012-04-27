@@ -32,3 +32,5 @@ automatically calls it. But you can also call it directly in Python code; for
 instance to use it with a custom server or testing environment, or with
 mod_wsgi. You could also wrap the application in WSGI middleware before
 returning it.
+
+XXX Static view, traversal, static assets.
