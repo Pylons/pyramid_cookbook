@@ -1,25 +1,30 @@
 Pyramid for Pylons Users
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-:Updated: 2012-04023
+:Updated: 2012-04-30
 :Versions: Pyramid 1.3
 :Author: Mike Orr
 :Contributors:
 
 *XXX This guide is under construction....*
 
-This guide discusses how Pyramid differs from Pylons, and how to make it more
-like Pylons. Readers coming from Django or another Rails-like framework may
-also find parts of it helpful. The author has been a Pylons developer since
-2007, and aims to "answer the questions Pylons users have about Pyramid". 
-Earlier versions of some of these chapters were published in the Akhet_ manual,
-but they have now been moved here and revised.
+This guide discusses how Pyramid 1.3 differs from Pylons 1, and a few ways to
+make it more like Pylons. The guide may also be helpful to readers coming from
+Django or another Rails-like framework. The author has been a Pylons developer
+since 2007. The examples are based on Pyramid's default SQLAlchemy application
+and on the Akhet_ demo. 
+
+If you haven't used Pyramid yet you can read this guide to get an overview of
+the differences and the Pyramid API. However, to actually start using Pyramid
+you'll want to read at least the first five chapters of the the `Pyramid
+manual`_ (through `Creating a Pyramid Project`_) and go through the Tutorials_.
+Then you can come back to this guide to start designing your application, and
+skim through the rest of the manual to see which sections cover which topics.
 
 .. toctree::
    :maxdepth: 1
 
    intro
-   create
    launch
    ini_file
    main

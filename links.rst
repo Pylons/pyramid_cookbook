@@ -21,9 +21,10 @@
     Note: this isn't working for me with multiword terms with spaces.
 
 
-.. _Pyramid manual: http://docs.pylonsproject.org/projects/pyramid/en/1.3-branch/
+.. _Pyramid manual: http://docs.pylonsproject.org/projects/pyramid/en/1.3-branch/index.html
+.. _Tutorials: http://docs.pylonsproject.org/projects/pyramid/en/1.3-branch/index.html#tutorials
 .. _Installing Pyramid: http://docs.pylonsproject.org/projects/pyramid/en/1.3-branch/narr/install.html
-.. _Creating Your First Pyramid Application: http://docs.pylonsproject.org/projects/pyramid/en/1.3-branch/narr/firstapp.html
+.. _Creating a Pyramid Project: http://docs.pylonsproject.org/projects/pyramid/en/1.3-branch/narr/project.html
 
 .. _Akhet:   http://docs.pylonsproject.org/projects/akhet/en/latest/
 .. _Beaker:  http://beaker.readthedocs.org/en/latest/sessions.html

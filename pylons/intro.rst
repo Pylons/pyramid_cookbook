@@ -1,73 +1,17 @@
-Introduction
-%%%%%%%%%%%%
-
-History
-=======
-
-Pyramid is the unification of two different web programming styles in Python,
-which I'll call the "Rails tradition" and the "content management
-tradition". Pylons fits into the Rails tradition because it, like TurboGears
-and Django, consciously emulates Ruby on Rails. That means they have more
-built-in features than the previous generation of (non-Zope, non-Twisted)
-Python web frameworks.  Pylons in particular ported Rails' map-based routing
-mechanism (Routes) and HTML utilities (WebHelpers), and its default application
-scaffold configures a template engine (Mako) and database ORM (SQLAlchemy) for
-you.
-
-The content management tradition started earlier, in 1998 with Zope. Zope has
-an object-oriented routing mechanism which allows users to define arbitrarily
-deep URL structures, uses XML-based template languages, and has a component
-architecture (interfaces). These all helped build Python's premier
-content-management system, Plone. In the mid 2000s some developers brought these
-features out of Zope into a framework called BFG.
-
-In 2010 the developers of Pylons and BFG decided they needed access to each
-other's technologies. They merged their developer communities under the name
-"The Pylons Project", renamed BFG to Pyramid, and added Pylons-like features to
-Pyramid.  However, Pyramid is not completely like Pylons because the Pylons
-developers decided to switch to some BFG APIs, TurboGears-like APIs, and some
-innovations. 
-
-Porting an application
-======================
-
-There are two general ways to port a Pylons application to Pyramid. One is to
-start from scratch, expressing the application's behavior in Pyramid. Many
-aspects such as the models, templates, and static files can be used unchanged
-or mostly unchanged. Others such as the controllers and globals will have to be
-rewritten. The route map can be ported to the new syntax, or you can take the
-opportunity to restructure your routes.
-
-The other way is to port one URL at a time, and let Pyramid serve the ported
-URLs and Pylons serve the unported URLs. You can do this by running both the
-Pyramid application and the Pylons application under Apache, and having it send
-certain URLs to one app and other URLs to the other. You can also have Pyramid
-delegate certain URLs to Pylons as a WSGI sub-application. (That may bring up
-some tricky issues such as coordinating database connections, sessions, data
-files, etc.)
-
-You'll also have to choose whether to write the Pyramid application in Python 2
-or 3. Pyramid 1.3 runs on Python 3, along with Mako and SQLAlchemy, and the
-Waitress and CherryPy HTTP servers (but not PasteHTTPServer). But not all
-optional libraries have been ported yet, and your application may depend on
-libraries which haven't been. The author has not used Python 3 yet, so this
-guide focuses on Python 2.7.
-
-There are several higher-level frameworks built on top of Pyramid, such as
-Kotti and Ptah. You may prefer to use one of these as a basis for your
-application, but be forewarned that they stray even further from the Pylons API.
+Introduction and Creating an Application
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Following along with the examples
 =================================
 
-The examples in this guide are based on Pyramid 1.3's "alchemy" skeleton and
-the Akhet_ demo. You may want to generate a Pyramid application and check out
-the Akhet demo repository now, and have them open in separate console windows
-while reading. If you haven't generated a Pyramid application yet, see
-`Installing Pyramid`_ and `Creating Your First Pyramid Application`_ in the
-`Pyramid manual`_.  Here are the basic steps on Linux Ubuntu 11.10:
+The examples in this guide are based on (A) Pyramid 1.3's default SQLAlchemy
+application and (B) the Akhet_ demo. (Akhet_ is an add-on package containing
+some Pylons-like support features for Pyramid.) Here are the basic steps to
+install and run these applications on Linux Ubuntu 11.10, but you should 
+read `Creating a Pyramid Project`_ in the `Pyramid manual`_ before doing so:
 
 .. code-block:: sh
+   :linenos:
 
    # Prepare virtual Python environment.
 
@@ -109,5 +53,113 @@ while reading. If you haven't generated a Pyramid application yet, see
    pyramid/
    venv/
 
+*Things to look for:* the "DT" icon at the top-right of the page is the debug
+toolbar, which Pylons doesn't have. The "populate_PyramidApp" script (line 13) 
+creates the database. If you skip this step you'll get an exception on the home
+page; you can "accidentally" do this to see Pyramid's interactive traceback.
+
+The p\* Commands
+================
+
+Pylons uses a third-party utility *paster* to create and run applications.
+Pyramid replaces these subcommands with a series of top-level commands
+beginning with "p":
+
+================ ============  ========================= ========================
+Pylons           Pyramid       Description               Caveats
+================ ============  ========================= ========================
+paster create    pcreate       Create an app             Option -s instead of -t
+paster serve     pserve        Run app based on INI file \-
+paster shell     pshell        Load app in Python shell  Fewer vars initialized
+paster setup-app populate_App  Initialize database       "App" is application name
+paster routes    proutes       List routes               \-
+\-               ptweens       List tweens               \-
+\-               pviews        List views                \-
+================ ============  ========================= ========================
+
+
+Scaffolds
+=========
+
+Pylons has one paster template that asks questions
+about what kind of application you want to create. Pyramid does not ask
+questions, but instead offers several scaffolds to choose from. Pyramid 1.3
+includes the following scaffolds:
+
+=================    ==========  ================ 
+Routing mechanism    Database    Pyramid scaffold
+=================    ==========  ================
+URL dispatch         SQLAlchemy  alchemy         
+URL dispatch         \-          starter         
+Traversal            ZODB        zodb            
+=================    ==========  ================
+
+..
+    =================    ==========  ====================    ======================
+    Routing mechanism    Database    Pyramid 1.3 scaffold    Pyramid 1.2.4 scaffold
+    =================    ==========  ====================    ======================
+    URL dispatch         SQLAlchemy  **alchemy**             routesalchemy
+    URL dispatch         \-          **starter**             \-
+    Traversal            ZODB        **zodb**                zodb
+    Traversal            SQLAlchemy  \-                      alchemy
+    Traversal            \-          \-                      starter
+    =================    ==========  ====================    ======================
+
+The first two scaffolds are the closest to Pylons because they use URL
+dispatch, which is similar to Routes. The only difference between them is
+whether a SQLAlchemy database is configured for you. The third scaffold uses Pyramid's other
+routing mechanism, Traversal. We won't cover traversal in this guide, but it's
+useful in applications that allow users to create URLs at arbitrary depths.
+URL dispatch is more suited to applications with fixed-depth URL hierarchies.
+
+To see what other kinds of Pyramid applications are possible, take a look at
+the Kotti and Ptah distributions. Kotti is a content management system, and
+serves as an example of traversal using SQLAlchemy.
+
+
+Directory Layout
+================
+
+The default 'alchemy' application contains the following files after you create and install it:
+
+.. code-block::  text
+
+    PyramidApp
+    ├── CHANGES.txt
+    ├── MANIFEST.in
+    ├── README.txt
+    ├── development.ini
+    ├── production.ini
+    ├── setup.cfg
+    ├── setup.py
+    ├── pyramidapp
+    │   ├── __init__.py
+    │   ├── models.py
+    │   ├── scripts
+    │   │   ├── __init__.py
+    │   │   └── populate.py
+    │   ├── static
+    │   │   ├── favicon.ico
+    │   │   ├── pylons.css
+    │   │   ├── pyramid.png
+    │   ├── templates
+    │   │   └── mytemplate.pt
+    │   ├── tests.py
+    │   └── views.py
+    └── PyramidApp.egg-info
+        ├── PKG-INFO
+        ├── SOURCES.txt
+        ├── dependency_links.txt
+        ├── entry_points.txt
+        ├── not-zip-safe
+        ├── requires.txt
+        └── top_level.txt
+
+..
+   Generated via this command and manually resorted and some entries removed.
+   tree --noreport -n -I '*.pyc' Zzz  >/tmp/files
+
+(We have omitted some static files.) As you see, the directory structure is
+similar to Pylons but not identical.
 
 .. include:: ../links.rst
