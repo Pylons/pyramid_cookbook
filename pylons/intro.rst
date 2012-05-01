@@ -77,6 +77,15 @@ paster routes    proutes       List routes               \-
 \-               pviews        List views                \-
 ================ ============  ========================= ========================
 
+In many cases the code is the same, just copied into Pyramid and made Python 3
+compatible. Paste has not been ported to Python 3, and the Pyramid developers
+decided it contained too much legacy code to make porting worth it. So they
+just ported the parts they needed. Note, however, that PasteDeploy *is* ported
+to Python 3 and Pyramid uses it, as we'll see in the next chapter. Likewise,
+several other packages that were earlier spun out of Paste -- like WebOb --
+have been ported to Python 3 and Pyramid still uses them. (They were ported
+parly by Pyramid developers.) 
+
 
 Scaffolds
 =========
