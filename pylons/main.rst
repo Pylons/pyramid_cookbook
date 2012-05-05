@@ -14,23 +14,39 @@ Pyramid has less boilerplate code than Pylons, so the main function subsumes
 Pylons' middleware.py, environment.py, *and* routing.py modules. Some people
 like to put their route definitions in a separate module, but that's a personal
 choice. The point is that Pyramid's ``main`` function has just 5 Python
-statements out of the box, while Pylons' ``make_app`` 16 -- or 35 if you
+statements out of the box, while Pylons' ``make_app`` has 16 -- or 35 if you
 include environment.py and routing.py. 
 
-Most of the ``main`` function deals with the Configurator (``config``).  It's
-not the application object; it's a helper class which configures the
+Most of the ``main`` function's body deals with the Configurator (``config``).
+It's not the application object; it's a helper class which configures an
 application object. You instantiate the Configurator by passing the deployment
 settings as keyword args, and call methods to set up routes, views, and other
 things.  Finally you call ``config.make_wsgi_app()`` to get the application,
 and return it. The application is an instance of ``pyramid.router.Router``. (A
 Pylons application is an instance of a ``PylonsApp`` subclass.)
 
+You can put settings in the ``main`` function itself, either to provide default
+values or to override the INI file. Strictly speaking, the INI file is meant
+for *deployment* settings; those which might change in different deployment
+scenarios (e.g., multiple production configurations). Settings which must be
+the same across all deployments (e.g., application constants) arguably belong
+in the ``main`` function. That way they don't have to be copied to every INI
+file, and deployers don't have to know they exist.  Most people put all
+settings in the INI file because it's so convenient, but you can split them
+between the INI file and the ``main`` function if you want to.
+
 We'll discuss the route and view methods in their respective chapters, so
 there's not much more to say here. But we'll close with a quick look at how you
 can use the main function. The normal way is to run "pserve", which
 automatically calls it. But you can also call it directly in Python code; for
 instance to use it with a custom server or testing environment, or with
-mod_wsgi. You could also wrap the application in WSGI middleware before
+mod_wsgi. 
+
+XXX Example of launching this application from a script, using settings which
+are equivalent to those in the INI file. Choose a server to use, and also
+configure logging.
+
+You could also wrap the application in WSGI middleware before
 returning it.
 
 XXX Static view, traversal, static assets.

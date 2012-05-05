@@ -23,32 +23,31 @@ counterpart. Here's what it looks like in Pyramid's "alchemy" scaffold:
 
 The "pyramid.includes=" variable lists a number of "tweens" to activate. A
 tween is like a WSGI middleware but specific to Pyramid.  "pyramid_debugtoolbar"
-is the debug toolbar; it's like Pylons' interactive traceback only more
-powerful, because it provides state information about the request and runtime
-even on non-error pages.
+is the debug toolbar; it provides information on the request variables and
+runtime state on every page.
 
-"pyramid_tm" is a transaction manager, which has no equivalent in Pylons but is
+"pyramid_tm" is a transaction manager. This has no equivalent in Pylons but is
 used in TurboGears and BFG. It provides a request-wide transaction that manages
 your SQLAlchemy session(s) and potentially other kinds of transactions like
 email sending. This means you don't have to call ``DBSession.commit()`` in your
-view. At the end of the request, it will automatically commit the session(s)
-and send any pending emails, unless an uncaught exception was raised during the
-session, in which case it will roll them back. It has functions to allow you to
-commit or roll back the request-wide transaction at any time, or to "doom" it
-to prevent any other code from committing anything.
+view. At the end of the request, it will automatically commit the database
+session(s) and send any pending emails, unless an uncaught exception was raised
+during the session, in which case it will roll them back. It has functions to
+allow you to commit or roll back the request-wide transaction at any time, or
+to "doom" it to prevent any other code from committing anything.
 
-The other "pyramid.\*" options are for debugging. Set any of the
-"pyramid.debug\_\*" options to true to tell that subsystem to log what it's
-doing. The messages will be logged at the DEBUG level. You might wonder why the
-configuration doesn't just use logging stanzas for these, but the reason is
-that these variables were established early in Pyramid's history when it hadn't
-yet adopted INI-style logging configuration. 
+The other "pyramid.\*" options are for debugging. Set any of these
+ to true to tell that subsystem to log what it's
+doing. The messages will be logged at the DEBUG level. (The reason these aren't
+in the logging configuration in the bottom part of the INI file is that they
+were established early in Pyramid's history before it had adopted INI-style
+logging configuration.)
 
 If "pyramid.reload_templates=true", the template engine will check the
 timestamp of the template source file every time it renders a template, and
-recompile the template if its source has changed. This works only if the
-template engine and its Pyramid adapter support the feature. Mako and Chameleon
-do.
+recompile the template if its source has changed. This works only for template
+engines and Pyramid-template adapaters that support this feature.  Mako and
+Chameleon do.
 
 The "sqlalchemy.url=" line is for SQLAlchemy.  "%(here)s" expands to the path
 of the directory containing the INI file. You can add settings for any library
@@ -59,13 +58,13 @@ the same as in Pylons.
 
 *production.ini* has the same app settings as *development.ini*, except that
 the "pyramid_debugtoolbar" tween is *not* present, and all the debug settings
-are false. The debug toolbar is a security hole in production because anybody
-who gets an interactive traceback can run arbitrary Python commands in the
-application's process, and thus read files or execute programs on the server.
-So never enable the debug toolbar when the site is accessible on the Internet,
-except perhaps in a wide-area development scenario where higher-level access
-restrictions (Apache) allow only trusted developers and beta testers to get to
-the site.
+are false. The debug toolbar *must* be disabled in production because it's a
+potential security hole: anybody who can force an exception and get an
+interactive traceback can run arbitrary Python commmands in the application
+process, and thus read or modify files or execute programs.  So never enable
+the debug toolbar when the site is accessible on the Internet, except perhaps
+in a wide-area development scenario where higher-level access restrictions
+(Apache) allow only trusted developers and beta testers to get to the site.
 
 Pyramid no longer uses WSGI middleware by default. In most cases you can find a
 tween or Pyramid add-on package that does the equivalent. If you need to
