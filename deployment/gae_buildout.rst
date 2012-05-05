@@ -10,14 +10,6 @@ Engine <http://code.google.com/appengine/>`_. This one uses `buildout
 to look at :ref:`appengine_tutorial`.
 
 
-Caveats
-=======
-
-.. explain why things like pyramid_jinja2 don't work on AE
-
-
-
-
 Install the pyramid_appengine scaffold
 --------------------------------------
 
