@@ -10,18 +10,53 @@ Engine <http://code.google.com/appengine/>`_. This one uses `buildout
 to look at :ref:`appengine_tutorial`.
 
 
-Let's take it step by step.
-
 Install the pyramid_appengine scaffold
 --------------------------------------
 
+Let's take it step by step.
+
 You can get `pyramid_appengine
 <http://pypi.python.org/pypi/pyramid_appengine/>`_ from pypi via `pip <http://pypi.python.org/pypi/pip>`_
-just as you typically would any other python package.
+just as you typically would any other python package, however to reduce the
+chances of the system installed python packages intefering with tools
+you use for your own development you should install it in a local
+`virtual environment <http://pypi.python.org/pypi/virtualenv>`_
+
+Creating a virtual environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Update distribute
++++++++++++++++++
 
 .. code-block:: text
- 
-   $ pip install pyramid_appengine
+
+   $ sudo pip install --upgrade distribute
+
+
+Install virtualenv
+++++++++++++++++++
+
+.. code-block:: text
+
+   $ sudo pip install virtualenv
+
+
+create a virtual environment
+++++++++++++++++++++++++++++
+
+.. code-block:: text
+
+   $ virtualenv -p /usr/bin/python2.7 --no-site-packages --distribute myenv
+
+
+install pyramid_appengine into your virtual environment
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: text
+
+   $ myenv/bin/pip install pyramid_appengine
+
+
 
 Once successfully installed a new project template is available to use
 named "appengine_starter".
@@ -30,7 +65,7 @@ To get a list of all available templates.
 
 .. code-block:: text
 
-   $ paster create --list-templates
+   $ myenv/bin/pcreate -l
 
 Create the skeleton for your project
 ------------------------------------
@@ -40,7 +75,7 @@ scaffold just as you would using any other project scaffold.
 
 .. code-block:: text
 
-   $ paster create -t appengine_starter newproject
+   $ myenv/bin/pcreate -t appengine_starter newproject
 
 Once successfully ran, you will have a new `buildout <http://www.buildout.org>`_ directory for your project. The app engine
 application source is located at newproject/src/newproject.
