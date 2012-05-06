@@ -37,7 +37,7 @@ allow you to commit or roll back the request-wide transaction at any time, or
 to "doom" it to prevent any other code from committing anything.
 
 The other "pyramid.\*" options are for debugging. Set any of these
- to true to tell that subsystem to log what it's
+to true to tell that subsystem to log what it's
 doing. The messages will be logged at the DEBUG level. (The reason these aren't
 in the logging configuration in the bottom part of the INI file is that they
 were established early in Pyramid's history before it had adopted INI-style
