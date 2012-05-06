@@ -89,7 +89,7 @@ exclude_patterns = ['_build', 'README.rst', 'unfinished', 'links.rst',
 show_authors = True
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+#pygments_style = 'sphinx'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
@@ -101,6 +101,7 @@ pygments_style = 'sphinx'
 sys.path.append(os.path.abspath('_themes'))
 html_theme_path = ['_themes']
 html_theme = 'pyramid'
+html_theme_options = dict(github_url='https://github.com/Pylons/pyramid_cookbook')
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
