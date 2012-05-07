@@ -29,6 +29,8 @@ skim through the rest of the manual to see which sections cover which topics.
    ini_file
    main
    sessions
+   migrate
+   unfinished
 
 
 .. include::  ../links.rst
