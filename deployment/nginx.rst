@@ -257,7 +257,7 @@ have some way of managing failures.
 
 Enter ``supervisord``::
 
-    pip install supervisord
+    pip install supervisor
 
 This is a great program that will manage arbitrary processes, restarting them
 when they fail, providing hooks for sending emails, etc when things change,
