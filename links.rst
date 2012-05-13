@@ -28,3 +28,4 @@
 
 .. _Akhet:   http://docs.pylonsproject.org/projects/akhet/en/latest/
 .. _Beaker:  http://beaker.readthedocs.org/en/latest/sessions.html
+.. _SQLAlchemy manual:  http://docs.sqlalchemy.org/
