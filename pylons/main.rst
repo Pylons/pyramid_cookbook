@@ -195,7 +195,7 @@ request_param
 
 xhr
 
-    [Predicate] True if the request must have an "X-Reqested-With" header. Some
+    [Predicate] True if the request must have an "X-Requested-With" header. Some
     Javascript libraries (JQuery, Prototype, etc) set this header in AJAX
     requests to distinguish them from user-initiated browser requests.
 
@@ -218,12 +218,6 @@ custom_predicates
     model, you can return False.
 
 Other arguments available: accept, factory, header, path_info, traverse.
-
-Examples
---------
-
-XXX Examples of Pyramid routes corresponding to Pylons routes.
-
 
 
 .. _Configurator API: http://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html
