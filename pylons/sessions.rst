@@ -69,7 +69,9 @@ all these features and other features.  The Beaker_ manual will help you
 configure a backend. The Akhet_ Demo is an example of using Pyramid with
 Beaker, and has flash messages.
 
-
+*Note:* I sometimes get an exception in the debug toolbar when sessions are
+enabled.  They may be a code discrepency between the distributions. If this
+happens to you, you can disable the toolbar until the problem is fixed.
 
 
 .. include:: ../links.rst
