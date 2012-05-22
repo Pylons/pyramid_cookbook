@@ -9,12 +9,12 @@ application skeleton merely suggests where to put the models and initializes a
 SQLAlchemy database connection for you. Here's the
 default Pyramid configuration (comments stripped and imports squashed):
 
-.. literalinclude:: examples/models.py
+.. literalinclude:: code/models.py
    :linenos:
 
 and its INI files:
 
-.. literalinclude:: examples/model_development.ini
+.. literalinclude:: code/model_development.ini
    :linenos:
 
 It has the following differences from Pylons:
