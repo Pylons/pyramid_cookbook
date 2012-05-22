@@ -1,5 +1,5 @@
 Views
-%%%%%
++++++
 
 The biggest difference between Pyramid and Pylons is how views are structured,
 and how they invoke templates and access state variables. This is a large topic

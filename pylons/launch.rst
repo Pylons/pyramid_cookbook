@@ -1,5 +1,5 @@
 Launching the Application
-%%%%%%%%%%%%%%%%%%%%%%%%%
++++++++++++++++++++++++++
 
 Pyramid and Pylons start up identically because they both use PasteDeploy and
 its INI-format configuration file.  This is true even though Pyramid 1.3

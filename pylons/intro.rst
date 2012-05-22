@@ -1,5 +1,5 @@
 Introduction and Creating an Application
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+++++++++++++++++++++++++++++++++++++++++
 
 Following along with the examples
 =================================

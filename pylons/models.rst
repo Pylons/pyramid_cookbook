@@ -1,5 +1,5 @@
 Models
-%%%%%%
+++++++
 
 Models are essentially the same in Pyramid and Pylons because the framework
 is only minimally involved with the model unlike, say, Django where the ORM
