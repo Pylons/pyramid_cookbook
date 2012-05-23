@@ -294,6 +294,7 @@ for a full breakdown of all of the great options provided.
     serverurl=unix://%(here)s/env/supervisor.sock
 
     [program:myapp]
+	autorestart=true
     command=%(here)s/env/bin/paster serve %(here)s/production.ini http_port=50%(process_num)02d
     process_name=%(program_name)s-%(process_num)01d
     numprocs=2
