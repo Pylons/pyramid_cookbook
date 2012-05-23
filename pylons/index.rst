@@ -1,5 +1,5 @@
 Pyramid for Pylons Users
-%%%%%%%%%%%%%%%%%%%%%%%%
+++++++++++++++++++++++++
 
 :Updated: 2012-04-30
 :Versions: Pyramid 1.3
@@ -30,6 +30,7 @@ skim through the rest of the manual to see which sections cover which topics.
    main
    models
    views
+   request
    sessions
    migrate
    unfinished
