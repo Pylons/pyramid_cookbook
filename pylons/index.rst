@@ -31,6 +31,7 @@ skim through the rest of the manual to see which sections cover which topics.
    models
    views
    request
+   exceptions
    sessions
    migrate
    unfinished
