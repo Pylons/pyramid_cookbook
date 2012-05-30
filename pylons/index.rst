@@ -30,6 +30,7 @@ skim through the rest of the manual to see which sections cover which topics.
    main
    models
    views
+   examples
    request
    exceptions
    sessions

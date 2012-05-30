@@ -29,3 +29,5 @@
 .. _Akhet:   http://docs.pylonsproject.org/projects/akhet/en/latest/
 .. _Beaker:  http://beaker.readthedocs.org/en/latest/sessions.html
 .. _SQLAlchemy manual:  http://docs.sqlalchemy.org/
+.. _pyramid_handlers:  http://docs.pylonsproject.org/projects/pyramid_handlers/en/latest/
+.. _pyramid_routehelper:  https://github.com/Pylons/pyramid_routehelper/blob/master/pyramid_routehelper/__init__.py

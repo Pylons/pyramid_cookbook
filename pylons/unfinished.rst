@@ -16,3 +16,7 @@ Deployment settings in INI file vs application settings in main function.
 
 Deploying an application with an alternate server, and from a top-level script
 without PasteDeploy.
+
+Testing. Pyramid maks it easier to write unit tess than Pylons. Examples.
+
+Internationalization.
