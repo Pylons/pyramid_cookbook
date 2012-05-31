@@ -252,6 +252,11 @@ same.  ::
         def template(request):
             return {}
 
+        @view_config(route_name="info", renderer="info.mak")
+        @view-config(route_name="info_json", renderer="json")
+        def info(request):
+            return {}
+
 
 .. include::  ../links.rst
 

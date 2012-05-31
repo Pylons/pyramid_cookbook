@@ -32,6 +32,7 @@ skim through the rest of the manual to see which sections cover which topics.
    views
    examples
    request
+   templates
    exceptions
    sessions
    migrate

@@ -78,6 +78,15 @@ Here are the most common kinds of routes and views.
 
    The 'pyramid_handlers' package provides an alternative for this.
 
+Other Pyramid examples::
+
+    # Home route.
+    config.add_route("home", "/")
+
+    # Multi-action route, excluding certain static URLs.
+    config.add_route("main", "/{action}",
+        path_info=r"/(?!favicon\.ico|robots\.txt|w3c)")
+
 
 
 pyramid_handlers
