@@ -31,3 +31,6 @@
 .. _SQLAlchemy manual:  http://docs.sqlalchemy.org/
 .. _pyramid_handlers:  http://docs.pylonsproject.org/projects/pyramid_handlers/en/latest/
 .. _pyramid_routehelper:  https://github.com/Pylons/pyramid_routehelper/blob/master/pyramid_routehelper/__init__.py
+
+.. _Deform:  http://docs.pylonsproject.org/projects/deform/en/latest/
+.. _pyramid_simpleform:  http://packages.python.org/pyramid_simpleform/
