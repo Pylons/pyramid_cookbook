@@ -34,6 +34,7 @@ skim through the rest of the manual to see which sections cover which topics.
    request
    templates
    exceptions
+   static
    sessions
    migrate
    unfinished
