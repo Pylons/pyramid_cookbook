@@ -1,12 +1,10 @@
 Pyramid for Pylons Users
 ++++++++++++++++++++++++
 
-:Updated: 2012-04-30
+:Updated: 2012-06-12
 :Versions: Pyramid 1.3
 :Author: Mike Orr
 :Contributors:
-
-*XXX This guide is under construction....*
 
 This guide discusses how Pyramid 1.3 differs from Pylons 1, and a few ways to
 make it more like Pylons. The guide may also be helpful to readers coming from
@@ -36,8 +34,10 @@ skim through the rest of the manual to see which sections cover which topics.
    exceptions
    static
    sessions
+   deployment
+   auth
+   other
    migrate
-   unfinished
 
 
 .. include::  ../links.rst

@@ -34,3 +34,7 @@
 
 .. _Deform:  http://docs.pylonsproject.org/projects/deform/en/latest/
 .. _pyramid_simpleform:  http://packages.python.org/pyramid_simpleform/
+
+.. _Kotti:  http://kotti.readthedocs.org/en/latest/index.html
+.. _Ptah:  http://ptahproject.readthedocs.org/en/latest/index.html
+.. _Khufu: http://pypi.python.org/pypi?%3Aaction=search&term=khufu&submit=search
