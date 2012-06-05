@@ -17,7 +17,7 @@ read `Creating a Pyramid Project`_ in the `Pyramid manual`_ before doing so:
 
    $ cd ~/workspace
    $ virtualenv myvenv
-   $ source venv/bin/activate
+   $ source myvenv/bin/activate
    (myvenv)$ pip install 'Pyramid>=1.3'
 
    # Create a Pyramid "alchemy" application and run it.
@@ -25,7 +25,7 @@ read `Creating a Pyramid Project`_ in the `Pyramid manual`_ before doing so:
    (myvenv)$ pcreate -s alchemy PyramidApp
    (myvenv)$ cd PyramidApp
    (myvenv)$ pip install -e .
-   (myvenv)$ populate_PyramidApp development.ini
+   (myvenv)$ initialize_PyramidApp_db development.ini
    (myvenv)$ pserve development.ini
    Starting server in PID 3871.
    serving on http://0.0.0.0:6543
@@ -51,7 +51,7 @@ read `Creating a Pyramid Project`_ in the `Pyramid manual`_ before doing so:
    akhet_demo/
    PyramidApp/
    pyramid/
-   venv/
+   myvenv/
 
 *Things to look for:* the "DT" icon at the top-right of the page is the debug
 toolbar, which Pylons doesn't have. The "populate_PyramidApp" script (line 13) 
