@@ -2,7 +2,7 @@ CouchDB and Pyramid
 ====================
 
 If you want to use CouchDB (via the
-`couchdbkit package <http://pypi.python.org/pypi/couchdbkit`_)
+`couchdbkit package <http://pypi.python.org/pypi/couchdbkit>`_)
 in Pyramid, you can use the following pattern to make your CouchDB database
 available as a request attribute. This example uses the starter scaffold.
 See :ref:`scaffolds-included-with-pyramid`.
@@ -69,8 +69,9 @@ connection.  For example:
         }
 
 Add info to home template:
+
 .. code-block:: html
-    :linenos:
+   :linenos:
 
     <p>${info}</p>
 
@@ -166,8 +167,9 @@ document in our view code if it doesn't exist:
         }
 
 Then update your home template again to add your custom values:
+
 .. code-block:: html
-    :linenos:
+   :linenos:
 
     <p>
         ${author}<br />
