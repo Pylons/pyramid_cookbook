@@ -5,7 +5,6 @@ If you want to use CouchDB (via the
 `couchdbkit package <http://pypi.python.org/pypi/couchdbkit>`_)
 in Pyramid, you can use the following pattern to make your CouchDB database
 available as a request attribute. This example uses the starter scaffold.
-See :ref:`scaffolds-included-with-pyramid`.
 (This follows the same pattern as the :doc:`mongodb` example.)
 
 First add configuration values to your ``development.ini`` file, including your
