@@ -2,21 +2,22 @@ CouchDB and Pyramid
 ====================
 
 If you want to use CouchDB (via the
-`CouchDB package <http://pypi.python.org/pypi/CouchDB>`_)
-in Pyramid, you
-can use the following pattern to make your CouchDB database available as a
-request attribute.  (This follows the same pattern as the :doc:`mongodb` example.)
+`couchdbkit package <http://pypi.python.org/pypi/couchdbkit`_)
+in Pyramid, you can use the following pattern to make your CouchDB database
+available as a request attribute. This example uses the starter scaffold.
+See :ref:`scaffolds-included-with-pyramid`.
+(This follows the same pattern as the :doc:`mongodb` example.)
 
-First add some hair to your ``development.ini`` file, including a CouchDB URI
-and a "db_name" (the CouchDB database name, can be anything).
+First add configuration values to your ``development.ini`` file, including your
+CouchDB URI and a database name (the CouchDB database name, can be anything).
 
 .. code-block:: ini
    :linenos:
 
-    [app:myapp]
+    [app:main]
     # ... other settings ...
-    couchdb_uri = http://user:password@localhost/
-    db_name = myapp
+    couchdb.uri = http://localhost:5984/
+    couchdb.db = mydb
 
 Then in your ``__init__.py``, set things up such that the database is
 attached to each new request:
@@ -25,31 +26,29 @@ attached to each new request:
    :linenos:
 
     from pyramid.config import Configurator
-    from pyramid.events import subscriber
-    from pyramid.events import NewRequest
+    from pyramid.events import subscriber, NewRequest
 
-    import couchdb
+    from couchdbkit import *
 
     @subscriber(NewRequest)
     def add_couchdb_to_request(event):
         request = event.request
         settings = request.registry.settings
-        db = settings['db_server'][settings['db_name']]
+        db = settings['couchdb.server'].get_or_create_db(settings['couchdb.db'])
         event.request.db = db
 
-    def main(global_config, **settings):
+
+    def main(global_config, \**settings):
+        """ This function returns a Pyramid WSGI application.
+        """
         config = Configurator(settings=settings)
-
-        db_server = couchdb.client.Server(settings['couchdb_uri'])
-        config.registry.settings['db_server'] = db_server
-
+        """ Register server instance globally
+        """
+        config.registry.settings['couchdb.server'] = Server(uri=settings['couchdb.uri'])
+        config.add_static_view('static', 'static', cache_max_age=3600)
         config.add_route('home', '/')
-
-        # other routes and more config...
-        config.scan('myapp')
-
+        config.scan()
         return config.make_wsgi_app()
-
 
 
 At this point, in view code, you can use request.db as the CouchDB database
@@ -60,68 +59,118 @@ connection.  For example:
 
     from pyramid.view import view_config
 
-    @view_config(route_name='home', renderer="home.pt")
-    def home_view(request):
-        map_func = '''
-            function(doc) {
-            if (doc.type == 'MyDocumentType')
-                emit(doc._id, doc);
-            }'''
-        documents = ((doc.key, doc.value) for doc in request.db.query(map_func))
-        return {'documents': documents}
+    @view_config(route_name='home', renderer='templates/mytemplate.pt')
+    def my_view(request):
+        """ Get info for server
+        """
+        return {
+            'project': 'pyramid_couchdb_example',
+            'info': request.db.info()
+        }
 
+Add info to home template:
+.. code-block:: html
+    :linenos:
 
-Permanent CouchDB Views
------------------------
+    <p>${info}</p>
 
-As per the
-`CouchDB docs <http://wiki.apache.org/couchdb/Introduction_to_CouchDB_views>`_,
-once your ad-hoc CouchDB view functions are
-working correctly, you should move them into permanent views. For
-example, to create a CouchDB view at startup:
+CouchDB Views
+-------------
+
+First let's create a view for our page data in CouchDB. We will use the
+ApplicationCreated event and make sure our view containing our page data.
+For more information on views in CouchDB see
+`Introduction to CouchDB views <http://wiki.apache.org/couchdb/Introduction_to_CouchDB_views>`_.
+In __init__.py:
 
 .. code-block:: python
    :linenos:
 
     from pyramid.events import ApplicationCreated
 
-    DESIGN_DOC_ID = '_design/myapp'
-
     @subscriber(ApplicationCreated)
     def application_created_subscriber(event):
         settings = event.app.registry.settings
-        server = settings['db_server']
+        db = settings['couchdb.server'].get_or_create_db(settings['couchdb.db'])
+
         try:
-            db = server[settings['db_name']]
-        except couchdb.http.ResourceNotFound:
-            db = server.create(settings['db_name'])
-
-        # We'll create some couchdb views so we don't have to do ad-hoc queries.
-        home_view_map_func = '''
-          function(doc) {
-          if (doc.type == 'MyDocumentType')
-             emit(doc._id, doc);
-          }'''
-        design_doc = db.get(DESIGN_DOC_ID, {'_id': DESIGN_DOC_ID})
-        design_doc.update({
-            "language": "javascript",
-            "views": {
-                "home": {
-                    "map": home_view_map_func,
-                    },
+            """Test to see if our view exists.
+            """
+            db.view('lists/pages')
+        except ResourceNotFound:
+            design_doc = {
+                '_id': '_design/lists',
+                'language': 'javascript',
+                'views': {
+                    'pages': {
+                        'map': '''
+                            function(doc) {
+                                if (doc.doc_type === 'Page') {
+                                    emit([doc.page, doc._id], null)
+                                }
+                            }
+                        '''
+                    }
                 }
-            })
-        _id, rev = db.save(design_doc)
-        log.info('Updated design doc: id %s, revision %s' % (_id, rev))
+            }
+            db.save_doc(design_doc)
 
+CouchDB Documents
+-----------------
 
-Then you can update your Pyramid view code to call that view:
+Now we can let's add some data to a document for our home page in a CouchDB
+document in our view code if it doesn't exist:
 
 .. code-block:: python
-   :linenos:
+    :linenos:
 
-    @view_config(route_name='home', renderer="home.pt")
-    def home_view(request):
-        view_id = '%s/_view/home' % DESIGN_DOC_ID
-        documents = ((doc.key, doc.value) for doc in request.db.view(view_id))
-        return {'documents': documents}
+    import datetime
+
+    from couchdbkit import *
+
+    class Page(Document):
+        author = StringProperty()
+        page = StringProperty()
+        content = StringProperty()
+        date = DateTimeProperty()
+
+    @view_config(route_name='home', renderer='templates/mytemplate.pt')
+    def my_view(request):
+
+        def get_data():
+            return list(request.db.view('lists/pages', startkey=['home'], \
+                    endkey=['home', {}], include_docs=True))
+
+        page_data = get_data()
+
+        if not page_data:
+            Page.set_db(request.db)
+            home = Page(
+                author='Wendall',
+                content='Using CouchDB via couchdbkit!',
+                page='home',
+                date=datetime.datetime.utcnow()
+            )
+            # save page data
+            home.save()
+            page_data = get_data()
+
+        doc = page_data[0].get('doc')
+
+        return {
+            'project': 'pyramid_couchdb_example',
+            'info': request.db.info(),
+            'author': doc.get('author'),
+            'content': doc.get('content'),
+            'date': doc.get('date')
+        }
+
+Then update your home template again to add your custom values:
+.. code-block:: html
+    :linenos:
+
+    <p>
+        ${author}<br />
+        ${content}<br />
+        ${date}<br />
+    </p>
