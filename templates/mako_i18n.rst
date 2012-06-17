@@ -39,8 +39,8 @@ Then add, a ``subscribers.py`` module to your project's package directory:
    def add_localizer(event):
        request = event.request
        localizer = get_localizer(request)
-       def auto_translate(string):
-           return localizer.translate(tsf(string))
+       def auto_translate(*args, **kwargs):
+           return localizer.translate(tsf(*args, **kwargs))
        request.localizer = localizer
        request.translate = auto_translate
 
