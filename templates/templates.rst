@@ -1,6 +1,3 @@
-Templates
-=========
-
 Using a Before Render Event to Expose an ``h`` Helper Object
 ------------------------------------------------------------
 
