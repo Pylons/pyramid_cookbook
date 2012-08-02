@@ -1,8 +1,3 @@
-Dealing With Files
-==================
-
-These cookbook recipes deal with serving files  and handling file uploads.
-
 Serving File Content Dynamically
 --------------------------------
 
