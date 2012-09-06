@@ -83,7 +83,7 @@ Here's an implementation of an HTTP basic auth Pyramid authentication policy:
            return effective_principals
 
        def unauthenticated_userid(self, request):
-           creds = self._get_credentials(request)
+           creds = _get_basicauth_credentials(request)
            if creds is not None:
                return creds['login']
            return None
