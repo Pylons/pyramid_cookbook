@@ -3,15 +3,17 @@ Custom Authentication Policy
 
 Here is an example of a custom AuthenticationPolicy, based off of
 the native ``AuthTktAuthenticationPolicy``, but with added groups support.
-This example implies you have a ``user`` attribute on your request, like
-the ``RequestWithUserAttribute`` version of the request in 
-:ref:`user object`, and it has a ``groups`` relation on it:
+This example implies you have a ``user`` attribute on your request
+(see :ref:`user object`) and that the ``user`` should have a
+``groups`` relation on it:
 
 .. code-block:: python
    :linenos:
 
+   from pyramid.authentication import AuthTktCookieHelper
+   from pyramid.security import Everyone, Authenticated
+
    class MyAuthenticationPolicy(object):
-       implements(IAuthenticationPolicy)
 
        def __init__(self, settings):
            self.cookie = AuthTktCookieHelper(
