@@ -159,7 +159,8 @@ Huh?
   automatically). This can be fixed by launching any of this commands in broken 
   terminal: ``reset``, ``stty sane``. Also one can add one of this commands into
   ``~/.pdbrc`` file, so they will be launched before ``PDB`` session:
-    .. code-block:: python
+
+  .. code-block:: python
 
           from subprocess import Popen
           Popen(["stty", "sane"])
