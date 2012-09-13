@@ -152,3 +152,16 @@ Huh?
 - Many great resources can be found describing the details of using
   pdb.  Try the interactive ``help`` (hit 'h') or a search engine near
   you.
+
+.. note:: There is a well known bug in ``PDB`` in UNIX, when user cannot 
+  see what he is typing in terminal window after any interruption during 
+  ``PDB`` session (it can be caused by ``CTRL-C`` or when the server restarts 
+  automatically). This can be fixed by launching any of this commands in broken 
+  terminal: ``reset``, ``stty sane``. Also one can add one of this commands into
+  ``~/.pdbrc`` file, so they will be launched before ``PDB`` session:
+    .. code-block:: python
+
+          from subprocess import Popen
+          Popen(["stty", "sane"])
+
+
