@@ -1,5 +1,5 @@
 A Whirlwind Tour of Advanced Pyramid Configuration Tactics
-----------------------------------------------------------
+==========================================================
 
 This article attempts to demonstrate some of Pyramid's more advanced
 startup-time configuration features.  The stuff below talks about
@@ -127,7 +127,7 @@ out-of-order execution works because Pyramid defers configuration execution
 until a *commit* is performed as the result of ``config.make_wsgi_app()``
 being called.  Relative ordering between ``config.add_route()`` and
 ``config.add_view()`` calls is not important.  Pyramid implicitly commits the
-configuration state when ``make_wsgi_app`` gets called; only when it's
+configuration state when ``make_wsgi_app()`` gets called; only when it's
 committed is the configuration state sanity-checked.  In particular, in this
 case, we're relying on the fact that Pyramid makes sure that all route
 configuration happens before any view configuration at commit time.  If a
@@ -498,6 +498,43 @@ Pyramid convenience shorthand: if you tell Pyramid to include a Python
 ``config.include('amodule')`` always means
 ``config.include('amodule.includeme')``.
 
+Something which is included can also do including.  Let's add a file named
+``yetanother.py`` next to app.py:
+
+.. code-block:: python
+
+   # yetanother.py
+
+   from pyramid.response import Response
+
+   def whoa(request):
+       return Response('Whoa')
+
+   def includeme(config):
+       config.add_route('whoa', '/whoa')
+       config.add_view(whoa, route_name='whoa')
+
+And let's change our ``another.py`` file to include it:
+
+.. code-block:: python
+
+   # another.py
+
+   from pyramid.response import Response
+
+   def goodbye(request):
+       return Response('Goodbye world!')
+
+   def includeme(config): # <-- previously named moreconfiguration
+       config.add_route('goodbye, '/goodbye')
+       config.add_view(goodbye, route_name='goodbye')
+       config.include('yetanother')
+
+When we start up this application, we can visit ``/``, ``/goodbye`` and
+``/whoa`` and see responses on each.  ``app.py`` includes ``another.py``
+which includes ``yetanother.py``.  You can nest configuration includes within
+configuration includes ad infinitum.  It's turtles all the way down.
+
 As we saw previously, it's relatively easy to manually resolve configuration
 conflicts that are produced by mistake.  But sometimes configuration
 conflicts are not injected by mistake.  Sometimes they're introduced on
@@ -709,63 +746,75 @@ making use of automatic conflict resolution: Pyramid determines that the call
 to ``set_site_name('bar')`` should "win" because it's "closer to the top of
 the application" than the other call which sets it to "bar".
 
+Why This Is Great
+-----------------
+
 Now for some general descriptions of what makes the way all of this works
 great.
 
-You'll note so far that a mere import of a module in our tiny application
-does not cause any sort of configuration state to be added, nor do any of our
-existing modules rely on some configuration having occurred before they can
-be imported.  Application configuration is never added as the result of
-someone or something just happening to import a module.  This seems like an
-obvious design choice, but it's not true of all web frameworks.  Some web
-frameworks rely on a particular import ordering: you might not be able to
-successfully import your application code until some other module has been
-initialized via an import.  Some web frameworks depend on configuration
-happening as a side effect of decorator execution: as a result, you might be
-*required* to import all of your application's modules for it to be
-configured in its entirety.  Our application relies on neither: importing our
-code requires no prior import to have happened, and no configuration is done
-as the side effect of importing any of our code.  This explicitness helps you
-build larger systems because you're never left guessing about the
-configuration state: you are entirely in charge at all times.
+You'll note that a mere import of a module in our tiny application doesn't
+cause any sort of configuration state to be added, nor do any of our existing
+modules rely on some configuration having occurred before they can be
+imported.  Application configuration is never added as the result of someone
+or something just happening to import a module.  This seems like an obvious
+design choice, but it's not true of all web frameworks.  Some web frameworks
+rely on a particular import ordering: you might not be able to successfully
+import your application code until some other module has been initialized via
+an import.  Some web frameworks depend on configuration happening as a side
+effect of decorator execution: as a result, you might be *required* to import
+all of your application's modules for it to be configured in its entirety.
+Our application relies on neither: importing our code requires no prior
+import to have happened, and no configuration is done as the side effect of
+importing any of our code.  This explicitness helps you build larger systems
+because you're never left guessing about the configuration state: you are
+entirely in charge at all times.
 
 Most other web frameworks don't have a conflict detection system, and when
 they're fed two configuration statements that are logically conflicting,
 they'll choose one or the other silently, leaving you sometimes to wonder why
-you're not seeing the output you expect.
+you're not seeing the output you expect.  Likewise, the execution ordering of
+configuration statements in most other web frameworks matters deeply; Pyramid
+doesn't make you care much about it.
 
-You'll also note that a third party developer can override parts of an
-existing application's configuration as long as that application's original
-developer anticipates it minimally by factoring his configuration statements
-into a function that is *includable*.  He doesn't necessarily have to
-anticipate *what* bits of his application might be overridden, just that
-*something* might be overridden.  This is unlike other web frameworks, which
-indeed tend to force the original application developer to think hard about
-what might be overridden.  Under other frameworks, an application developer
-that wants to provide application extensibility is usually required to write
-ad-hoc code that allows a user to override various parts of his application
-such as views, routes, subscribers, and templates.  In Pyramid, he is not
-required to do this: everything is overridable, and he just refers anyone who
-wants to change the way it works to the Pyramid docs.  The
-``config.include()`` system even allows a third-party developer who wants to
-change an application to not think about the mechanics of overriding at all;
-he just adds statements before or after including the original developer's
-configuration statements, and he relies on automatic conflict resolution to
-work things out for him.
+A third party developer can override parts of an existing application's
+configuration as long as that application's original developer anticipates it
+minimally by factoring his configuration statements into a function that is
+*includable*.  He doesn't necessarily have to anticipate *what* bits of his
+application might be overridden, just that *something* might be overridden.
+This is unlike other web frameworks, which, if they allow for application
+extensibility at all, indeed tend to force the original application developer
+to think hard about what might be overridden.  Under other frameworks, an
+application developer that wants to provide application extensibility is
+usually required to write ad-hoc code that allows a user to override various
+parts of his application such as views, routes, subscribers, and templates.
+In Pyramid, he is not required to do this: everything is overridable, and he
+just refers anyone who wants to change the way it works to the Pyramid docs.
+The ``config.include()`` system even allows a third-party developer who wants
+to change an application to not think about the mechanics of overriding at
+all; he just adds statements before or after including the original
+developer's configuration statements, and he relies on automatic conflict
+resolution to work things out for him.
 
-You'll also note that the system is *meta-configurable*.  You can extend the
-set of configuration directives offered to users by using
-``config.add_directive``.  This means that you can effectively extend Pyramid
-itself, and get all the goodness of conflict detection and resolution without
-needing to rewrite it, or document it for consumption: you just tell people
-the directive exists and tell them it works like every other Pyramid
-directive.
+Configuration logic can be included from anywhere, and split across multiple
+packages and filesystem locations.  There is no special set of Pyramid-y
+"application" directories containing configuration that must exist all in one
+place.  Other web frameworks introduce packages or directories that are "more
+special than others" to offer similar features.  To extend an application
+written using other web frameworks, you sometimes have to add to the set of
+them by changing a central directory structure.
+
+The system is *meta-configurable*.  You can extend the set of configuration
+directives offered to users by using ``config.add_directive()``.  This means
+that you can effectively extend Pyramid itself without needing to rewrite or
+redocument a solution from scratch: you just tell people the directive exists
+and tell them it works like every other Pyramid directive.  You'll get all
+the goodness of conflict detection and resolution too.
 
 All of the examples in this article use the "imperative" Pyramid
 configuration API, where a user calls methods on a Configurator object to
 perform configuration.  For developer convenience, Pyramid also exposes a
 declarative configuration mechanism, usually by offering a function, class,
-and method decorator thare is activated via a *scan*.  Such decorators simply
+and method decorator that is activated via a *scan*.  Such decorators simply
 attach a callback to the object they're decorating, and during the scan
 process these callbacks are called: the callbacks just call methods on a
 configurator on the behalf of the user as if he had typed them himself.
