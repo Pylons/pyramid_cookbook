@@ -427,7 +427,7 @@ to our ``app.py`` module:
 
 Now what happens when we run the application via ``python app.py``?  It
 starts.  And, like before, if we visit ``/`` in a browser, it still show
-``Hello world!'.  But, unlike before, now if we visit ``/goodbye`` in a
+``Hello world!``.  But, unlike before, now if we visit ``/goodbye`` in a
 browser, it will show us ``Goodbye world!``.
 
 When we called ``include('another.moreconfiguration')`` within app.py,
@@ -534,7 +534,7 @@ error.  This is strange, because we have what appears to be the same
 configuration that caused a conflict error before when all of the same
 configuration statements were made in ``app.py``.  In particular,
 ``hi_world`` and ``hello_world`` are both being registered as the view that
-should be called when the ``'home`` route is executed.  When the application
+should be called when the ``home`` route is executed.  When the application
 runs, when you visit ``/`` in your browser, you will see ``Hello world!``
 (not ``Hi world!``).  The registration for the ``hello_world`` view in
 ``app.py`` "won" over the registration for the ``hi_world`` view in
