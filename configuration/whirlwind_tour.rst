@@ -124,14 +124,15 @@ configuration to work, because we're referencing the name of a route
 route_name='home')`` that hasn't been added yet.  When we execute
 ``add_view``, ``add_route('home', '/')`` has not yet been executed. This
 out-of-order execution works because Pyramid defers configuration execution
-until ``config.make_wsgi_app()`` is called.  Relative ordering between
-``config.add_route()`` and ``config.add_view()`` calls is not important.
-Pyramid *commits* the configuration state when ``make_wsgi_app`` gets called;
-only when it's committed is the configuration state sanity-checked.  In
-particular, in this case, we're relying on the fact that Pyramid makes sure
-that all route configuration happens before any view configuration at commit
-time.  If a view references a nonexistent route, an error will be raised at
-commit time rather than at configuration statement execution time.
+until a *commit* is performed as the result of ``config.make_wsgi_app()``
+being called.  Relative ordering between ``config.add_route()`` and
+``config.add_view()`` calls is not important.  Pyramid implicitly commits the
+configuration state when ``make_wsgi_app`` gets called; only when it's
+committed is the configuration state sanity-checked.  In particular, in this
+case, we're relying on the fact that Pyramid makes sure that all route
+configuration happens before any view configuration at commit time.  If a
+view references a nonexistent route, an error will be raised at commit time
+rather than at configuration statement execution time.
 
 We can see this sanity-checking feature in action in a failure case.  Let's
 change our application, commenting out our call to ``config.add_route()``
