@@ -2,6 +2,8 @@ Pyramid Cookbook
 ================
 
 The Pyramid Cookbook presents topical, practical usages of :mod:`Pyramid`.
+It supplements the `main documentation
+<http://docs.pylonsproject.org/projects/pyramid/en/latest/>`_.
 
 .. toctree::
    :maxdepth: 2
