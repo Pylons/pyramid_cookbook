@@ -248,14 +248,11 @@ output: ``For: ('view', None, '', 'home',
 
 Why is this exception raised?  Pyramid couldn't work out what you wanted to
 do.  You told it to serve up more than one view for exactly the same set of
-request-time circumstances ("when the route name matches 'home', serve this
+request-time circumstances ("when the route name matches ``home``, serve this
 view").  This is an impossibility: Pyramid needs to serve one view or the
-other in this circumstance; it can't serve both.  So rather than guessing,
-Pyramid raises a configuration conflict error and refuses to start.  Most
-other web frameworks don't do this.  They don't have a conflict detection
-system, and when they're fed two configuration statements that are logically
-conflicting, they'll choose one or the other silently, leaving you to wonder
-why you're not seeing the output you expect.
+other in this circumstance; it can't serve both.  So rather than trying to
+guess what you meant, Pyramid raises a configuration conflict error and
+refuses to start.
 
 Obviously it's necessary to be able to resolve configuration conflicts.
 Sometimes these conflicts are done by mistake, so they're easy to resolve.
@@ -344,7 +341,7 @@ which conflict:
        config = Configurator()
        config.add_route('home', '/')
        config.add_view(hello_world, route_name='home')
-       config.commit()
+       config.commit() # added
        config.add_view(hi_world, route_name='home') # added
        app = config.make_wsgi_app()
        server = make_server('0.0.0.0', 8080, app)
@@ -353,12 +350,12 @@ which conflict:
 If we run this application, it will start up.  And if we visit ``/`` in our
 browser, we'll see ``Hi world!``.  Why doesn't this application throw a
 configuration conflict error at the time it starts up?  Because we flushed
-the pending configuration action impled by the first call to ``add_view``
-using the call to ``config.commit()``.  When we called the ``add_view`` the
+the pending configuration action impled by the first call to ``add_view`` by
+calling ``config.commit()`` explicitly.  When we called the ``add_view`` the
 second time, the discriminator of the first call to ``add_view`` was no
-longer in the pending actions list to conflict with.  We resolved the
-conflict by flushing the actions list.  Why do we see ``Hi world!`` in our
-browser instead of ``Hello world!``?  Because the call to
+longer in the pending actions list to conflict with.  The conflict was
+resolved because conflict the actions list got flushed.  Why do we see ``Hi
+world!`` in our browser instead of ``Hello world!``?  Because the call to
 ``config.make_wsgi_app()`` implies a second commit.  The second commit caused
 the second ``add_view`` configuration callback to be called, and this
 callback overwrote the view configuration added by the first commit.
@@ -561,17 +558,17 @@ just factoring your configuration into functions and arranging to call those
 functions at startup time directly.  Using ``config.include()`` makes
 automatic conflict resolution work properly.
 
-A third-party developer needn't satisfy himself with only the directives
-provided by Pyramid like ``add_route`` and ``add_view``.  He can add
-directives to the Configurator.  This makes it easy for other people to add
-application-specific configuration.  For example, let's say you'd like to
-allow people to change the "site name" of your application (let's pretend the
-site name is used in some web UI somewhere).  Let's pretend you'd like to do
-this by allowing people to call a ``set_site_name`` directive on the
-Configurator.  This is a bit of a contrived example, because it would
-probably be a bit easier in this particular case just to use a deployment
-setting, but humor me for the purpose of this example.  Let's change our
-app.py to look like this:
+A developer needn't satisfy himself with only the directives provided by
+Pyramid like ``add_route`` and ``add_view``.  He can add directives to the
+Configurator.  This makes it easy for him to allow other developers to add
+application-specific configuration.  For example, let's pretend you're
+creating an extensible application, and you'd like to allow developers to
+change the "site name" of your application (the site name is used in some web
+UI somewhere).  Let's further pretend you'd like to do this by allowing
+people to call a ``set_site_name`` directive on the Configurator.  This is a
+bit of a contrived example, because it would probably be a bit easier in this
+particular case just to use a deployment setting, but humor me for the
+purpose of this example.  Let's change our app.py to look like this:
 
 .. code-block:: python
 
@@ -679,7 +676,6 @@ directives will also participate in automatic conflict resolution.  Let's see
 that in action by moving our first call to ``set_site_name`` into another
 included function.  As a result, our ``app.py`` will look like this:
 
-
 .. code-block:: python
 
    # app.py
@@ -733,6 +729,11 @@ as the side effect of importing any of our code.  This explicitness helps you
 build larger systems because you're never left guessing about the
 configuration state: you are entirely in charge at all times.
 
+Most other web frameworks don't have a conflict detection system, and when
+they're fed two configuration statements that are logically conflicting,
+they'll choose one or the other silently, leaving you sometimes to wonder why
+you're not seeing the output you expect.
+
 You'll also note that a third party developer can override parts of an
 existing application's configuration as long as that application's original
 developer anticipates it minimally by factoring his configuration statements
@@ -771,6 +772,7 @@ configurator on the behalf of the user as if he had typed them himself.
 These decorators participate in Pyramid's configuration scheme exactly like
 imperative method calls.
 
-For more information, see :ref:`advconfig_narr` in the Pyramid narrative
+For more information about ``config.include()`` and creating extensible
+applications, see :ref:`advconfig_narr` in the Pyramid narrative
 documenation.
 
