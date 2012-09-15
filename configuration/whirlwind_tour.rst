@@ -773,6 +773,7 @@ These decorators participate in Pyramid's configuration scheme exactly like
 imperative method calls.
 
 For more information about ``config.include()`` and creating extensible
-applications, see :ref:`advconfig_narr` in the Pyramid narrative
-documenation.
+applications, see :ref:`advconfig_narr` and :ref:`extending_chapter` in the
+Pyramid narrative documenation.  For more information about creating
+directives, see :ref:`extconfig_narr`.
 
