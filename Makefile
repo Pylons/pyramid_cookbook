@@ -129,7 +129,7 @@ doctest:
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
 
-_themes:
+themes:
 	git submodule update --init --recursive
 
 
