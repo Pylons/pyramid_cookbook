@@ -442,7 +442,7 @@ multiple locations.
 
 You might be asking yourself at this point "So what?!  That's just a function
 call hidden under an API that resolves a module name to a function.  I could
-just import the includeme function from ``another`` and call it directly with
+just import the moreconfiguration function from ``another`` and call it directly with
 the configurator!"  You're mostly right.  However, ``config.include()`` does
 more than that.  Please stick with me, we'll get to it.
 
