@@ -420,7 +420,7 @@ to our ``app.py`` module:
        return Response('Goodbye world!')
 
    def moreconfiguration(config):
-       config.add_route('goodbye, '/goodbye')
+       config.add_route('goodbye', '/goodbye')
        config.add_view(goodbye, route_name='goodbye')
 
 Now what happens when we run the application via ``python app.py``?  It
@@ -483,7 +483,7 @@ And we'll edit ``another.py``, changing the name of the
        return Response('Goodbye world!')
 
    def includeme(config): # <-- previously named moreconfiguration
-       config.add_route('goodbye, '/goodbye')
+       config.add_route('goodbye', '/goodbye')
        config.add_view(goodbye, route_name='goodbye')
 
 When we run the application, it works exactly like our last iteration.  You
@@ -526,7 +526,7 @@ And let's change our ``another.py`` file to include it:
        return Response('Goodbye world!')
 
    def includeme(config): # <-- previously named moreconfiguration
-       config.add_route('goodbye, '/goodbye')
+       config.add_route('goodbye', '/goodbye')
        config.add_view(goodbye, route_name='goodbye')
        config.include('yetanother')
 
@@ -560,7 +560,7 @@ is visited:
        return Response('Hi world!')
 
    def includeme(config):
-       config.add_route('goodbye, '/goodbye')
+       config.add_route('goodbye', '/goodbye')
        config.add_view(goodbye, route_name='goodbye')
        config.add_view(hi_world, route_name='home') # added
 
