@@ -5,7 +5,7 @@ This article attempts to demonstrate some of Pyramid's more advanced
 startup-time configuration features.  The stuff below talks about
 "configuration", which is a shorthand word I'll use to mean the state that is
 changed when a developer adds views, routes, subscribers, and other bits.  A
-developer adds configuration by by calling configuration *directives*.  For
+developer adds configuration by calling configuration *directives*.  For
 example, ``config.add_route()`` is a configuration directive.  A particular
 *use* of ``config.add_route()`` is a configuration *statement*.  In the below
 code block, the execution of the ``add_route()`` directive is a configuration
