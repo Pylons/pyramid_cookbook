@@ -1,6 +1,9 @@
 A Whirlwind Tour of Advanced Pyramid Configuration Tactics
 ==========================================================
 
+Concepts:  Configuration, Directives, and Statements
+-----------------------------------------------------
+
 This article attempts to demonstrate some of Pyramid's more advanced
 startup-time configuration features.  The stuff below talks about
 "configuration", which is a shorthand word I'll use to mean the state that is
@@ -134,6 +137,9 @@ configuration happens before any view configuration at commit time.  If a
 view references a nonexistent route, an error will be raised at commit time
 rather than at configuration statement execution time.
 
+Sanity Checks
+-------------
+
 We can see this sanity-checking feature in action in a failure case.  Let's
 change our application, commenting out our call to ``config.add_route()``
 temporarily within ``app.py``:
@@ -180,6 +186,9 @@ When we attempt to run this Pyramid application, we get a traceback::
 It's telling us that we attempted to add a view which references a
 nonexistent route.  Configuration directives sometimes introduce
 sanity-checking to startup, as demonstrated here.
+
+Configuration Conflicts
+-----------------------
 
 Let's change our application once again.  We'll undo our last change, and add
 a configuration statement that attempts to add another view:
@@ -253,6 +262,9 @@ view").  This is an impossibility: Pyramid needs to serve one view or the
 other in this circumstance; it can't serve both.  So rather than trying to
 guess what you meant, Pyramid raises a configuration conflict error and
 refuses to start.
+
+Resolving Conflicts
+-------------------
 
 Obviously it's necessary to be able to resolve configuration conflicts.
 Sometimes these conflicts are done by mistake, so they're easy to resolve.
@@ -363,6 +375,9 @@ callback overwrote the view configuration added by the first commit.
 Calling ``config.commit()`` is a brute-force way to resolve configuration
 conflicts.
 
+Including Configuration from Other Modules
+------------------------------------------
+
 Now that we have played around a bit with configuration that exists all in
 the same module, let's add some code to ``app.py`` that causes configuration
 that lives in another module to be *included*.  We do that by adding a call
@@ -446,6 +461,9 @@ just import the moreconfiguration function from ``another`` and call it directly
 the configurator!"  You're mostly right.  However, ``config.include()`` does
 more than that.  Please stick with me, we'll get to it.
 
+The :func:`includeme` Convention
+--------------------------------
+
 Now, let's change our ``app.py`` slightly.  We'll change the
 ``config.include()`` line in ``app.py`` to include a slightly different
 name:
@@ -498,6 +516,9 @@ Pyramid convenience shorthand: if you tell Pyramid to include a Python
 ``config.include('amodule')`` always means
 ``config.include('amodule.includeme')``.
 
+Nested Includes
+---------------
+
 Something which is included can also do including.  Let's add a file named
 ``yetanother.py`` next to app.py:
 
@@ -534,6 +555,9 @@ When we start up this application, we can visit ``/``, ``/goodbye`` and
 ``/whoa`` and see responses on each.  ``app.py`` includes ``another.py``
 which includes ``yetanother.py``.  You can nest configuration includes within
 configuration includes ad infinitum.  It's turtles all the way down.
+
+Automatic Resolution via Includes
+---------------------------------
 
 As we saw previously, it's relatively easy to manually resolve configuration
 conflicts that are produced by mistake.  But sometimes configuration
@@ -594,6 +618,9 @@ import ``another.includeme`` from within app.py and call it, passing it a
 just factoring your configuration into functions and arranging to call those
 functions at startup time directly.  Using ``config.include()`` makes
 automatic conflict resolution work properly.
+
+Custom Configuration Directives
+-------------------------------
 
 A developer needn't satisfy himself with only the directives provided by
 Pyramid like ``add_route`` and ``add_view``.  He can add directives to the
