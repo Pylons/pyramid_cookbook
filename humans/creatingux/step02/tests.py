@@ -4,7 +4,7 @@ class ProjectorViewsUnitTests(unittest.TestCase):
     def test_hello_world(self):
         from application import hello_world
         result = hello_world({})
-        self.assertEqual(result.body, 'hello!')
+        self.assertEqual(result.body, b'hello!')
 
 class ProjectorFunctionalTests(unittest.TestCase):
     def setUp(self):
@@ -15,4 +15,4 @@ class ProjectorFunctionalTests(unittest.TestCase):
 
     def test_it(self):
         res = self.testapp.get('/', status=200)
-        self.failUnless('hello' in res.body)
+        self.failUnless(b'hello' in res.body)
