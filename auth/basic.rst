@@ -13,7 +13,6 @@ Here's an implementation of an HTTP basic auth Pyramid authentication policy:
    from paste.httpheaders import AUTHORIZATION
    from paste.httpheaders import WWW_AUTHENTICATE
 
-   from pyramid.interfaces import IAuthenticationPolicy
    from pyramid.security import Everyone
    from pyramid.security import Authenticated
 
@@ -54,7 +53,6 @@ Here's an implementation of an HTTP basic auth Pyramid authentication policy:
            Default: ``Realm``.  The Basic Auth realm string.
 
        """
-       implements(IAuthenticationPolicy)
 
        def __init__(self, check, realm='Realm'):
            self.check = check
