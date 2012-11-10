@@ -22,23 +22,24 @@ following component is a record ID. For instance::
 
     class Resource(dict):
         def __init__(self, name, parent):
-            self.name = name
-            self.parent = parent
+            self.__name__ = name
+            self.__parent__ = parent
 
     class Root(Resource):
-       """The root resource."""
+        """The root resource."""
+
+        def add_resource(self, name, orm_class):
+            self[name] = ORMContainer(self, name, self.request, orm_class)
 
        def __init__(self, request):
-           self.request = request
-           self["persons"] = ORMContainer(self, "persons", request, 
-               model.Person)
+           self.add_resource('persons', model.Person)
 
     root_factory = Root
 
     class ORMContainer(dict):
        """Traversal component tied to a SQLAlchemy ORM class.
 
-       Calling .__getitem__ fetches a record as an ORM instance, adds certain 
+       Calling .__getitem__ fetches a record as an ORM instance, adds certain
        attributes to the object, and returns it.
        """
        def __init__(self, name, parent, request, orm_class):
@@ -61,10 +62,10 @@ following component is a record ID. For instance::
            obj.__parent__ = self
            return obj
 
-Here, ``root["persons"]`` is a container object whose .__getattr__ method
+Here, ``root["persons"]`` is a container object whose ``__getitem__`` method
 fetches the specified database record, sets name and parent attribues on it,
-and returns it. (We've verified that SQLAlchemy does not define '.__name__' or
-'.__parent__' attributes in ORM instances.) If the record is not found, raise
+and returns it. (We've verified that SQLAlchemy does not define ``__name__`` or
+``__parent__`` attributes in ORM instances.) If the record is not found, raise
 KeyError to indicate the resource doesn't exist.
 
 TODO: Describe URL generation, access control lists, and other things needed in
@@ -78,7 +79,7 @@ want to fetch the entire record's body, or do something silly like asking
 traversal for the resource at "/persons/123" and then generate the URL -- which
 would be "/persons/123"! There are a few ways to generate URLs in this case:
 
-* Define a generation-only route; e.g., 
+* Define a generation-only route; e.g.,
   ``config.add_route("person", "/persons/{id}", static=True)``
 * Instead of returning an ORM instance, return a proxy that lazily fetches the
   instance when its attributes are accessed. This causes traversal to behave
