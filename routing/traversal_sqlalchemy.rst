@@ -29,38 +29,39 @@ following component is a record ID. For instance::
         """The root resource."""
 
         def add_resource(self, name, orm_class):
-            self[name] = ORMContainer(self, name, self.request, orm_class)
+            self[name] = ORMContainer(name, self, self.request, orm_class)
 
-       def __init__(self, request):
-           self.add_resource('persons', model.Person)
+        def __init__(self, request):
+            self.request = request
+            self.add_resource('persons', model.Person)
 
     root_factory = Root
 
     class ORMContainer(dict):
-       """Traversal component tied to a SQLAlchemy ORM class.
+        """Traversal component tied to a SQLAlchemy ORM class.
 
-       Calling .__getitem__ fetches a record as an ORM instance, adds certain
-       attributes to the object, and returns it.
-       """
-       def __init__(self, name, parent, request, orm_class):
-           self.__name__  = name
-           self.__parent__ = parent
-           self.request = request
-           self.orm_class = orm_class
+        Calling .__getitem__ fetches a record as an ORM instance, adds certain
+        attributes to the object, and returns it.
+        """
+        def __init__(self, name, parent, request, orm_class):
+            self.__name__  = name
+            self.__parent__ = parent
+            self.request = request
+            self.orm_class = orm_class
 
-       def __getitem__(self, key):
-           try:
-               key = int(key)
-           except ValueError:
-               raise KeyError(key)
-           obj = model.DBSession.query(self.orm_class).get(key)
-           # If the ORM class has a class method '.get' that performs the
-           # query, you could do this:  ``obj = self.orm_class.get(key)``
-           if obj is None:
-               raise KeyError(key)
-           obj.__name__ = key
-           obj.__parent__ = self
-           return obj
+        def __getitem__(self, key):
+            try:
+                key = int(key)
+            except ValueError:
+                raise KeyError(key)
+            obj = model.DBSession.query(self.orm_class).get(key)
+            # If the ORM class has a class method '.get' that performs the
+            # query, you could do this:  ``obj = self.orm_class.get(key)``
+            if obj is None:
+                raise KeyError(key)
+            obj.__name__ = key
+            obj.__parent__ = self
+            return obj
 
 Here, ``root["persons"]`` is a container object whose ``__getitem__`` method
 fetches the specified database record, sets name and parent attribues on it,
