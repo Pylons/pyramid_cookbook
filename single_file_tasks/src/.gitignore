@@ -1,0 +1,9 @@
+.installed.cfg
+bin/
+bootstrap.py
+eggs
+parts/
+tasks.db
+var/
+*.pyc
+*.swp
