@@ -61,7 +61,7 @@ request object as a ``cgi.FieldStorage`` object accessible through the
         temp_file_path = file_path + '~'
         output_file = open(temp_file_path, 'wb')
 
-        # Finally write the data to a temporary file file
+        # Finally write the data to a temporary file
         input_file.seek(0)
         while True:
             data = input_file.read(2<<16)
