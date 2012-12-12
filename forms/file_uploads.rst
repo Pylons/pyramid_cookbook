@@ -30,6 +30,7 @@ request object as a ``cgi.FieldStorage`` object accessible through the
    :linenos:
 
     import os
+    import uuid
     from pyramid.response import Response
 
     def store_mp3_view(request):
@@ -46,20 +47,35 @@ request object as a ``cgi.FieldStorage`` object accessible through the
 
         input_file = request.POST['mp3'].file
 
-        # Using the filename like this without cleaning it is very
-        # insecure so please keep that in mind when writing your own
-        # file handling.
-        file_path = os.path.join('/tmp', filename)
-        output_file = open(file_path, 'wb')
+        # Note that we are generating our own filename instead of trusting
+        # the incoming filename since that might result in insecure paths.
+        # Please note that in a real application you would not use /tmp,
+        # and if you write to an untrusted location you will need to do
+        # some extra work to prevent symlink attacks.
 
-        # Finally write the data to the output file
+        file_path = os.path.join('/tmp', '%s.mp3' % uuid.uuid4())
+
+        # We first write to a temporary file to prevent incomplete files from
+        # being used.
+
+        temp_file_path = file_path + '~'
+        output_file = open(temp_file_path, 'wb')
+
+        # Finally write the data to a temporary file file
         input_file.seek(0)
-        while 1:
+        while True:
             data = input_file.read(2<<16)
             if not data:
                 break
             output_file.write(data)
+
+        # If your data is really critical you may want to force it to disk first
+        # using output_file.flush(); os.fsync(output_file.fileno())
+
         output_file.close()
 
-        return Response('OK')
+        # Now that we know the file has been fully saved to disk move it into place.
 
+        os.rename(temp_file_path, file_path)
+
+        return Response('OK')
