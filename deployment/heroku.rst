@@ -40,7 +40,7 @@ You will have probably have a line in your requirements file that has your proje
     -e git+git@xxxx:<git username>/xxxxx.git....#egg=project-name
 
 .. note::
-    You can only packages that can install from pypi. If you have any others that you checked out via git, or locally you will have to include these in your ``run`` file (see below). Never include these editable references when deploying to heroku.
+    You can only use packages that can be installed from pypi. If you have any others that you checked out via git, or locally you will have to include these in your ``run`` file (see below). Never include these editable references when deploying to heroku.
 
 
 ``Procfile``:
