@@ -48,3 +48,6 @@ via Python Ireland May 2011:
 
 http://vimeo.com/23771511
 
+Saiju M's "Create Pyramid Application With SQLAlchemy" (~ 17 mins):
+
+http://www.youtube.com/watch?v=L2KSsqwwH9M
