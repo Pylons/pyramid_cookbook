@@ -40,7 +40,7 @@ filesystem:
         /static
         /templates
 
-Note that the ``tasks`` directory will not be used as a python package,
+Note that the ``tasks`` directory will not be used as a Python package,
 it'll just serve as a container in which we can put our project.
 
 Step 2 - Application Setup
@@ -69,8 +69,9 @@ Then we'll set up logging and the current working directory path:
     
     here = os.path.dirname(os.path.abspath(__file__))
 
-Finally, in a block that runs only when the file is executed, we'll configure
-the Pyramid application, establish rudimentary sessions, obtain the WSGI app,
+Finally, in a block that runs only when the file is directly executed
+(i.e. not imported), we'll configure the Pyramid application,
+establish rudimentary sessions, obtain the WSGI app,
 and serve it.
 
 .. code-block:: python
