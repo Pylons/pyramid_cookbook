@@ -55,7 +55,7 @@ Here are a few core concepts related to Pyramid startup configuration:
 
 #. An application can be created via configuration statements (for example,
    calls to ``add_route`` or ``add_view``) composed from logic defined in
-   multiple locations.  The configuration satements usually live within
+   multiple locations.  The configuration statements usually live within
    Python functions. Those functions can live anywhere, as long as they can
    be imported.  If the ``config.include()`` API is used to stitch these
    configuration functions together, some configuration conflicts can be
@@ -216,7 +216,7 @@ a configuration statement that attempts to add another view:
        server = make_server('0.0.0.0', 8080, app)
        server.serve_forever()
 
-If you notice above, we're now calling called ``add_view`` twice with two
+If you notice above, we're now calling ``add_view`` twice with two
 different view callables.  Each call to ``add_view`` names the same route
 name.  What happens when we try to run this program now?::
 
@@ -296,7 +296,7 @@ do that pretty easily:
 
 In the above code, we've gotten rid of the conflict.  Now the ``hello_world``
 view will be called by default when ``/`` is visited without a query string,
-but if ``/`` is visted when the the URL contains a ``use_hi`` query string,
+but if ``/`` is visted when the URL contains a ``use_hi`` query string,
 the ``hi_world`` view will be executed instead.  In other words, visiting
 ``/`` in the browser produces ``Hello world!``, but visiting ``/?use_hi=1``
 produces ``Hi world!``.

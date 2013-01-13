@@ -36,11 +36,11 @@ https://github.com/cd34/pyramid_apex.
 Integration with Enterprise Systems
 ===================================
 
-When using Pyramid within an "enterprise" or the intranet it is often desireable to 
-integrate with existing authentication and authorization (entitlement) systems. For
-example in Microsoft Networks driven environments, user database is typically 
-maintained in Active Directory. At present there is no ready to use recipe but we
-are listing places that may be worth looking for ideas when developing one.
+When using Pyramid within an "enterprise" (or an intranet), it is often desirable to
+integrate with existing authentication and authorization (entitlement) systems.
+For example, in Microsoft Network environments, the user database is typically
+maintained in Active Directory. At present, there is no ready-to-use recipe, but we
+are listing places that may be worth looking at for ideas when developing one:
 
 Authentication
 --------------
