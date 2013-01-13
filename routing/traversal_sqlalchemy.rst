@@ -22,49 +22,51 @@ following component is a record ID. For instance::
 
     class Resource(dict):
         def __init__(self, name, parent):
-            self.name = name
-            self.parent = parent
+            self.__name__ = name
+            self.__parent__ = parent
 
     class Root(Resource):
-       """The root resource."""
+        """The root resource."""
 
-       def __init__(self, request):
-           self.request = request
-           self["persons"] = ORMContainer(self, "persons", request, 
-               model.Person)
+        def add_resource(self, name, orm_class):
+            self[name] = ORMContainer(name, self, self.request, orm_class)
+
+        def __init__(self, request):
+            self.request = request
+            self.add_resource('persons', model.Person)
 
     root_factory = Root
 
     class ORMContainer(dict):
-       """Traversal component tied to a SQLAlchemy ORM class.
+        """Traversal component tied to a SQLAlchemy ORM class.
 
-       Calling .__getitem__ fetches a record as an ORM instance, adds certain 
-       attributes to the object, and returns it.
-       """
-       def __init__(self, name, parent, request, orm_class):
-           self.__name__  = name
-           self.__parent__ = parent
-           self.request = request
-           self.orm_class = orm_class
+        Calling .__getitem__ fetches a record as an ORM instance, adds certain
+        attributes to the object, and returns it.
+        """
+        def __init__(self, name, parent, request, orm_class):
+            self.__name__  = name
+            self.__parent__ = parent
+            self.request = request
+            self.orm_class = orm_class
 
-       def __getitem__(self, key):
-           try:
-               key = int(key)
-           except ValueError:
-               raise KeyError(key)
-           obj = model.DBSession.query(self.orm_class).get(key)
-           # If the ORM class has a class method '.get' that performs the
-           # query, you could do this:  ``obj = self.orm_class.get(key)``
-           if obj is None:
-               raise KeyError(key)
-           obj.__name__ = key
-           obj.__parent__ = self
-           return obj
+        def __getitem__(self, key):
+            try:
+                key = int(key)
+            except ValueError:
+                raise KeyError(key)
+            obj = model.DBSession.query(self.orm_class).get(key)
+            # If the ORM class has a class method '.get' that performs the
+            # query, you could do this:  ``obj = self.orm_class.get(key)``
+            if obj is None:
+                raise KeyError(key)
+            obj.__name__ = key
+            obj.__parent__ = self
+            return obj
 
-Here, ``root["persons"]`` is a container object whose .__getattr__ method
+Here, ``root["persons"]`` is a container object whose ``__getitem__`` method
 fetches the specified database record, sets name and parent attribues on it,
-and returns it. (We've verified that SQLAlchemy does not define '.__name__' or
-'.__parent__' attributes in ORM instances.) If the record is not found, raise
+and returns it. (We've verified that SQLAlchemy does not define ``__name__`` or
+``__parent__`` attributes in ORM instances.) If the record is not found, raise
 KeyError to indicate the resource doesn't exist.
 
 TODO: Describe URL generation, access control lists, and other things needed in
@@ -78,7 +80,7 @@ want to fetch the entire record's body, or do something silly like asking
 traversal for the resource at "/persons/123" and then generate the URL -- which
 would be "/persons/123"! There are a few ways to generate URLs in this case:
 
-* Define a generation-only route; e.g., 
+* Define a generation-only route; e.g.,
   ``config.add_route("person", "/persons/{id}", static=True)``
 * Instead of returning an ORM instance, return a proxy that lazily fetches the
   instance when its attributes are accessed. This causes traversal to behave
