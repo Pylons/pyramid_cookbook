@@ -38,7 +38,7 @@ First we need to define a Log model for SQLAlchemy (do this in
        def __repr__(self):
            return "<Log: %s - %s>" % (self.created_at.strftime('%m/%d/%Y-%H:%M:%S'), self.msg[:50])
 
-Fortunatly, not too much exciting is occuring here. We've simply created a
+Not too much exciting is occuring here. We've simply created a
 new table named 'logs'.
 
 Before we get into how we use this table for good, here's a quick review
