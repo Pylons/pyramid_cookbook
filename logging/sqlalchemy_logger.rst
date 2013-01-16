@@ -112,7 +112,7 @@ is an instance, contains all it's nifty log information in it's
 ``__dict__`` attribute.
 
 Now, we need to add this logging handler to our .ini configuration files.
-Before we add this, our production.ini file should contain, something like
+Before we add this, our production.ini file should contain something like:
 
 .. code-block:: python
    :linenos:
