@@ -240,7 +240,7 @@ By default, Pyramid will render:
 
    <p>None</p>
 
-Some folks prefer the the value ``None`` to be rendered as the empty string
+Some folks prefer the value ``None`` to be rendered as the empty string
 in a Mako template.  In other words, they'd rather the output be:
 
 .. code-block:: html

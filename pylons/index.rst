@@ -14,7 +14,7 @@ and on the Akhet_ demo.
 
 If you haven't used Pyramid yet you can read this guide to get an overview of
 the differences and the Pyramid API. However, to actually start using Pyramid
-you'll want to read at least the first five chapters of the the `Pyramid
+you'll want to read at least the first five chapters of the `Pyramid
 manual`_ (through `Creating a Pyramid Project`_) and go through the Tutorials_.
 Then you can come back to this guide to start designing your application, and
 skim through the rest of the manual to see which sections cover which topics.
