@@ -147,7 +147,7 @@ order). So, we could rewrite the above as:
                     name='listDirectory')
 
 You will be able to visit
-e.g. ``http://localhost:8080/hello/foo/bar/@@listDirectory`` to see the
+e.g. `<http://localhost:8080/hello/foo/bar/@@listDirectory>`_ to see the
 listSubDirectory view.
 
 This is simpler and more readable because we are using URL dispatch to take
