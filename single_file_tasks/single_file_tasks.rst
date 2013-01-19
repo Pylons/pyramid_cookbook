@@ -5,8 +5,9 @@ This tutorial is intended to provide you with a feel of how a Pyramid web
 application is created. The tutorial is very short, and focuses on the
 creation of a minimal application using common idioms.  For brevity, the
 tutorial uses a "single-file" application development approach instead of the
-more complex (but more common) "scaffolds" described in the main Pyramid
-documentation.
+more complex (but more common) "scaffolds" approach described in
+`the main Pyramid documentation
+<http://docs.pylonsproject.org/projects/pyramid/en/latest/>`_.
 
 At the end of the tutorial, you'll have a minimal application which:
 
