@@ -92,7 +92,7 @@ possible Pyramid applications:
        server.serve_forever()
 
 If we run this application via ``python app.py``, we'll get a ``Hello world!``
-printed when we visit ``http://localhost:8080/`` in a browser.  Not very
+printed when we visit `<http://localhost:8080/>`_ in a browser.  Not very
 exciting.
 
 What happens when we reorder our configuration statements?  We'll change the
