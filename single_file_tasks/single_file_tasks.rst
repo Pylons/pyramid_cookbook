@@ -108,7 +108,7 @@ content:
    :language: sql
 
 
-Add a few more imports to the very top of the ``tasks.py`` file:
+Add a few more imports to the top of the ``tasks.py`` file:
 
 .. code-block:: python
 
