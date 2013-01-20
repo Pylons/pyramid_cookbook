@@ -104,17 +104,9 @@ a **closed** boolean to indicate if the task is closed or not.
 Add to the ``tasks`` directory a file named ``schema.sql`` with the following
 content:
 
-.. code-block:: sql
+.. literalinclude:: src/schema.sql
+   :language: sql
 
-    CREATE TABLE IF NOT EXISTS tasks (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name CHAR(100) NOT NULL,
-        closed BOOL NOT NULL
-    );
-    
-    INSERT OR IGNORE INTO tasks (id, name, closed) VALUES (1, 'Start learning Pyramid', 0);
-    INSERT OR IGNORE INTO tasks (id, name, closed) VALUES (2, 'Do quick tutorial', 0);
-    INSERT OR IGNORE INTO tasks (id, name, closed) VALUES (3, 'Have some beer!', 0);
 
 Add a few more imports to the very top of the ``tasks.py`` file:
 
