@@ -72,13 +72,12 @@ def close_db_connection(request):
 @subscriber(ApplicationCreated)
 def application_created_subscriber(event):
     log.warn('Initializing database...')
-    f = open(os.path.join(here, 'schema.sql'), 'r')
-    stmt = f.read()
-    settings = event.app.registry.settings
-    db = sqlite3.connect(settings['db'])
-    db.executescript(stmt)
-    db.commit()
-    f.close()
+    with open(os.path.join(here, 'schema.sql')) as f:
+        stmt = f.read()
+        settings = event.app.registry.settings
+        db = sqlite3.connect(settings['db'])
+        db.executescript(stmt)
+        db.commit()
 
 
 if __name__ == '__main__':
