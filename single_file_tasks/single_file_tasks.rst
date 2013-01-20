@@ -125,18 +125,9 @@ start the application, our subscribed function will be executed.
 Consequently, our database will be created or updated as necessary when the
 application is started.
 
-.. code-block:: python
-    
-    @subscriber(ApplicationCreated)
-    def application_created_subscriber(event):
-        log.warn('Initializing database...')
-        f = open(os.path.join(here, 'schema.sql'), 'r')
-        stmt = f.read()
-        settings = event.app.registry.settings
-        db = sqlite3.connect(settings['db'])
-        db.executescript(stmt)
-        db.commit()
-        f.close()
+.. literalinclude:: src/tasks.py
+   :lines: 72-80
+   :language: python
 
 We also need to make our database connection available to the application.
 We'll provide the connection object as an attribute of the application's
@@ -145,17 +136,9 @@ a connection to the database when a Pyramid request begins.  It will be
 available as ``request.db``.  We'll arrange to close it down by the end of
 the request lifecycle using the ``request.add_finished_callback`` method.
 
-.. code-block:: python
-
-    @subscriber(NewRequest)
-    def new_request_subscriber(event):
-        request = event.request
-        settings = request.registry.settings
-        request.db = sqlite3.connect(settings['db'])
-        request.add_finished_callback(close_db_connection)
-
-    def close_db_connection(request):
-        request.db.close()
+.. literalinclude:: src/tasks.py
+   :lines: 61-69
+   :language: python
 
 To make those changes active, we'll have to specify the database location in
 the configuration settings and make sure our ``@subscriber`` decorator is
@@ -203,13 +186,9 @@ convert them into a dictionary for easier accessibility within the template.
 The view function will pass a dictionary defining ``tasks`` to the
 ``list.mako`` template.
 
-.. code-block:: python
-
-    @view_config(route_name='list', renderer='list.mako')
-    def list_view(request):
-        rs = request.db.execute("select id, name from tasks where closed = 0")
-        tasks = [dict(id=row[0], name=row[1]) for row in rs.fetchall()]
-        return {'tasks': tasks}
+.. literalinclude:: src/tasks.py
+   :lines: 23-27
+   :language: python
 
 When using the ``view_config`` decorator, it's important to specify a
 ``route_name`` to match a defined route, and a ``renderer`` if the function is
@@ -226,20 +205,9 @@ message is flashed to be displayed on the next request, and the user's browser
 is redirected back to the *list_view*. If nothing is provided, a warning
 message is flashed and the *new_view* is displayed again.
 
-.. code-block:: python
-
-    @view_config(route_name='new', renderer='new.mako')
-    def new_view(request):
-        if request.method == 'POST':
-            if request.POST.get('name'):
-                request.db.execute('insert into tasks (name, closed) values (?, ?)',
-                                   [request.POST['name'], 0])
-                request.db.commit()
-                request.session.flash('New task was successfully added!')
-                return HTTPFound(location=request.route_url('list'))
-            else:
-                request.session.flash('Please enter a name for the task!')
-        return {}
+.. literalinclude:: src/tasks.py
+   :lines: 30-42
+   :language: python
 
 .. warning::
 
@@ -253,15 +221,9 @@ Close View
 This view lets the user mark a task as closed, flashes a success message, and
 redirects back to the *list_view* page.
 
-.. code-block:: python
-
-    @view_config(route_name='close')
-    def close_view(request):
-        task_id = int(request.matchdict['id'])
-        request.db.execute("update tasks set closed = ? where id = ?", (1, task_id))
-        request.db.commit()
-        request.session.flash('Task was successfully closed!')
-        return HTTPFound(location=request.route_url('list'))
+.. literalinclude:: src/tasks.py
+   :lines: 45-52
+   :language: python
 
 NotFound View
 +++++++++++++
@@ -271,12 +233,9 @@ by using our own template. The ``NotFound`` view is displayed by Pyramid when
 a URL cannot be mapped to a Pyramid view.  We'll add the template in a
 subsequent step.
 
-.. code-block:: python
-
-    @view_config(context='pyramid.exceptions.NotFound',
-                 renderer='notfound.mako')
-    def notfound_view(self):
-        return {}
+.. literalinclude:: src/tasks.py
+   :lines: 55-57
+   :language: python
 
 Adding Routes
 +++++++++++++
