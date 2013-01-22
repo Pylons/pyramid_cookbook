@@ -24,8 +24,6 @@ attached to each new request:
    :linenos:
 
    from pyramid.config import Configurator
-   from pyramid.events import subscriber
-   from pyramid.events import NewRequest
 
    from gridfs import GridFS
    from urlparse import urlparse
@@ -43,20 +41,29 @@ attached to each new request:
                                 port=db_url.port)
       config.registry.settings['db_conn'] = conn
 
-      def add_mongo_db(event):
-          settings = event.request.registry.settings
+      def add_db(request):
+          settings = request.registry.settings
           db = settings['db_conn'][db_url.path[1:]]
           if db_url.username and db_url.password:
               db.authenticate(db_url.username, db_url.password)
-          event.request.db = db
-          event.request.fs = GridFS(db)
+          return db
 
-      config.add_subscriber(add_mongo_db, NewRequest)
+      def add_fs(request):
+          return GridFS(request.db)
+
+      config.add_request_method(add_db, 'db', reify=True)
+      config.add_request_method(add_fs, 'fs', reify=True)
 
       config.add_route('dashboard', '/')
       # other routes and more config...
       config.scan()
       return config.make_wsgi_app()
+
+
+.. note::
+
+   ``Configurator.add_request_method`` has been available since Pyramid 1.4.
+   You can use ``Configurator.set_request_property`` for Pyramid 1.3.
 
 At this point, in view code, you can use request.db as the PyMongo database
 connection.  For example:
