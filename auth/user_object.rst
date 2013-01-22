@@ -15,7 +15,7 @@ request, but the ``NewRequest`` susbcriber is called on every request, even
 ones for static resources, and this bothers you (which it should).
 
 A lazy property can be registered to the request via the
-``Configurator.set_request_property`` API. This allows you to specify a
+``Configurator.add_request_method`` API. This allows you to specify a
 callable that will be available on the request object, but will not actually
 execute the function until accessed. The result of this function can also
 be cached per-request, to eliminate the overhead of running the function
