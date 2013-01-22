@@ -75,8 +75,8 @@ authentication policies.  For example:
 
    authn_policy = AuthTktAuthenticationPolicy('seekrITT', callback=groupfinder)
 
-Prior Pyramid 1.4
-=================
+Prior to Pyramid 1.4
+====================
 
 If you are using version 1.3, you can use the same method as above, except
 use this instead of ``add_request_method``
