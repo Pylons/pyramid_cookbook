@@ -4,7 +4,7 @@ CouchDB and Pyramid
 If you want to use CouchDB (via the
 `couchdbkit package <http://pypi.python.org/pypi/couchdbkit>`_)
 in Pyramid, you can use the following pattern to make your CouchDB database
-available as a request attribute. This example uses the starter scaffold.
+available as a ``request`` attribute. This example uses the starter scaffold.
 (This follows the same pattern as the :doc:`mongodb` example.)
 
 First add configuration values to your ``development.ini`` file, including your
@@ -25,32 +25,36 @@ attached to each new request:
    :linenos:
 
     from pyramid.config import Configurator
-    from pyramid.events import subscriber, NewRequest
-
     from couchdbkit import *
 
-    @subscriber(NewRequest)
-    def add_couchdb_to_request(event):
-        request = event.request
+    def add_couchdb(request):
         settings = request.registry.settings
         db = settings['couchdb.server'].get_or_create_db(settings['couchdb.db'])
-        event.request.db = db
+        return db
 
 
     def main(global_config, \**settings):
         """ This function returns a Pyramid WSGI application.
         """
         config = Configurator(settings=settings)
-        """ Register server instance globally
-        """
+
+        # Register server instance globally
         config.registry.settings['couchdb.server'] = Server(uri=settings['couchdb.uri'])
+
+        # Add server shortcut: request.db
+        config.add_request_method(add_couchdb, 'db', reify=True)
+
         config.add_static_view('static', 'static', cache_max_age=3600)
         config.add_route('home', '/')
         config.scan()
         return config.make_wsgi_app()
 
+.. note::
 
-At this point, in view code, you can use request.db as the CouchDB database
+   ``Configurator.add_request_method`` has been available since Pyramid 1.4.
+   You can use ``Configurator.set_request_property`` for Pyramid 1.3.
+
+At this point, in view code, you can use ``request.db`` as the CouchDB database
 connection.  For example:
 
 .. code-block:: python
