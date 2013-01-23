@@ -1,7 +1,16 @@
 SQLAlchemy
 ==========
 
-This chapter contains information about using Pyramid with SQLAlchemy.
+Basic Usage
+-----------
+
+You can get basic application template to use with SQLAlchemy by using
+`alchemy` scaffold. Check the :ref:`narrative docs <creating_a_project>`
+for more information.
+
+Alternatively, you can try to follow
+:ref:`wiki tutorial <bfg_sql_wiki_tutorial>` or
+`blogr tutorial <http://pyramid-blogr.readthedocs.org>`_.
 
 Using a Non-Global Session
 --------------------------
@@ -13,52 +22,51 @@ application's ``settings`` object, and have the session factory called as a
 side effect of asking the request object for an attribute.  The session
 object will then have a lifetime matching that of the request.
 
+
+We are going to use ``Configurator.add_request_method`` to add SQLAlchemy
+session to request object and ``Request.add_finished_callback`` to close
+said session.
+
+.. note::
+
+   ``Configurator.add_request_method`` has been available since Pyramid 1.4.
+   You can use ``Configurator.set_request_property`` for Pyramid 1.3.
+
+
 We'll assume you have an ``.ini`` file with ``sqlalchemy.`` settings that
 specify your database properly.
-
-Create a file in your application's package directory named ``request.py``, and
-add a subclass of :class:`pyramid.request.Request` to it.
-
-.. code-block:: python
-   :linenos:
-
-   # request.py
-   from pyramid.request import Request
-   from pyramid.decorator import reify
-
-   class MyRequest(Request):
-       @reify
-       def db(self):
-           maker = self.registry.settings['db.sessionmaker']
-           return maker()
-
-The ``reify`` decorator used above works a bit like Python's ``property``
-decorator, but it is only called once per request: effectively the first time
-it's called, the result of ``maker()`` replaces the decorator as
-``request.db``.
-
-You can then use MyRequest as a request factory within your
-``__init__.py`` ``main`` function:
 
 .. code-block:: python
    :linenos:
 
     # __init__.py
 
+   from pyramid.config import Configurator
    from sqlalchemy import engine_from_config
    from sqlalchemy.orm import sessionmaker
 
-   from myapp.request import MyRequest
+   def db(request):
+       maker = request.registry.settings['db.sessionmaker']
+       session = maker()
+
+       def cleanup(request):
+           session.close()
+       request.add_finished_callback(cleanup)
+
+       return session
+
 
    def main(global_config, **settings):
-       config = Configurator(settings=settings, request_factory=MyRequest)
        engine = engine_from_config(settings, prefix='sqlalchemy.')
        maker = sessionmaker(bind=engine)
        settings['db.sessionmaker'] = maker
+       config = Configurator(settings=settings)
+       config.add_request_method(db, reify=True)
+
        # .. rest of configuration ...
 
 The db connection is now available in view code as ``request.db`` or
-``config.registry.settings['db.sessionmaker']()``
+``config.registry.settings['db.sessionmaker']()``.
 
 Importing all SQLAlchemy Models
 -------------------------------
