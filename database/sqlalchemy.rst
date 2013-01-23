@@ -29,6 +29,12 @@ add a subclass of :class:`pyramid.request.Request` to it.
    class MyRequest(Request):
        @reify
        def db(self):
+
+           # close the session when the request is finished
+           def cleanup(self):
+               self.db.close()
+           self.add_finished_callback(cleanup)
+
            maker = self.registry.settings['db.sessionmaker']
            return maker()
 
@@ -51,10 +57,10 @@ You can then use MyRequest as a request factory within your
    from myapp.request import MyRequest
 
    def main(global_config, **settings):
-       config = Configurator(settings=settings, request_factory=MyRequest)
        engine = engine_from_config(settings, prefix='sqlalchemy.')
        maker = sessionmaker(bind=engine)
        settings['db.sessionmaker'] = maker
+       config = Configurator(settings=settings, request_factory=MyRequest)
        # .. rest of configuration ...
 
 The db connection is now available in view code as ``request.db`` or
