@@ -15,7 +15,7 @@ request, but the ``NewRequest`` susbcriber is called on every request, even
 ones for static resources, and this bothers you (which it should).
 
 A lazy property can be registered to the request via the
-``Configurator.set_request_property`` API. This allows you to specify a
+``Configurator.add_request_method`` API. This allows you to specify a
 callable that will be available on the request object, but will not actually
 execute the function until accessed. The result of this function can also
 be cached per-request, to eliminate the overhead of running the function
@@ -43,7 +43,12 @@ Here's how you should add your new request property in configuration code:
 .. code-block:: python
    :linenos:
 
-   config.set_request_property(get_user, 'user', reify=True)
+   config.add_request_method(get_user, 'user', reify=True)
+
+.. note::
+
+   ``Configurator.add_request_method`` has been available since Pyramid 1.4.
+   Check below for older releases.   
 
 Then in your view code, you should be able to happily do ``request.user`` to
 obtain the "user object" related to that request.  It will return ``None`` if
@@ -70,12 +75,26 @@ authentication policies.  For example:
 
    authn_policy = AuthTktAuthenticationPolicy('seekrITT', callback=groupfinder)
 
-Prior to Pyramid 1.3
+Prior to Pyramid 1.4
 ====================
 
-``Configurator.set_request_property`` was introduced in Pyramid 1.3. Prior
-to this, a similar pattern could be used but it required registering a
-new request factory via ``Configurator.set_request_factory``. This works
+If you are using version 1.3, you can use the same method as above, except
+use this instead of ``add_request_method``
+
+.. code-block:: python
+   :linenos:
+
+   config.set_request_property(get_user, 'user', reify=True)
+
+.. note::
+
+   ``Configurator.set_request_property`` was introduced in Pyramid 1.3 and
+   is docs-deprecated as of Pyramid 1.4.
+
+Prior to ``set_request_property`` and ``add_request_method``,
+a similar pattern could be used but it required :ref:`registering
+a new request factory <changing_the_request_factory>`
+via ``Configurator.set_request_factory``. This works
 in the same way, but each application can only have one request factory
 and so it is not very extensible for arbitrary properties.
 
