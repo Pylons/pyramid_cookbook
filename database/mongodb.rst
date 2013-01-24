@@ -37,13 +37,13 @@ attached to each new request:
       config.add_static_view('static', 'static', cache_max_age=3600)
 
       db_url = urlparse(settings['mongo_uri'])
-      conn = pymongo.Connection(host=db_url.hostname,
-                                port=db_url.port)
-      config.registry.settings['db_conn'] = conn
+      config.registry.db = pymongo.Connection(
+          host=db_url.hostname,
+          port=db_url.port,
+      )
 
       def add_db(request):
-          settings = request.registry.settings
-          db = settings['db_conn'][db_url.path[1:]]
+          db = config.registry.db[db_url.path[1:]]
           if db_url.username and db_url.password:
               db.authenticate(db_url.username, db_url.password)
           return db
@@ -65,7 +65,7 @@ attached to each new request:
    ``Configurator.add_request_method`` has been available since Pyramid 1.4.
    You can use ``Configurator.set_request_property`` for Pyramid 1.3.
 
-At this point, in view code, you can use request.db as the PyMongo database
+At this point, in view code, you can use ``request.db`` as the PyMongo database
 connection.  For example:
 
 .. code-block:: python
