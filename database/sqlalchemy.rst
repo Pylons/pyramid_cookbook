@@ -18,7 +18,7 @@ Using a Non-Global Session
 It's sometimes advantageous to not use SQLAlchemy's thread-scoped sessions
 (such as when you need to use Pyramid in an asynchronous system).
 Thankfully, doing so is easy.  You can store a session factory in the
-application's ``settings`` object, and have the session factory called as a
+application's registry, and have the session factory called as a
 side effect of asking the request object for an attribute.  The session
 object will then have a lifetime matching that of the request.
 
@@ -46,7 +46,7 @@ specify your database properly.
    from sqlalchemy.orm import sessionmaker
 
    def db(request):
-       maker = request.registry.settings['db.sessionmaker']
+       maker = request.registry.dbmaker
        session = maker()
 
        def cleanup(request):
@@ -57,16 +57,15 @@ specify your database properly.
 
 
    def main(global_config, **settings):
-       engine = engine_from_config(settings, prefix='sqlalchemy.')
-       maker = sessionmaker(bind=engine)
-       settings['db.sessionmaker'] = maker
        config = Configurator(settings=settings)
+       engine = engine_from_config(settings, prefix='sqlalchemy.')
+       config.registry.dbmaker = sessionmaker(bind=engine)
        config.add_request_method(db, reify=True)
 
        # .. rest of configuration ...
 
-The db connection is now available in view code as ``request.db`` or
-``config.registry.settings['db.sessionmaker']()``.
+The SQLAlchemy session is now available in view code as ``request.db`` or
+``config.registry.dbmaker()``.
 
 Importing all SQLAlchemy Models
 -------------------------------
