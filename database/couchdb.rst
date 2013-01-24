@@ -27,21 +27,17 @@ attached to each new request:
     from pyramid.config import Configurator
     from couchdbkit import *
 
-    def add_couchdb(request):
-        settings = request.registry.settings
-        db = settings['couchdb.server'].get_or_create_db(settings['couchdb.db'])
-        return db
-
 
     def main(global_config, \**settings):
         """ This function returns a Pyramid WSGI application.
         """
         config = Configurator(settings=settings)
+        config.registry.db = Server(uri=settings['couchdb.uri'])
 
-        # Register server instance globally
-        config.registry.settings['couchdb.server'] = Server(uri=settings['couchdb.uri'])
+        def add_couchdb(request):
+            db = config.registry.db.get_or_create_db(settings['couchdb.db'])
+            return db
 
-        # Add server shortcut: request.db
         config.add_request_method(add_couchdb, 'db', reify=True)
 
         config.add_static_view('static', 'static', cache_max_age=3600)
@@ -95,7 +91,7 @@ In __init__.py:
     @subscriber(ApplicationCreated)
     def application_created_subscriber(event):
         settings = event.app.registry.settings
-        db = settings['couchdb.server'].get_or_create_db(settings['couchdb.db'])
+        db = event.app.registry.db.get_or_create_db(settings['couchdb.db'])
 
         try:
             """Test to see if our view exists.
