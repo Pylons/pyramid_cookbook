@@ -32,7 +32,7 @@ extensions = [
     'sphinx.ext.intersphinx'
     ]
 
-intersphinx_mapping = {'http://docs.pylonsproject.org/projects/pyramid/dev': None}
+intersphinx_mapping = {'http://docs.pylonsproject.org/projects/pyramid/en/latest': None}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
