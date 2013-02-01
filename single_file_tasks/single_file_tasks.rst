@@ -49,21 +49,17 @@ Step 2 - Application Setup
 
 To begin our application, start by adding a Python source file named
 ``tasks.py`` to the ``tasks`` directory.  We'll add a few basic imports
-within the newly created file:
-
-.. code-block:: python
+within the newly created file::
 
     import os
     import logging
-    
+
     from pyramid.config import Configurator
     from pyramid.session import UnencryptedCookieSessionFactoryConfig
-       
+
     from wsgiref.simple_server import make_server
 
-Then we'll set up logging and the current working directory path:
-
-.. code-block:: python
+Then we'll set up logging and the current working directory path::
     
     logging.basicConfig()
     log = logging.getLogger(__file__)
@@ -73,10 +69,8 @@ Then we'll set up logging and the current working directory path:
 Finally, in a block that runs only when the file is directly executed
 (i.e. not imported), we'll configure the Pyramid application,
 establish rudimentary sessions, obtain the WSGI app,
-and serve it.
+and serve it::
 
-.. code-block:: python
-    
     if __name__ == '__main__':
         # configuration settings
         settings = {}
@@ -109,9 +103,7 @@ content:
    :language: sql
 
 
-Add a few more imports to the top of the ``tasks.py`` file:
-
-.. code-block:: python
+Add a few more imports to the top of the ``tasks.py`` file::
 
     from pyramid.events import NewRequest
     from pyramid.events import subscriber
@@ -128,7 +120,6 @@ application is started.
 
 .. literalinclude:: src/tasks.py
    :lines: 72-80
-   :language: python
 
 We also need to make our database connection available to the application.
 We'll provide the connection object as an attribute of the application's
@@ -139,13 +130,10 @@ the request lifecycle using the ``request.add_finished_callback`` method.
 
 .. literalinclude:: src/tasks.py
    :lines: 61-69
-   :language: python
 
 To make those changes active, we'll have to specify the database location in
 the configuration settings and make sure our ``@subscriber`` decorator is
-scanned by the application at runtime using config.scan().
-
-.. code-block:: python
+scanned by the application at runtime using config.scan()::
 
     if __name__ == '__main__':
         ...
@@ -163,9 +151,7 @@ Step 4 - View Functions And Routes
 It's now time to expose some functionality to the world in the form of view
 functions. We'll start by adding a few imports to our ``tasks.py`` file.  In
 particular, we're going to import the ``view_config`` decorator, which will
-let the application discover and register views.
-
-.. code-block:: python
+let the application discover and register views::
 
     ...
     from pyramid.exceptions import NotFound
@@ -189,7 +175,6 @@ The view function will pass a dictionary defining ``tasks`` to the
 
 .. literalinclude:: src/tasks.py
    :lines: 23-27
-   :language: python
 
 When using the ``view_config`` decorator, it's important to specify a
 ``route_name`` to match a defined route, and a ``renderer`` if the function is
@@ -208,7 +193,6 @@ message is flashed and the *new_view* is displayed again.
 
 .. literalinclude:: src/tasks.py
    :lines: 30-42
-   :language: python
 
 .. warning::
 
@@ -224,7 +208,6 @@ redirects back to the *list_view* page.
 
 .. literalinclude:: src/tasks.py
    :lines: 45-52
-   :language: python
 
 NotFound View
 +++++++++++++
@@ -236,15 +219,12 @@ subsequent step.
 
 .. literalinclude:: src/tasks.py
    :lines: 55-57
-   :language: python
 
 Adding Routes
 +++++++++++++
 
 We finally need to add some routing elements to our application configuration
-if we want our view functions to be matched to application URLs.
-
-.. code-block:: python
+if we want our view functions to be matched to application URLs::
 
     ...
     # routes setup
@@ -321,9 +301,7 @@ Configuring Template Locations
 
 To make it possible for views to find the templates they need by renderer
 name, we now need to specify where the Mako templates can be found by
-modifying the application configuration settings in ``tasks.py``.
-
-.. code-block:: python
+modifying the application configuration settings in ``tasks.py``::
 
     ...
     settings['mako.directories'] = os.path.join(here, 'templates')
@@ -340,9 +318,7 @@ following content:
    :language: css
 
 To cause this static file to be served by the application, we must add a
-"static view" directive to the application configuration:
-
-.. code-block:: python
+"static view" directive to the application configuration::
 
     ...
     config.add_static_view('static', os.path.join(here, 'static'))
@@ -356,7 +332,6 @@ version. Before running it, here's the complete main code for ``tasks.py`` for
 review:
 
 .. literalinclude:: src/tasks.py
-   :language: python
 
 And now let's run ``tasks.py``:
 
