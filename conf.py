@@ -11,7 +11,10 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys, os
+import sys
+import os
+import datetime
+
 from docutils import nodes
 from docutils import utils
 
@@ -48,7 +51,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Pyramid Tutorials'
-copyright = u'2011, Pylons Project Contributors'
+thisyear = datetime.datetime.now().year
+copyright = u'2011-{0}, Pylons Project Contributors'.format(thisyear)
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
