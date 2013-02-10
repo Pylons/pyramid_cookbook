@@ -7,7 +7,7 @@ say that there are a lot of things to consider when optimizing your pyramid
 application.
 
 At a high level, you need to expose a server on ports 80 (HTTP) and 443
-(HTTPS) to handle your various traffic. Underneath this layer, however, is
+(HTTPS). Underneath this layer, however, is
 a plethora of different configurations that can be used to get a request
 from a client, into your application, and return the response.
 
