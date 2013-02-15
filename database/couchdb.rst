@@ -77,18 +77,15 @@ For more information on views in CouchDB see
 `Introduction to CouchDB views <http://wiki.apache.org/couchdb/Introduction_to_CouchDB_views>`_.
 In __init__.py::
 
-    from pyramid.events import ApplicationCreated
+    from pyramid.events import subscriber, ApplicationCreated
 
     @subscriber(ApplicationCreated)
     def application_created_subscriber(event):
-        settings = event.app.registry.settings
-        db = event.app.registry.db.get_or_create_db(settings['couchdb.db'])
+        registry = event.app.registry
+        db = registry.db.get_or_create_db(registry.settings['couchdb.db'])
 
-        try:
-            """Test to see if our view exists.
-            """
-            db.view('lists/pages')
-        except ResourceNotFound:
+        pages_view_exists = db.doc_exist('lists/pages')
+        if pages_view_exists == False:
             design_doc = {
                 '_id': '_design/lists',
                 'language': 'javascript',
