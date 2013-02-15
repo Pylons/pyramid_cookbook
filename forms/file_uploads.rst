@@ -24,10 +24,7 @@ The second part is handling the file upload in your view callable (above,
 assumed to answer on ``/store_mp3_view``).  The uploaded file is added to the
 request object as a ``cgi.FieldStorage`` object accessible through the
 ``request.POST`` multidict.  The two properties we're interested in are the
-``file`` and ``filename`` and we'll use those to write the file to disk.
-
-.. code-block:: python
-   :linenos:
+``file`` and ``filename`` and we'll use those to write the file to disk::
 
     import os
     import uuid

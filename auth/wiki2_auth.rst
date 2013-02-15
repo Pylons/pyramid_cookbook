@@ -190,9 +190,7 @@ Cycle 2:
    ``login_url`` is ``http://localhost:6543/login``, and the
    value of ``referrer`` is ``'/'``, and ``came_from`` is
    ``http://localhost:6543/FrontPage/edit_page`` when this block
-   is executed:
-
-   .. code-block:: python
+   is executed::
 
         if USERS.get(login) == password:
             headers = remember(request, login)

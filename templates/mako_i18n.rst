@@ -7,10 +7,7 @@ Mako Internationalization
    by Alexandre Bourget
    <http://blog.abourget.net/2011/1/13/pyramid-and-mako:-how-to-do-i18n-the-pylons-way/>`_.
 
-First, add subscribers within your Pyramid project's ``__init__.py``:
-
-.. code-block:: python
-   :linenos:
+First, add subscribers within your Pyramid project's ``__init__.py``::
 
    def main(...):
        ...
@@ -19,10 +16,7 @@ First, add subscribers within your Pyramid project's ``__init__.py``:
        config.add_subscriber('YOURPROJECT.subscribers.add_localizer',
                              'pyramid.events.NewRequest')
 
-Then add, a ``subscribers.py`` module to your project's package directory:
-
-.. code-block:: python
-   :linenos:
+Then add, a ``subscribers.py`` module to your project's package directory::
 
    # subscribers.py
 
@@ -52,10 +46,7 @@ as a top-level template name. ``localizer`` will also be available for plural
 forms and fancy stuff.
 
 This will also allow you to use translation in your view code, using
-something like:
-
-.. code-block:: python
-   :linenos:
+something like::
 
    def my_view(request):
        _ = request.translate
@@ -90,10 +81,7 @@ Repeat the ``init_catalog`` step for each of the langauges you need.
    setup.cfg of a Pyramid project.
 
 At this point you'll also need to add your local directory to your 
-project's configuration:
-
-.. code-block:: python
-   :linenos:
+project's configuration::
 
     def main(...):
        ...
@@ -101,10 +89,7 @@ project's configuration:
 
 Lastly, you'll want to have your Mako files extracted when you run
 extract_messages, so add these to your setup.py (yes, you read me right, in
-setup.py so that Babel can use it when invoking it's commands):
-
-.. code-block:: python
-   :linenos:
+setup.py so that Babel can use it when invoking it's commands)::
 
    setup(
        ...

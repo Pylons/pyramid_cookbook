@@ -5,10 +5,7 @@ Here is an example of a custom AuthenticationPolicy, based off of
 the native ``AuthTktAuthenticationPolicy``, but with added groups support.
 This example implies you have a ``user`` attribute on your request
 (see :ref:`user object`) and that the ``user`` should have a
-``groups`` relation on it:
-
-.. code-block:: python
-   :linenos:
+``groups`` relation on it::
 
    from pyramid.authentication import AuthTktCookieHelper
    from pyramid.security import Everyone, Authenticated

@@ -88,9 +88,7 @@ Huh?
 
 - Let's drop a pdb statement into our root factory object's ``__getitem__``
   method and have a look.  Edit the project's ``models.py`` and add the
-  aforementioned ``pdb`` line in ``MyModel.__getitem__``
-
-  .. code-block:: python
+  aforementioned ``pdb`` line in ``MyModel.__getitem__``::
 
     def __getitem__(self, key):
         import pdb; pdb.set_trace()
@@ -106,17 +104,13 @@ Huh?
 
 - For a very simple case, attempt to insert a missing key by default.  Set
   item to a valid new MyModel in ``MyRoot.__getitem__`` if a match isn't
-  found in the database
-
-  .. code-block:: python
+  found in the database::
 
         item = session.query(MyModel).get(id)
         if item is None:
             item = MyModel(name='test %d'%id, value=str(id))  # naive insertion
 
-- Move the break-point within the if clause to avoid the false positive hits
-
-  .. code-block:: python
+- Move the break-point within the if clause to avoid the false positive hits::
 
         if item is None:
             import pdb; pdb.set_trace()
@@ -126,9 +120,7 @@ Huh?
   new MyModel instances.  That's not right!
 
 - Ah, of course, we forgot to add the new item to the session.  Another line
-  added to our ``__getitem__`` method
-
-  .. code-block:: python
+  added to our ``__getitem__`` method::
 
         if item is None:
             import pdb; pdb.set_trace()
@@ -140,9 +132,7 @@ Huh?
 
     (pdb) session.query(MyModel).get(id)
 
-- Finally, we realize the item.id needs to be set as well before adding
-
-  .. code-block:: python
+- Finally, we realize the item.id needs to be set as well before adding::
 
         if item is None:
             item = MyModel(name='test %d'%id, value=str(id))
@@ -158,9 +148,7 @@ Huh?
   ``PDB`` session (it can be caused by ``CTRL-C`` or when the server restarts 
   automatically). This can be fixed by launching any of this commands in broken 
   terminal: ``reset``, ``stty sane``. Also one can add one of this commands into
-  ``~/.pdbrc`` file, so they will be launched before ``PDB`` session:
-
-  .. code-block:: python
+  ``~/.pdbrc`` file, so they will be launched before ``PDB`` session::
 
           from subprocess import Popen
           Popen(["stty", "sane"])

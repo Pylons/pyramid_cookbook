@@ -6,9 +6,7 @@ Pyramid supports a concept of a "view mapper".  See
 can use a view mapper to support an alternate convenience calling convention
 in which you allow view callables to name extra required and optional
 arguments which are taken from the request.params dictionary.  So, for
-example, instead of:
-
-.. code-block:: python
+example, instead of::
 
    @view_config()
    def aview(request):
@@ -16,19 +14,14 @@ example, instead of:
        value = request.params.get('value', 'default')
        ...
 
-With a special view mapper you can define this as:
-
-.. code-block:: python
+With a special view mapper you can define this as::
 
    @view_config(mapper=MapplyViewMapper)
    def aview(request, name, value='default'):
        ...
 
 The below code implements the ``MapplyViewMapper``.  It works as a mapper for
-function view callables and method view callables.
-
-.. code-block:: python
-   :linenos:
+function view callables and method view callables::
 
     import inspect
     import sys

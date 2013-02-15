@@ -12,10 +12,7 @@ Dynamically Compute the Interfaces Provided by an Object
 When persisting the interfaces that are provided by an object in a pickle or
 in ZODB is not reasonable for your application, you can use this trick to
 dynamically return the set of interfaces provided by an object based on other
-data in an instance of the object.
-
-.. code-block:: python
-   :linenos:
+data in an instance of the object::
 
     from zope.interface.declarations import Provides
 
