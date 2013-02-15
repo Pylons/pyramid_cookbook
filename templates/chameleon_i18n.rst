@@ -21,10 +21,7 @@ We start off with a virtualenv and a fresh Pyramid project created via paster:
 Dependencies
 ------------
 
-First, add dependencies to your Pyramid project's ``setup.py``:
-
-.. code-block:: python
-   :linenos:
+First, add dependencies to your Pyramid project's ``setup.py``::
 
    requires = [
        ...
@@ -126,10 +123,7 @@ Add locale directory to projects config
 ---------------------------------------
 
 At this point you'll also need to add your local directory to your
-project's configuration:
-
-.. code-block:: python
-   :linenos:
+project's configuration::
 
     def main(...):
        ...

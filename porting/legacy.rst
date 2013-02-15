@@ -7,9 +7,7 @@ practical to start using some parts of Pyramid within an existing Pylons
 project.
 
 One idea is to use a Pyramid "NotFound view" which delegates to the existing
-Pylons application, and port piecemeal.
-
-.. code-block:: python
+Pylons application, and port piecemeal::
 
     # ... obtain pylons WSGI application object ...
     from mypylonsproject import thepylonsapp

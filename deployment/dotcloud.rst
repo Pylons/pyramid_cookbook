@@ -52,9 +52,7 @@ root directory of your app. Here are some samples for a basic Pyramid app:
 
 Learn more about the `DotCloud buildfile <http://docs.dotcloud.com/guides/build-file/>`_.
 
-``wsgi.py``
-
-.. code-block:: python
+``wsgi.py``::
 
     # Your WSGI callable should be named “application”, be located in a
     # "wsgi.py" file, itself located at the top directory of the service.
@@ -78,9 +76,7 @@ If you specified a database service in your dotcloud.yml, the connection info
 will be made available to your service in a JSON file at
 /home/dotcloud/environment.json. For example, the following code would read
 the environment.json file and add the PostgreSQL URL to the settings of
-your pyramid app:
-
-.. code-block:: python
+your pyramid app::
 
     import json
 

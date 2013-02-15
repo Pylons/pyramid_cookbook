@@ -8,10 +8,7 @@ it rendered.  You can emulate the same behavior in Pyramid by using a
 
 First, create a module named ``helpers.py`` in your Pyramid package at the
 top level (next to ``__init__.py``).  We'll import the Python standard
-library ``string`` module to use later in a template.
-
-.. code-block:: python
-   :linenos:
+library ``string`` module to use later in a template::
 
    # helpers.py
 
@@ -20,10 +17,7 @@ library ``string`` module to use later in a template.
 In the top of the main ``__init__`` module of your Pyramid application
 package, import the new ``helpers`` module you created, as well as the
 ``BeforeRender`` event type.  Underneath the imports create a function that
-will act as an event subscriber.
-
-.. code-block:: python
-   :linenos:
+will act as an event subscriber::
 
    # __init__.py
 
@@ -34,10 +28,7 @@ will act as an event subscriber.
       event['h'] = helpers
 
 Within the ``main`` function in the same ``__init__``, wire the subscriber up
-so that it is called when the ``BeforeRender`` event is emitted:
-
-.. code-block:: python
-   :linenos:
+so that it is called when the ``BeforeRender`` event is emitted::
 
    def main(global_settings, **settings):
        config = Configurator(....) # existing code
@@ -48,10 +39,7 @@ so that it is called when the ``BeforeRender`` event is emitted:
 At this point, with in any view that uses any templating system as a Pyramid
 renderer, you will have an omnipresent ``h`` top-level name that is a
 reference to the ``helpers`` module you created.  For example, if you have a
-view like this:
-
-.. code-block:: python
-   :linenos:
+view like this::
 
    @view_config(renderer='foo.pt')
    def aview(request):
@@ -80,18 +68,12 @@ you can define one ``base`` tamplate, and inherit from it in other templates.
 .. note:: Pyramid example application - `shootout
    <https://github.com/Pylons/shootout>`_ using this approach.
 
-First, add subscriber within your Pyramid project's __init__.py:
-
-.. code-block:: python
-   :linenos:
+First, add subscriber within your Pyramid project's __init__.py::
 
    config.add_subscriber('YOURPROJECT.subscribers.add_base_template',
                          'pyramid.events.BeforeRender')
 
-Then add the ``subscribers.py`` module to your project's directory:
-
-.. code-block:: python
-   :linenos:
+Then add the ``subscribers.py`` module to your project's directory::
 
    from pyramid.renderers import get_renderer
 
@@ -145,10 +127,7 @@ Using Building Blocks with Chameleon
 
 If you understood the ``base`` template chapter, using building blocks
 is very simple and straight forward. In the ``subscribers.py`` module
-extend the ``add_base_template`` function like this:
-
-.. code-block:: python
-   :linenos:
+extend the ``add_base_template`` function like this::
 
    from pyramid.events import subscriber
    from pyramid.events import BeforeRender
@@ -162,11 +141,7 @@ extend the ``add_base_template`` function like this:
                      'blocks': blocks,
                      })
 
-Make Pyramid scan the module so that it finds the ``BeforeRender``
-event:
-
-.. code-block:: python
-   :linenos:
+Make Pyramid scan the module so that it finds the ``BeforeRender`` event::
 
    def main(global_settings, **settings):
        config = Configurator(....) # existing code

@@ -6,9 +6,7 @@ Using Traversal in Pyramid Views
 A trivial example of how to use :term:`traversal` in your view code.
 
 You may remember that a Pyramid :term:`view` is called with a
-:term:`context` argument:
-
-.. code-block:: python
+:term:`context` argument::
 
     def my_view(context, request):
         return render_view_to_response(context, request)
@@ -19,8 +17,7 @@ that was found by traversal.  Configuring which resources a view
 responds to can be done easily via either the ``@view.config``
 decorator...
 
-.. code-block:: python
-
+::
 
     from models import MyResource
 
@@ -28,9 +25,7 @@ decorator...
     def my_view(context, request):
         return render_view_to_response(context, request)
 
-or via ``config.add_view``:
-
-.. code-block:: python
+or via ``config.add_view``::
 
     from models import MyResource
     config = Configurator()

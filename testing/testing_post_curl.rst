@@ -1,9 +1,7 @@
 Testing a POST Request Using cURL
 ---------------------------------
 
-Using the following Pyramid application:
-
-.. code-block:: python
+Using the following Pyramid application::
 
     from pyramid.view import view_config
 
@@ -44,9 +42,7 @@ relationship between the POST body values (provided as the argument to the
 is an amalgamation of ``request.GET`` and ``request.POST`` values.
 
 For bonus points, here's a simple Python program that will do the same as the
-``curl`` command above does:
-
-.. code-block:: python
+``curl`` command above does::
 
     import httplib, urllib
     params = urllib.urlencode({'param1': 'value1', 'param2': 'value2'})

@@ -37,10 +37,7 @@ Installing Dependencies
 
    For example, the relevant portion of your application's
    ``setup.py`` file might look like so when you're finished adding
-   the dependencies.
-
-   .. code-block:: python
-      :linenos:
+   the dependencies::
 
       setup(
           # ... other elements left out for brevity
@@ -143,9 +140,7 @@ Configuration
 #.  For the purposes of this tutorial we'll assume that you want your
     :app:`Pyramid` application's :term:`root` object to be a
     "folderish" object.  To achieve this, change your application's
-    ``models.py`` file to look like the below:
-
-    .. code-block:: python
+    ``models.py`` file to look like the below::
 
        from repoze.folder import Folder
 
@@ -159,9 +154,7 @@ Configuration
            return root['myapp']
 
 #.  Change your application's ``__init__.py`` to look something like the
-    below:
-
-    .. code-block:: python
+    below::
 
        from pyramid.config import Configurator
        from repoze.zodbconn.finder import PersistentApplicationFinder

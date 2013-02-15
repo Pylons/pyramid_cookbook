@@ -18,10 +18,7 @@ First add the MongoDB URI to your ``development.ini`` file. (Note: ``user``, ``p
     mongo_uri = mongodb://user:password@host:port/database
 
 Then in your ``__init__.py``, set things up such that the database is
-attached to each new request:
-
-.. code-block:: python
-   :linenos:
+attached to each new request::
 
    from pyramid.config import Configurator
 
@@ -66,10 +63,7 @@ attached to each new request:
    You can use ``Configurator.set_request_property`` for Pyramid 1.3.
 
 At this point, in view code, you can use ``request.db`` as the PyMongo database
-connection.  For example:
-
-.. code-block:: python
-   :linenos:
+connection.  For example::
 
     @view_config(route_name='dashboard',
                  renderer="myapp:templates/dashboard.pt")

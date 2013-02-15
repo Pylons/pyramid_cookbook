@@ -257,3 +257,8 @@ def app_role(role, rawtext, text, lineno, inliner, options={}, content=[]):
 def setup(app):
     app.add_role('app', app_role)
 
+# Avoid the need to specify linenos
+rst_prolog = '''
+.. highlight:: python
+   :linenothreshold: 5
+'''
