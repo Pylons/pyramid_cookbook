@@ -1,10 +1,7 @@
 Basic Authentication Policy
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Here's an implementation of an HTTP basic auth Pyramid authentication policy:
-
-.. code-block:: python
-   :linenos:
+Here's an implementation of an HTTP basic auth Pyramid authentication policy::
 
    import binascii
 
@@ -93,10 +90,7 @@ Here's an implementation of an HTTP basic auth Pyramid authentication policy:
            head = WWW_AUTHENTICATE.tuples('Basic realm="%s"' % self.realm)
            return head
 
-Use it something like:
-
-.. code-block:: python
-   :linenos:
+Use it something like::
 
    def mycheck(credentials, request):
        pwd_ok = my_password_check(credentials['login'], credentials['password'])

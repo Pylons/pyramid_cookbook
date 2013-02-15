@@ -12,9 +12,7 @@ developer adds configuration by calling configuration *directives*.  For
 example, ``config.add_route()`` is a configuration directive.  A particular
 *use* of ``config.add_route()`` is a configuration *statement*.  In the below
 code block, the execution of the ``add_route()`` directive is a configuration
-statement.  Configuration statements change pending configuration state:
-
-.. code-block:: python
+statement.  Configuration statements change pending configuration state::
 
    config = pyramid.config.Configurator()
    config.add_route('home', '/')
@@ -70,9 +68,7 @@ Here are a few core concepts related to Pyramid startup configuration:
    is always more explicit than that.
 
 Let's see some of those concepts in action.  Here's one of the simplest
-possible Pyramid applications:
-
-.. code-block:: python
+possible Pyramid applications::
 
    # app.py
 
@@ -98,9 +94,7 @@ exciting.
 What happens when we reorder our configuration statements?  We'll change the
 relative ordering of ``add_view()`` and ``add_route()`` configuration
 statements.  Instead of adding a route, then a view, we'll add a view then a
-route:
-
-.. code-block:: python
+route::
 
    # app.py
 
@@ -142,9 +136,7 @@ Sanity Checks
 
 We can see this sanity-checking feature in action in a failure case.  Let's
 change our application, commenting out our call to ``config.add_route()``
-temporarily within ``app.py``:
-
-.. code-block:: python
+temporarily within ``app.py``::
 
    # app.py
 
@@ -191,9 +183,7 @@ Configuration Conflicts
 -----------------------
 
 Let's change our application once again.  We'll undo our last change, and add
-a configuration statement that attempts to add another view:
-
-.. code-block:: python
+a configuration statement that attempts to add another view::
 
    # app.py
 
@@ -269,9 +259,7 @@ Resolving Conflicts
 Obviously it's necessary to be able to resolve configuration conflicts.
 Sometimes these conflicts are done by mistake, so they're easy to resolve.
 You just change the code so that the conflict is no longer present.  We can
-do that pretty easily:
-
-.. code-block:: python
+do that pretty easily::
 
    # app.py
 
@@ -305,9 +293,7 @@ There's an alternative way to resolve conflicts that doesn't change the
 semantics of the code as much.  You can issue a ``config.commit()`` statement
 to flush pending configuration actions before issuing more.  To see this in
 action, let's change our application back to the way it was before we added
-the ``request_param`` predicate to our second ``add_view`` statement:
-
-.. code-block:: python
+the ``request_param`` predicate to our second ``add_view`` statement::
 
    # app.py
 
@@ -333,9 +319,7 @@ the ``request_param`` predicate to our second ``add_view`` statement:
 If we try to run this application as-is, we'll wind up with a configuration
 conflict error.  We can actually sort of brute-force our way around that by
 adding a manual call to ``commit`` between the two ``add_view`` statements
-which conflict:
-
-.. code-block:: python
+which conflict::
 
    # app.py
 
@@ -381,9 +365,7 @@ Including Configuration from Other Modules
 Now that we have played around a bit with configuration that exists all in
 the same module, let's add some code to ``app.py`` that causes configuration
 that lives in another module to be *included*.  We do that by adding a call
-to ``config.include()`` within ``app.py``:
-
-.. code-block:: python
+to ``config.include()`` within ``app.py``::
 
    # app.py
 
@@ -423,9 +405,7 @@ If we try to run the application now, we'll receive a traceback::
 
 That's exactly as we expected, because we attempted to *include* a module
 that doesn't yet exist.  Let's add a module named ``another.py`` right next
-to our ``app.py`` module:
-
-.. code-block:: python
+to our ``app.py`` module::
 
    # another.py
 
@@ -466,9 +446,7 @@ The :func:`includeme` Convention
 
 Now, let's change our ``app.py`` slightly.  We'll change the
 ``config.include()`` line in ``app.py`` to include a slightly different
-name:
-
-.. code-block:: python
+name::
 
    # app.py
 
@@ -489,9 +467,7 @@ name:
        server.serve_forever()
 
 And we'll edit ``another.py``, changing the name of the
-``moreconfiguration`` function to ``includeme``:
-
-.. code-block:: python
+``moreconfiguration`` function to ``includeme``::
 
    # another.py
 
@@ -520,9 +496,7 @@ Nested Includes
 ---------------
 
 Something which is included can also do including.  Let's add a file named
-``yetanother.py`` next to app.py:
-
-.. code-block:: python
+``yetanother.py`` next to app.py::
 
    # yetanother.py
 
@@ -535,9 +509,7 @@ Something which is included can also do including.  Let's add a file named
        config.add_route('whoa', '/whoa')
        config.add_view(whoa, route_name='whoa')
 
-And let's change our ``another.py`` file to include it:
-
-.. code-block:: python
+And let's change our ``another.py`` file to include it::
 
    # another.py
 
@@ -569,9 +541,7 @@ configuration before a conflict occurs.
 
 Let's change our ``another.py`` to contain a ``hi_world`` view function, and
 we'll change its ``includeme`` to add that view that should answer when ``/``
-is visited:
-
-.. code-block:: python
+is visited::
 
    # another.py
 
@@ -632,9 +602,7 @@ UI somewhere).  Let's further pretend you'd like to do this by allowing
 people to call a ``set_site_name`` directive on the Configurator.  This is a
 bit of a contrived example, because it would probably be a bit easier in this
 particular case just to use a deployment setting, but humor me for the
-purpose of this example.  Let's change our app.py to look like this:
-
-.. code-block:: python
+purpose of this example.  Let's change our app.py to look like this::
 
    # app.py
 
@@ -656,9 +624,7 @@ purpose of this example.  Let's change our app.py to look like this:
        server = make_server('0.0.0.0', 8080, app)
        server.serve_forever()
 
-And change our ``another.py`` to look like this:
-
-.. code-block:: python
+And change our ``another.py`` to look like this::
 
    # another.py
 
@@ -688,9 +654,7 @@ This is not a Pyramid built-in directive.  It was added as the result of the
 call to ``config.add_directive`` in ``another.includeme``.  We added a
 function that uses the ``config.action`` method to register a discriminator
 and a callback for a *custom* directive.  Let's change ``app.py`` again,
-adding a second call to ``set_site_name``:
-
-.. code-block:: python
+adding a second call to ``set_site_name``::
 
    # app.py
 
@@ -738,9 +702,7 @@ detection.  When we tried to set the site name twice, Pyramid detected a
 conflict and told us.  Just like built-in directives, Pyramid custom
 directives will also participate in automatic conflict resolution.  Let's see
 that in action by moving our first call to ``set_site_name`` into another
-included function.  As a result, our ``app.py`` will look like this:
-
-.. code-block:: python
+included function.  As a result, our ``app.py`` will look like this::
 
    # app.py
 

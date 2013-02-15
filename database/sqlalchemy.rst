@@ -34,10 +34,7 @@ said session.
 
 
 We'll assume you have an ``.ini`` file with ``sqlalchemy.`` settings that
-specify your database properly.
-
-.. code-block:: python
-   :linenos:
+specify your database properly::
 
     # __init__.py
 
@@ -111,10 +108,7 @@ Using ``config.scan()`` allows you to avoid a circdep between
 ``models/__init__.py`` and ``models/themodel.py`` without creating a special
 ``models/meta.py``.
 
-For example, if you do this in ``myapp/models/__init__.py``:
-
-.. code-block:: python
-   :linenos:
+For example, if you do this in ``myapp/models/__init__.py``::
 
    from sqlalchemy.ext.declarative import declarative_base
    from sqlalchemy.orm import scoped_session, sessionmaker
@@ -127,10 +121,7 @@ For example, if you do this in ``myapp/models/__init__.py``:
        Base.metadata.bind = engine
        Base.metadata.create_all(engine)
 
-And this in ``myapp/models/mymodel.py``:
-
-.. code-block:: python
-   :linenos:
+And this in ``myapp/models/mymodel.py``::
 
    from myapp.models import Base
    from sqlalchemy import Column
@@ -147,10 +138,7 @@ And this in ``myapp/models/mymodel.py``:
            self.name = name
            self.value = value
 
-And this in ``myapp/__init__.py``:
-
-.. code-block:: python
-   :linenos:
+And this in ``myapp/__init__.py``::
 
    from sqlalchemy import engine_from_config
  

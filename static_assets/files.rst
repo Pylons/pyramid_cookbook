@@ -9,9 +9,7 @@ a PDF file or an image).
 
 By way of example, here's a Pyramid application which serves a single static
 file (a jpeg) when the URL ``/test.jpg`` is executed by assigning an open
-file object to ``response.app_iter``
-
-.. code-block:: python
+file object to ``response.app_iter``::
 
     from pyramid.view import view_config
     from pyramid.config import Configurator
@@ -107,11 +105,7 @@ To serve files within a directory located on your filesystem at
 ``/path/to/static/dir`` as the result of a "catchall" route hanging from the
 root that exists at the end of your routing table, create an instance of the
 :class:`pyramid.static.static_view` class inside a ``static.py`` file in your
-application root as below.
-
-.. ignore-next-block
-.. code-block:: python
-   :linenos:
+application root as below::
 
    from pyramid.static import static_view
    www = static_view('/path/to/static/dir', use_subpath=True)
@@ -123,10 +117,7 @@ application root as below.
 
 Subsequently, you may wire the files that are served by this view up to be
 accessible as ``/<filename>`` using a configuration method in your
-application's startup code.
-
-.. code-block:: python
-   :linenos:
+application's startup code::
 
    # .. every other add_route and/or add_handler declaration should come
    # before this one, as it will, by default, catch all requests
@@ -163,10 +154,7 @@ The second part is handling the file upload in your view callable (above,
 assumed to answer on ``/store_mp3_view``).  The uploaded file is added to the
 request object as a ``cgi.FieldStorage`` object accessible through the
 ``request.POST`` multidict.  The two properties we're interested in are the
-``file`` and ``filename`` and we'll use those to write the file to disk.
-
-.. code-block:: python
-   :linenos:
+``file`` and ``filename`` and we'll use those to write the file to disk::
 
     import os
     from pyramid.response import Response

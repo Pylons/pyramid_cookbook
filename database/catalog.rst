@@ -25,10 +25,7 @@ want the application to be based on :term:`traversal`.
       $ easy_install repoze.catalog
 
 #. Change your ZODB application's ``models.py`` file to look like the
-   below:
-
-   .. code-block:: python
-      :linenos:
+   below::
 
        from repoze.folder import Folder
        from repoze.catalog.catalog import Catalog

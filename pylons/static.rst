@@ -119,9 +119,7 @@ To make your configuration flexible for a static media server:
     # -OR-
     static_assets = "http://staticserver.com/"
 
-Main function:
-
-..  code-block:: python
+Main function::
 
     config.add_static_view(settings["static_assets"], "zzz:static")
 

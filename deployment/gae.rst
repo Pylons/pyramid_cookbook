@@ -79,9 +79,7 @@ system.
    Edit the ``APP_NAME`` and ``APP_ARGS`` settings within
    ``config.py``.  The ``APP_NAME`` must be ``pyramidapp:main``, and
    the APP_ARGS must be ``({},)``.  Any other settings in
-   ``config.py`` should remain the same.
-
-   .. code-block:: python
+   ``config.py`` should remain the same::
 
       APP_NAME = 'pyramidapp:main'
       APP_ARGS = ({},)
@@ -89,18 +87,14 @@ system.
 #. Edit ``runner.py``
 
    To prevent errors for ``import site``, add this code stanza before
-   ``import site`` in app/runner.py:
-
-   .. code-block:: python
+   ``import site`` in app/runner.py::
 
       import sys
       sys.path = [path for path in sys.path if 'site-packages' not in path]
       import site
 
    You will also need to comment out the line that starts with
-   ``assert sys.path`` in the file.
-
-   .. code-block:: python
+   ``assert sys.path`` in the file::
 
       # comment the sys.path assertion out
       # assert sys.path[:len(cur_sys_path)] == cur_sys_path, (
@@ -108,9 +102,7 @@ system.
 
    For GAE development environment 1.3.0 or better, you will also need
    the following somewhere near the top of the ``runner.py`` file to
-   fix a compatibility issue with ``appengine-monkey``:
-
-   .. code-block:: python
+   fix a compatibility issue with ``appengine-monkey``::
 
       import os
       os.mkdir = None
@@ -145,10 +137,7 @@ system.
    App Engine, `see this blog post
    <http://jjinux.blogspot.com/2008/05/python-debugging-google-app-engine-apps.html>`_.
    In particular, you can create a function like so and call it to
-   drop your console into a pdb trace:
-
-   .. code-block:: python
-      :linenos:
+   drop your console into a pdb trace::
 
       def set_trace():
           import pdb, sys

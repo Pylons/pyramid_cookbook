@@ -6,9 +6,7 @@ a single decorator that will wrap the *mapped* view callable represented by
 the view configuration.  That means that, no matter what the signature and
 return value of the original view callable, the decorated view callable will
 receive two arguments: ``context`` and ``request`` and will return a response
-object:
-
-.. code-block:: python
+object::
 
     # the decorator
 
@@ -24,9 +22,7 @@ object:
         return {'a':1}
 
 But the ``decorator`` argument only takes a single decorator.  What happens
-if you want to use more than one decorator?  You can chain them together:
-
-.. code-block:: python
+if you want to use more than one decorator?  You can chain them together::
 
     def combine(*decorators):
         def floo(view_callable):

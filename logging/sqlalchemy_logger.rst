@@ -5,10 +5,7 @@ So you'd like to log to your database, rather than a file. Well, here's
 a brief rundown of exactly how you'd do that.
 
 First we need to define a Log model for SQLAlchemy (do this in
-``myapp.models``).
-
-.. code-block:: python
-   :linenos:
+``myapp.models``)::
 
    from sqlalchemy import Column
    from sqlalchemy.types DateTime, Integer, String
@@ -42,10 +39,7 @@ Not too much exciting is occuring here. We've simply created a
 new table named 'logs'.
 
 Before we get into how we use this table for good, here's a quick review
-of how ``logging`` works in a script.
-
-.. code-block:: python
-   :linenos:
+of how ``logging`` works in a script::
    
    # http://docs.python.org/howto/logging.html#configuring-logging
    import logging
@@ -80,10 +74,7 @@ output of the ``logging.LogRecord``. The output actually comes
 from ``logging.Handler.emit``, a method we will now override as
 we create our SQLAlchemyHandler.
 
-Let's subclass Handler now (put this in ``myapp.handlers``).
-
-.. code-block:: python
-   :linenos:
+Let's subclass Handler now (put this in ``myapp.handlers``)::
 
    import logging
    import traceback
@@ -114,7 +105,7 @@ is an instance, contains all it's nifty log information in it's
 Now, we need to add this logging handler to our .ini configuration files.
 Before we add this, our production.ini file should contain something like:
 
-.. code-block:: python
+.. code-block:: ini
    :linenos:
 
    [loggers]
@@ -155,7 +146,7 @@ Before we add this, our production.ini file should contain something like:
 We must add our ``SQLAlchemyHandler`` to the mix. So make the following
 changes to your production.ini file.
 
-.. code-block:: python
+.. code-block:: ini
    :linenos:
 
    [handlers]
@@ -178,10 +169,7 @@ else about this configuration should be straightforward. If anything
 is still baffling, then use this as a good opportunity to read the 
 Python ``logging`` documentation.
 
-Below is an example of how you might use the logger in ``myapp.views``.
-
-.. code-block:: python
-   :linenos:
+Below is an example of how you might use the logger in ``myapp.views``::
 
    import logging
    from pyramid.view import view_config

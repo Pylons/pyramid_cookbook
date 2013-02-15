@@ -9,10 +9,7 @@ are events which call a subscriber with an context object *and* the event
 object.
 
 Here's an example of using an object event subscriber via the ``@subscriber``
-decorator:
-
-.. code-block:: python
-   :linenos:
+decorator::
 
     from zope.component.event import objectEventNotify
     from zope.component.interfaces import ObjectEvent

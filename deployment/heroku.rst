@@ -69,9 +69,8 @@ Create ``run`` with the following:
 
 ``runapp.py``:
 
-If using a version of Pyramid prior to 1.3 (e.g. < 1.3), use the following for runapp.py:
-
-.. code-block:: python
+If using a version of Pyramid prior to 1.3 (e.g. < 1.3),
+use the following for runapp.py::
     
     import os
 
@@ -84,9 +83,8 @@ If using a version of Pyramid prior to 1.3 (e.g. < 1.3), use the following for r
 
         httpserver.serve(app, host='0.0.0.0', port=port)
 
-Else if using a version greater or equal than 1.3 (e.g. >= 1.3), use the following for runapp.py
-
-.. code-block:: python
+Else if using a version greater or equal than 1.3 (e.g. >= 1.3),
+use the following for runapp.py::
 
     import os
 

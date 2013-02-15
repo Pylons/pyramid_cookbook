@@ -20,10 +20,7 @@ Let's say we want to map
 ``/hello/subdir/listDirectory`` to a function ``listSubDirectory`` in the
 file ``myapp/views.py``
 
-With URL dispatch, we might have:
-
-.. code-block:: python
-   :linenos:
+With URL dispatch, we might have::
 
     config.add_route('helloLogin', '/hello/login')
     config.add_route('helloFoo', '/hello/foo')
@@ -40,10 +37,7 @@ tell what the subdirectory's name was by checking
 ``request.matchdict['subdir']``.  This is about all you need to know for
 URL-dispatch-based apps.
 
-With traversal, we have a more complex setup:
-
-.. code-block:: python
-   :linenos:
+With traversal, we have a more complex setup::
 
     class MyResource(dict):
         def __init__(self, name, parent):
@@ -116,10 +110,7 @@ traversal can handle arbitrarily deep, dynamic hierarchies in a general way,
 and URL dispatch can't.
 
 You can, if you want to, combine URL dispatch and traversal (in that
-order). So, we could rewrite the above as:
-
-.. code-block:: python
-   :linenos:
+order). So, we could rewrite the above as::
 
     class MyResource(dict):
         def __init__(self, name, parent):

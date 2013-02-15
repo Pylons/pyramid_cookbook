@@ -10,19 +10,14 @@ Django's ``settings.py``, you can do something similar in Pyramid.
 
 - Add values to it at its top level.
 
-For example:
-
-.. code-block:: python
+For example::
 
   # settings.py
-
   import pytz
 
   timezone = pytz('US/Eastern')
 
-Then simply import the module into your application:
-
-.. code-block:: python
+Then simply import the module into your application::
 
   from myapp import settings
 

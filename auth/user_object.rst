@@ -22,10 +22,7 @@ This allows you to specify a
 callable that will be available on the request object, but will not actually
 execute the function until accessed. The result of this function can also
 be cached per-request, to eliminate the overhead of running the function
-multiple times (this is done by setting ``reify=True``.
-
-.. code-block:: python
-   :linenos:
+multiple times (this is done by setting ``reify=True``::
 
    from pyramid.security import unauthenticated_userid
 
@@ -55,10 +52,7 @@ done (as would be if you used a ``NewRequest`` subscriber).
 After doing such a thing, if your user object has a ``groups`` attribute,
 which returns a list of groups that have ``name`` attributes, you can use the
 following as a ``callback`` (aka ``groupfinder``) argument to most builtin
-authentication policies.  For example:
-
-.. code-block:: python
-   :linenos:
+authentication policies.  For example::
 
    from pyramid.authentication import AuthTktAuthenticationPolicy
 
@@ -88,10 +82,7 @@ via :meth:`~pyramid.config.Configurator.set_request_factory`. This works
 in the same way, but each application can only have one request factory
 and so it is not very extensible for arbitrary properties.
 
-The code for this method is below:
-
-.. code-block:: python
-   :linenos:
+The code for this method is below::
 
     from pyramid.decorator import reify
     from pyramid.request import Request

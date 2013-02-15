@@ -19,10 +19,7 @@ CouchDB URI and a database name (the CouchDB database name, can be anything).
     couchdb.db = mydb
 
 Then in your ``__init__.py``, set things up such that the database is
-attached to each new request:
-
-.. code-block:: python
-   :linenos:
+attached to each new request::
 
     from pyramid.config import Configurator
     from couchdbkit import *
@@ -51,10 +48,7 @@ attached to each new request:
    You can use ``Configurator.set_request_property`` for Pyramid 1.3.
 
 At this point, in view code, you can use ``request.db`` as the CouchDB database
-connection.  For example:
-
-.. code-block:: python
-   :linenos:
+connection.  For example::
 
     from pyramid.view import view_config
 
@@ -81,10 +75,7 @@ First let's create a view for our page data in CouchDB. We will use the
 ApplicationCreated event and make sure our view containing our page data.
 For more information on views in CouchDB see
 `Introduction to CouchDB views <http://wiki.apache.org/couchdb/Introduction_to_CouchDB_views>`_.
-In __init__.py:
-
-.. code-block:: python
-   :linenos:
+In __init__.py::
 
     from pyramid.events import ApplicationCreated
 
@@ -119,10 +110,7 @@ CouchDB Documents
 -----------------
 
 Now we can let's add some data to a document for our home page in a CouchDB
-document in our view code if it doesn't exist:
-
-.. code-block:: python
-    :linenos:
+document in our view code if it doesn't exist::
 
     import datetime
 
