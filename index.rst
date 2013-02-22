@@ -13,6 +13,11 @@ Contents
    wiki_tutorials
    humans/index
 
+.. toctree::
+   :hidden:
+
+   README
+
 Indices and tables
 ==================
 
