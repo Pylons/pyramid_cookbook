@@ -12,6 +12,7 @@ Contents
    single_file_tasks/single_file_tasks
    wiki_tutorials
    humans/index
+   getting_started/index
 
 Indices and tables
 ==================

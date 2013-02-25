@@ -2,3 +2,4 @@ _themes
 _build
 allnose.sh
 env*/
+*.egg-info*
