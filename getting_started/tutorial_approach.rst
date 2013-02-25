@@ -61,3 +61,11 @@ Each of the 02-XX directories are a *Python package*. (01 is a
 single-file application.) At the end of each step,
 we copy the old directory into a new directory to use as a starting
 point.
+
+Source Code
+===========
+
+The source for the code, as well as the documents for this tutorial,
+is available in the
+`GitHub repo <https://github.com/Pylons/pyramid_tutorials/tree/master/getting_started>`_
+for ``pyramid_tutorials``.
