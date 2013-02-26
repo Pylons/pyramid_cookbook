@@ -57,7 +57,7 @@ structure below::
             __init__.py
             views.py
 
-Each of the 02-XX directories are a *Python package*. (01 is a
+Each of the 02-XX directories are a *Python distribution*. (01 is a
 single-file application.) At the end of each step,
 we copy the old directory into a new directory to use as a starting
 point.
