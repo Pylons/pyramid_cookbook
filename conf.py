@@ -36,7 +36,8 @@ extensions = [
 ]
 
 intersphinx_mapping = {
-    'python': ('http://docs.python.org/3.2', None),
+    'python': ('http://docs.python.org', None),
+    'python3': ('http://docs.python.org/3', None),
     'pyramid':
         ('http://docs.pylonsproject.org/projects/pyramid/en/latest/',
          None)
