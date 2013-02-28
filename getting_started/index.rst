@@ -17,15 +17,8 @@ certainly not aimed at experts.
     tutorial_approach
     01-helloworld/index
     02-package/index
-
-Notes
-=====
-
-- 04-hellotests requires::
-
-  $ pip install nose WebTest
-
-- 08-helloforms requires::
-
-  $ pip install
+    03-config/index
+    04-tests/index
+    05-templating/index
+    06-viewclasses
 

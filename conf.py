@@ -33,9 +33,14 @@ from docutils import utils
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx'
-    ]
+]
 
-intersphinx_mapping = {'http://docs.pylonsproject.org/projects/pyramid/en/latest': None}
+intersphinx_mapping = {
+    'python': ('http://docs.python.org/3.2', None),
+    'pyramid':
+        ('http://docs.pylonsproject.org/projects/pyramid/en/latest/',
+         None)
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -110,7 +115,7 @@ _themes = os.path.join(cwd, '_themes')
 
 if not os.path.isdir(_themes):
     call([git, 'clone', 'git://github.com/Pylons/pylons_sphinx_theme.git',
-            '_themes'])
+          '_themes'])
 else:
     os.chdir(_themes)
     call([git, 'checkout', 'master'])
@@ -122,7 +127,7 @@ html_theme_path = ['_themes']
 html_theme = 'pyramid'
 html_theme_options = dict(
     github_url='https://github.com/Pylons/pyramid_tutorials'
-    )
+)
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
@@ -213,8 +218,8 @@ htmlhelp_basename = 'PyramidTutorialsdoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'PyramidTutorials.tex', u'Pyramid Tutorials Documentation',
-   u'Pylons Project Contributors', 'manual'),
+    ('index', 'PyramidTutorials.tex', u'Pyramid Tutorials Documentation',
+     u'Pylons Project Contributors', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -250,7 +255,9 @@ man_pages = [
      [u'Pylons Project Contributors'], 1)
 ]
 
-def app_role(role, rawtext, text, lineno, inliner, options={}, content=[]):
+
+def app_role(role, rawtext, text, lineno, inliner, options={},
+             content=[]):
     """custom role for :app: marker, does nothing in particular except allow
     :app:`Pyramid` to work (for later search and replace)."""
     if 'class' in options:

@@ -3,3 +3,5 @@ _build
 allnose.sh
 env*/
 *.egg-info*
+*__pycache__*
+*.pyc

@@ -1,6 +1,6 @@
-============================
-Tutorial: Pyramid for Humans
-============================
+======================================
+Tutorial: Pyramid for Plone Developers
+======================================
 
 Pyramid has emerged as a fast, modern, lightweight web
 framework for the Pylons and Zope communities. When you just need a

@@ -27,10 +27,6 @@ marketing term, not a technical one.  They have a low mental overhead:
 they do so little, the only things you have to worry about are *your
 things*.
 
-.. CM: added note about MF being marketing term, took out the sentence
-   about low overhead on execution cuz self-described Python
-   microframeworks are often relatively slow.
-
 Pyramid is special because it can act as a single-file module
 microframework. You have a single Python file that can be executed
 directly by Python. But Pyramid also scales to the largest of
@@ -77,9 +73,7 @@ Extra Credit
 
 .. code-block:: python
 
-  print ('Starting up server on http://localhost:6547')
-
-.. CM: these appear to say the same thing.  Not sure what's being asked.
+  print 'Starting up server on http://localhost:6547'
 
 #. What happens if you return a string of HTML? A sequence of integers?
 

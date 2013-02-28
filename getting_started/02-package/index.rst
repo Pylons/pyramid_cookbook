@@ -2,9 +2,9 @@
 2: Packaging for the Wiki Tutorial Application
 ==============================================
 
-Most modern Python development is done using Python packages. Pyramid
-puts packages to good use. In this step, we start writing our Wiki
-application as a standard Python package.
+Most modern Python development is done using Python packages, which
+Pyramid puts packages to good use. In this step, we start writing our
+Wiki application as a standard Python package.
 
 Goals
 =====
@@ -40,9 +40,9 @@ Steps
 
     .. literalinclude:: tutorial/__init__.py
 
-#. Enter the following into ``tutorial/helloworld.py``:
+#. Enter the following into ``tutorial/wikiapp.py``:
 
-    .. literalinclude:: tutorial/helloworld.py
+    .. literalinclude:: tutorial/wikiapp.py
 
 #. Enter the following into ``tutorial/views.py``:
 
@@ -50,7 +50,7 @@ Steps
 
 #. Run the WSGI application with::
 
-    (env33)$ python3.3 tutorial/helloworld.py
+    (env33)$ python3.3 tutorial/wikiapp.py
 
 #. Open ``http://127.0.0.1:6547/`` in your browser.
 
@@ -70,7 +70,7 @@ Extra Credit
 
 #. Why do we make an extra hop in the directory with ``tutorial``?
 
-#. Could we have eliminated ``helloworld.py`` and put the WSGI
+#. Could we have eliminated ``wikiapp.py`` and put the WSGI
    application startup in ``__init__.py``? How would that have affected
    the command used to start the application?
 
