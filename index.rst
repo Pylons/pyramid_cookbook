@@ -14,6 +14,11 @@ Contents
    humans/index
    getting_started/index
 
+.. toctree::
+   :hidden:
+
+   README
+
 Indices and tables
 ==================
 
