@@ -3,7 +3,7 @@
 ================================
 
 What's the simplest way to get started in Pyramid? A single-file module.
-No packages, imports, ``setup.py``, or other machinery.
+No packages, ``setup.py``, or other machinery.
 
 Goals
 =====
