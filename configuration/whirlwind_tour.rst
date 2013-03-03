@@ -350,7 +350,7 @@ the pending configuration action impled by the first call to ``add_view`` by
 calling ``config.commit()`` explicitly.  When we called the ``add_view`` the
 second time, the discriminator of the first call to ``add_view`` was no
 longer in the pending actions list to conflict with.  The conflict was
-resolved because conflict the actions list got flushed.  Why do we see ``Hi
+resolved because the pending actions list got flushed.  Why do we see ``Hi
 world!`` in our browser instead of ``Hello world!``?  Because the call to
 ``config.make_wsgi_app()`` implies a second commit.  The second commit caused
 the second ``add_view`` configuration callback to be called, and this
