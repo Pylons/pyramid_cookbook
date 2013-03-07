@@ -19,6 +19,6 @@ certainly not aimed at experts.
     02-package/index
     03-config/index
     04-tests/index
-    05-templating/index
-    06-viewclasses
+    05-template/index
+    06-viewclasses/index
 

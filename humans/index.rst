@@ -46,5 +46,4 @@ conference:
     :maxdepth: 3
 
     security/index
-    zodb/index
     catalog/index
