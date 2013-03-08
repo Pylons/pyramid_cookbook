@@ -1,0 +1,22 @@
+<div metal:use-macro="view.layout">
+    <div metal:fill-slot="content">
+        <p>Some sample links:</p>
+        <ul>
+            <li>
+                <a href="/">Wiki Home</a>
+            </li>
+            <li>
+                <a href="/add">Add WikiPage</a>
+            </li>
+            <li>
+                <a href="/100">View WikiPage</a>
+            </li>
+            <li>
+                <a href="/100/edit">Edit WikiPage</a>
+            </li>
+            <li>
+                <a href="/100/delete">Delete WikiPage</a>
+            </li>
+        </ul>
+    </div>
+</div>
