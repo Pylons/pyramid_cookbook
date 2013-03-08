@@ -1,0 +1,12 @@
+<div metal:use-macro="view.layout">
+    <div metal:fill-slot="content">
+        <a href="${request.route_url('wikipage_edit', uid=view.uid)}">
+            Edit
+        </a> |
+        <a href="${request.route_url('wikipage_delete', uid=view.uid)}">
+            Delete
+        </a>
+
+        <p>${structure: page['body']}</p>
+    </div>
+</div>
