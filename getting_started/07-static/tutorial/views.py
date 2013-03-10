@@ -14,7 +14,6 @@ class WikiViews(object):
         self.request = request
         renderer = get_renderer("templates/layout.pt")
         self.layout = renderer.implementation().macros['layout']
-        self.uid = self.request.matchdict.get('uid', None)
 
     def get_pages(self):
         return pages
@@ -32,14 +31,16 @@ class WikiViews(object):
     @view_config(route_name='wikipage_view',
                  renderer='templates/wikipage_view.pt')
     def wikipage_view(self):
-        page = [page for page in pages if page['uid'] == self.uid][0]
+        uid = self.request.matchdict['uid']
+        page = [page for page in pages if page['uid'] == uid][0]
         title = page['title']
-        return dict(page=page, title=title)
+        return dict(page=page, title=title, uid=uid)
 
     @view_config(route_name='wikipage_edit',
                  renderer='templates/wikipage_addedit.pt')
     def wikipage_edit(self):
-        page = [page for page in pages if page['uid'] == self.uid][0]
+        uid = self.request.matchdict['uid']
+        page = [page for page in pages if page['uid'] == uid][0]
         title = 'Edit ' + page['title']
         return dict(title=title)
 

@@ -5,7 +5,7 @@
         <ul>
             <li tal:repeat="page pages">
                 <a href="${request.route_url('wikipage_view', uid=page['uid'])}">
-                    ${page['title']}
+                    ${page.title}
                 </a>
             </li>
         </ul>

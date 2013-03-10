@@ -45,7 +45,7 @@ class WikiViews(object):
                     pages=pages.values())
 
     @view_config(route_name='wikipage_add',
-                 renderer='templates/wikipage_add.pt')
+                 renderer='templates/wikipage_addedit.pt')
     def wikipage_add(self):
         schema = WikiPage()
         wiki_form = deform.Form(schema, buttons=('submit',))
@@ -55,7 +55,7 @@ class WikiViews(object):
 
     @view_config(route_name='wikipage_add',
                  request_param='submit',
-                 renderer='templates/wikipage_add.pt')
+                 renderer='templates/wikipage_addedit.pt')
     def add_handler(self):
         schema = WikiPage()
         wiki_form = deform.Form(schema, buttons=('submit',))
@@ -83,7 +83,7 @@ class WikiViews(object):
         return dict(page=page, title=page['title'])
 
     @view_config(route_name='wikipage_edit',
-                 renderer='templates/wikipage_edit.pt')
+                 renderer='templates/wikipage_addedit.pt')
     def wikipage_edit(self):
         page = pages[self.uid]
 
@@ -95,7 +95,7 @@ class WikiViews(object):
 
     @view_config(route_name='wikipage_edit',
                  request_param='submit',
-                 renderer='templates/wikipage_edit.pt')
+                 renderer='templates/wikipage_addedit.pt')
     def edit_handler(self):
         page = pages[self.uid]
 

@@ -8,8 +8,6 @@ class WikiViews(object):
         self.request = request
         renderer = get_renderer("templates/layout.pt")
         self.layout = renderer.implementation().macros['layout']
-        self.uid = self.request.matchdict.get('uid', None)
-
 
     @view_config(route_name='wiki_view',
                  renderer='templates/wiki_view.pt')
@@ -24,7 +22,8 @@ class WikiViews(object):
     @view_config(route_name='wikipage_view',
                  renderer='templates/wikipage_view.pt')
     def wikipage_view(self):
-        return dict(title='View Wiki Page')
+        uid = self.request.matchdict['uid']
+        return dict(title='View Wiki Page', uid=uid)
 
     @view_config(route_name='wikipage_edit',
                  renderer='templates/wikipage_addedit.pt')
