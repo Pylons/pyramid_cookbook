@@ -37,6 +37,6 @@ class WikiFunctionalTests(unittest.TestCase):
         res = self.testapp.get('/100', status=200)
         self.assertIn(b'100', res.body)
         res = self.testapp.get('/100/edit', status=200)
-        self.assertIn(b'100', res.body)
+        self.assertIn(b'Edit', res.body)
         res = self.testapp.get('/100/delete', status=302)
         self.assertIn(b'Found', res.body)

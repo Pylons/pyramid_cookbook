@@ -17,7 +17,7 @@ class WikiViews(object):
         return dict(title='Welcome to the Wiki')
 
     @view_config(route_name='wikipage_add',
-                 renderer='templates/wikipage_add.pt')
+                 renderer='templates/wikipage_addedit.pt')
     def wikipage_add(self):
         return dict(title='Add Wiki Page')
 
@@ -27,7 +27,7 @@ class WikiViews(object):
         return dict(title='View Wiki Page')
 
     @view_config(route_name='wikipage_edit',
-                 renderer='templates/wikipage_edit.pt')
+                 renderer='templates/wikipage_addedit.pt')
     def wikipage_edit(self):
         return dict(title='Edit Wiki Page')
 

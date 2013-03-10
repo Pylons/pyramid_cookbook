@@ -3,7 +3,7 @@
         <a href="${request.route_url('wikipage_add')}">Add
             WikiPage</a>
         <ul>
-            <li tal:repeat="page view.get_pages()">
+            <li tal:repeat="page pages">
                 <a href="${request.route_url('wikipage_view', uid=page['uid'])}">
                     ${page['title']}
                 </a>

@@ -22,10 +22,10 @@ class WikiViews(object):
     @view_config(route_name='wiki_view',
                  renderer='templates/wiki_view.pt')
     def wiki_view(self):
-        return dict(title='Welcome to the Wiki')
+        return dict(title='Welcome to the Wiki', pages=pages)
 
     @view_config(route_name='wikipage_add',
-                 renderer='templates/wikipage_add.pt')
+                 renderer='templates/wikipage_addedit.pt')
     def wikipage_add(self):
         return dict(title='Add Wiki Page')
 
@@ -37,12 +37,13 @@ class WikiViews(object):
         return dict(page=page, title=title)
 
     @view_config(route_name='wikipage_edit',
-                 renderer='templates/wikipage_edit.pt')
+                 renderer='templates/wikipage_addedit.pt')
     def wikipage_edit(self):
         page = [page for page in pages if page['uid'] == self.uid][0]
-        title = page['title']
-        return dict(page=page, title=title)
+        title = 'Edit ' + page['title']
+        return dict(title=title)
 
     @view_config(route_name='wikipage_delete')
     def wikipage_delete(self):
-        return HTTPFound('/')
+        url = self.request.route_url('wiki_view')
+        return HTTPFound(url)
