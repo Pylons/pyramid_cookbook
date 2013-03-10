@@ -7,6 +7,7 @@
 - add static view in __init__ for deform
 - head-more in layout
 - lot of redundant type (e.g. <more>)
+- models.py
 
 Goals
 =====
