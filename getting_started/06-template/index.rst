@@ -31,7 +31,7 @@ Steps
 
    .. code-block:: bash
 
-    (env33)$ cd ..; cp -r step06 step06; cd step06
+    (env33)$ cd ..; cp -r step05 step06; cd step06
     (env33)$ python3.3 setup.py develop
     (env33)$ mkdir tutorial/templates
 
@@ -62,6 +62,7 @@ Steps
     Ran 2 tests in 1.971s
 
     OK
+
 #. Run the WSGI application. Note the ``--reload``:
 
    .. code-block:: bash

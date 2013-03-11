@@ -22,12 +22,11 @@ Steps
 =====
 
 #. Let's again use the previous package as a starting point for a new
-   distribution. Also, remove a template we are not going to use:
+   distribution:
 
    .. code-block:: bash
 
     (env33)$ cd ..; cp -r step06 step07; cd step07
-    (env33)$ rm tutorial/templates/helloworld.pt
     (env33)$ python3.3 setup.py develop
 
 #. Edit ``tutorial/views.py`` to include a view class with several more
