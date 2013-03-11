@@ -18,7 +18,7 @@ Objectives
 Steps
 =====
 
-#. ``(env33)$ cd ..; mkdir step03; cd step03``
+#. ``(env33)$ cd ..; mkdir step04; cd step04``
 
 #. See the usage for ``pcreate``:
 

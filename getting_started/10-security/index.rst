@@ -16,16 +16,7 @@ Objectives
 Steps
 =====
 
-- change models.py: root factory
-- change __init__.py: auth policies, root factory, route
-- create security.py
-- update views
-- make login.pt
-- change layout.pt
-- css changes
-
-#. Again, let's use the previous package as a starting point for a new
-   distribution. Also, make a directory for the templates:
+#. Copy the results from the previous step:
 
    .. code-block:: bash
 
@@ -33,16 +24,61 @@ Steps
     (env33)$ python3.3 setup.py develop
     (env33)$ mkdir tutorial/templates
 
+#. Update ``tutorial/models.py`` to include a statements from Pyramid's
+   declarative security features:
+
+   .. literalinclude:: tutorial/models.py
+    :linenos:
+
+#. Our ``__init__.py`` needs this root factory, our
+   authentication/authorization policies, and routes to login/logout:
+
+   .. literalinclude:: tutorial/__init__.py
+    :linenos:
+
+#. Create a ``tutorial/security.py`` module that can find our user
+   information by providing an *authentication policy callback*:
+
+   .. literalinclude:: tutorial/security.py
+    :linenos:
+
+#. Our ``tutorial/views.py`` needs some changes: permissions on the
+   add/edit/delete views, new views for login/logout,
+   and a way to track whether a user is ``logged_in``:
+
+   .. literalinclude:: tutorial/views.py
+    :linenos:
+
+#. We have a login view that needs a template at
+   ``tutorial/templates/login.pt``:
+
+   .. literalinclude:: tutorial/templates/login.pt
+    :linenos:
+    :language: html
+
+#. ``tutorial/templats/layout.pt`` needs a conditional link to appear
+   on all pages, for either logging in or logging out:
+
+   .. literalinclude:: tutorial/templates/layout.pt
+    :linenos:
+    :language: html
+
+#. Let's style that link by adding a float to
+   ``tutorial/static/wiki.css``:
+
+   .. literalinclude:: tutorial/static/wiki.css
+
 #. Run the tests in your package using ``nose``:
 
-   .. code-block:: bash
+    .. code-block:: bash
 
-    (env33)$ nosetests .
-    ..
-    -----------------------------------------------------------------
-    Ran 2 tests in 1.971s
+        (env33)$ nosetests .
+        ..
+        -----------------------------------------------------------------
+        Ran 2 tests in 1.971s
 
-    OK
+        OK
+
 #. Run the WSGI application:
 
    .. code-block:: bash

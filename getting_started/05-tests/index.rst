@@ -46,14 +46,13 @@ Steps
 
     (env33)$ cd ..; cp -r step03 step05; cd step05
     (env33)$ python3.3 setup.py develop
-    (env33)$ easy_install nose webtest
+    (env33)$ easy_install-3.3 nose webtest
 
-#. Many Pyramid apps put the logic for setting up the WSGI app into the
-   distribution's ``__init__.py``, so enter the following into
-   ``tutorial/__init__.py``:
+#. Create a module for our unit and functional tests in
+   ``tutorial/tests.py``:
 
    .. literalinclude:: tutorial/tests.py
-    :linenos:
+        :linenos:
 
 #. Now run the tests in your package using ``nose``:
 

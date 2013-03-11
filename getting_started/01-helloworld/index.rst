@@ -37,12 +37,22 @@ Steps
 
 #. Make sure you have followed the steps in :doc:`../python_setup`.
 
-#. ``(env33)$ mkdir step01; cd step01``
+#. Create a directory for this step:
+
+    .. code-block:: bash
+
+        (env33)$ mkdir step01; cd step01
 
 #. Copy the following into ``helloworld.py``:
 
    .. literalinclude:: helloworld.py
     :linenos:
+
+#. Run the application:
+
+    .. code-block:: bash
+
+      (env33)$ python3.3 helloworld.py
 
 #. Open ``http://127.0.0.1:6547/`` in your browser.
 
