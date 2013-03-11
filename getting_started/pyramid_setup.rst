@@ -8,7 +8,7 @@ in your path using ``source bin/activate``.
 
 .. code-block:: bash
 
-  (env33)$ easy_install-3.3 install pyramid
+  (env33)$ easy_install-3.3 pyramid
   ....chuggalugga...
   (env33)$ which pserve
 

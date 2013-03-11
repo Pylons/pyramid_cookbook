@@ -12,12 +12,11 @@
 </head>
 <body>
 <div id="main">
-    <div id="loginout" tal:switch="view.logged_in">
-        <ul >
-            <li tal:case="True">one</li>
-            <li tal:case="False">two</li>
-            <li tal:case="default">not one or two</li>
-        </ul>
+    <div id="loginout">
+        <a tal:condition="view.logged_in is not None"
+           href="${request.application_url}/logout">Logout</a>
+        <a tal:condition="view.logged_in is None"
+           href="${request.application_url}/login">Log In</a>
     </div>
     <h1>
         <a href="${request.route_url('wiki_view')}">

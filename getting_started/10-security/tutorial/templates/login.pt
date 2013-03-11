@@ -6,9 +6,12 @@
         <form action="${url}" method="post">
             <input type="hidden" name="came_from"
                    value="${came_from}"/>
-            <input type="text" name="login"
+            <label for="login">Username</label>
+            <input type="text"
+                   id="login"
                    value="${login}"/><br/>
-            <input type="password" name="password"
+            <label for="password">Username</label>
+            <input type="password" id="password"
                    value="${password}"/><br/>
             <input type="submit" name="form.submitted"
                    value="Log In"/>

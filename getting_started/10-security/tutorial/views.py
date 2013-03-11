@@ -4,7 +4,7 @@ import deform.widget
 from pyramid.decorator import reify
 from pyramid.httpexceptions import HTTPFound
 from pyramid.renderers import get_renderer
-from pyramid.security import remember, forget
+from pyramid.security import remember, forget, authenticated_userid
 from pyramid.view import view_config, forbidden_view_config
 
 from .security import USERS
@@ -25,6 +25,8 @@ class WikiViews(object):
         self.request = request
         renderer = get_renderer("templates/layout.pt")
         self.layout = renderer.implementation().macros['layout']
+        self.logged_in = authenticated_userid(request)
+        print ('self.logged_in', self.logged_in)
 
     @reify
     def wiki_form(self):
@@ -120,7 +122,7 @@ class WikiViews(object):
         login_url = request.route_url('login')
         referrer = request.url
         if referrer == login_url:
-            referrer = '/' # never use the login form itself as came_from
+            referrer = '/'  # never use login form itself as came_from
         came_from = request.params.get('came_from', referrer)
         message = ''
         login = ''
@@ -141,11 +143,12 @@ class WikiViews(object):
             came_from=came_from,
             login=login,
             password=password,
-            )
+        )
 
     @view_config(route_name='logout')
     def logout(self):
         request = self.request
         headers = forget(request)
-        return HTTPFound(location=request.route_url('view_wiki'),
+        url = request.route_url('wiki_view')
+        return HTTPFound(location=url,
                          headers=headers)
