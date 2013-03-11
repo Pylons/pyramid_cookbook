@@ -1,16 +1,6 @@
-====================
-8: Forms With Deform
-====================
-
-
-- setup.py has dependency on deform
-- add static view in __init__ for deform
-- head-more in layout
-- lot of redundant type (e.g. <more>)
-- models.py
-
-Goals
-=====
+===================================
+9: Forms and Validation With Deform
+===================================
 
 
 Objectives
@@ -19,6 +9,7 @@ Objectives
 
 Steps
 =====
+
 
 #. Again, let's use the previous package as a starting point for a new
    distribution. Also, make a directory for the templates:

@@ -1,0 +1,18 @@
+<div metal:use-macro="view.layout">
+    <more tal:omit-tag="" metal:fill-slot="head-more">
+        <tal:block repeat="reqt view.reqts['css']">
+            <link rel="stylesheet" type="text/css"
+                  href="${request.static_url('deform:static/' + reqt)}"/>
+        </tal:block>
+        <tal:block repeat="reqt view.reqts['js']">
+            <script src="${request.static_url('deform:static/' + reqt)}"
+                    type="text/javascript"></script>
+        </tal:block>
+    </more>
+    <div metal:fill-slot="content">
+        <p>${structure: form}</p>
+        <script type="text/javascript">
+            deform.load()
+        </script>
+    </div>
+</div>

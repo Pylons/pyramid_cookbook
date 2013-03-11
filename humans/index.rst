@@ -47,3 +47,4 @@ conference:
 
     security/index
     catalog/index
+    zodb/index

@@ -10,7 +10,7 @@ introductions to the most common facilities. Fun, fast-paced, and most
 certainly not aimed at experts.
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     python_setup
     pyramid_setup
@@ -18,7 +18,11 @@ certainly not aimed at experts.
     01-helloworld/index
     02-package/index
     03-config/index
-    04-tests/index
-    05-template/index
-    06-viewclasses/index
-
+    04-scaffold/index
+    05-tests/index
+    06-template/index
+    07-viewclasses/index
+    08-static/index
+    09-forms/index
+    10-security/index
+    11-sqlalchemy/index

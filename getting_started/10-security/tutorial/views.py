@@ -4,7 +4,10 @@ import deform.widget
 from pyramid.decorator import reify
 from pyramid.httpexceptions import HTTPFound
 from pyramid.renderers import get_renderer
-from pyramid.view import view_config
+from pyramid.security import remember, forget
+from pyramid.view import view_config, forbidden_view_config
+
+from .security import USERS
 
 from .models import pages
 
@@ -39,6 +42,7 @@ class WikiViews(object):
                     pages=pages.values())
 
     @view_config(route_name='wikipage_add',
+                 permission='edit',
                  renderer='templates/wikipage_addedit.pt')
     def wikipage_add(self):
         form = self.wiki_form.render()
@@ -46,7 +50,7 @@ class WikiViews(object):
         if 'submit' in self.request.params:
             controls = self.request.POST.items()
             try:
-                appstruct = wiki_form.validate(controls)
+                appstruct = self.wiki_form.validate(controls)
             except deform.ValidationFailure as e:
                 # Form is NOT valid
                 return dict(title='Add Wiki Page', form=e.render())
@@ -73,6 +77,7 @@ class WikiViews(object):
         return dict(page=page, title=page['title'], uid=uid)
 
     @view_config(route_name='wikipage_edit',
+                 permission='edit',
                  renderer='templates/wikipage_addedit.pt')
     def wikipage_edit(self):
         uid = self.request.matchdict['uid']
@@ -100,10 +105,47 @@ class WikiViews(object):
 
         return dict(page=page, title=title, form=form)
 
-    @view_config(route_name='wikipage_delete')
+    @view_config(route_name='wikipage_delete', permission='edit')
     def wikipage_delete(self):
         uid = self.request.matchdict['uid']
         del pages[uid]
 
         url = self.request.route_url('wiki_view')
         return HTTPFound(url)
+
+    @view_config(route_name='login', renderer='templates/login.pt')
+    @forbidden_view_config(renderer='templates/login.pt')
+    def login(self):
+        request = self.request
+        login_url = request.route_url('login')
+        referrer = request.url
+        if referrer == login_url:
+            referrer = '/' # never use the login form itself as came_from
+        came_from = request.params.get('came_from', referrer)
+        message = ''
+        login = ''
+        password = ''
+        if 'form.submitted' in request.params:
+            login = request.params['login']
+            password = request.params['password']
+            if USERS.get(login) == password:
+                headers = remember(request, login)
+                return HTTPFound(location=came_from,
+                                 headers=headers)
+            message = 'Failed login'
+
+        return dict(
+            title='Login',
+            message=message,
+            url=request.application_url + '/login',
+            came_from=came_from,
+            login=login,
+            password=password,
+            )
+
+    @view_config(route_name='logout')
+    def logout(self):
+        request = self.request
+        headers = forget(request)
+        return HTTPFound(location=request.route_url('view_wiki'),
+                         headers=headers)

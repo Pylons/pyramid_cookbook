@@ -1,0 +1,13 @@
+<div metal:use-macro="view.layout">
+    <div metal:fill-slot="content">
+        <a href="${request.route_url('wikipage_add')}">Add
+            WikiPage</a>
+        <ul>
+            <li tal:repeat="page pages">
+                <a href="${request.route_url('wikipage_view', uid=page.uid)}">
+                    ${page.title}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
