@@ -28,7 +28,7 @@ Steps
    .. code-block:: bash
 
     (env33)$ cd ..; cp -r step08 step09; cd step09
-    (env33)$ easy_install deform
+    (env33)$ easy_install-3.3 deform
     (env33)$ python3.3 setup.py develop
 
 #. Deform has CSS and JS that help make it look pretty. Change the

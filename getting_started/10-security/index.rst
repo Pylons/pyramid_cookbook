@@ -20,9 +20,8 @@ Steps
 
    .. code-block:: bash
 
-    (env33)$ cd ..; cp -r step04 step05; cd step05
+    (env33)$ cd ..; cp -r step09 step10; cd step10
     (env33)$ python3.3 setup.py develop
-    (env33)$ mkdir tutorial/templates
 
 #. Update ``tutorial/models.py`` to include a statements from Pyramid's
    declarative security features:
@@ -67,6 +66,7 @@ Steps
    ``tutorial/static/wiki.css``:
 
    .. literalinclude:: tutorial/static/wiki.css
+    :language: css
 
 #. Run the tests in your package using ``nose``:
 
