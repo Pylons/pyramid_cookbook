@@ -1,5 +1,5 @@
 =============================
-9: Databases Using SQLAlchemy
+11: Databases Using SQLAlchemy
 =============================
 
 - easy_install sqlalchemy pyramid_tm zope.sqlalchemy

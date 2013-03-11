@@ -1,5 +1,5 @@
 =============
-5: Templating
+6: Templating
 =============
 
 Web development usually involves HTML, and web frameworks generally
@@ -31,7 +31,7 @@ Steps
 
    .. code-block:: bash
 
-    (env33)$ cd ..; cp -r step04 step05; cd step05
+    (env33)$ cd ..; cp -r step06 step06; cd step06
     (env33)$ python3.3 setup.py develop
     (env33)$ mkdir tutorial/templates
 

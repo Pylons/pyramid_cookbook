@@ -1,5 +1,5 @@
 ================
-7: Static Assets
+8: Static Assets
 ================
 
 - Use request.route_url instead of ``/``

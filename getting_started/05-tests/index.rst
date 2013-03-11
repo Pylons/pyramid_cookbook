@@ -1,5 +1,5 @@
 ============================
-4: Unit and Functional Tests
+5: Unit and Functional Tests
 ============================
 
 Test coverage is a badge of honor for Pyramid, which has 100% test (and
@@ -44,7 +44,7 @@ Steps
 
    .. code-block:: bash
 
-    (env33)$ cd ..; cp -r step03 step04; cd step04
+    (env33)$ cd ..; cp -r step03 step05; cd step05
     (env33)$ python3.3 setup.py develop
     (env33)$ easy_install nose webtest
 

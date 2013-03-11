@@ -12,6 +12,13 @@
 </head>
 <body>
 <div id="main">
+    <div id="loginout" tal:switch="view.logged_in">
+        <ul >
+            <li tal:case="True">one</li>
+            <li tal:case="False">two</li>
+            <li tal:case="default">not one or two</li>
+        </ul>
+    </div>
     <h1>
         <a href="${request.route_url('wiki_view')}">
             <img src="${request.static_url('tutorial:static/logo.png')}"

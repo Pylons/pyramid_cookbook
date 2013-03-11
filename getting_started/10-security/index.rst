@@ -17,9 +17,12 @@ Steps
 =====
 
 - change models.py: root factory
-- change __init__.py: auth policies
--
-
+- change __init__.py: auth policies, root factory, route
+- create security.py
+- update views
+- make login.pt
+- change layout.pt
+- css changes
 
 #. Again, let's use the previous package as a starting point for a new
    distribution. Also, make a directory for the templates:

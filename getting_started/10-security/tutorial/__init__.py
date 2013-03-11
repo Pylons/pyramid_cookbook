@@ -18,6 +18,8 @@ def main(global_config, **settings):
     config.set_authorization_policy(authz_policy)
 
     config.add_route('wiki_view', '/')
+    config.add_route('login', '/login')
+    config.add_route('logout', '/logout')
     config.add_route('wikipage_add', '/add')
     config.add_route('wikipage_view', '/{uid}')
     config.add_route('wikipage_edit', '/{uid}/edit')
