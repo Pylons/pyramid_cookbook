@@ -43,6 +43,14 @@ Steps
    .. literalinclude:: tutorial/views.py
         :linenos:
 
+#. Make a ``tutorial/static/wiki.css`` for the styling:
+
+   .. literalinclude:: tutorial/static/wiki.css
+    :language: css
+
+#. We also have a :download:`logo PNG file <tutorial/static/logo.png>`
+   that we need saved at ``tutorial/static/logo.png``.
+
 #. The ``tutorial/templates/layout.pt`` includes the CSS on all pages,
    plus adds a logo that goes back to the wiki home:
 
