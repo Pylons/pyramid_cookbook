@@ -5,3 +5,4 @@ env*/
 *.egg-info*
 *__pycache__*
 *.pyc
+sqltutorial.sqlite
