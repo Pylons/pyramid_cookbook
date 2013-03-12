@@ -4,12 +4,11 @@ import deform.widget
 from pyramid.decorator import reify
 from pyramid.httpexceptions import HTTPFound
 from pyramid.renderers import get_renderer
-from pyramid.view import view_config
+from pyramid.security import remember, forget, authenticated_userid
+from pyramid.view import view_config, forbidden_view_config
 
-from .models import (
-    DBSession,
-    Page
-    )
+from .models import DBSession, Page
+from .security import USERS
 
 
 class WikiPage(colander.MappingSchema):

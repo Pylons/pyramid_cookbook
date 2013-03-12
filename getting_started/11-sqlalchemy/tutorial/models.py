@@ -1,3 +1,5 @@
+from pyramid.security import Allow, Everyone
+
 from sqlalchemy import (
     Column,
     Integer,
@@ -13,7 +15,8 @@ from sqlalchemy.orm import (
 
 from zope.sqlalchemy import ZopeTransactionExtension
 
-DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
+DBSession = scoped_session(
+    sessionmaker(extension=ZopeTransactionExtension()))
 Base = declarative_base()
 
 
@@ -26,3 +29,11 @@ class Page(Base):
     def __init__(self, title, body):
         self.title = title
         self.body = body
+
+
+class RootFactory(object):
+    __acl__ = [(Allow, Everyone, 'view'),
+               (Allow, 'group:editors', 'edit')]
+
+    def __init__(self, request):
+        pass

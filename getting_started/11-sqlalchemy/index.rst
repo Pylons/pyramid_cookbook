@@ -1,19 +1,23 @@
-=============================
+==============================
 11: Databases Using SQLAlchemy
-=============================
+==============================
 
-- easy_install sqlalchemy pyramid_tm zope.sqlalchemy
-- development.ini
-- you can also use the scaffold
-- tests.py is much different
-
-Goals
-=====
 
 
 Objectives
 ==========
 
+- Store pages in SQLite by using SQLAlchemy models
+
+- Provide a database-initialize command by writing a Pyramid *console
+  script* which can be run from the command line
+
+.. note::
+
+    The ``alchemy`` scaffold is really helpful for getting a
+    SQLAlchemy project going, including generation of the console
+    script. Since we want to see all the decisions,
+    we will forgo convenience in this tutorial and wire it up ourselves.
 
 Initializing the Database
 =========================
@@ -21,14 +25,38 @@ Initializing the Database
 Steps
 =====
 
-#. Again, let's use the previous package as a starting point for a new
-   distribution. Also, make a directory for the templates:
+#. As before, let's use the previous package as a starting point for
+   a new distribution. Also, let's install the dependencies required
+   for a SQLAlchemy-oriented Pyramid application and make a directory
+   for the console script:
 
    .. code-block:: bash
 
-    (env33)$ cd ..; cp -r step04 step05; cd step05
+    (env33)$ cd ..; cp -r step10 step11; cd step11
     (env33)$ python3.3 setup.py develop
-    (env33)$ mkdir tutorial/templates
+    (env33)$ easy_install-3.3 sqlalchemy pyramid_tm zope.sqlalchemy
+
+#. Our configuration file at ``development.ini`` wires together some
+   new pieces:
+
+   .. literalinclude:: development.ini
+    :language: ini
+
+#. We need a command-line script for initializing the database. Enter
+   the following to initialize ``tutorial/scripts/__init__.py``:
+
+   .. literalinclude:: tutorial/scripts/__init__.py
+
+#. Now enter our console script at
+   ``tutorial/scripts/initializedb.py``:
+
+   .. literalinclude:: tutorial/scripts/initializedb.py
+
+#. To wire up a console script, our ``setup.py`` needs an entry point:
+
+   .. literalinclude:: setup.py
+
+
 
 #. Run the tests in your package using ``nose``:
 

@@ -23,7 +23,7 @@ Steps
     (env33)$ cd ..; cp -r step09 step10; cd step10
     (env33)$ python3.3 setup.py develop
 
-#. Update ``tutorial/models.py`` to include a statements from Pyramid's
+#. Update ``tutorial/models.py`` to include statements from Pyramid's
    declarative security features:
 
    .. literalinclude:: tutorial/models.py
@@ -67,6 +67,12 @@ Steps
 
    .. literalinclude:: tutorial/static/wiki.css
     :language: css
+
+#. Finally, we need to change our functional tests, as requests to
+   add/edit/delete get redirected to the login screen:
+
+   .. literalinclude:: tutorial/tests.py
+    :linenos:
 
 #. Run the tests in your package using ``nose``:
 

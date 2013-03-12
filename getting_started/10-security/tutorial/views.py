@@ -7,9 +7,8 @@ from pyramid.renderers import get_renderer
 from pyramid.security import remember, forget, authenticated_userid
 from pyramid.view import view_config, forbidden_view_config
 
-from .security import USERS
-
 from .models import pages
+from .security import USERS
 
 
 class WikiPage(colander.MappingSchema):
@@ -26,7 +25,6 @@ class WikiViews(object):
         renderer = get_renderer("templates/layout.pt")
         self.layout = renderer.implementation().macros['layout']
         self.logged_in = authenticated_userid(request)
-        print ('self.logged_in', self.logged_in)
 
     @reify
     def wiki_form(self):
