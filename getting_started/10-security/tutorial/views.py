@@ -45,7 +45,6 @@ class WikiViews(object):
                  permission='edit',
                  renderer='templates/wikipage_addedit.pt')
     def wikipage_add(self):
-        form = self.wiki_form.render()
 
         if 'submit' in self.request.params:
             controls = self.request.POST.items()
@@ -67,7 +66,7 @@ class WikiViews(object):
             url = self.request.route_url('wikipage_view', uid=new_uid)
             return HTTPFound(url)
 
-        return dict(title='Add Wiki Page', form=form)
+        return dict(title='Add Wiki Page', form=self.wiki_form.render())
 
     @view_config(route_name='wikipage_view',
                  renderer='templates/wikipage_view.pt')
@@ -84,12 +83,10 @@ class WikiViews(object):
         page = pages[uid]
         title = 'Edit ' + page['title']
 
-        wiki_form = self.wiki_form
-
         if 'submit' in self.request.params:
             controls = self.request.POST.items()
             try:
-                appstruct = wiki_form.validate(controls)
+                appstruct = self.wiki_form.validate(controls)
             except deform.ValidationFailure as e:
                 return dict(title=title, page=page, form=e.render())
 
@@ -101,7 +98,7 @@ class WikiViews(object):
                                          uid=page['uid'])
             return HTTPFound(url)
 
-        form = wiki_form.render(page)
+        form = self.wiki_form.render(page)
 
         return dict(page=page, title=title, form=form)
 

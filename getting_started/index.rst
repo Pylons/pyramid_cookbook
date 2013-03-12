@@ -9,6 +9,11 @@ This hands-on tutorial covers "a little about a lot": practical
 introductions to the most common facilities. Fun, fast-paced, and most
 certainly not aimed at experts.
 
+TODO
+====
+
+- Change WikiPage to Page, wikipage to page
+
 .. toctree::
     :maxdepth: 1
 

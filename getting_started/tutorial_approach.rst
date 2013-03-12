@@ -35,6 +35,12 @@ we will show various Pyramid facilities, such as views and security. We
 will also use some important add-on packages (SQLAlchemy for storage,
 Deform for forms.)
 
+.. note::
+
+    Wiki afficianods will note that this isn't a classic wiki,
+    with wikiwords that prompt for links stored by wikiname. Instead,
+    this is more like a classic add/view/edit/delete of pages.
+
 Directory Tree
 ==============
 

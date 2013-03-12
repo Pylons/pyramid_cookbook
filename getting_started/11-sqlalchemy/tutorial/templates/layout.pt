@@ -12,7 +12,12 @@
 </head>
 <body>
 <div id="main">
-    <h1>
+    <div id="loginout">
+        <a tal:condition="view.logged_in is not None"
+           href="${request.application_url}/logout">Logout</a>
+        <a tal:condition="view.logged_in is None"
+           href="${request.application_url}/login">Log In</a>
+    </div>    <h1>
         <a href="${request.route_url('wiki_view')}">
             <img src="${request.static_url('tutorial:static/logo.png')}"
                  alt="Logo"/></a>
