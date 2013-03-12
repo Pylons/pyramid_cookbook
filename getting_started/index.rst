@@ -13,6 +13,10 @@ TODO
 ====
 
 - Change WikiPage to Page, wikipage to page
+- Discuss imperative and declarative styles for config
+- Get rid of multi-line imports
+- Check with Python 2.7
+- Test Python config with from sqlite3 import *
 
 .. toctree::
     :maxdepth: 1

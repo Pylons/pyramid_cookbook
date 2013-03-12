@@ -22,7 +22,7 @@ Base = declarative_base()
 
 class Page(Base):
     __tablename__ = 'wikipages'
-    id = Column(Integer, primary_key=True)
+    uid = Column(Integer, primary_key=True)
     title = Column(Text, unique=True)
     body = Column(Text)
 

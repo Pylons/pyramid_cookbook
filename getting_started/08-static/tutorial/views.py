@@ -34,7 +34,7 @@ class WikiViews(object):
         uid = self.request.matchdict['uid']
         page = [page for page in pages if page['uid'] == uid][0]
         title = page['title']
-        return dict(page=page, title=title, uid=uid)
+        return dict(page=page, title=title)
 
     @view_config(route_name='wikipage_edit',
                  renderer='templates/wikipage_addedit.pt')

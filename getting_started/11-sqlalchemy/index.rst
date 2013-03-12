@@ -37,8 +37,12 @@ Steps To Initialize Database
    .. code-block:: bash
 
     (env33)$ cd ..; cp -r step10 step11; cd step11
-    (env33)$ python3.3 setup.py develop
     (env33)$ easy_install-3.3 sqlalchemy pyramid_tm zope.sqlalchemy
+
+   .. note::
+
+     We aren't yet doing ``python3.3 setup.py develop`` as we
+     are changing it later.
 
 #. Our configuration file at ``development.ini`` wires together some
    new pieces:
@@ -66,6 +70,12 @@ Steps To Initialize Database
    point:
 
    .. literalinclude:: setup.py
+
+#. Since ``setup.py`` changed, we now run it:
+
+   .. code-block:: bash
+
+    (env33)$ python3.3 setup.py develop
 
 #. The script references some models in ``tutorial/models.py``:
 
@@ -95,9 +105,6 @@ Steps To Initialize Database
     2013-03-12 10:13:56,983 INFO  [sqlalchemy.engine.base.Engine][MainThread] INSERT INTO wikipages (title, body) VALUES (?, ?)
     2013-03-12 10:13:56,983 INFO  [sqlalchemy.engine.base.Engine][MainThread] ('Root', '<p>Root</p>')
     2013-03-12 10:13:56,985 INFO  [sqlalchemy.engine.base.Engine][MainThread] COMMIT
-
-    (env33)$ ls sqltutorial.sqlite
-    sqltutorial.sqlite
 
 Application Steps
 =================

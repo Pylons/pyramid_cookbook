@@ -61,7 +61,7 @@ class WikiViews(object):
 
             # Get the new ID and redirect
             page = DBSession.query(Page).filter_by(title=new_title).one()
-            new_uid = page.id
+            new_uid = page.uid
 
             url = self.request.route_url('wikipage_view', uid=new_uid)
             return HTTPFound(url)
@@ -72,7 +72,7 @@ class WikiViews(object):
                  renderer='templates/wikipage_view.pt')
     def wikipage_view(self):
         uid = int(self.request.matchdict['uid'])
-        page = DBSession.query(Page).filter_by(id=uid).one()
+        page = DBSession.query(Page).filter_by(uid=uid).one()
 
         return dict(page=page, title=page.title)
 
@@ -81,7 +81,7 @@ class WikiViews(object):
                  renderer='templates/wikipage_addedit.pt')
     def wikipage_edit(self):
         uid = int(self.request.matchdict['uid'])
-        page = DBSession.query(Page).filter_by(id=uid).one()
+        page = DBSession.query(Page).filter_by(uid=uid).one()
         title = 'Edit ' + page.title
 
         if 'submit' in self.request.params:
@@ -99,7 +99,7 @@ class WikiViews(object):
             return HTTPFound(url)
 
         form = self.wiki_form.render(dict(
-            uid=page.id, title=page.title, body=page.body)
+            uid=page.uid, title=page.title, body=page.body)
         )
 
         return dict(page=page, title=title, form=form)
@@ -107,7 +107,7 @@ class WikiViews(object):
     @view_config(route_name='wikipage_delete', permission='edit')
     def wikipage_delete(self):
         uid = int(self.request.matchdict['uid'])
-        page = DBSession.query(Page).filter_by(id=uid).one()
+        page = DBSession.query(Page).filter_by(uid=uid).one()
         DBSession.delete(page)
 
         url = self.request.route_url('wiki_view')

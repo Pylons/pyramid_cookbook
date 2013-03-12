@@ -73,7 +73,7 @@ class WikiViews(object):
     def wikipage_view(self):
         uid = self.request.matchdict['uid']
         page = pages[uid]
-        return dict(page=page, title=page['title'], uid=uid)
+        return dict(page=page, title=page['title'])
 
     @view_config(route_name='wikipage_edit',
                  permission='edit',
