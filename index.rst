@@ -13,7 +13,6 @@ Contents
    wiki_tutorials
    humans/index
    getting_started/index
-   pyramid
    
 Additional learning resources
 .............................
