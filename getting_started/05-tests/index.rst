@@ -41,7 +41,7 @@ Steps
 
    .. code-block:: bash
 
-    (env33)$ cd ..; cp -r step03 step05; cd step05
+    (env33)$ cd ../..; cp -r step03 step05; cd step05
     (env33)$ python3.3 setup.py develop
     (env33)$ easy_install-3.3 nose webtest
 
