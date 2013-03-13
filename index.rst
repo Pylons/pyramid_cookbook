@@ -13,6 +13,13 @@ Contents
    wiki_tutorials
    humans/index
    getting_started/index
+   pyramid
+   
+Additional learning resources
+.............................
+
+* `Pyramid Blog Tutorial <http://pyramid-blogr.readthedocs.org/en/latest/>`_
+
 
 .. toctree::
    :hidden:
