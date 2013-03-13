@@ -64,7 +64,7 @@ This single-file module does quite a bit for so few lines,
 thus making it spiritually similar to microframeworks. A view function
 is added to the configuration. When called, the view returns a response.
 
-The ``hello`` view is mapped to a route which is matched to the root
+The ``hello_world`` view is mapped to a route which is matched to the root
 URL of the application.
 
 Extra Credit

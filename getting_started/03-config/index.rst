@@ -76,7 +76,7 @@ the Pyramid chapter on
 
 The ``.ini`` file is also used for two other functions:
 
-- ``[server:main]]`` wires up the choice of WSGI *server* fro your WSGI
+- ``[server:main]`` wires up the choice of WSGI *server* fro your WSGI
   *application*
 
 - Pyramid uses Python standard logging, which needs a number of

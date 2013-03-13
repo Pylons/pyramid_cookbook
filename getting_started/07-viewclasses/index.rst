@@ -94,7 +94,7 @@ Steps
 Analysis
 ========
 
-Our ``_init__`` shows us a new feature we are using with our
+Our ``__init__`` shows us a new feature we are using with our
 ``add_route`` configurations: *named parameters*. These variables,
 indicated with curly braces, later become available on
 ``request.matchdict``.
