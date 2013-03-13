@@ -31,7 +31,8 @@ Steps
     (env33)$ mkdir tutorial/static
     (env33)$ python3.3 setup.py develop
 
-#. The ``Configurator`` needs to be told about the static files by
+#. The ``Configurator`` needs to be told in ``tutorial/__init__.py``
+   about the static files by
    calling its ``add_static_view``:
 
     .. literalinclude:: tutorial/__init__.py
