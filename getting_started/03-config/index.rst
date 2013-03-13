@@ -29,7 +29,7 @@ Steps
 
 #. Pyramid can use a .ini-formatted configuration file as its launching
    point. Type the following into ``development.ini`` inside
-   ``step3``:
+   ``step03``:
 
    .. literalinclude:: development.ini
     :linenos:
