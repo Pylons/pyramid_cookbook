@@ -42,12 +42,9 @@ class WikiFunctionalTests(unittest.TestCase):
     def setUp(self):
         self.session = _initTestingDB()
         self.config = testing.setUp()
-        from tutorial import main
-
-        settings = {}
-        app = main(settings)
+        from pyramid.paster import get_app
+        app = get_app('development.ini')
         from webtest import TestApp
-
         self.testapp = TestApp(app)
 
     def tearDown(self):
@@ -58,10 +55,4 @@ class WikiFunctionalTests(unittest.TestCase):
         res = self.testapp.get('/', status=200)
         self.assertIn(b'Welcome', res.body)
         res = self.testapp.get('/add', status=200)
-        self.assertIn(b'Log', res.body)
-        res = self.testapp.get('/100', status=200)
-        self.assertIn(b'100', res.body)
-        res = self.testapp.get('/100/edit', status=200)
-        self.assertIn(b'Log', res.body)
-        res = self.testapp.get('/100/delete', status=200)
         self.assertIn(b'Log', res.body)
