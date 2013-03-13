@@ -6,17 +6,10 @@ Most modern Python development is done using Python packages, which
 Pyramid puts packages to good use. In this step, we start writing our
 Wiki application as a standard Python package.
 
-Goals
-=====
-
-- Get a minimum Python package in place
-
-- Start writing a Wiki application as our tutorial
-
 Objectives
 ==========
 
-- Make a ``setup.py``
+- Get a minimum Python package in place by making a ``setup.py``
 
 - Get our basic directory structure in place
 
@@ -25,16 +18,24 @@ Objectives
 Steps
 =====
 
-#. ``(env33)$ cd ..; mkdir step02; cd step02``
+#. Use the previous step as the basis for this step:
+
+   .. code-block:: bash
+
+    (env33)$ cd ..; mkdir step02; cd step02
 
 #. In ``setup.py``, enter the following:
 
     .. literalinclude:: setup.py
         :linenos:
 
-#. ``(env33)$ python3.3 setup.py develop``
+#. Make the new package installed for development then make a directory
+   for the actual code:
 
-#. ``mkdir tutorial``
+   .. code-block:: bash
+
+    (env33)$ python3.3 setup.py develop
+    (env33)$ mkdir tutorial
 
 #. Enter the following into ``tutorial/__init__.py``:
 
@@ -48,7 +49,9 @@ Steps
 
     .. literalinclude:: tutorial/views.py
 
-#. Run the WSGI application with::
+#. Run the WSGI application with:
+
+   .. code-block:: bash
 
     (env33)$ python3.3 tutorial/wikiapp.py
 
@@ -78,8 +81,3 @@ Extra Credit
    ``@view_config`` decorator. Does Pyramid treat the imperative
    (``add_view``) configuration differently than the declarative
    (``@view_config``) approach?
-
-Discussion
-==========
-
-- Pyramid's philosophy of configuration

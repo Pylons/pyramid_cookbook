@@ -32,7 +32,8 @@ Steps
     (env33)$ python3.3 setup.py develop
 
 #. Deform has CSS and JS that help make it look pretty. Change the
-   ``tutorial/__init__.py`` to add a static view:
+   ``tutorial/__init__.py`` to add a static view for Deform's static
+   assets:
 
    .. literalinclude:: tutorial/__init__.py
     :linenos:
@@ -50,8 +51,8 @@ Steps
    .. literalinclude:: tutorial/views.py
     :linenos:
 
-#. We don't want to include the Deform JS/CSS in every page so we need
-   a "slot" in ``tutorial/templates/layout.pt`` where we can insert
+#. We don't want to include the Deform JS/CSS in every page. We thus need
+   a "slot" in ``tutorial/templates/layout.pt`` into which we can insert
    these static assets:
 
    .. literalinclude:: tutorial/templates/layout.pt
@@ -88,10 +89,74 @@ Steps
 Analysis
 ========
 
-- Package spec for Deform add_static_view?
+This step helps illustrate the utility of asset specifications for
+static assets. We have an outside package called Deform with static
+assets which need to be published. We don't have to know where on disk
+it is located. We point at the package, then the path inside the package.
+
+We just need to include a call to ``add_static_view`` to make that
+directory available at a URL. For Pyramid-specific pages,
+Pyramid provides a facility (``config.include()``) which even makes
+that unnecessary for consumers of a package. (Deform is not specific to
+Pyramid.)
+
+Our add and edit views use a pattern called *self-posting forms*.
+Meaning, the same URL is used to ``GET`` the form as is used to
+``POST`` the form. The route, the view, and the template are the same
+whether you are walking up to it the first time or you clicked "submit".
+
+Inside the view we do ``if 'submit' in self.request.params:`` to see if
+this form was a ``POST`` where the user clicked on a particular button
+``<input name="submit">``.
+
+The form controller then follows a typical pattern:
+
+- If you are doing a GET, skip over and just return the form
+
+- If you are doing a POST, validate the form contents
+
+- If the form is invalid, bail out by re-rendering the form with the
+  supplied ``POST`` data
+
+- If the validation succeeeded, perform some action and issue a
+  redirect via ``HTTPFound``.
+
+We are, in essence, writing our own form controller. Other
+Pyramid-based systems, including ``pyramid_deform``, provide a
+form-centric view class which automates much of this branching and
+routing.
 
 Extra Credit
 ============
 
-- Can I provide a one-liner for including static assets in my Pyramid
-  libraries?
+#. Do I have to publish my Deform static assets at the
+   ``/deform_static/`` URL path? What happens if I change it? (Give
+   this a try by editing ``deform_static`` in ``tutorial/__init__.py``.)
+
+#. Analyze the following and discern what is the intention:
+
+   .. code-block:: python
+    :linenos:
+
+    @view_defaults(route_name='wikipage_edit',
+                   renderer='templates/wikipage_addedit.pt')
+    class WikiPageViews(object):
+
+        def __init__(self, request):
+            self.request = request
+
+        @view_config(request_param='form.update')
+        def wikipage_update(self):
+            # some work
+            return dict(title="Form Update")
+
+        @view_config(request_param='form.draft')
+        def wikipage_draft(self):
+            # some work
+            return dict(title="Form Draft")
+
+        @view_config(request_param='form.delete')
+        def wikipage_delete(self):
+            # some work
+            return dict(title="Form Delete")
+

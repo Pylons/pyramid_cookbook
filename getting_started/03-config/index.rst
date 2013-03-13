@@ -7,11 +7,6 @@ Pyramid has a first-class concept of
 This approach is optional, but its presence makes it distinct from
 other Python web frameworks
 
-Goals
-=====
-
-- Illustrate a configuration-driven application
-
 Objectives
 ==========
 
@@ -98,11 +93,11 @@ as it didn't need to wire up a WSGI server.
 Extra Credit
 ============
 
-- Is it possible to develop your application separately from the
-  configuration? Is that a good idea?
+#. Is it possible to develop your application separately from the
+   configuration? Is that a good idea?
 
-- Can you have more than one ``.ini`` file for an application?
+#. Can you have more than one ``.ini`` file for an application?
 
-- If you don't like configuration and/or ``.ini`` files,
-  could you do this yourself in Python code?
+#. If you don't like configuration and/or ``.ini`` files,
+   could you do this yourself in Python code?
 

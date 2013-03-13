@@ -2,7 +2,7 @@
 7: View Classes
 ===============
 
-Free-standing functions are the regular way to do views. Many times,
+Free-standing functions are the simple way to do views. Many times,
 though, you have several views that are closely related. For example,
 a wiki might have many different ways to look at it (home page, add,
 view, edit, delete, table of contents, etc.)
@@ -16,7 +16,8 @@ Objectives
 
 - Introduce a view class for our wiki-related views
 
-- Start making this more like Wiki by adding more views and templates
+- Start making this more like our wiki application by adding more
+  views and templates
 
 Steps
 =====
@@ -93,16 +94,33 @@ Steps
 Analysis
 ========
 
+Our ``_init__`` shows us a new feature we are using with our
+``add_route`` configurations: *named parameters*. These variables,
+indicated with curly braces, later become available on
+``request.matchdict``.
 
+We are adding multiple views to our site now. Rather than repeat the
+same stuff in ``<head>`` and the other "chrome" common to all
+templates, we make a master template available in the view class as
+``layout``. Attributes and methods of the view class instance are
+available inside the template from the ``view`` variable,
+as we saw with ``view.layout``.
 
-- view defaults
+The master template defines slots that can be filled by the view
+templates. Our ``layout.pt`` used ``metal:define-slot="content"`` to
+make one such slot. Each view template filled this with
+``metal:fill-slot="content"``.
 
-- route with an id
+Our ``wikipage_delete`` returns an ``HTTPFound``. This is Pyramid's way
+of issuing a redirect.
 
-- layout template
-
-- HTTPFound
+In our unit tests we have to add an extra step to create an instance of
+the view class, and then call the view being tested.
 
 Extra Credit
 ============
 
+#. If we wanted to make a set of statements to several views in a view
+   class at once, how would we do that?
+
+#. Can I put multiple named parameters in my routes?

@@ -29,6 +29,20 @@ Objectives
 Steps To Initialize Database
 ============================
 
+.. warning::
+
+    To make sure that your Python can reach your SQLite library
+    correctly, please make sure the following succeeds:
+
+    .. code-block:: bash
+
+        $ python3.3
+        Python 3.3.0 (default, Mar  8 2013, 15:50:47)
+        [GCC 4.2.1 Compatible Apple Clang 4.0 ((tags/Apple/clang-421.0.60))] on darwin
+        Type "help", "copyright", "credits" or "license" for more information.
+        >>> from sqlite3 import *
+        >>>
+
 #. As before, let's use the previous package as a starting point for
    a new distribution. Also, let's install the dependencies required
    for a SQLAlchemy-oriented Pyramid application and make a directory
@@ -141,7 +155,52 @@ Application Steps
 Analysis
 ========
 
+Let's start with the dependencies. We made the decision to use
+``SQLAlchemy`` to talk to our database. We also, though, installed
+``pyramid_tm`` and ``zope.sqlalchemy``. Why?
+
+Pyramid has a strong orientation towards support for ``transactions``.
+Specifically, you can install a transaction manager into your app
+application, either as middleware or a Pyramid "tween". Then,
+just before you return the response, all transaction-aware parts of
+your application are executed.
+
+This means Pyramid view code usually doesn't manage transactions. If
+your view code or a template generates an error, the transaction manager
+aborts the transaction. This is a very liberating way to write code.
+
+The ``pyramid_tm`` package provides a "tween" that is configured in the
+``development.ini`` configuration file. That installs it. We then need
+a package that makes SQLAlchemy and thus the RDBMS transaction manager
+integrate with the Pyramid transaction manager. That's what
+``zope.sqlalchemy`` does.
+
+Where do we point at the location on disk for the SQLite file? In the
+configuration file. This lets consumers of our package change the
+location in a safe (non-code) way. That is, in configuration. This
+configuration-oriented approach isn't required in Pyramid; you can
+still make such statements in your ``__init__.py`` or some companion
+module.
+
+The ``initializedb`` is a nice example of framework support. You point
+your setup at the location of some ``[console_scripts]`` and these get
+generated into your virtualenv's ``bin`` directory. Our console script
+follows the pattern of being fed a configuration file with all the
+bootstrapping. It then opens SQLAlchemy and creates the root of the
+wiki, which also makes the SQLite file. Note the
+``with transaction.manager`` part that puts the work in the scope of a
+transaction (as we aren't inside a web request where this is done
+automatically.)
+
+The ``models.py`` does a little bit extra work to hook up SQLAlchemy
+into the Pyramid transaction manager. It then declares the model for a
+``Page``.
+
+Our views have changes primarily around replacing our dummy
+dictionary-of-dictionaries data with proper database support: list the
+rows, add a row, edit a row, and delete a row.
 
 Extra Credit
 ============
 
+#. Why all this code? Why can't I just type 2 lines have magic ensue?

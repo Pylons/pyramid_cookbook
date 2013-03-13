@@ -3,7 +3,10 @@
 ==================================================
 
 Our application has URLs that allow people to add/edit/delete content
-via a web browser. Time to add security to the application.
+via a web browser. Time to add security to the application. Let's
+protect our add/edit/delete views to require a login (username of
+``editor`` and password of ``editor``.) We will allow the other views
+to continue working without a password.
 
 Objectives
 ==========
@@ -96,7 +99,42 @@ Steps
 Analysis
 ========
 
+Unlike many web frameworks, Pyramid includes a built-in (but optional)
+security model for authentication and authorization. This security
+system is intended to be flexible and support many needs.
+
+This simple tutorial step can be boiled down to the following:
+
+- A view can require a *permission* (``edit``)
+
+- The context for our view (the ``Root``) has an access control list
+  (ACL)
+
+- This ACL says that the ``edit`` permission is available on ``Root``
+  to the ``group:editors`` *principal*
+
+- The registered ``groupfinder`` answers whether a particular user
+  (``editor``) has a particular group (``group:editors``)
+
+In summary: ``wikipage_add`` wants ``edit`` permission, ``Root`` says
+``group:editors`` has ``edit`` permission.
+
+Of course, this only applies on ``Root``. Some other part of the site
+(a.k.a. *context*) might have a different ACL.
+
+If you are not logged in and click on ``Add WikiPage``, you need to get
+sent to a login screen. How does Pyramid know what is the login page to
+use? We explicitly told Pyramid that the ``login`` view should be used
+by decorating the view with ``@forbidden_view_config``.
 
 Extra Credit
 ============
 
+#. Can I use a database behind my ``groupfinder`` to look up principals?
+
+#. Do I have to put a ``renderer`` in my ``@forbidden_view_config``
+   decorator?
+
+#. Once I am logged in, does any user-centric information get jammed
+   onto each request? Use ``import pdb; pdb.set_trace()`` to answer
+   this.

@@ -49,7 +49,8 @@ Steps
     :language: css
 
 #. We also have a :download:`logo PNG file <tutorial/static/logo.png>`
-   that we need saved at ``tutorial/static/logo.png``.
+   that we need saved at ``tutorial/static/logo.png``. Click this link
+   to download and save the image.
 
 #. The ``tutorial/templates/layout.pt`` includes the CSS on all pages,
    plus adds a logo that goes back to the wiki home:
@@ -95,11 +96,31 @@ Steps
 Analysis
 ========
 
-- Use request.route_url instead of ``/``
-- Module-level dummy data structure
+We made files and directories in ``tutorial/static`` available at the
+URL ``static``. However, we used ``tutorial:static`` as the argument in
+``add_static_view``. Pyramid uses a robust scheme called *asset
+specifications* to work with static assets.
 
+In our templates, we resolved the full path to a static asset in a
+package by using ``request.static_url`` and passing in an asset
+specification. ``route_url``, ``static_url``, and friends let you
+refactor your URL structure, or even publish to a different root URL,
+without breaking the links in your templates.
 
+Finally, we're cheating by having mutable dummy data at module scope.
+We will replace this shortly with database-driven data.
 
 Extra Credit
 ============
 
+#. Can you use ``add_static_view`` to serve up a directory listing with
+   links to the contents in a directory?
+
+#. Does Pyramid have support for setting cache parameters on static
+   assets?
+
+#. Can you also use asset specifications when naming the template for a
+   view?
+
+#. Can I provide a one-liner for including static assets in my Pyramid
+   libraries?

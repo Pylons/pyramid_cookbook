@@ -6,3 +6,4 @@ env*/
 *__pycache__*
 *.pyc
 sqltutorial.sqlite
+tmp

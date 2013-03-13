@@ -18,7 +18,12 @@ Objectives
 Steps
 =====
 
-#. ``(env33)$ cd ..; mkdir step04; cd step04``
+#. We don't need to copy the previous step. Instead,
+   just make an empty new directory:
+
+   .. code-block:: bash
+
+    (env33)$ cd ..; mkdir step04; cd step04
 
 #. See the usage for ``pcreate``:
 

@@ -13,7 +13,7 @@ def main(global_config, **settings):
     DBSession.configure(bind=engine)
     Base.metadata.bind = engine
     config = Configurator(settings=settings,
-                          root_factory='tutorial.models.RootFactory')
+                          root_factory='tutorial.models.Root')
 
     # Security policies
     authn_policy = AuthTktAuthenticationPolicy(

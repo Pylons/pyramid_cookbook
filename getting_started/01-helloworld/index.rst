@@ -5,15 +5,12 @@
 What's the simplest way to get started in Pyramid? A single-file module.
 No packages, ``setup.py``, or other machinery.
 
-Goals
-=====
+Objectives
+==========
 
 - Get Pyramid pixels on the screen as easily as possible
 
 - Use that as a well-understood base for adding each unit of complexity
-
-Objectives
-==========
 
 - Create a module with a view that acts as an HTTP server
 
@@ -75,24 +72,18 @@ Extra Credit
 
 #. Why do we do this:
 
-.. code-block:: python
+   .. code-block:: python
 
-  print ('Starting up server on http://localhost:6547')
+      print ('Starting up server on http://localhost:6547')
 
-...instead of:
+   ...instead of:
 
-.. code-block:: python
+   .. code-block:: python
 
-  print 'Starting up server on http://localhost:6547'
+      print 'Starting up server on http://localhost:6547'
 
 #. What happens if you return a string of HTML? A sequence of integers?
 
 #. Put something invalid, such as ``print xyz``, in the view function.
    Kill your ``python helloworld.py`` and restart,
    then reload your browser. See the exception in the console?
-
-Discussion
-==========
-
-- Background on megaframeworks, microframeworks, and Pyramid's opinion
-  thereof

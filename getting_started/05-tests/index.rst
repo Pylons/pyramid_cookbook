@@ -17,15 +17,12 @@ But it also makes up-front development faster, particularly in smart
 editors and IDEs. Restarting your app and clicky-clicking in your
 browser is a drag.
 
-Goals
-=====
+Objectives
+==========
 
 - Provide both :ref:`unit <pyramid:testing_chapter>` and
   :ref:`functional <pyramid:functional_tests>` tests for our
   Wiki application
-
-Objectives
-==========
 
 - Create a new module ``tutorial/tests.py``
 
@@ -68,7 +65,7 @@ Steps
 Analysis
 ========
 
-Our unit tests are first. We have on unit test, which simply executes
+Our unit tests are first. We have one unit test, which simply executes
 our view and ensures it returns the proper status code.
 
 Our functional test is second. To run, WebTest needs to be pointed at
