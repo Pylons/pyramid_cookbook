@@ -5,7 +5,7 @@
 Pyramid has a first-class concept of
 :ref:`configuration <pyramid:configuration_narr>` distinct from code.
 This approach is optional, but its presence makes it distinct from
-other Python web frameworks
+other Python web frameworks.
 
 Objectives
 ==========
@@ -54,7 +54,7 @@ Steps
 
     (env33)$ pserve development.ini
 
-#. Open ``http://127.0.0.1:6547/`` in your browser.
+#. Open http://127.0.0.1:6547/ in your browser.
 
 Analysis
 ========
@@ -76,11 +76,11 @@ the Pyramid chapter on
 
 The ``.ini`` file is also used for two other functions:
 
-- ``[server:main]`` wires up the choice of WSGI *server* fro your WSGI
+- ``[server:main]`` wires up the choice of WSGI *server* for your WSGI
   *application*
 
 - Pyramid uses Python standard logging, which needs a number of
-  configuration values. The ``.ini`` serves this function
+  configuration values. The ``.ini`` serves this function.
 
 In this case, ``pserve`` finds the server
 defined by ``[server:main]`` and the application defined by
