@@ -53,7 +53,8 @@ def close_view(request):
 
 
 @view_config(context='pyramid.exceptions.NotFound', renderer='notfound.mako')
-def notfound_view(self):
+def notfound_view(request):
+    request.response.status = '404 Not Found'
     return {}
 
 
