@@ -2,8 +2,8 @@
 2: Packaging for the Wiki Tutorial Application
 ==============================================
 
-Most modern Python development is done using Python packages, which
-Pyramid puts packages to good use. In this step, we start writing our
+Most modern Python development is done using Python packages,
+an approach Pyramid puts to good use. In this step, we start writing our
 Wiki application as a standard Python package.
 
 Objectives
