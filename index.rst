@@ -26,7 +26,7 @@ It supplements the `main documentation
    misc/index
    todo
 
-:ref:`Pyramid Glossary <glossary>`
+:ref:`Pyramid Glossary <pyramid:glossary>`
 
 Indices and tables
 ==================
