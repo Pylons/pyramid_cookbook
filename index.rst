@@ -21,7 +21,6 @@ It supplements the `main documentation
    static_assets/index
    templates/index
    testing/index
-   traversal_in_views
    views/index
    misc/index
    todo
