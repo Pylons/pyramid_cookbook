@@ -14,3 +14,5 @@ gevent + long polling
 http://michael.merickel.org/2011/6/21/tictactoe-and-long-polling-with-pyramid/
 
 https://github.com/mmerickel/tictactoe
+
+For more information on gevent see the `gevent home page <http://www.gevent.org/>`_
