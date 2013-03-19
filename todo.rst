@@ -65,5 +65,4 @@ TODO
 
 - Cookbook docs reorg
 
-  - Add reference links to main documentation
   - Move tutorials/overviews to tutorial project and replace with links
