@@ -11,7 +11,7 @@ It supplements the `main documentation
    auth/index
    configuration/index
    database/index
-   debugging
+   debugging/index
    deployment/index
    forms/index
    logging/index
