@@ -64,9 +64,12 @@ name/link          ET* title                   description                     c
                                                                                                     * Chameleon
                                                                                                     * security
 
-`blogr`_           ?   ``pyramid_blogr``       inspired by Flaskr app from the `pyramid_blogr`_
-                       Tutorial                Flask Web Framework Tutorial
-
+`blogr`_           4h  ``pyramid_blogr``       inspired by Flaskr app from the `pyramid_blogr`_     * URL dispatch
+                       Tutorial                Flask Web Framework Tutorial                         * SQLAlchemy
+                                                                                                    * Mako
+                                                                                                    * security
+                                                                                                    * WTForms
+                                                                                                    * pagination
 `birdie`_          4h  Birdie Tutorial: a      presented by Carlos de la
                        simple Twitter clone    Guardia at OSCON 2011 and PyCon `cguardia_tut`_
                                                USA 2012
