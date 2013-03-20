@@ -94,8 +94,8 @@ Remember also when using the PyDev console, to choose the interpreter
 associated with the project so that references in the console will
 be properly resolved.
 
-Running Pyramid under Pydev
-----------------------------------
+Running/Debugging Pyramid under Pydev
+-------------------------------------
 
 (Thanks to Michael Wilson for much of this - see `Setting up Eclipse
 (PyDev) for Pyramid
@@ -149,18 +149,28 @@ Add these values to the *Arguments* tab::
 
    Do not add ``--reload`` if you are trying to debug with
    Eclipse. It has been reported that this causes problems.
+   
+   We recommend you create a separate debug configuration
+   without the ``--reload``, and instead of checking "Run"
+   in the "Display in favorites menu", check "Debug".
 
 On the *Common* tab::
 
 	Uncheck "Launch in background"
-	In the box labeled "Display in favorites menu", click "Run"
+	In the box labeled "Display in favorites menu", check "Run"
 
-Hit *Run* to run your configuration immediately, or *Apply* to create the
-configuration without running it.
+Hit *Run* (*Debug*) to run (debug) your configuration immediately,
+or *Apply* to create the configuration without running it.
 
-You can now run your configuration at any time by selecting the *Run/Play ->
-RunPyramid* button.
+You can now run your application at any time by selecting the *Run/Play*
+button and selecting the *RunPyramid* command. Similarly, you can
+debug your application by selecting the *Debug* button and selecting
+the *DebugPyramid* command (or whatever you called it!).
 
 The console should show that the server has started. To verify, open
 your browser to 127.0.0.1:6547. You should see the hello world text.
+
+Note that when debugging, breakpoints can be set as with ordinary code,
+but they will only be hit when the view containing the breakpoint
+is served.
 
