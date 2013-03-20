@@ -93,3 +93,74 @@ effect.)
 Remember also when using the PyDev console, to choose the interpreter
 associated with the project so that references in the console will
 be properly resolved.
+
+Running Pyramid under Pydev
+----------------------------------
+
+(Thanks to Michael Wilson for much of this - see `Setting up Eclipse
+(PyDev) for Pyramid
+<http://mikeiz404-terminal.blogspot.com/2012/05/setting-up-eclipse-pydev-for-pyramid.html>`_)
+
+.. note::
+
+   This section assumes you have created a virtualenv with Pyramid installed,
+   and have configured your PyDev as above for this virtualenv.
+   We further assume you are using ``virtualenvwrapper`` (see above) so that
+   ``$WORKON_HOME`` is the location of your ``.virtualenvs`` directory
+   and ``proj_venv`` is the name of your virtualenv.
+   ``$WORKSPACE`` is the name of the PyDev workspace containing your project
+   
+   To create a working example, copy the `pyramid tutorial step03 
+   <https://pyramid_tutorials.readthedocs.org/en/latest/getting_started/03-config/index.html>`_
+   code into $WORKSPACE/tutorial.
+   
+   After copying the code, cd to ``$WORKSPACE/tutorial`` and run
+   ``python setup.py develop``
+   
+   You should now be ready to setup PyDev to run the tutorial step03 code.
+
+We will set up PyDev to run pserve as part of a run or debug configuration.
+
+First, copy ``pserve.py`` from your virtualenv to a location outside of your
+project library path::
+
+	cp $WORKON_HOME/proj_venv/bin/pserve.py $WORKSPACE
+
+.. note::
+
+   IMPORTANT: Do not put this in your project library path!
+   
+Now we need to have PyDev run this by default. To create a new run
+configuration, right click on the project and select
+*Run As -> Run Configurations...*. Select *Python Run* as your
+configuration type, and click on the new configuration icon. Add your
+project name (or browse to it), in this case "tutorial".
+
+Add these values to the *Main* tab::
+
+	Project: RunPyramid
+	Main Module: ${workspace_loc}/pserve.py
+	
+Add these values to the *Arguments* tab::
+
+	Program arguments: ${workspace_loc:tutorial/development.ini} --reload
+
+.. note::
+
+   Do not add ``--reload`` if you are trying to debug with
+   Eclipse. It has been reported that this causes problems.
+
+On the *Common* tab::
+
+	Uncheck "Launch in background"
+	In the box labeled "Display in favorites menu", click "Run"
+
+Hit *Run* to run your configuration immediately, or *Apply* to create the
+configuration without running it.
+
+You can now run your configuration at any time by selecting the *Run/Play ->
+RunPyramid* button.
+
+The console should show that the server has started. To verify, open
+your browser to 127.0.0.1:6547. You should see the hello world text.
+
