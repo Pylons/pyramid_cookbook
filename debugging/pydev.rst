@@ -49,14 +49,16 @@ To use PyDev with virtualenv takes some additional configuration that isn't
 covered in the above tutorial. Basically, you just need to make sure your
 virtualenv libraries are in the ``PYTHONPATH``.
 
-[Note: If you have never configured a python interpreter for your workspace,
-you will not be able to create a project without doing so. You should follow
-the steps below to configure python, but you should NOT include any
-virtualenv libraries for it. Then you will be able to create projects using
-this primary python interpreter. After you create your project, you should
-then follow the steps below to configure a new interpreter specifically for
-your project which does include the virtualenv libraries. This way, each
-project can be related to a specific virtualenv without confusion.]
+.. note::
+
+   If you have never configured a python interpreter for your workspace,
+   you will not be able to create a project without doing so. You should follow
+   the steps below to configure python, but you should NOT include any
+   virtualenv libraries for it. Then you will be able to create projects using
+   this primary python interpreter. After you create your project, you should
+   then follow the steps below to configure a new interpreter specifically for
+   your project which does include the virtualenv libraries. This way, each
+   project can be related to a specific virtualenv without confusion.
 
 First, open the project properties by right clicking over the project name
 and selecting *Properties*.
@@ -73,8 +75,11 @@ the python interpreter in that location, then select *OK*.
 
 A dialog will then appear asking you to choose the libraries that should 
 be on the ``PYTHONPATH``. Most of the necessary libraries should be automatically
-selected. [Note: on the Mac, the System libraries are not selected. Select
-them all.]. Hit *OK*, and your virtualenv python is now configured.
+selected. Hit *OK*, and your virtualenv python is now configured.
+
+.. note::
+
+   On the Mac, the system libraries are not selected. Select them all.
 
 You will finally be back on the dialog for configuring your project python
 interpreter/grammar. Choose the interpreter you just configured and click
