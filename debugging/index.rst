@@ -6,4 +6,5 @@ Debugging
 
    using_pdb
    debugging_pyramid
+   pydev
 
