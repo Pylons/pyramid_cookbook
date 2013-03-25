@@ -58,6 +58,32 @@ The value inserted into the template as the result of this statement will be
 You can add more imports and functions to ``helpers.py`` as necessary to make
 features available in your templates.
 
+Usage in Mako Templating:
+If you wanted to change templates using %inherit based on if a user was logged
+in you could do the following:
+
+.. code-block:: python
+
+    @subscriber(BeforeRender)
+        def add_base_template(event):
+            request = event.get('request')
+            if request.user:
+                base = 'blaster:templates/logged_in_layout.mako'
+                event.update({'base': base})
+            else:
+                base = 'blaster:templates/layout.mako'
+                event.update({'base': base})
+
+and then in your mako file you can call %inherit like so
+
+.. code-block:: python
+
+    <%inherit file="${context['base']}" />
+
+.. note::
+You must call the variable this way because of the way Mako works.
+It will not know about any other variable until after %inherit is called.
+
 
 Using a BeforeRender Event to Expose Chameleon ``base`` Template
 ----------------------------------------------------------------
