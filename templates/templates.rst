@@ -65,14 +65,14 @@ in you could do the following:
 .. code-block:: python
 
     @subscriber(BeforeRender)
-    def add_base_template(event):
-        request = event.get('request')
-        if request.user:
-            base = 'blaster:templates/logged_in_layout.mako'
-            event.update({'base': base})
-        else:
-            base = 'blaster:templates/layout.mako'
-            event.update({'base': base})
+        def add_base_template(event):
+            request = event.get('request')
+            if request.user:
+                base = 'blaster:templates/logged_in_layout.mako'
+                event.update({'base': base})
+            else:
+                base = 'blaster:templates/layout.mako'
+                event.update({'base': base})
 
 and then in your mako file you can call %inherit like so
 
