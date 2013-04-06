@@ -1,3 +1,5 @@
+.. _pyramid-cookbook:
+
 Pyramid Cookbook
 ================
 
