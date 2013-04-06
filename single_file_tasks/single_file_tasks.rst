@@ -1,3 +1,5 @@
+.. _single-file-tutorial:
+
 Todo List Application in One File
 ===================================
 
