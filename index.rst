@@ -1,3 +1,5 @@
+.. _pyramid-tutorials:
+
 Pyramid Tutorials
 =================
 
