@@ -1,10 +1,12 @@
+from wsgiref.simple_server import make_server
+
 from pyramid.config import Configurator
-from paste.httpserver import serve
 from pyramid.authentication import AuthTktAuthenticationPolicy
 
 from resources import bootstrap
 
 from usersdb import groupfinder
+
 
 def main():
     config = Configurator(
@@ -17,6 +19,8 @@ def main():
     app = config.make_wsgi_app()
     return app
 
+
 if __name__ == '__main__':
     app = main()
-    serve(app, host='0.0.0.0')
+    server = make_server(host='0.0.0.0', port=8080, app=app)
+    server.serve_forever()
