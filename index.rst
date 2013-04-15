@@ -7,25 +7,6 @@ Pyramid Tutorials
 This is the home of tutorial and patterns content for the Pyramid web
 framework.
 
-
----------------------------
-Contents of this repository
----------------------------
-
-.. toctree::
-   :maxdepth: 1
-
-   single_file_tasks/single_file_tasks
-   humans/index
-   getting_started/index
-
-
-.. toctree::
-   :hidden:
-
-   README
-
-
 ---------------------------
 Available Pyramid tutorials
 ---------------------------
