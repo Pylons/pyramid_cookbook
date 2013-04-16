@@ -51,6 +51,16 @@ your virtual environment. Your prompt will also change, as noted above.
   Homebrew, do ``pip install virtualenv`` and make your virtual
   environments with ``virtualenv``.
 
+.. note::
+
+  If you are a Windows user that got your Python 3.3 from python.org,
+  there's no ``pyvenv-3.3`` script and there's no .exe wrapper for
+  ``pyvenv`` script. Instead of using ``pyvenv`` directly you should either use 
+  ``path\to\python\python.exe path\to\python\Tools\Scripts\pyvenv.py``
+  or ``path\to\python\python.exe -m venv`` instead.
+  See http://stackoverflow.com/q/15981111/95735 for more details.
+  
+
 Installing Packaging Tools
 ==========================
 
