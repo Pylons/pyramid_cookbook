@@ -32,14 +32,14 @@ class ProjectorFunctionalTests(unittest.TestCase):
 
     def test_home(self):
         res = self.testapp.get('/', status=200)
-        self.failUnless(b'Home' in res.body)
+        self.assertTrue(b'Home' in res.body)
 
     def test_it(self):
         res = self.testapp.get('/', status=200)
-        self.failUnless(b'Home' in res.body)
+        self.assertTrue(b'Home' in res.body)
         res = self.testapp.get('/about.html', status=200)
-        self.failUnless(b'autonomous' in res.body)
+        self.assertTrue(b'autonomous' in res.body)
         res = self.testapp.get('/people', status=200)
-        self.failUnless(b'Susan' in res.body)
+        self.assertTrue(b'Susan' in res.body)
         res = self.testapp.get('/acme', status=200)
-        self.failUnless(b'Silly Slogans' in res.body)
+        self.assertTrue(b'Silly Slogans' in res.body)
