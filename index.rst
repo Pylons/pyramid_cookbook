@@ -82,3 +82,11 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+.. toctree::
+   :hidden:
+
+   README
+   getting_started/index
+   single_file_tasks/single_file_tasks
+   humans/index
