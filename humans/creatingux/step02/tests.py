@@ -15,4 +15,4 @@ class ProjectorFunctionalTests(unittest.TestCase):
 
     def test_it(self):
         res = self.testapp.get('/', status=200)
-        self.failUnless(b'hello' in res.body)
+        self.assertTrue(b'hello' in res.body)

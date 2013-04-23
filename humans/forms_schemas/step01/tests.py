@@ -24,4 +24,4 @@ class ProjectorFunctionalTests(unittest.TestCase):
 
     def test_it(self):
         res = self.testapp.get('/', status=200)
-        self.failUnless('Hello Form' in res.body)
+        self.assertTrue('Hello Form' in res.body)

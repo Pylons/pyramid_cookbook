@@ -27,5 +27,5 @@ class ProjectorFunctionalTests(unittest.TestCase):
 
     def test_it(self):
         res = self.testapp.get('/', status=200)
-        self.failUnless('SiteFolder' in res.body)
-        self.failUnless('Projector Site' in res.body)
+        self.assertTrue('SiteFolder' in res.body)
+        self.assertTrue('Projector Site' in res.body)
