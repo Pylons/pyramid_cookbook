@@ -62,3 +62,7 @@ TODO
 - Outgrowing Pyramid Handlers: http://michael.merickel.org/2011/8/23/outgrowing-pyramid-handlers/
 
 - Incorporate Google Analytics into a Pyramid Application: http://russell.ballestrini.net/incorporate-google-analytics-into-a-pyramid-application/
+
+- Cookbook docs reorg
+
+  - Move tutorials/overviews to tutorial project and replace with links

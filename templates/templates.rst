@@ -58,6 +58,34 @@ The value inserted into the template as the result of this statement will be
 You can add more imports and functions to ``helpers.py`` as necessary to make
 features available in your templates.
 
+Using a BeforeRender Event to Expose a Mako ``base`` Template
+-------------------------------------------------------------
+
+If you wanted to change templates using ``%inherit`` based on if a user was
+logged in you could do the following:
+
+.. code-block:: python
+
+   @subscriber(BeforeRender)
+   def add_base_template(event):
+       request = event.get('request')
+       if request.user:
+           base = 'myapp:templates/logged_in_layout.mako'
+           event.update({'base': base})
+       else:
+           base = 'myapp:templates/layout.mako'
+           event.update({'base': base})
+
+And then in your mako file you can call %inherit like so::
+
+    <%inherit file="${context['base']}" />
+
+You **must** call the variable this way because of the way Mako works.
+It will not know about any other variable other than ``context`` until after
+``%inherit`` is called. Be aware that ``context`` here is not the Pyramid
+context in the traversal sense (which is stored in ``request.context``) but
+rather the Mako rendering context.
+
 
 Using a BeforeRender Event to Expose Chameleon ``base`` Template
 ----------------------------------------------------------------

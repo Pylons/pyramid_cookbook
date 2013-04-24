@@ -30,7 +30,8 @@ different projects in production with much success, but never verbatim.
 What is WSGI?
 +++++++++++++
 
-WSGI is a Python standard dictating the interface between a server and an
+WSGI is a `Python standard <http://www.python.org/dev/peps/pep-0333/>`_
+dictating the interface between a server and an
 application. The entry point to your pyramid application is an object
 implementing the WSGI interface. Thus, your application can be served by any
 server supporting WSGI.
@@ -47,3 +48,5 @@ A short list includes:
 + ``gevent``
 
 + ``mod_wsgi``
+
+For more information on WSGI, see the `WSGI home <http://wsgi.org>`_

@@ -22,7 +22,7 @@ Here's how to send redirects and HTTP errors in Pyramid compared to Pylons::
     return exc.HTTPNotFound()           # Same thing
     raise exc.HTTPForbidden()
     raise exc.HTTPBadRequest()
-    raise exc.HTTPInernalServerError()
+    raise exc.HTTPInternalServerError()
     raise exc.HTTPFound(request.route_url("section1"))   # Redirect
 
 The ``pyramid.httpexceptions`` module has classes for all official HTTP

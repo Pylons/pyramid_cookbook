@@ -1,3 +1,5 @@
+.. _pyramid-cookbook:
+
 Pyramid Cookbook
 ================
 
@@ -11,7 +13,7 @@ It supplements the `main documentation
    auth/index
    configuration/index
    database/index
-   debugging
+   debugging/index
    deployment/index
    forms/index
    logging/index
@@ -21,12 +23,11 @@ It supplements the `main documentation
    static_assets/index
    templates/index
    testing/index
-   traversal_in_views
    views/index
    misc/index
    todo
 
-:ref:`Pyramid Glossary <glossary>`
+:ref:`Pyramid Glossary <pyramid:glossary>`
 
 Indices and tables
 ==================

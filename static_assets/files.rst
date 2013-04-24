@@ -164,36 +164,28 @@ request object as a ``cgi.FieldStorage`` object accessible through the
 ``file`` and ``filename`` and we'll use those to write the file to disk::
 
     import os
+    import shutil
+
     from pyramid.response import Response
 
     def store_mp3_view(request):
         # ``filename`` contains the name of the file in string format.
         #
-        # WARNING: this example does not deal with the fact that IE sends an
-        # absolute file *path* as the filename.  This example is naive; it
-        # trusts user input.
-
+        # WARNING: Internet Explorer is known to send an absolute file
+        # *path* as the filename.  This example is naive; it trusts
+        # user input.
         filename = request.POST['mp3'].filename
 
         # ``input_file`` contains the actual file data which needs to be
         # stored somewhere.
-
         input_file = request.POST['mp3'].file
 
         # Using the filename like this without cleaning it is very
         # insecure so please keep that in mind when writing your own
         # file handling.
         file_path = os.path.join('/tmp', filename)
-        output_file = open(file_path, 'wb')
-
-        # Finally write the data to the output file
-        input_file.seek(0)
-        while 1:
-            data = input_file.read(2<<16)
-            if not data:
-                break
-            output_file.write(data)
-        output_file.close()
+        with open(file_path, 'wb') as output_file:
+            shutil.copyfileobj(input_file, output_file)
 
         return Response('OK')
 

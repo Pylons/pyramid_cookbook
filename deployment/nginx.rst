@@ -6,8 +6,8 @@ of traffic. The advantage in deployment is that by using ``paster``, it is not
 unlike the basic development environment you're probably using on your local
 machine.
 
-Nginx is a highly optimized HTTP server, very capable of serving static
-content as well as acting as a proxy between other applications and the
+`Nginx <http://wiki.nginx.org/Main>`_ is a highly optimized HTTP server, very capable of serving
+static content as well as acting as a proxy between other applications and the
 outside world. As a proxy, it also has good support for basic load balancing
 between multiple instances of an application.
 
