@@ -8,18 +8,20 @@ code and served out (for example, a view callable might construct and return
 a PDF file or an image).
 
 By way of example, here's a Pyramid application which serves a single static
-file (a jpeg) when the URL ``/test.jpg`` is executed by assigning an open
-file object to ``response.app_iter``::
+file (a jpeg) when the URL ``/test.jpg`` is executed::
 
     from pyramid.view import view_config
     from pyramid.config import Configurator
-    from pyramid.response import Response
+    from pyramid.response import FileResponse
     from paste.httpserver import serve
 
     @view_config(route_name='jpg')
     def test_page(request):
-        response = Response(content_type='image/jpeg')
-        response.app_iter = open('/home/chrism/groundhog1.jpg', 'rb')
+        response = FileResponse(
+            '/home/chrism/groundhog1.jpg', 
+            request=request,
+            content_type='image/jpeg'
+            )
         return response
 
     if __name__ == '__main__':
@@ -28,8 +30,13 @@ file object to ``response.app_iter``::
         config.scan('__main__')
         serve(config.make_wsgi_app())
 
-Basically, assign a file object to ``response.app_iter`` and return the
-response.
+Basically, use a ``pyramid.response.FileResponse`` as the response object and
+return it.  Note that the ``request`` and ``content_type`` arguments are
+optional.  If ``request`` is not supplied, any ``wsgi.file_wrapper``
+optimization supplied by your WSGI server will not be used when serving the
+file.  If ``content_type`` is not supplied, it will be guessed using the
+``mimetypes`` module (which uses the file extension); if it cannot be guessed
+successfully, the ``application/octet-stream`` content type will be used.
 
 Serving a Single File from the Root
 -----------------------------------
