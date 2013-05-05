@@ -24,7 +24,7 @@ Steps
 
    .. code-block:: bash
 
-    (env33)$ cd ../..; cp -r step05 step06; cd step06
+    (env33)$ cd ..; cp -r step05 step06; cd step06
     (env33)$ python3.3 setup.py develop
     (env33)$ mkdir tutorial/templates
 
