@@ -15,9 +15,6 @@ class WikiViews(object):
         renderer = get_renderer("templates/layout.pt")
         self.layout = renderer.implementation().macros['layout']
 
-    def get_pages(self):
-        return pages
-
     @view_config(route_name='wiki_view',
                  renderer='templates/wiki_view.pt')
     def wiki_view(self):
