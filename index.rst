@@ -23,9 +23,9 @@ These are the Pyramid tutorials we could locate during the PyCon USA sprints in 
 
 **ET** is the estimated time to complete each tutorial.
 
-================== === ======================= =============================== ==================== ===============
+================== === ======================= =============================== ==================== ========================================
 name/link          ET* title                   description                     code repo            features
-================== === ======================= =============================== ==================== ===============
+================== === ======================= =============================== ==================== ========================================
 `firstapp`_        1h  Creating Your First     chapter 4 in the
                        Pyramid Application     `Narrative Documentation`_ part `pyramid`_           * URL dispatch
                                                of the main Pyramid docs
@@ -56,7 +56,15 @@ name/link          ET* title                   description                     c
 `birdie`_          4h  Birdie Tutorial: a      presented by Carlos de la
                        simple Twitter clone    Guardia at OSCON 2011 and PyCon `cguardia_tut`_
                                                USA 2012
-================== === ======================= =============================== ==================== ===============
+
+`todopyramid`_     4h  ``ToDo Pyramid App``    ToDo App from Python Web        `todopyramid`_       * URL dispatch
+                       Tutorial                Shotout by SixFeet, Inc                              * SQLAlchemy
+                                               Demo here:                                           * Deform (with bootstrap)
+                                               http://demo.todo.sixfeetup.com                       * Chameleon
+                                                                                                    * Mozilla Person (using pyramid_persona)
+                                                                                                    * WebHelps
+                                                                                                    * Custom NotFound view
+================== === ======================= =============================== ==================== ========================================
 
 .. _firstapp: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/narr/firstapp.html
 .. _wiki: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/tutorials/wiki/index.html
@@ -66,6 +74,7 @@ name/link          ET* title                   description                     c
 .. _getting_started: http://docs.pylonsproject.org/projects/pyramid_tutorials/en/latest/getting_started/index.html
 .. _blogr: http://pyramid-blogr.readthedocs.org/en/latest/
 .. _birdie: https://github.com/cguardia/Pyramid-Tutorial/blob/master/presentation/pyramid_tutorial.pdf
+.. _todopyramid: https://github.com/indypy/todopyramid
 
 .. _Narrative Documentation: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/#narrative-documentation
 .. _Tutorials: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/#tutorials
