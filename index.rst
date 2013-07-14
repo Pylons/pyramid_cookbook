@@ -64,6 +64,8 @@ name/link          ET* title                   description                     c
                                                                                                     * Mozilla Person (using pyramid_persona)
                                                                                                     * WebHelps
                                                                                                     * Custom NotFound view
+`pycharm_`         ?   Using Pycharm with      A getting started guide for     `pyramid`_           
+                       Pyramid                 Pyramid using Pycharm
 ================== === ======================= =============================== ==================== ========================================
 
 .. _firstapp: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/narr/firstapp.html
@@ -75,6 +77,7 @@ name/link          ET* title                   description                     c
 .. _blogr: http://pyramid-blogr.readthedocs.org/en/latest/
 .. _birdie: https://github.com/cguardia/Pyramid-Tutorial/blob/master/presentation/pyramid_tutorial.pdf
 .. _todopyramid: https://github.com/indypy/todopyramid
+.. _pycharm: http://docs.pylonsproject.org/projects/pyramid/en/master/tutorials/pycharm/index.html
 
 .. _Narrative Documentation: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/#narrative-documentation
 .. _Tutorials: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/#tutorials
