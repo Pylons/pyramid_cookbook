@@ -41,3 +41,6 @@ Pyramid Tutorial/Informational Videos
 
 * Saiju M's `Create Pyramid Application With SQLAlchemy
   <http://www.youtube.com/watch?v=L2KSsqwwH9M>`_ (~ 17 mins).
+
+* George Dubus' `Pyramid advanced configuration tactics for nice apps and libs
+  <http://www.youtube.com/watch?v=VmfWkeUOuYY&feature=youtu.be>`_ (~34 mins).
