@@ -179,7 +179,7 @@ This is documented in the Pyramid manual in the Static Assets chapter. ::
     def favicon_view(request):
         here = os.path.dirname(__file__)
         icon = os.path.join(here, "static", "favicon.ico")
-        return FileResponse(icon, request=request
+        return FileResponse(icon, request=request)
 
 
 Or if you're really curious how to configure the view for traversal without a
