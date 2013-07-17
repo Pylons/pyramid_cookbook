@@ -50,3 +50,6 @@ Pyramid Tutorial/Informational Videos
   <http://pyvideo.org/video/1691/pyramid-auth-is-hard-lets-ride-bikes>`_ (~30
   mins).
 
+* Dylan Jay's DjangoCon AU 2013 Keynote, `The myth of goldilocks and the three
+  frameworks, Pyramid, Django and Plone
+  <http://www.youtube.com/watch?v=vW1ZhO-_ZQk>`_ (~45 mins).
