@@ -43,4 +43,10 @@ Pyramid Tutorial/Informational Videos
   <http://www.youtube.com/watch?v=L2KSsqwwH9M>`_ (~ 17 mins).
 
 * George Dubus' `Pyramid advanced configuration tactics for nice apps and libs
-  <http://www.youtube.com/watch?v=VmfWkeUOuYY&feature=youtu.be>`_ (~34 mins).
+  <http://www.youtube.com/watch?v=VmfWkeUOuYY&feature=youtu.be>`_ from
+  EuroPython 2013 (~34 mins).
+
+* Chris McDonough at PyCon 2013, `Pyramid Auth Is Hard, Let's Ride Bikes
+  <http://pyvideo.org/video/1691/pyramid-auth-is-hard-lets-ride-bikes>`_ (~30
+  mins).
+
