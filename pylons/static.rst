@@ -191,7 +191,7 @@ route::
 pyramid_assetviews
 ------------------
 
-"pyramid_assetviews" is a third-party package for top-level file URLs. ::
+"`pyramid_assetviews`_" is a third-party package for top-level file URLs. ::
 
     # In main function.
     config.include("pyramid_assetviews")
@@ -204,4 +204,6 @@ pyramid_assetviews
 Of course, if you have the files in the static directory they'll still be
 visible as "/static/robots.txt" as well as "/robots.txt". If that bothers you,
 make another directory outside the static directory for them.
+
+.. _pyramid_assetviews: https://pyramid_assetviews.readthedocs.org/en/latest/
 
