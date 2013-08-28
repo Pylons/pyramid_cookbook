@@ -96,7 +96,7 @@ commands.
 .. code-block:: text
 
    ~/ $ cd newproject
-   ~/newproject $ /usr/bin/python2.7 bootstrap.py --distribute
+   ~/newproject $ /usr/bin/python2.7 bootstrap.py
 
 You typically only need to do this once to generate your
 buildout command. See the `buildout documentation <http://www.buildout.org/docs/tutorial.html#buildout-steps>`_ for more information.
