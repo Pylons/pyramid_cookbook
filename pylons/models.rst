@@ -156,7 +156,7 @@ A simple one-table model
     import sqlalchemy.ext.declarative as declarative
     from zope.sqlalchemy import ZopeTransactionExtension as ZTE
 
-    DBSession = orm.scoped_session(om.sessionmaker(extension=ZTE()))
+    DBSession = orm.scoped_session(orm.sessionmaker(extension=ZTE()))
     Base = declarative.declarative_base()
 
     class User(Base):
@@ -181,7 +181,7 @@ application.  ::
     import sqlalchemy.ext.declarative as declarative
     from zope.sqlalchemy import ZopeTransactionExtension as ZTE
 
-    DBSession = orm.scoped_session(om.sessionmaker(extension=ZTE()))
+    DBSession = orm.scoped_session(orm.sessionmaker(extension=ZTE()))
     Base = declarative.declarative_base()
 
     class User(Base):
