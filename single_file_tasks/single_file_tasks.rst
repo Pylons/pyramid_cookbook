@@ -131,7 +131,7 @@ available as ``request.db``.  We'll arrange to close it down by the end of
 the request lifecycle using the ``request.add_finished_callback`` method.
 
 .. literalinclude:: src/tasks.py
-   :lines: 61-69
+   :lines: 61-70
 
 To make those changes active, we'll have to specify the database location in
 the configuration settings and make sure our ``@subscriber`` decorator is
@@ -334,6 +334,7 @@ version. Before running it, here's the complete main code for ``tasks.py`` for
 review:
 
 .. literalinclude:: src/tasks.py
+   :linenos:
 
 And now let's run ``tasks.py``:
 
