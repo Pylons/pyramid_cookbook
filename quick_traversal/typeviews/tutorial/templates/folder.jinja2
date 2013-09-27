@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Quick Tutorial: {{ context.title }}</title>
+</head>
+<body>
+<h2>Folder Title: {{ context.title }}</h2>
+<ul>
+    {% for child in context.values() %}
+        <li>
+            <a href="{{ request.resource_url(child) }}">{{ child.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
