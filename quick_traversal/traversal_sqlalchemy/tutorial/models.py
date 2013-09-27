@@ -3,7 +3,8 @@ from sqlalchemy import (
     Integer,
     Text,
     Unicode,
-    ForeignKey
+    ForeignKey,
+    String
     )
 
 from sqlalchemy.ext.declarative import declarative_base
@@ -11,7 +12,11 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import (
     scoped_session,
     sessionmaker,
+    relationship,
+    backref
     )
+
+from sqlalchemy.orm.exc import NoResultFound
 
 from zope.sqlalchemy import ZopeTransactionExtension
 
@@ -20,27 +25,37 @@ DBSession = scoped_session(
 Base = declarative_base()
 
 
-class Document(Base):
-    __tablename__ = 'documents'
-    id = Column(Integer, primary_key=True)
-    title = Column(Text, unique=True)
-    body = Column(Text)
-
-    @property
-    def __name__(self):
-        return self.id
-
-    @property
-    def __parent__(self):
-        return self.parent
-
-
-class Folder(Base):
-    __tablename__ = 'folders'
+class Node(Base):
+    __tablename__ = 'node'
     id = Column(Integer, primary_key=True)
     name = Column(Unicode(50), nullable=False)
-    parent_id = Column(ForeignKey('roots.id'))
-    title = Column(Text, unique=True)
+    parent_id = Column(Integer, ForeignKey('node.id'))
+    children = relationship("Node",
+                            backref=backref('parent', remote_side=[id])
+    )
+    type = Column(String(50))
+    __mapper_args__ = dict(
+        polymorphic_on=type,
+        polymorphic_identity='node',
+        with_polymorphic='*'
+    )
+
+
+    def __setitem__(self, key, node):
+        node.name = unicode(key)
+        DBSession.add(node)
+        DBSession.flush()
+        node.parent_id = self.id
+
+    def __getitem__(self, key):
+        try:
+            return DBSession.query(Node).filter_by(
+                name=key, parent=self).one()
+        except NoResultFound:
+            raise KeyError(key)
+
+    def values(self):
+        return DBSession.query(Node).filter_by(parent=self)
 
     @property
     def __name__(self):
@@ -51,20 +66,34 @@ class Folder(Base):
         return self.parent
 
 
-class Root(Base):
-    __tablename__ = 'roots'
-    __name__ = ''
-    __parent__ = None
-    id = Column(Integer, primary_key=True)
-    title = Column(Text, unique=True)
+class Root(Node):
+    __tablename__ = 'root'
+    __mapper_args__ = dict(
+        polymorphic_identity='root',
+        with_polymorphic='*',
+    )
+    id = Column(Integer, ForeignKey('node.id'), primary_key=True)
+    title = Column(Text)
 
-    def __setitem__(self, key, node):
-        node.name = unicode(key)
-        DBSession.add(node)
 
-    def __getitem__(self, key):
-        return DBSession.query(Folder).filter_by(
-            name=key, parent=self).one()
+class Folder(Node):
+    __tablename__ = 'folder'
+    __mapper_args__ = dict(
+        polymorphic_identity='folder',
+        with_polymorphic='*',
+    )
+    id = Column(Integer, ForeignKey('node.id'), primary_key=True)
+    title = Column(Text)
+
+
+class Document(Node):
+    __tablename__ = 'document'
+    id = Column(Integer, ForeignKey('node.id'), primary_key=True)
+    __mapper_args__ = dict(
+        polymorphic_identity='document',
+        with_polymorphic='*',
+    )
+    title = Column(Text)
 
 
 def root_factory(request):

@@ -4,8 +4,13 @@
     <title>Quick Tour: ${context.title}</title>
 </head>
 <body>
-<h2>SiteFolder Title: ${context.title}</h2>
-<ul>
+<p>
+    <span tal:repeat="p view.parents">
+        <a href="${request.resource_url(p)}">${p.title}</a>
+        >> </span>
+</p>
+<p tal:condition="children ==[]"><em>No children.</em></p>
+<ul tal:condition="children != []">
     <li tal:repeat="child children">
         <a href="${request.resource_url(child)}">${child.title}</a>
     </li>

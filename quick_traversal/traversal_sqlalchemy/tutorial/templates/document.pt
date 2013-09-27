@@ -4,10 +4,13 @@
     <title>Quick Tour: ${context.title}</title>
 </head>
 <body>
+<p>
+    <span tal:repeat="p view.parents">
+        <a href="${request.resource_url(p)}">${p.title}</a>
+        >> </span>
+</p>
+
 <h2>Document Title: ${context.title}</h2>
 
-<p><a
-        href="${view.parent_info.url}">${view.parent_info.title}</a>
-</p>
 </body>
 </html>

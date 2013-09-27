@@ -12,6 +12,7 @@ from pyramid.paster import (
 from .models import (
     DBSession,
     Document,
+    Node,
     Folder,
     Root,
     Base,
@@ -34,12 +35,12 @@ def main(argv=sys.argv):
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
     Base.metadata.create_all(engine)
+
     with transaction.manager:
-        root = Root(title='Site Root')
+        root = Root(name='', title='Site Root')
         DBSession.add(root)
+        DBSession.flush()
+        root = DBSession.query(Node).filter_by(name=u'').one()
         f1 = Folder(title='Folder 1')
         DBSession.add(f1)
         root['f1'] = f1
-        d1 = Document(title='Document 1',
-                      body='<p>Document 1</p>')
-        DBSession.add(d1)
