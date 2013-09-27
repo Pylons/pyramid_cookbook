@@ -64,9 +64,15 @@ name/link          ET* title                   description                     c
                                                                                                     * Mozilla Person (using pyramid_persona)
                                                                                                     * WebHelps
                                                                                                     * Custom NotFound view
-`pycharm`_         ?   Using Pycharm with      A getting started guide for
-                       Pyramid                 Pyramid using Pycharm
+`pycharm`_         1h  Using Pycharm with      A getting started guide
+                       Pyramid                 for Pyramid using Pycharm
+`traversal`_       2h  Quick Tour for          Overview of traversal:          `pyramid_tutorials`_ * Site root
+                       Traversal               Hierarchies, views, etc.        (this site)          * Hierarchy
+		       			       		    	   	       	     		    * Type-specific views
+												    * Adding content
+												    * ZODB persistence
 ================== === ======================= =============================== ==================== ========================================
+
 
 .. _firstapp: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/narr/firstapp.html
 .. _wiki: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/tutorials/wiki/index.html
@@ -86,7 +92,7 @@ name/link          ET* title                   description                     c
 .. _pyramid_tutorials: https://github.com/Pylons/pyramid_tutorials
 .. _pyramid_blogr: https://github.com/Pylons/pyramid_blogr
 .. _cguardia_tut: https://github.com/cguardia/Pyramid-Tutorial
-
+.. _traversal: http://docs.pylonsproject.org/projects/pyramid_tutorials/en/latest/quick_traversal/index.html
 
 Indices and tables
 ==================
@@ -102,3 +108,6 @@ Indices and tables
    getting_started/index
    single_file_tasks/single_file_tasks
    humans/index
+   quick_traversal/index
+   _themes/README
+   pycharm/index
