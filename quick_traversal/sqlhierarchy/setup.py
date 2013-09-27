@@ -2,8 +2,7 @@ from setuptools import setup
 
 requires = [
     'pyramid',
-    'pyramid_debugtoolbar',
-    'pyramid_chameleon',
+    'pyramid_jinja2',
     'pyramid_tm',
     'sqlalchemy',
     'pyramid_tm',

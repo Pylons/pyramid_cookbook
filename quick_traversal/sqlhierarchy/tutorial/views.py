@@ -18,7 +18,7 @@ class TutorialViews(object):
         self.context = context
         self.request = request
 
-    @view_config(renderer="templates/site.pt",
+    @view_config(renderer="templates/site.jinja2",
                  context=Root)
     def site(self):
         return {}
@@ -27,7 +27,7 @@ class TutorialViews(object):
     def parents(self):
         return reversed(list(lineage(self.context)))
 
-    @view_config(renderer="templates/folder.pt",
+    @view_config(renderer="templates/folder.jinja2",
                  context=Folder)
     def folder(self):
         return {}
@@ -61,7 +61,7 @@ class TutorialViews(object):
         url = self.request.resource_url(new_document)
         return HTTPFound(location=url)
 
-    @view_config(renderer="templates/document.pt",
+    @view_config(renderer="templates/document.jinja2",
                  context=Document)
     def document(self):
         return {}

@@ -24,6 +24,12 @@ DBSession = scoped_session(
     sessionmaker(extension=ZopeTransactionExtension()))
 Base = declarative_base()
 
+def u(s):
+    # Backwards compatibility for Python 3 not having unicode()
+    try:
+        return unicode(s)
+    except NameError:
+        return str(s)
 
 class Node(Base):
     __tablename__ = 'node'
@@ -42,7 +48,7 @@ class Node(Base):
 
 
     def __setitem__(self, key, node):
-        node.name = unicode(key)
+        node.name = u(key)
         DBSession.add(node)
         DBSession.flush()
         node.parent_id = self.id
