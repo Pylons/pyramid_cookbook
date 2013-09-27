@@ -2,6 +2,8 @@ from sqlalchemy import (
     Column,
     Integer,
     Text,
+    Unicode,
+    ForeignKey
     )
 
 from sqlalchemy.ext.declarative import declarative_base
@@ -28,19 +30,42 @@ class Document(Base):
     def __name__(self):
         return self.id
 
+    @property
+    def __parent__(self):
+        return self.parent
+
+
 class Folder(Base):
     __tablename__ = 'folders'
     id = Column(Integer, primary_key=True)
+    name = Column(Unicode(50), nullable=False)
+    parent_id = Column(ForeignKey('roots.id'))
     title = Column(Text, unique=True)
 
     @property
     def __name__(self):
-        return self.id
+        return self.name
+
+    @property
+    def __parent__(self):
+        return self.parent
+
+
+class Root(Base):
+    __tablename__ = 'roots'
+    __name__ = ''
+    __parent__ = None
+    id = Column(Integer, primary_key=True)
+    title = Column(Text, unique=True)
 
     def __setitem__(self, key, node):
-        key = node.name = unicode(key)
-        self.children.append(node)
+        node.name = unicode(key)
+        DBSession.add(node)
 
-class Root(object):
-    def __init__(self, request):
-        pass
+    def __getitem__(self, key):
+        return DBSession.query(Folder).filter_by(
+            name=key, parent=self).one()
+
+
+def root_factory(request):
+    return DBSession.query(Root).one()

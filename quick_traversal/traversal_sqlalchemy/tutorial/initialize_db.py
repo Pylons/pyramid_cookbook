@@ -13,6 +13,7 @@ from .models import (
     DBSession,
     Document,
     Folder,
+    Root,
     Base,
     )
 
@@ -34,8 +35,11 @@ def main(argv=sys.argv):
     DBSession.configure(bind=engine)
     Base.metadata.create_all(engine)
     with transaction.manager:
+        root = Root(title='Site Root')
+        DBSession.add(root)
         f1 = Folder(title='Folder 1')
         DBSession.add(f1)
+        root['f1'] = f1
         d1 = Document(title='Document 1',
                       body='<p>Document 1</p>')
         DBSession.add(d1)

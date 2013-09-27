@@ -2,7 +2,11 @@ from pyramid.config import Configurator
 
 from sqlalchemy import engine_from_config
 
-from .models import DBSession, Base
+from .models import (
+    DBSession,
+    Base,
+    root_factory
+    )
 
 
 def main(global_config, **settings):
@@ -11,7 +15,7 @@ def main(global_config, **settings):
     Base.metadata.bind = engine
 
     config = Configurator(settings=settings,
-                          root_factory='tutorial.models.Root')
+                          root_factory=root_factory)
     config.include('pyramid_jinja2')
 
     config.scan('.views')
