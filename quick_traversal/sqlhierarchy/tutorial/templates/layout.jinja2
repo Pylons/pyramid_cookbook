@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ page_title }}</title>
+    <link rel="stylesheet"
+          href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+    <style>
+        body {margin-top: 70px}
+    </style>
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand"
+               href="
+               {{ request.resource_url(request.root) }}">Tutorial</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="
+                    {{ request.resource_url(request.root) }}">Home</a>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" placeholder="Username"
+                           id="username" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password"
+                           id="password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Sign in
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+<p>
+    {% for p in view.parents %}
+        <span>
+        <a href="{{ request.resource_url(p) }}">{{ p.title }}</a>
+        >> </span>
+    {% endfor %}
+</p>
+
+    {% block content %}
+    {% endblock content %}
+</div>
+
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
