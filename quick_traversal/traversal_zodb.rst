@@ -1,6 +1,6 @@
-=================================
-4: Storing Resources In Databases
-=================================
+============================
+4: Storing Resources In ZODB
+============================
 
 Store and retrieve resource tree containers and items in a database.
 
