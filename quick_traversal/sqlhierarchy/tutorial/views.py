@@ -21,7 +21,7 @@ class TutorialViews(object):
     @view_config(renderer="templates/site.jinja2",
                  context=Root)
     def site(self):
-        return {}
+        return dict(is_container=True)
 
     @reify
     def parents(self):
@@ -30,7 +30,7 @@ class TutorialViews(object):
     @view_config(renderer="templates/folder.jinja2",
                  context=Folder)
     def folder(self):
-        return {}
+        return dict(is_container=True)
 
     @view_config(name="add_folder", context=Root)
     @view_config(name="add_folder", context=Folder)
