@@ -65,6 +65,10 @@ class Node(Base):
     def __parent__(self):
         return self.parent
 
+    @property
+    def is_empty(self):
+        return self.values().count() == 0
+
 
 class Root(Node):
     __tablename__ = 'root'

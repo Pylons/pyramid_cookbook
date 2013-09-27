@@ -21,8 +21,7 @@ class TutorialViews(object):
     @view_config(renderer="templates/site.pt",
                  context=Root)
     def site(self):
-        cv = list(self.context.values())
-        return {"children": cv}
+        return {}
 
     @reify
     def parents(self):
@@ -31,8 +30,7 @@ class TutorialViews(object):
     @view_config(renderer="templates/folder.pt",
                  context=Folder)
     def folder(self):
-        cv = list(self.context.values())
-        return {"children": cv}
+        return {}
 
     @view_config(name="add_folder", context=Root)
     @view_config(name="add_folder", context=Folder)
@@ -60,7 +58,6 @@ class TutorialViews(object):
         self.context[name] = new_document
 
         # Redirect to the new document
-        DBSession.flush()
         url = self.request.resource_url(new_document)
         return HTTPFound(location=url)
 

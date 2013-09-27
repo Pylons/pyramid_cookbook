@@ -9,9 +9,9 @@
         <a href="${request.resource_url(p)}">${p.title}</a>
         >> </span>
 </p>
-<p tal:condition="children ==[]"><em>No children.</em></p>
-<ul tal:condition="children != []">
-    <li tal:repeat="child children">
+<p tal:condition="context.is_empty"><em>No children.</em></p>
+<ul tal:condition="not context.is_empty">
+    <li tal:repeat="child context.values()">
         <a href="${request.resource_url(child)}">${child.title}</a>
     </li>
 </ul>
