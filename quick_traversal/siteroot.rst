@@ -24,11 +24,11 @@ Remember...traversal is easy, powerful, and useful.
 With traversal, you think of your website as a tree of Python objects,
 just like a dictionary of dictionaries. For example::
 
-  http://example.com/company1/aFolder/subFolder/search?term=hello
+  http://example.com/company1/aFolder/subFolder/search
 
 ...is nothing more than::
 
-  >>> root['aFolder']['subFolder'].search(x=1)
+  >>> root['aFolder']['subFolder'].search()
 
 To remove some mystery about traversal, we start with the smallest
 possible step: an object at the top of our URL space. This object acts
@@ -72,9 +72,9 @@ Steps
    .. literalinclude:: siteroot/tutorial/views.py
       :linenos:
 
-#. A template in ``siteroot/tutorial/home.pt``:
+#. A template in ``siteroot/tutorial/home.jinja2``:
 
-   .. literalinclude:: siteroot/tutorial/home.pt
+   .. literalinclude:: siteroot/tutorial/home.jinja2
     :language: html
     :linenos:
 
@@ -102,7 +102,7 @@ Steps
 
     (env27)$ pserve development.ini --reload
 
-#. Open ``http://localhost:6543/`` in your browser.
+#. Open ``http://localhost:6543/hello`` in your browser.
 
 Analysis
 ========

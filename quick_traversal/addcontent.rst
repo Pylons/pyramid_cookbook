@@ -58,23 +58,23 @@ Steps
       :linenos:
 
 #. One small change in
-   ``addcontent/tutorial/templates/document.pt``:
+   ``addcontent/tutorial/templates/document.jinja2``:
 
-   .. literalinclude:: addcontent/tutorial/templates/document.pt
+   .. literalinclude:: addcontent/tutorial/templates/document.jinja2
       :language: html
       :linenos:
 
 #. Need forms added to
-   ``addcontent/tutorial/templates/folder.pt``:
+   ``addcontent/tutorial/templates/folder.jinja2``:
 
-   .. literalinclude:: addcontent/tutorial/templates/folder.pt
+   .. literalinclude:: addcontent/tutorial/templates/folder.jinja2
       :language: html
       :linenos:
 
 #. Forms also needed for
-   ``addcontent/tutorial/templates/site.pt``:
+   ``addcontent/tutorial/templates/site.jinja2``:
 
-   .. literalinclude:: addcontent/tutorial/templates/site.pt
+   .. literalinclude:: addcontent/tutorial/templates/site.jinja2
       :language: html
       :linenos:
 

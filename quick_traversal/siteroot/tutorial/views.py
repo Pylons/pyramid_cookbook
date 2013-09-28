@@ -6,6 +6,6 @@ class TutorialViews:
         self.context = context
         self.request = request
 
-    @view_config(renderer='home.jinja2')
+    @view_config(name='hello', renderer='home.jinja2')
     def home(self):
         return {'view_name': 'Home View'}

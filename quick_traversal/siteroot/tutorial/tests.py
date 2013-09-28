@@ -23,6 +23,6 @@ class TutorialFunctionalTests(unittest.TestCase):
         self.testapp = TestApp(app)
 
     def test_home(self):
-        res = self.testapp.get('/', status=200)
+        res = self.testapp.get('/hello', status=200)
         self.assertTrue(b'Hi My Site' in res.body)
 

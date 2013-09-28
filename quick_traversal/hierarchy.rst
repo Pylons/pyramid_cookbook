@@ -7,7 +7,7 @@ Objects with subobjects and views, all via URLs.
 Background
 ==========
 
-In :doc:`../siteroot` we took the simplest possible step: a
+In :doc:`siteroot` we took the simplest possible step: a
 root object with little need for the stitching-together of a tree known
 as traversal.
 
@@ -51,10 +51,10 @@ Steps
    .. literalinclude:: hierarchy/tutorial/views.py
       :linenos:
 
-#. Get ``hierarchy/tutorial/home.pt`` to display this richer
+#. Get ``hierarchy/tutorial/home.jinja2`` to display this richer
    information:
 
-   .. literalinclude:: hierarchy/tutorial/home.pt
+   .. literalinclude:: hierarchy/tutorial/home.jinja2
       :language: html
       :linenos:
 

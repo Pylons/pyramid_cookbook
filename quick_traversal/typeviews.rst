@@ -7,7 +7,7 @@ Type-specific views by registering a view against a class.
 Background
 ==========
 
-In :doc:`../hierarchy` we had 3 "content types" (SiteFolder,
+In :doc:`hierarchy` we had 3 "content types" (SiteFolder,
 Folder, and Document.) All, however, used the same view and template.
 
 Pyramid traversal though lets you bind a view to a particular content
@@ -45,23 +45,23 @@ Steps
       :linenos:
 
 #. Copy the following into
-   ``typeviews/tutorial/templates/document.pt``:
+   ``typeviews/tutorial/templates/document.jinja2``:
 
-   .. literalinclude:: typeviews/tutorial/templates/document.pt
+   .. literalinclude:: typeviews/tutorial/templates/document.jinja2
       :language: html
       :linenos:
 
 #. Copy the following into
-   ``typeviews/tutorial/templates/folder.pt``:
+   ``typeviews/tutorial/templates/folder.jinja2``:
 
-   .. literalinclude:: typeviews/tutorial/templates/folder.pt
+   .. literalinclude:: typeviews/tutorial/templates/folder.jinja2
       :language: html
       :linenos:
 
 #. Copy the following into
-   ``typeviews/tutorial/templates/site.pt``:
+   ``typeviews/tutorial/templates/site.jinja2``:
 
-   .. literalinclude:: typeviews/tutorial/templates/site.pt
+   .. literalinclude:: typeviews/tutorial/templates/site.jinja2
       :language: html
       :linenos:
 
