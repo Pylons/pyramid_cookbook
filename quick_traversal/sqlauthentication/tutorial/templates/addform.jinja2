@@ -1,0 +1,22 @@
+<p>
+    <form class="form-inline"
+          action="{{ request.resource_url(context, 'add_folder') }}"
+          method="POST">
+        <div class="form-group">
+            <input class="form-control" name="folder_title"
+                   placeholder="New folder title..."/>
+        </div>
+        <input type="submit" class="btn" value="Add Folder"/>
+    </form>
+</p>
+<p>
+    <form class="form-inline"
+          action="{{ request.resource_url(context, 'add_document') }}"
+          method="POST">
+        <div class="form-group">
+            <input class="form-control" name="document_title"
+                   placeholder="New document title..."/>
+        </div>
+        <input type="submit" class="btn" value="Add Document"/>
+    </form>
+</p>
