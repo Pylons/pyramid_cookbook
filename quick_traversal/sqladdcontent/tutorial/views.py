@@ -28,6 +28,7 @@ class TutorialViews(object):
         page_title = 'Quick Tutorial: Folder'
         return dict(page_title=page_title)
 
+    @view_config(name="add_folder", context=Root)
     @view_config(name="add_folder", context=Folder)
     def add_folder(self):
         # Make a new Folder
@@ -40,6 +41,7 @@ class TutorialViews(object):
         url = self.request.resource_url(new_folder)
         return HTTPFound(location=url)
 
+    @view_config(name="add_document", context=Root)
     @view_config(name="add_document", context=Folder)
     def add_document(self):
         # Make a new Document

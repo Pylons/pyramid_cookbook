@@ -2,98 +2,87 @@
 7: SQL Traversal and Adding Content
 ===================================
 
-- Only changes in views
-  - add_folder and add_document
-    - Stacked another view_config
-    - One-line change on adding content
-
 Traverse through a resource tree of data stored in an RDBMS,
 adding folders and documents at any point.
 
 Background
 ==========
 
+We now have SQLAlchemy providing us a persistent root. How do we
+arrange an infinitely-nested URL space where URL segments point to
+instances of our classes, nested inside of other instances?
 
+SQLAlchemy, as mentioned previously, uses the adjacency list
+relationship to allow self-joining in a table. This allows a resource
+to store the identifier of its parent. With this we can make a generic
+"Node" model in SQLAlchemy which holds the parts needed by Pyramid's
+traversal.
+
+In a nutshell, we are giving RDBMS data Python dictionary behavior,
+using built-in SQLAlchemy relationships. This lets us define our own
+kinds of containers and own kinds of types, nested in any way we like.
 
 Goals
 =====
 
-- Introduce SQLAlchemy and SQLite into the project, including
-  transaction awareness
+- Recreate the :doc:`addcontent` and :doc:`zodb` steps, where you can
+  add folders inside folders
 
-- Provide a root object that is stored in the RDBMS and use that as
-  our context
+- Extend traversal/dictionary behavior to SQLAlchemy models
+
 
 Steps
 =====
 
-#. We are going to use the siteroot step as our starting point:
+#. We are going to use the previous step as our starting point:
 
    .. code-block:: bash
 
-    $ cd ..; cp -r siteroot sqlroot; cd sqlroot
-
-#. Introduce some new dependencies and a console script in
-   ``sqlroot/setup.py``:
-
-   .. literalinclude:: sqlroot/setup.py
-      :linenos:
-
-#. Now we can initialize our project:
-
-   .. code-block:: bash
-
+    $ cd ..; cp -r sqlroot sqladdcontent; cd sqladdcontent
     $ $VENV/bin/python setup.py develop
 
-#. Our configuration file at ``sqlroot/development.ini`` wires
-   together some new pieces:
 
-   .. literalinclude:: sqlroot/development.ini
-    :language: ini
+#. ``sqladdcontent/tutorial/models.py`` gains a ``Node`` parent class
+   and two more models (``Folder`` and ``Document``):
 
-#. The ``setup.py`` had an entry point for a console script at
-   ``sqlroot/tutorial/initialize_db.py`` gets
-   some bootstrapping changes:
+   .. literalinclude:: sqladdcontent/tutorial/models.py
+      :linenos:
+
+#. ``sqlroot/tutorial/views.py`` is almost unchanged from the
+   version in the ``addcontent`` step:
 
    .. literalinclude:: sqlroot/tutorial/initialize_db.py
       :linenos:
 
-#. Our startup code in ``sqlroot/tutorial/__init__.py`` gets
-   some bootstrapping changes:
+#. Our templates are all unchanged from addcontent. Let's bring them
+   back. Make a re-usable snippet in
+   ``sqladdcontent/tutorial/templates/addform.jinja2`` for adding content:
 
-   .. literalinclude:: sqlroot/tutorial/__init__.py
+   .. literalinclude:: sqladdcontent/tutorial/templates/addform.jinja2
+      :language: html
       :linenos:
 
-#. Create ``sqlroot/tutorial/models.py`` with our SQLAlchemy
-   model for our persistent root:
+#. Need this snippet added to
+   ``sqladdcontent/tutorial/templates/root.jinja2``:
 
-   .. literalinclude:: sqlroot/tutorial/models.py
+   .. literalinclude:: sqladdcontent/tutorial/templates/root.jinja2
+      :language: html
       :linenos:
 
-#. Let's run this console script, thus producing our database and table:
+#. Need a view template for ``folder`` at
+   ``sqladdcontent/tutorial/templates/folder.jinja2``:
 
-   .. code-block:: bash
+   .. literalinclude:: sqladdcontent/tutorial/templates/folder.jinja2
+      :language: html
+      :linenos:
 
-    $ initialize_tutorial_db development.ini
-    2013-09-29 15:42:23,564 INFO  [sqlalchemy.engine.base.Engine][MainThread] PRAGMA table_info("root")
-    2013-09-29 15:42:23,565 INFO  [sqlalchemy.engine.base.Engine][MainThread] ()
-    2013-09-29 15:42:23,566 INFO  [sqlalchemy.engine.base.Engine][MainThread]
-    CREATE TABLE root (
-        uid INTEGER NOT NULL,
-        title TEXT,
-        PRIMARY KEY (uid),
-        UNIQUE (title)
-    )
+#. Also need a view template for ``document`` at
+   ``sqladdcontent/tutorial/templates/document.jinja2``:
 
+   .. literalinclude:: sqladdcontent/tutorial/templates/document.jinja2
+      :language: html
+      :linenos:
 
-    2013-09-29 15:42:23,566 INFO  [sqlalchemy.engine.base.Engine][MainThread] ()
-    2013-09-29 15:42:23,569 INFO  [sqlalchemy.engine.base.Engine][MainThread] COMMIT
-    2013-09-29 15:42:23,572 INFO  [sqlalchemy.engine.base.Engine][MainThread] BEGIN (implicit)
-    2013-09-29 15:42:23,573 INFO  [sqlalchemy.engine.base.Engine][MainThread] INSERT INTO root (title) VALUES (?)
-    2013-09-29 15:42:23,573 INFO  [sqlalchemy.engine.base.Engine][MainThread] ('My SQLAlchemy Root',)
-    2013-09-29 15:42:23,576 INFO  [sqlalchemy.engine.base.Engine][MainThread] COMMIT
-
-#. Nothing changes in our views or templates.
 
 #. Run your Pyramid application with:
 
@@ -106,21 +95,9 @@ Steps
 Analysis
 ========
 
-We perform the same kind of SQLAlchemy setup work that we saw in
-:ref:`Databases Using SQLAlchemy <pyramid:qtut_databases>`. In this
-case, our root factory returns an object from the database.
-
-This ``models.Root`` instance is the ``context`` for our views and
-templates. Rather than have our view/template code query the database,
-our root factory gets the top and Pyramid does the rest by passing in a
-``context``.
-
-This point is emphasized by the fact that we didn't have to change our
-view logic or our templates. They depended on a context. Pyramid found
-the context and passed it into our views.
-
-Extra Credit
-============
-
-#. What will Pyramid do if the database doesn't have a ``Root`` that
-   matches the SQLAlchemy query?
+If we consider our views and templates as the bulk of our business
+logic when handling web interactions, then this was an intriguing step.
+We had no changes to our templates from the ``addcontent`` and
+``zodb`` steps, and almost no change to the views. We made a one-line
+change when creating a new object. We also had to "stack" an extra
+``@view_config`` (although that can be solved in other ways.)
