@@ -19,7 +19,7 @@ class TutorialViews(object):
 
     @view_config(renderer="templates/root.jinja2",
                  context=Root)
-    def site(self):
+    def root(self):
         page_title = 'Quick Tutorial: Root'
         return dict(page_title=page_title)
 

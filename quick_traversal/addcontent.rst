@@ -12,8 +12,8 @@ We now have multiple kinds-of-things, but only one view per resource
 type. We need the ability to add things to containers,
 then view/edit resources.
 
-This introduces the concept of named views. A name is a part of the URL
-that appears after the resource identifier. For example::
+We will use the previously-mentioned concept of named views. A name is a
+part of the URL that appears after the resource identifier. For example::
 
   @view_config(context=Folder, name='add_document')
 
@@ -23,10 +23,6 @@ that appears after the resource identifier. For example::
 
 ...will match the view being configured. It's as if you have an
 object-oriented web, with operations on resources represented by a URL.
-
-When you omit the ``name=`` (as we did in the previous examples,
-you are establishing a "default view" for the context. That is,
-a view to be used when no view name is found during traversal.
 
 Goals
 =====
@@ -38,7 +34,7 @@ Goals
 - A view which takes the POST data, creates a resource, and redirects
   to the newly-added resource
 
-- Named views
+- Per-type named views
 
 Steps
 =====
@@ -57,24 +53,24 @@ Steps
    .. literalinclude:: addcontent/tutorial/views.py
       :linenos:
 
-#. One small change in
-   ``addcontent/tutorial/templates/document.jinja2``:
+#. Make a re-usable snippet in
+   ``addcontent/tutorial/templates/addform.jinja2`` for adding content:
 
-   .. literalinclude:: addcontent/tutorial/templates/document.jinja2
+   .. literalinclude:: addcontent/tutorial/templates/addform.jinja2
       :language: html
       :linenos:
 
-#. Need forms added to
-   ``addcontent/tutorial/templates/folder.jinja2``:
+#. Need this snippet added to
+   ``addcontent/tutorial/templates/root.jinja2``:
 
-   .. literalinclude:: addcontent/tutorial/templates/folder.jinja2
+   .. literalinclude:: addcontent/tutorial/templates/root.jinja2
       :language: html
       :linenos:
 
 #. Forms also needed for
-   ``addcontent/tutorial/templates/site.jinja2``:
+   ``addcontent/tutorial/templates/folder.jinja2``:
 
-   .. literalinclude:: addcontent/tutorial/templates/site.jinja2
+   .. literalinclude:: addcontent/tutorial/templates/folder.jinja2
       :language: html
       :linenos:
 
@@ -101,5 +97,5 @@ To enforce uniqueness, we randomly choose a satisfactorily large number.
 Extra Credit
 ============
 
-#. Can ``document_view`` simply return nothing instead of an empty
+#. Can ``document`` simply return nothing instead of an empty
    dictionary?
