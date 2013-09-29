@@ -29,14 +29,12 @@ Objectives
 Steps
 =====
 
-#. We are going to use the previous step as our starting point and add a
-   ``tutorial/templates`` subdirectory:
+#. We are going to use the previous step as our starting point:
 
    .. code-block:: bash
 
     $ cd ..; cp -r hierarchy typeviews; cd typeviews
     $ $VENV/bin/python setup.py develop
-    $ mkdir typeviews/tutorial/templates
 
 #. Our views in ``typeviews/tutorial/views.py`` need
    type-specific registrations:
@@ -44,24 +42,24 @@ Steps
    .. literalinclude:: typeviews/tutorial/views.py
       :linenos:
 
-#. Copy the following into
-   ``typeviews/tutorial/templates/document.jinja2``:
+#. Make a template for viewing the root at
+   ``typeviews/tutorial/templates/root.jinja2``:
 
-   .. literalinclude:: typeviews/tutorial/templates/document.jinja2
+   .. literalinclude:: typeviews/tutorial/templates/root.jinja2
       :language: html
       :linenos:
 
-#. Copy the following into
+#. Now a template for viewing folders at
    ``typeviews/tutorial/templates/folder.jinja2``:
 
    .. literalinclude:: typeviews/tutorial/templates/folder.jinja2
       :language: html
       :linenos:
 
-#. Copy the following into
-   ``typeviews/tutorial/templates/site.jinja2``:
+#. Finally a template for viewing documents at
+   ``typeviews/tutorial/templates/document.jinja2``:
 
-   .. literalinclude:: typeviews/tutorial/templates/site.jinja2
+   .. literalinclude:: typeviews/tutorial/templates/document.jinja2
       :language: html
       :linenos:
 
@@ -82,9 +80,6 @@ Steps
 
 Analysis
 ========
-
-We made a ``templates`` subdirectory, just for the purposes of
-organization and to match a common project layout style.
 
 For the most significant change, our ``@view_config`` now matches on a
 ``context`` view predicate. We can say "use this view for when looking
