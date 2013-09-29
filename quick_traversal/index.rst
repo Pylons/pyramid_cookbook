@@ -20,3 +20,4 @@ web requests to objects and views in Pyramid.
     addcontent
     zodb
     sqlroot
+    sqladdcontent

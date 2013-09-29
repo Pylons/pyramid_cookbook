@@ -1,3 +1,5 @@
+{% for p in view.parents %}
 <span>
-  <a href="#">Home</a> >> 
-</span>
+  <a href="{{ request.resource_url(p) }}">{{ p.title }}</a>
+>> </span>
+{% endfor %}
