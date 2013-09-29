@@ -6,6 +6,7 @@ class TutorialViews:
         self.context = context
         self.request = request
 
-    @view_config(name='hello', renderer='home.jinja2')
+    @view_config(name='hello', renderer='templates/site.jinja2')
     def home(self):
-        return {'view_name': 'Home View'}
+        page_title = 'Quick Tutorial: Site View'
+        return dict(page_title=page_title)

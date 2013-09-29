@@ -1,5 +1,6 @@
 from pyramid.view import view_config
 
+
 class TutorialViews(object):
     def __init__(self, context, request):
         self.context = context

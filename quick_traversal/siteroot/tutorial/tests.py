@@ -12,8 +12,7 @@ class TutorialViewsUnitTests(unittest.TestCase):
         context = DummyResource(title=title)
         inst = TutorialViews(context, request)
         result = inst.home()
-        self.assertEqual(result['view_name'], 'Home View')
-
+        self.assertIn('Site View', result['page_title'])
 
 class TutorialFunctionalTests(unittest.TestCase):
     def setUp(self):
@@ -24,5 +23,5 @@ class TutorialFunctionalTests(unittest.TestCase):
 
     def test_home(self):
         res = self.testapp.get('/hello', status=200)
-        self.assertTrue(b'Hi My Site' in res.body)
+        self.assertIn(b'My Site', res.body)
 
