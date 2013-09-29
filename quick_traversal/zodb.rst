@@ -66,16 +66,19 @@ Steps
    .. literalinclude:: zodb/tutorial/__init__.py
       :linenos:
 
-#. Our views in ``zodb/tutorial/views.py`` change to create
-   persistent objects:
+#. Our views in ``zodb/tutorial/views.py`` have modest changes in
+   ``add_folder`` and ``add_content`` for how new instances are made
+   and put into a container:
 
    .. literalinclude:: zodb/tutorial/views.py
       :linenos:
 
-#. As do our resources in ``zodb/tutorial/resources.py``:
+#. Make our resources persistent in ``zodb/tutorial/resources.py``:
 
    .. literalinclude:: zodb/tutorial/resources.py
       :linenos:
+
+#. No changes to any templates!
 
 #. Run your Pyramid application with:
 
@@ -108,6 +111,10 @@ mapping will not initialize properly.
 On the bootstrap, note the use of transaction.commit() to commit the
 change. This is because, on first startup, we want a root resource in
 place before continuing.
+
+ZODB has many modes of deployment. For example, ZEO is a pure-Python
+object storage service across multiple processes and hosts. RelStorage
+lets you use a RDBMS for storage/retrieval of your Python pickles.
 
 Extra Credit
 ============

@@ -9,7 +9,7 @@ class Folder(PersistentMapping):
         self.title = title
 
 
-class SiteFolder(Folder):
+class Root(Folder):
     __name__ = None
     __parent__ = None
 
@@ -22,7 +22,7 @@ class Document(Persistent):
 
 def bootstrap(zodb_root):
     if not 'tutorial' in zodb_root:
-        root = SiteFolder('My Site')
+        root = Root('My Site')
         zodb_root['tutorial'] = root
         transaction.commit()
     return zodb_root['tutorial']
