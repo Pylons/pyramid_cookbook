@@ -3,6 +3,7 @@ from setuptools import setup
 requires = [
     'pyramid',
     'pyramid_jinja2',
+    'pyramid_debugtoolbar'
 ]
 
 setup(name='tutorial',

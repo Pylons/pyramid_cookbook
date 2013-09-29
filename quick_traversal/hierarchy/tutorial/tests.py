@@ -4,7 +4,7 @@ from pyramid.testing import DummyRequest
 from pyramid.testing import DummyResource
 
 class TutorialViewsUnitTests(unittest.TestCase):
-    def test_default_view(self):
+    def test_home_view(self):
         from .views import TutorialViews
 
         request = DummyRequest()
@@ -12,9 +12,7 @@ class TutorialViewsUnitTests(unittest.TestCase):
         context = DummyResource(title=title, __name__='dummy')
         inst = TutorialViews(context, request)
         result = inst.home()
-        self.assertEqual(result['view_name'], 'Home View')
-        self.assertEqual(result['parent_title'], 'No Parent')
-        self.assertEqual(result['name'], 'dummy')
+        self.assertIn('Home', result['page_title'])
 
 class TutorialFunctionalTests(unittest.TestCase):
     def setUp(self):
@@ -25,4 +23,4 @@ class TutorialFunctionalTests(unittest.TestCase):
 
     def test_home(self):
         res = self.testapp.get('/', status=200)
-        self.assertTrue('Site Folder' in res.body)
+        self.assertIn(b'Site Folder', res.body)

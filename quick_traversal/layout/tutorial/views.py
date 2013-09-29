@@ -2,8 +2,7 @@ from pyramid.view import view_config
 
 
 class TutorialViews(object):
-    def __init__(self, context, request):
-        self.context = context
+    def __init__(self, request):
         self.request = request
 
     @view_config(name='hello', renderer='templates/site.jinja2')

@@ -1,0 +1,8 @@
+{% extends "templates/layout.jinja2" %}
+{% block content %}
+
+<p>Welcome to {{ context.title }}. Visit 
+<a href="{{ request.resource_url(context) }}">home</a></p>
+
+
+{% endblock content %}

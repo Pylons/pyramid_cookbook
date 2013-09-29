@@ -1,3 +1,4 @@
+from pyramid.location import lineage
 from pyramid.view import view_config
 
 
@@ -5,16 +6,14 @@ class TutorialViews:
     def __init__(self, context, request):
         self.context = context
         self.request = request
+        self.parents = lineage(context)
 
-    @view_config(renderer='home.jinja2')
+    @view_config(renderer='templates/home.jinja2')
     def home(self):
-        parent = self.context.__parent__
-        if parent:
-            parent_title = parent.title
-        else:
-            parent_title = 'No Parent'
-        return {
-            'view_name': 'Home View',
-            'name': self.context.__name__,
-            'parent_title': parent_title,
-            }
+        page_title = 'Quick Tutorial: Home'
+        return dict(page_title=page_title)
+
+    @view_config(name='hello', renderer='templates/hello.jinja2')
+    def hello(self):
+        page_title = 'Quick Tutorial: Hello'
+        return dict(page_title=page_title)

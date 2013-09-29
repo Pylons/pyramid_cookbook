@@ -6,7 +6,8 @@ requires = [
     'pyramid_tm',
     'sqlalchemy',
     'pyramid_tm',
-    'zope.sqlalchemy'
+    'zope.sqlalchemy',
+    'pyramid_debugtoolbar'
 ]
 
 setup(name='tutorial',

@@ -18,26 +18,26 @@ class TutorialViewsUnitTests(unittest.TestCase):
         inst = TutorialViews(context, request)
         return inst
 
-    def test_site_view(self):
+    def test_site(self):
         request = DummyRequest()
         context = DummySite()
         inst = self._makeOne(context, request)
         result = inst.site()
-        self.assertEqual(len(result['children']), 5)
+        self.assertIn('Root', result['page_title'])
 
     def test_folder_view(self):
         request = DummyRequest()
         context = DummySite()
         inst = self._makeOne(context, request)
         result = inst.folder()
-        self.assertEqual(len(result['children']), 5)
+        self.assertIn('Folder', result['page_title'])
 
     def test_document_view(self):
         request = DummyRequest()
         context = DummyResource()
         inst = self._makeOne(context, request)
         result = inst.document()
-        self.assertEqual(result, {})
+        self.assertIn('Document', result['page_title'])
 
 class TutorialFunctionalTests(unittest.TestCase):
     def setUp(self):
@@ -48,7 +48,7 @@ class TutorialFunctionalTests(unittest.TestCase):
 
     def test_it(self):
         res = self.testapp.get('/', status=200)
-        self.assertTrue('SiteFolder' in res.body)
+        self.assertTrue('Root' in res.body)
         res = self.testapp.get('/folder1', status=200)
         self.assertTrue('Folder' in res.body)
         res = self.testapp.get('/doc1', status=200)

@@ -12,7 +12,7 @@ class TutorialViewsUnitTests(unittest.TestCase):
         context = DummyResource(title=title)
         inst = TutorialViews(context, request)
         result = inst.home()
-        self.assertIn('Site View', result['page_title'])
+        self.assertIn('Home', result['page_title'])
 
 class TutorialFunctionalTests(unittest.TestCase):
     def setUp(self):

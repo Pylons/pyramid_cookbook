@@ -3,20 +3,16 @@ import unittest
 from pyramid.testing import DummyRequest
 from pyramid.testing import DummyResource
 
-class DummySite(object):
-    title = 'Dummy Title'
-    
 class TutorialViewsUnitTests(unittest.TestCase):
 
-    def _makeOne(self, context, request):
+    def _makeOne(self, request):
         from .views import TutorialViews
-        inst = TutorialViews(context, request)
+        inst = TutorialViews(request)
         return inst
 
     def test_site_view(self):
         request = DummyRequest()
-        context = DummySite()
-        inst = self._makeOne(context, request)
+        inst = self._makeOne(request)
         result = inst.site()
         self.assertIn('Site View', result['page_title'])
 

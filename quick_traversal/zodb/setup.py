@@ -6,6 +6,7 @@ requires = [
     'ZODB3',
     'pyramid_zodbconn',
     'pyramid_tm',
+    'pyramid_debugtoolbar'
 ]
 
 setup(name='tutorial',

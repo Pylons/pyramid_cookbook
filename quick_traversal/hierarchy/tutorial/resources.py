@@ -5,7 +5,7 @@ class Folder(dict):
         self.title = title
 
 
-class SiteFolder(Folder):
+class Root(Folder):
     pass
 
 
@@ -16,7 +16,7 @@ class Document(object):
         self.title = title
 
 # Done outside bootstrap to persist from request to request
-root = SiteFolder('', None, 'My Site')
+root = Root('', None, 'My Site')
 
 
 def bootstrap(request):
