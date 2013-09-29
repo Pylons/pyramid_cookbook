@@ -1,5 +1,5 @@
 ======================
-3: Type-Specific Views
+4: Type-Specific Views
 ======================
 
 Type-specific views by registering a view against a class.
@@ -34,9 +34,9 @@ Steps
 
    .. code-block:: bash
 
-    (env27)$ cd ..; cp -r hierarchy typeviews; cd typeviews
-    (env27)$ python setup.py develop
-    (env27)$ mkdir typeviews/tutorial/templates
+    $ cd ..; cp -r hierarchy typeviews; cd typeviews
+    $ $VENV/bin/python setup.py develop
+    $ mkdir typeviews/tutorial/templates
 
 #. Our views in ``typeviews/tutorial/views.py`` need
    type-specific registrations:
@@ -70,13 +70,13 @@ Steps
    .. literalinclude:: typeviews/tutorial/tests.py
       :linenos:
 
-#. ``$ nosetests`` should report running 4 tests.
+#. ``$ $VENV/bin/nosetests`` should report running 4 tests.
 
 #. Run your Pyramid application with:
 
    .. code-block:: bash
 
-    (env27)$ pserve development.ini --reload
+    $ $VENV/bin/pserve development.ini --reload
 
 #. Open ``http://localhost:6543/`` in your browser.
 

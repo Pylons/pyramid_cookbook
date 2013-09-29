@@ -1,5 +1,5 @@
 ============================
-4: Storing Resources In ZODB
+6: Storing Resources In ZODB
 ============================
 
 Store and retrieve resource tree containers and items in a database.
@@ -40,7 +40,7 @@ Steps
 
    .. code-block:: bash
 
-    (env27)$ cd ..; cp -r addcontent zodb; cd zodb
+    $ cd ..; cp -r addcontent zodb; cd zodb
 
 #. Introduce some new dependencies in  ``zodb/setup.py``:
 
@@ -51,7 +51,7 @@ Steps
 
    .. code-block:: bash
 
-    (env27)$ python setup.py develop
+    $ $VENV/bin/python setup.py develop
 
 #. Modify our ``zodb/development.ini`` to include some
    configuration and give database connection parameters:
@@ -81,7 +81,7 @@ Steps
 
    .. code-block:: bash
 
-    (env27)$ pserve development.ini --reload
+    $ $VENV/bin/pserve development.ini --reload
 
 #. Open ``http://localhost:6543/`` in your browser.
 

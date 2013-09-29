@@ -1,5 +1,5 @@
 ==================================
-1: Basic Traversal With Site Roots
+2: Basic Traversal With Site Roots
 ==================================
 
 Model websites as a hierarchy of objects with operations.
@@ -46,16 +46,15 @@ Objectives
 Steps
 =====
 
-#. We are going to use the view classes step as our starting point:
+#. We are going to use the previous step as our starting point:
 
    .. code-block:: bash
 
-    (env27)$ cd ..; cp -r view_classes siteroot; cd siteroot
-    (env27)$ python setup.py develop
+    $ cd ..; cp -r layout siteroot; cd siteroot
+    $ $VENV/bin/python setup.py develop
 
-#. In ``siteroot/tutorial/__init__.py`` make a root factory
-   and remove the ``add_route`` statements from the
-   :term:`configurator`:
+#. In ``siteroot/tutorial/__init__.py``, make a root factory that
+   points to a function in a module we are about to create:
 
    .. literalinclude:: siteroot/tutorial/__init__.py
       :linenos:
@@ -72,14 +71,19 @@ Steps
    .. literalinclude:: siteroot/tutorial/views.py
       :linenos:
 
-#. A template in ``siteroot/tutorial/home.jinja2``:
+#. A template in ``siteroot/tutorial/templates/home.jinja2``:
 
-   .. literalinclude:: siteroot/tutorial/home.jinja2
+   .. literalinclude:: siteroot/tutorial/templates/home.jinja2
     :language: html
     :linenos:
 
+#. A template in ``siteroot/tutorial/templates/hello.jinja2``:
 
-#. Simplified tests in ``siteroot/tutorial/tests.py``:
+   .. literalinclude:: siteroot/tutorial/templates/hello.jinja2
+    :language: html
+    :linenos:
+
+#. Simple tests in ``siteroot/tutorial/tests.py``:
 
    .. literalinclude:: siteroot/tutorial/tests.py
       :linenos:
@@ -89,10 +93,10 @@ Steps
    .. code-block:: bash
 
 
-    (env27)$ nosetests tutorial
+    $ $VENV/bin/nosetests tutorial
     .
     ----------------------------------------------------------------------
-    Ran 4 tests in 0.141s
+    Ran 2 tests in 0.141s
 
     OK
 
@@ -100,7 +104,7 @@ Steps
 
    .. code-block:: bash
 
-    (env27)$ pserve development.ini --reload
+    $ $VENV/bin/pserve development.ini --reload
 
 #. Open ``http://localhost:6543/hello`` in your browser.
 
@@ -124,9 +128,10 @@ Namely, objects need to provide an attribute/callable for
 ``__name__`` and ``__parent__``.
 
 In this step, our tree has one object: the root. It is an instance of
-``SiteFolder``. Since it is the root, it doesn't need a ``__name__``
-(aka ``id``) nor a ``__parent__`` (reference to the container an object
-is in.)
+our ``Root`` class. The next URL hop is ``hello``. Our root instance
+does not have an item in its dictionary named ``hello``,
+so Pyramid looks for a view with a ``name=hello``,
+finding our view method.
 
 Our ``home`` view is passed, by Pyramid, the instance of this folder as
 ``context``. The view can then grab attributes and other data from the

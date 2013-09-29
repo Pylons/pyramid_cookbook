@@ -6,7 +6,7 @@ class TutorialViews:
     def __init__(self, context, request):
         self.context = context
         self.request = request
-        self.parents = lineage(context)
+        self.parents = reversed(list(lineage(context)))
 
     @view_config(renderer='templates/home.jinja2')
     def home(self):

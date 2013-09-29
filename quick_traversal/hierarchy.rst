@@ -1,5 +1,5 @@
 ========================
-2: Traversal Hierarchies
+3: Traversal Hierarchies
 ========================
 
 Objects with subobjects and views, all via URLs.
@@ -36,8 +36,8 @@ Steps
 
    .. code-block:: bash
 
-    (env27)$ cd ..; cp -r siteroot hierarchy; cd hierarchy
-    (env27)$ python setup.py develop
+    $ cd ..; cp -r siteroot hierarchy; cd hierarchy
+    $ $VENV/bin/python setup.py develop
 
 #. Provide a richer set of objects in
    ``hierarchy/tutorial/resources.py``:
@@ -51,14 +51,28 @@ Steps
    .. literalinclude:: hierarchy/tutorial/views.py
       :linenos:
 
-#. Get ``hierarchy/tutorial/home.jinja2`` to display this richer
-   information:
+#. Update the ``hierarchy/tutorial/templates/home.jinja2``
+   view template:
 
-   .. literalinclude:: hierarchy/tutorial/home.jinja2
+   .. literalinclude:: hierarchy/tutorial/templates/home.jinja2
       :language: html
       :linenos:
 
-#. Simplified tests in ``hierarchy/tutorial/tests.py``:
+#. Update the ``hierarchy/tutorial/templates/hello.jinja2`` view
+   template as well:
+
+   .. literalinclude:: hierarchy/tutorial/templates/hello.jinja2
+      :language: html
+      :linenos:
+
+#. The ``hierarchy/tutorial/templates/breadcrumbs.jinja2`` now have
+   a hierarchy to show:
+
+   .. literalinclude:: hierarchy/tutorial/templates/breadcrumbs.jinja2
+      :language: html
+      :linenos:
+
+#. Update the tests in ``hierarchy/tutorial/tests.py``:
 
    .. literalinclude:: hierarchy/tutorial/tests.py
       :linenos:
@@ -68,10 +82,10 @@ Steps
    .. code-block:: bash
 
 
-    (env27)$ nosetests tutorial
+    $ $VENV/bin/nosetests tutorial
     .
     ----------------------------------------------------------------------
-    Ran 4 tests in 0.141s
+    Ran 2 tests in 0.141s
 
     OK
 
@@ -79,7 +93,7 @@ Steps
 
    .. code-block:: bash
 
-    (env27)$ pserve development.ini --reload
+    $ $VENV/bin/pserve development.ini --reload
 
 #. Open ``http://localhost:6543/`` in your browser.
 
@@ -88,10 +102,13 @@ Analysis
 
 In this example we have to manage our tree by assigning ``__name__`` as
 an identifier on each child and ``__parent__`` as a reference to the
-parent.
+parent. The template used now shows different information based on the
+object URL which you traversed to.
 
-The template used now shows different information based on the object
-URL which you traversed to.
+We also show that ``@view_config`` can set a "default" view on a
+context by omitting the ``@name`` attribute. Thus, if you visit
+``http://localhost:6543/folder1/`` without providing anything after,
+the configured default view is used.
 
 Extra Credit
 ============
@@ -102,5 +119,5 @@ Extra Credit
 #. If you go to a resource that doesn't exist, will Pyramid handle it
    gracefully?
 
-#. What happens if you use a ``__name__`` that already exists in the
-   container?
+#. If you ask for a default view on a resource and none is configured,
+   Pyramid handle it gracefully?

@@ -1,5 +1,5 @@
 ==================================
-3: Adding Resources To Hierarchies
+5: Adding Resources To Hierarchies
 ==================================
 
 Multiple views per type allowing addition of content anywhere in a
@@ -47,8 +47,8 @@ Steps
 
    .. code-block:: bash
 
-    (env27)$ cd ..; cp -r typeviews addcontent; cd addcontent
-    (env27)$ python setup.py develop
+    $ cd ..; cp -r typeviews addcontent; cd addcontent
+    $ $VENV/bin/python setup.py develop
 
 
 #. Our views in ``addcontent/tutorial/views.py`` need
@@ -78,13 +78,13 @@ Steps
       :language: html
       :linenos:
 
-#. ``$ nosetests`` should report running 4 tests.
+#. ``$ $VENV/bin/nosetests`` should report running 4 tests.
 
 #. Run your Pyramid application with:
 
    .. code-block:: bash
 
-    (env27)$ pserve development.ini --reload
+    $ $VENV/bin/pserve development.ini --reload
 
 #. Open ``http://localhost:6543/`` in your browser.
 

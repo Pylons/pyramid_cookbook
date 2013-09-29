@@ -1,11 +1,11 @@
 from random import randint
 
-from pyramid.decorator import reify
 from pyramid.httpexceptions import HTTPFound
+from pyramid.location import lineage
 from pyramid.view import view_config
 
 from .resources import (
-    SiteFolder,
+    Root,
     Folder,
     Document
     )
@@ -15,24 +15,19 @@ class TutorialViews(object):
     def __init__(self, context, request):
         self.context = context
         self.request = request
+        self.parents = reversed(list(lineage(context)))
 
-    @reify
-    def parent_info(self):
-        parent = self.context.__parent__
-        parent_url = self.request.resource_url(parent)
-        return {
-            'title': parent.title,
-            'url': parent_url}
-
-    @view_config(renderer="templates/site.jinja2",
-                 context=SiteFolder)
+    @view_config(renderer="templates/root.jinja2",
+                 context=Root)
     def site(self):
-        return {}
+        page_title = 'Quick Tutorial: Root'
+        return dict(page_title=page_title)
 
     @view_config(renderer="templates/folder.jinja2",
                  context=Folder)
     def folder(self):
-        return {}
+        page_title = 'Quick Tutorial: Folder'
+        return dict(page_title=page_title)
 
     @view_config(name="add_folder", context=Folder)
     def add_folder(self):
@@ -61,4 +56,5 @@ class TutorialViews(object):
     @view_config(renderer="templates/document.jinja2",
                  context=Document)
     def document(self):
-        return {}
+        page_title = 'Quick Tutorial: Document'
+        return dict(page_title=page_title)
