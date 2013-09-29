@@ -2,6 +2,11 @@ from random import randint
 
 from pyramid.httpexceptions import HTTPFound
 from pyramid.location import lineage
+from pyramid.security import (
+    remember,
+    forget,
+    authenticated_userid
+    )
 from pyramid.view import view_config
 
 from .models import (
@@ -9,12 +14,15 @@ from .models import (
     Folder,
     Document
     )
+from .security import USERS
+
 
 class TutorialViews(object):
     def __init__(self, context, request):
         self.context = context
         self.request = request
         self.parents = reversed(list(lineage(context)))
+        self.logged_in = authenticated_userid(request)
 
     @view_config(renderer="templates/root.jinja2",
                  context=Root)
@@ -59,3 +67,35 @@ class TutorialViews(object):
     def document(self):
         page_title = 'Quick Tutorial: Document'
         return dict(page_title=page_title)
+
+    @view_config(name='login', renderer='templates/login.jinja2')
+    def login(self):
+        request = self.request
+        referrer = request.url
+        message = ''
+        login = ''
+        password = ''
+        if 'form.submitted' in request.params:
+            login = request.params['login']
+            password = request.params['password']
+            if USERS.get(login) == password:
+                headers = remember(request, login)
+                return HTTPFound(location='/',
+                                 headers=headers)
+            message = 'Failed login'
+
+        return dict(
+            page_title='Login',
+            message=message,
+            url=request.application_url + '/login',
+            login=login,
+            password=password,
+        )
+
+    @view_config(name='logout')
+    def logout(self):
+        request = self.request
+        headers = forget(request)
+        url = request.resource_url(request.root)
+        return HTTPFound(location=url,
+                         headers=headers)
