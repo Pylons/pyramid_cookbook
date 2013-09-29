@@ -19,3 +19,4 @@ web requests to objects and views in Pyramid.
     typeviews
     addcontent
     zodb
+    sqlroot
