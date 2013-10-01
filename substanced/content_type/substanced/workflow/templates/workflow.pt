@@ -1,0 +1,31 @@
+<div metal:use-macro="request.sdiapi.main_template">
+
+  <div metal:fill-slot="main">
+
+    <h1>Workflows</h1>
+
+    <div tal:repeat="workflow workflows">
+
+      <h2>${workflow.workflow.name or workflow.workflow.type}</h2>
+      <h3>Current state: ${workflow.current_state}</h3>
+
+      <form action="${request.sdiapi.mgmt_url(request.context, '@@workflows')}"
+            method="POST">
+
+        <input type="hidden" name="wfid" value="${workflow.id}"/>
+        <select name="transition">
+          <option tal:repeat="transition workflow.transitions"
+                  value="${transition.name}">${transition.name}</option>
+        </select>
+
+        <input type="hidden" name="csrf_token" 
+               value="${request.session.get_csrf_token()}"/>
+        <input type="submit" name="submit" value="Transition"/>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

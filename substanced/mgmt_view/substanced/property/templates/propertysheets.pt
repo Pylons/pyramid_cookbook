@@ -1,0 +1,36 @@
+<div metal:use-macro="request.sdiapi.main_template">
+
+  <metal:head-more fill-slot="head-more">
+    <!-- CSS -->
+    <tal:block repeat="reqt css_links|[]">
+      <link rel="stylesheet" 
+            href="${request.static_url(reqt)}" 
+            type="text/css" />
+     </tal:block>
+    <!-- JavaScript -->
+    <tal:block repeat="reqt js_links|[]">
+      <script type="text/javascript"
+              src="${request.static_url(reqt)}"
+       ></script>
+    </tal:block>
+  </metal:head-more>
+
+  <div metal:fill-slot="main">
+
+    <div class="tabbable tabs-top">
+
+      <ul class="nav nav-pills" 
+          tal:define="tabs view.sheet_names"
+          tal:condition="len(tabs) > 1">
+        <li tal:repeat="tab tabs"
+            tal:attributes="class view.active_sheet_name == tab and 'active' or None"><a href="${request.sdiapi.mgmt_path(request.context, '@@properties', tab)}">${tab}</a>
+        </li>
+      </ul>
+      
+    </div>
+
+    <div id="form" tal:content="structure form"/>
+
+  </div>
+
+</div>

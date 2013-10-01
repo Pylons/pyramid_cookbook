@@ -1,0 +1,9 @@
+<div metal:define-macro="main"
+        metal:extend-macro="request.sdiapi.main_template">
+
+    <div metal:fill-slot="main">
+        <h2>${page_title}</h2>
+
+        <p>Hello</p>
+    </div>
+</div>

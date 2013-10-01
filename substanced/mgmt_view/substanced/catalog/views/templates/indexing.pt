@@ -1,0 +1,37 @@
+<div metal:use-macro="request.sdiapi.main_template">
+
+  <div metal:fill-slot="main">
+
+    <div tal:repeat="(catalog,indexes) catalogs" style="margin-top: 20px">
+    
+      <h2>For catalog service at "${request.resource_path(catalog)}"</h2>
+
+      <table class="table table-striped">
+
+        <thead>
+          <tr>
+            <th>Index name</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr tal:repeat="index indexes">
+            <td>${index['index'].__name__}</td>
+            <td>${index['value']}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form action="@@indexing" method="post" onsubmit="sdi_loading_indicator_on()">
+        <input type="hidden" name="csrf_token" 
+               value="${request.session.get_csrf_token()}"/>
+        <input type="submit" name="form.reindex" value="Reindex This Object"/>
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+

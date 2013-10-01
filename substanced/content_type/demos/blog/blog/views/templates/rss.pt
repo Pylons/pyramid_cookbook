@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:tal="http://xml.zope.org/namespaces/tal">
+<channel>
+<atom:id>${feed.rss_url}</atom:id>
+<lastBuildDate>${feed.updated_rss}</lastBuildDate>
+<title>${feed.title}</title>
+<description
+    tal:content="structure feed.description">Feed Description</description>
+<link tal:content="feed.blog_url">${request.application_url}</link>
+<generator>repozeblog</generator>
+<atom:link rel="self" href="http://feeds.feedburner.com/blogspot/RElb" type="application/rss+xml" 
+ tal:attributes="href feed.rss_url"/>
+
+<item tal:repeat="blogentry blogentries">
+ <guid isPermaLink="true" tal:content="blogentry.url">item_url</guid>
+ <pubDate tal:content="blogentry.updated_rss">Tue, 02 Dec 2008 16:34:00 +0000</pubDate>
+ <title tal:content="blogentry.title">title</title>
+ <description tal:content="blogentry.body">Body</description>
+ <link tal:content="blogentry.url">URL</link>
+</item>
+
+</channel>
+</rss>

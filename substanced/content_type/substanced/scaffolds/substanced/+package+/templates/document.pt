@@ -1,0 +1,11 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      metal:use-macro="master">
+<head>
+ <title metal:fill-slot="head-title">${title}</title>
+</head>
+<body>
+ <h1 metal:fill-slot="body-title">${title}</h1>
+ <div metal:fill-slot="body-content"
+      tal:content="structure body">BODY</div>
+</body>
+</html>

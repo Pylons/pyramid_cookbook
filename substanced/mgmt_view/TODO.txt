@@ -1,0 +1,122 @@
+Must-have pre-alpha-1
+=====================
+
+Features
+--------
+
+- Release deform2 (merge deform_bootstrap).
+
+- Use hasattr(__is_folder__) instead of IFolder.providedBy in is_folder.
+
+- Use is_folder view predicate instead of context=IFolder in folder views
+  (holdup is testing out folder button action overrides in the face of views
+  being registered against IFolder).
+
+- Change all mentions of ``context`` to ``resource`` in docs.
+
+- Better error handling in folder contents view when an ajax request fails.
+
+Can wait until after alpha 1
+============================
+
+- Ability to more efficiently dump and load blobs.
+
+- Stamp created objects with creator information?
+
+- Add specific configurator directives for object event registrations
+  (e.g. config.subscribe_modified).
+
+- Once we depend on Pyramid 1.4b1+, normalize subscriber predicate argument
+  lists.
+
+- Add a ``substanced.load_dump`` key for use by root factory.
+
+- Work out OpenID/Twitter/whatever authentication.
+
+- Make statds pipeline so that statistics are sent only once per request
+  http://statsd.readthedocs.org/en/latest/pipeline.html
+
+
+Docs
+----
+
+Folder Contents
++++++++++++++++
+
+- Improve narrative documentation about column specifications (including
+  sorter).
+
+- Improve narrative documentation about custom buttons and associated views.
+
+Cataloging
+++++++++++
+
+- Improve current catalog docs with more info about: catalog index creation,
+  content indexing, query API
+
+Misc
+++++
+
+- Explain the objectmap get_extents API.
+
+Dump and Load
++++++++++++++
+
+- Add API and narrative docs for dump/load, and dump contexts.
+
+
+Can Wait Forever (Nice-to-Have)
+===============================
+
+- XML-RPC.
+
+- Drag and drop ACE reordering in ACL edit view (note: Paul has this
+  somewhere).
+
+- Ability to add and edit principals in existing ACEs in ACL edit view.
+
+- Add a redo button to undo flash messages.
+
+- Show a derivative of output status in flash message when update indexes /
+  reindex catalog is done to a catalog.
+
+Probably Bad Ideas
+==================
+
+- Create "addable here" API that manages the __sdi_addable__ attribute of a
+  folderish object.
+
+- Emit an ObjectMoving event rather than removed event with a moving flag,
+  then an add event?
+
+- Create object map management UI (view relationships, view paths, view
+  objectids).
+
+- Decide whether to split "manage contents" permissions out for folders into
+  add, delete, rename.
+
+- Import/export from folder contents view.
+
+- Specialize recatalog during a rename, so only indexes that are
+  context-sensitive are reindexed.
+
+- Catalog event subscriber currently does a hellishly expensive recatalog of
+  allowed indexes when an ACL is changed.  Not sure if there's even a general
+  way to make this do less work, but could be.
+
+- __viewable__, __renameable__, __deletable__, __copyable__, __duplicatable__
+  attributes of contained objects in folder contents view that controls
+  how contained object can be acted upon?  E.g.::
+
+    def __viewable__(self, context, request):
+        return has_permission('sdi.view', context, request)
+
+
+Made Irrelevant
+===============
+
+- Fix ``Batch`` such that seqlen is a maximum.  Rationale: the sequence that
+  the batch receives may be smaller than seqlen due to hidden objects in folder
+  contents view (irrelevant because folder contents view is now
+  catalog-driven).
+

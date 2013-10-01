@@ -1,0 +1,1 @@
+<span>${msg} <a href="${url}" class="btn btn-mini btn-info">Undo</a></span>

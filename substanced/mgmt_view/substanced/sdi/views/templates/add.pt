@@ -1,0 +1,12 @@
+<div metal:use-macro="request.sdiapi.main_template">
+
+  <div metal:fill-slot="main">
+    <h1 tal:condition="views">Choose Content Type</h1>
+    <h1 tal:condition="not views">No content addable here</h1>
+    <div tal:repeat="view views">
+         <a class="btn" style="margin-top: 10px" 
+            href="${view['url']}">${view['type_name']}</a>
+    </div>
+  </div>
+
+</div>

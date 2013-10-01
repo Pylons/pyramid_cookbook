@@ -1,0 +1,47 @@
+<div metal:use-macro="request.sdiapi.main_template">
+
+  <metal:head-more fill-slot="head-more">
+    <!-- CSS -->
+    <tal:block repeat="reqt css_links|[]">
+      <link rel="stylesheet" 
+            href="${request.static_url(reqt)}" 
+            type="text/css" />
+     </tal:block>
+    <!-- JavaScript -->
+    <tal:block repeat="reqt js_links|[]">
+      <script type="text/javascript"
+              src="${request.static_url(reqt)}"
+       ></script>
+    </tal:block>
+  </metal:head-more>
+
+  <div metal:fill-slot="main">
+    <h1>${view.title|None}</h1>
+    <div id="form" tal:content="structure form"/>
+
+    <h3 tal:condition="searchresults|None">Search Results</h3>
+    <table tal:condition="searchresults|None" class="table table-striped">
+
+      <thead>
+       <tr>
+         <th width="15%">Object Id</th>
+         <th width="85%">Repr</th>
+       </tr>
+      </thead>
+
+      <tbody>
+        <tr tal:repeat="(oid, repr) searchresults">
+           <td tal:content="oid"></td>
+           <td tal:content="repr"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script type="text/javascript">
+      jQuery(function() {
+         deform.load();
+         });
+    </script>
+  </div>
+
+</div>

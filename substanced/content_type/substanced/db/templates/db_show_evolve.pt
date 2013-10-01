@@ -1,0 +1,62 @@
+<div metal:use-macro="request.sdiapi.main_template">
+
+  <div metal:fill-slot="main">
+
+    <a href="./@@database" class="btn btn-primary">Back</a>
+
+    <h2>Unfinished steps</h2>
+
+    <p tal:condition="not unfinished_steps">There are no unfinished steps.</p>
+
+    <table tal:condition="unfinished_steps" class="table">
+      <thead>
+        <tr>
+          <th>Step name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr tal:repeat="step unfinished_steps">
+          <td>${step[0]}</td>
+          <td>
+            <form action="./@@database" method="POST">
+              <input type="hidden" value="${request.session.get_csrf_token()}"
+                     name="csrf_token"/>
+              <input type="hidden" value="${step[0]}" name="step" />
+              <input type="submit" class="btn btn-primary"
+                     name="evolve_finished" value="Mark as finished"/>
+            </form>  
+          </td>
+        </tr>
+      </tbody>
+    </table>  
+
+    <h2>Finished steps</h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Step name</th>
+          <th>Applied on</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr tal:repeat="step finished_steps">
+           <td>${step[1]}</td>
+           <td>${format_timestamp(step[0], request.user.timezone)}</td>
+           <td>
+             <form action="./@@database" method="POST">
+                <input type="hidden" value="${request.session.get_csrf_token()}"
+                       name="csrf_token"/>
+               <input type="hidden" value="${step[1]}" name="step" />
+               <input type="submit" class="btn btn-primary"
+                      name="evolve_unfinished" value="Mark as unfinished"/>
+             </form>  
+           </td>
+        </tr>
+      </tbody>
+    </table>  
+
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal" 
+      metal:use-macro="h.main_template().macros['main']" >
+<head>
+<link rel="stylesheet" href="/static/screen.css" media="screen" type="text/css"/>
+<link href="/static/pygments.css" media="screen" rel="Stylesheet" type="text/css"/>
+<link href="/static/sphinx.css" media="screen" rel="Stylesheet" type="text/css"/>
+<metal:slot metal:fill-slot="scripts">
+</metal:slot>
+</head>
+<body>
+<h1 metal:fill-slot="header-title">Repoze Blog</h1>
+
+<metal:slot metal:fill-slot="content">
+
+<div class="clr">
+
+ <p id="blog_links">
+ [ <a href="${request.application_url}">Home</a>
+ | <a href="${request.application_url}/rss.xml">RSS 2.0</a>
+ | <a href="${request.application_url}/index.atom">ATOM 1.0</a>
+ ]
+ </p>
+
+ <div tal:repeat="day_entry date_entries">
+  <h2>${day_entry[0]}</h2>
+
+  <div tal:repeat="blogentry day_entry[1]">
+   <h3>${blogentry['title']}</h3>
+
+   <div tal:content="structure blogentry['body']"></div>
+   <p>posted at: ${blogentry['pubdate'].strftime('%H:%M')} |
+      <a href="${blogentry['url']}">permalink</a> |
+      <a tal:condition="blogentry['numcomments']"
+         href="${blogentry['url']}#comments">${blogentry['numcomments']} comments</a>
+      <span tal:condition="not blogentry['numcomments']">No Comments</span>
+    </p>
+  </div>
+ </div>
+
+</div>
+
+</metal:slot>
+
+<!-- end post -->
+<!-- end content -->
+
+<metal:slot metal:fill-slot="sidebar">
+
+<div class="sidebar">
+
+        <h3 class="about">About</h3>
+
+        <div class="side_item">
+          <ul>
+<li><a href="http://repoze.org/about.html">Overview</a></li>
+            <li><a href="http://blog.repoze.org/">Blog</a></li>
+            <li><a href="http://demo.repoze.org/plone">Demo</a></li>
+            <li><a href="http://repoze.org/devdep.html">Development and Deployment</a></li>
+            <li><a href="http://repoze.org/license.html">Licensing</a></li>
+
+            <li><a href="http://static.repoze.org/presentations">Presentations</a></li>
+          </ul>
+</div>
+
+        <h3 class="code">Code</h3>
+        <div class="side_item">
+          <ul>
+<li><a href="http://repoze.org/quickstart.html">Quick Start</a></li>
+            <li><a href="http://dist.repoze.org/">Released packages</a></li>
+
+            <li>
+<h5>Repoze Components</h5>
+                <ul>
+<li><a href="http://repoze.org/repoze_components.html#applications">WSGI Applications</a></li>
+                 <li><a href="http://repoze.org/repoze_components.html#middleware">WSGI Middleware</a></li>
+                 <li><a href="http://repoze.org/repoze_components.html#libraries">Libraries</a></li>
+                </ul>
+</li>
+
+</ul>
+</div>
+
+        <h3 class="developers">Developers</h3>
+        <div class="side_item">
+          <ul>
+<li><a href="http://repoze.org/viewcvs">Subversion Repository</a></li>
+            <li><a href="http://bugs.repoze.org/">Issue tracking</a></li>
+            <li><a href="http://lists.repoze.org/">Mailing lists</a></li>
+
+            <li><a href="irc://irc.freenode.net/#repoze">IRC Channel</a></li>
+          </ul>
+</div>
+
+</div>
+
+</metal:slot><!-- end sidebar -->
+</body>
+</html>

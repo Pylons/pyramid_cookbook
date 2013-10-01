@@ -1,0 +1,66 @@
+[app:main]
+use = egg:{{project}}
+
+pyramid.reload_templates = true
+pyramid.debug_authorization = false
+pyramid.debug_notfound = false
+pyramid.debug_routematch = false
+pyramid.default_locale_name = en
+pyramid.includes = 
+    pyramid_debugtoolbar
+    pyramid_tm
+
+debugtoolbar.exclude_prefixes = /manage
+
+zodbconn.uri = file://%(here)s/Data.fs?connection_cache_size=50000&blobstorage_dir=%(here)s/blobs&blobstorage_layout=bushy
+zodbconn.uri.audit = file://%(here)s/audit.fs?connection_cache_size=50000&blobstorage_dir=%(here)s/blobs&blobstorage_layout=bushy
+tm.attempts = 3
+
+substanced.secret = seekri1
+substanced.initial_login = admin
+substanced.initial_password = admin
+substanced.uploads_tempdir = %(here)s/tmp
+substanced.catalogs.autosync = true
+
+mail.default_sender = substanced_demo@example.com
+
+[server:main]
+use = egg:waitress#main
+host = 0.0.0.0
+port = 6543
+
+# Begin logging configuration
+
+[loggers]
+keys = root, {{package_logger}}, substanced
+
+[handlers]
+keys = console
+
+[formatters]
+keys = generic
+
+[logger_root]
+level = INFO
+handlers = console
+
+[logger_{{package_logger}}]
+level = DEBUG
+handlers =
+qualname = {{package}}
+
+[logger_substanced]
+level = INFO
+handlers =
+qualname = substanced
+
+[handler_console]
+class = StreamHandler
+args = (sys.stderr,)
+level = NOTSET
+formatter = generic
+
+[formatter_generic]
+format = %(asctime)s %(levelname)-5.5s [%(name)s][%(threadName)s] %(message)s
+
+# End logging configuration

@@ -1,0 +1,55 @@
+<html metal:extend-macro="request.sdiapi.main_template">
+ <head>
+    <metal:slot metal:define-slot="head-more" />
+ </head>
+ <body>
+  <div metal:fill-slot="main">
+
+   <metal:slot metal:define-slot="before-login-form" />
+
+   <div class="login-form">
+
+    <metal:slot metal:define-slot="login-form-title">
+     <h2>Log In</h2>
+    </metal:slot>
+
+    <metal:slot metal:define-slot="login-form">
+    <form action="${url}" method="post"
+          metal:define-macro="login-form">
+
+     <input type="hidden" name="csrf_token"
+            value="${request.session.get_csrf_token()}" />
+
+     <div class="clearfix">
+      <input type="text" name="login"
+             autofocus="autofocus" placeholder="Login"
+             value="${login}" />
+     </div>
+
+     <div class="clearfix">
+      <input type="password" name="password"
+             placeholder="Password"
+             value="${password}" />
+     </div>
+
+     <input type="submit" name="form.submitted" class="btn btn-primary"
+            value="Log In" />
+
+    </form>
+    </metal:slot>
+
+   </div>
+
+   <metal:slot metal:define-slot="password-reset-link">
+   <p id="password-reset-link"
+      metal:define-macro="password-reset-link">
+    <a href="${request.sdiapi.mgmt_path(request.virtual_root, '@@resetpassword')}"
+    >Forgot your password?</a>
+   </p>
+   </metal:slot>
+
+   <metal:slot metal:define-slot="after-login-form" />
+
+  </div>
+ </body>
+</html>

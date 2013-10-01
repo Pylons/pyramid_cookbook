@@ -1,0 +1,5 @@
+Unreleased
+----------
+
+- Fixed #95 (When the scrolling causes an ajax request the selections are
+  lost.)

@@ -1,0 +1,54 @@
+<div metal:use-macro="request.sdiapi.main_template">
+
+  <metal:head-more fill-slot="head-more">
+
+    <style type="text/css">
+      .blockquote {
+          color: #a5a4a4;
+          font-style: italic;
+          margin: 30px;
+          padding: 30px;
+      }
+      .blockquote:first-letter {
+          float: left;
+          margin: -9px 6px 0 0;
+          font-size: 35px;
+     }
+    </style>
+
+  </metal:head-more>
+
+  <div metal:fill-slot="main">
+    <h1>Substance D management interface demo</h1>
+
+    <div>
+      <p><a href="https://github.com/Pylons/substanced">Substance D</a> is an
+      application server built using the <a
+      href="http://pylonsproject.org">Pyramid</a> web framework.
+      It has the following features:</p>
+      <ul>
+        <li>Uses <a href="http://zodb.org">ZODB</a> to store its content</li>
+        <li>Has built in users and groups management</li>
+        <li>Has a management interface that allows you to edit and add content
+          (aka an "admin" interface)</li>
+        <li>Has features which allow you to define your own content types for
+          management and arbitrary application development purposes</li>
+        <li>Allows the application of object-level (aka "row-level") security to content objects.</li>
+        <li>Has built-in indexing and searching facilities</li>
+        <li>Has machinery for forming relationships between content objects</li>
+        <li>Has machinery for dumping content to the filesystem and loading content from
+            such a dump</li>
+      </ul>
+      <p>See
+      the <a href="http://docs.pylonsproject.org/projects/substanced/en/latest/">documentation</a>
+      for detailed technical information.</p>
+      <p>To see it in action, click the button
+      below and log in as <b>admin</b> with the password <b>admin</b>.</p>
+      <div style="margin-top: 1em;">
+        <a class="btn btn-primary" href="${request.application_url}${manage_prefix}">See the management interface</a>
+      </div>
+
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:define-macro="main">
+  <head>
+    <metal:title metal:define-slot="head-title"/>
+  </head>
+  <body>
+    <metal:title metal:define-slot="body-title">TITLE</metal:title>
+    <metal:content metal:define-slot="body-content">CONTENT</metal:content>
+  </body>
+</html>

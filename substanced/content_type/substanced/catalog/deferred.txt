@@ -1,0 +1,94 @@
+Deferred indexing operation
+---------------------------
+
+Deferred indexing allows indexing operations to be delayed until a future time.
+The work in the ``substanced.catalog.deferred`` module is based on prior work
+done in ``collective.indexing``, ``Products.QueueCatalog``, and ``zc.queue``.
+The work has been done on the Substance D ``feature.queuedcatalog`` branch
+mostly within ``substanced.catalog.deferred`` and
+``substanced.catalog.indexes``.
+
+In the Substance D deferred indexing implementation, there are three modes
+related to indexing action deferral.  Any index can be configured to be in one
+of three "action modes":
+
+``MODE_IMMEDIATE``
+
+  Traditional indexing behavior, where as soon as an indexing operation is
+  performed on an index, the index's ``index_doc`` method is called
+  immediately.
+
+``MODE_ATCOMMIT``
+
+  Indexing is performed just before the commit time of the current transaction.
+
+``MODE_DEFERRED``
+
+  Indexing should be performed by a separate index action processor process.
+
+Indexes are provided a default mode value using the normal Substance D catalog
+configuration mechanisms; each index named in a catalog factory can provide its
+indexing mode separately.  See
+``substanced.catalog.system.SystemCatalogFactory`` on the
+``feature.queuedcatalog`` branch for an example.
+
+If a developer indexes (or unindexes, or reindexes) a piece of content, by
+default, each index will either immediately perform or defer the indexing
+action based on its action mode.  However, a developer can choose to override
+the default indexing mode of an index for a given indexing operation.  He
+performs the override by passing a value as the ``action_mode`` parameter to
+the ``index_resource``, ``unindex_resource`` or ``reindex_resource`` methods of
+catalogs or indexes.
+
+For instance, if a ``text`` index is configured with the default action mode
+``MODE_DEFERRED``, and the developer wishes to index some content in it
+immediately, he can do::
+
+   from substanced.interfaces import MODE_IMMEDIATE
+   catalog['text'].index_resource(someresource, action_mode=MODE_IMMEDIATE)
+
+Likewise if the text index had a default mode of MODE_IMMEDIATE, and the
+developer wanted to defer the indexing action::
+
+   catalog['text'].index_resource(someresource, action_mode=MODE_DEFERRED)
+
+The same developer can use methods of the *catalog* to perform action mode
+overrides while doing indexing and unindexing::
+
+   catalog.index_resource(someresource, action_mode=MODE_IMMEDIATE)
+
+The above example will index the resource in all indexes immediately,
+regardless of the mode of any index configured in the catalog's factory.
+
+``MODE_DEFERRED`` operations are meant to be processed by an *action
+processor*.  An example action processor is in
+``substanced.catalog.deferred.BasicActionProcessor``, which may be run via the
+console script named ``sd_drain_indexing``.  When an action processor is
+running, and handling event processing, it is said to be "active".  When it is
+not running, or it is shutting down, it is said to be "inactive".  Typically a
+site will have one and only one action processor running at any given time.
+The code has been designed so that each index type can be configured with a
+separate index processor if necessary, but using this knob probably won't be
+very common.
+
+If an action processor is active when a web transaction involving a set of
+indexing operations has pending actions, pending ``MODE_DEFERRED`` actions are
+queued for the processor in an actions queue.  Queued actions are not executed
+in the web transaction.  Instead, the action processor will drain the actions
+queue periodically and execute the actions in its separate process.  It will
+sleep for some number of seconds, pop the entire action queue, execute all of
+the actions it popped, commit, then sleep again.  If it encounters a conflict
+error while it's committing, it aborts the transaction and sleeps, then tries
+again.  This goes on for the lifetime of the action processor process.
+
+If no action processor is active at primary transaction commit time, however,
+``MODE_DEFERRED`` operations are executed within the web transaction that would
+have added them to the queue, as if they were ``MODE_ATCOMMIT`` operations.
+The intent of this fallback is to allow for the fact that, at some point, the
+long-running action processor process will invariably exit with an error, or be
+shut down accidentally.  Falling back to ``MODE_ATCOMMIT`` will degrade site
+performance but the site won't get completely inconsistent while the action
+processor is out of service.
+
+The action queue uses application-level conflict resolution code to deal with
+the fact that it's going to be a hotspot in any application.

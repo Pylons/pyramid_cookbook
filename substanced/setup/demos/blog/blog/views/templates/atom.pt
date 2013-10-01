@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal">
+
+<title>${feed.title}</title>
+
+<id>${feed.atom_url}</id>
+
+<link rel="alternate" href="${feed.blog_url}"/>
+
+<link rel="self" href="${feed.atom_url}"/>
+
+<updated>${feed.updated_atom}</updated>
+
+<entry tal:repeat="entry blogentries">
+
+ <title>${entry.title}</title>
+
+ <id>${entry.url}</id>
+
+ <link href="${entry.url}" />
+
+ <updated>${entry.updated_atom}</updated>
+
+ <content type="html">${entry.body}</content>
+
+ <author>
+  <name>Agendaless</name>
+  </author>
+
+</entry>
+
+</feed>
