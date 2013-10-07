@@ -8,11 +8,17 @@ Environment (IDE) for Python programmers.  It has numerous features including
 code completion, project management, version control system (git, Subversion,
 etc.), debugger, and more.
 
-This tutorial is a continual evolving document. Both PyCharm and Pyramid are
+This tutorial is a continually evolving document. Both PyCharm and Pyramid are
 under active development, and changes to either may necessitate changes to
 this document.  In addition, there may be errors or omissions in this
 document, and corrections and improvements through a pull request are most
 welcome.
+
+.. note:: This guide was written for PyCharm 2.7.3, although many of the
+    topics apply for `PyCharm 3 <http://www.jetbrains.com/pycharm/>`_.  In
+    addition there are now two editions for PyCharm 3, a Professional and a
+    free Community Edition.  Furthermore, PyCharm 3 includes support for
+    Pyramid, making installation and configuration of Pyramid much easier.
 
 To get started with Pyramid in PyCharm, we need to install prerequisite
 software.
@@ -118,7 +124,7 @@ the Install button.  The Available Packages window appears.
 
 .. image:: images/install_package.png
 
-In the Available Packages window, in the search bar, enter "setuptools". 
+In the Available Packages window, in the search bar, enter "setuptools".
 Select the plain old "setuptools" package, and click the Install Package button
 and wait for the status message to disappear.  PyCharm will install the package
 and any dependencies.
@@ -349,7 +355,7 @@ First, you cannot simultaneously run and debug your app.  Terminate your app if
 it is running before you debug it.
 
 To debug your app, open a file in your app that you want to debug and click on
-the gutter (the space between line numbers and the code) to set a breakpoint. 
+the gutter (the space between line numbers and the code) to set a breakpoint.
 Then select "MyProject pserve" in the PyCharm toolbar, then click the debug
 icon (which looks like a green ladybug).  Your app will run up to the first
 breakpoint.
