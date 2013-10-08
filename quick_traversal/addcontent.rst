@@ -93,9 +93,3 @@ views to resource types, giving them a natural system for
 object-oriented operations.
 
 To enforce uniqueness, we randomly choose a satisfactorily large number.
-
-Extra Credit
-============
-
-#. Can ``document`` simply return nothing instead of an empty
-   dictionary?

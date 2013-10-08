@@ -1,5 +1,5 @@
 =======================
-6: RDBMS Root Factories
+7: RDBMS Root Factories
 =======================
 
 Using SQLAlchemy to provide a persistent root resource via a resource
@@ -87,7 +87,7 @@ Steps
 
    .. code-block:: bash
 
-    $ initialize_tutorial_db development.ini
+    $ $VENV/bin/initialize_tutorial_db development.ini
     2013-09-29 15:42:23,564 INFO  [sqlalchemy.engine.base.Engine][MainThread] PRAGMA table_info("root")
     2013-09-29 15:42:23,565 INFO  [sqlalchemy.engine.base.Engine][MainThread] ()
     2013-09-29 15:42:23,566 INFO  [sqlalchemy.engine.base.Engine][MainThread]

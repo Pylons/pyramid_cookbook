@@ -66,11 +66,12 @@ name/link          ET* title                   description                     c
                                                                                                     * Custom NotFound view
 `pycharm`_         1h  Using Pycharm with      A getting started guide
                        Pyramid                 for Pyramid using Pycharm
-`traversal`_       2h  Quick Tour for          Overview of traversal:          `pyramid_tutorials`_ * Site root
+`traversal`_       2d  Quick Tour for          Overview of traversal:          `pyramid_tutorials`_ * Site root
                        Traversal               Hierarchies, views, etc.        (this site)          * Hierarchy
-		       			       		    	   	       	     		    * Type-specific views
-												    * Adding content
-												    * ZODB persistence
+		       			       		    	   	       	     		                                * Type-specific views
+												                                                    * Adding content
+												                                                    * ZODB persistence
+												                                                    * SQL persistence
 ================== === ======================= =============================== ==================== ========================================
 
 

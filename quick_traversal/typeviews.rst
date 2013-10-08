@@ -42,6 +42,13 @@ Steps
    .. literalinclude:: typeviews/tutorial/views.py
       :linenos:
 
+#. We have a contents subtemplate at
+   ``typeviews/tutorial/templates/contents.jinja2``:
+
+   .. literalinclude:: typeviews/tutorial/templates/contents.jinja2
+      :language: html
+      :linenos:
+
 #. Make a template for viewing the root at
    ``typeviews/tutorial/templates/root.jinja2``:
 
