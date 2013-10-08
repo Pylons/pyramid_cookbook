@@ -1,5 +1,5 @@
 ===================================
-7: SQL Traversal and Adding Content
+8: SQL Traversal and Adding Content
 ===================================
 
 Traverse through a resource tree of data stored in an RDBMS,
@@ -48,10 +48,10 @@ Steps
    .. literalinclude:: sqladdcontent/tutorial/models.py
       :linenos:
 
-#. ``sqlroot/tutorial/views.py`` is almost unchanged from the
+#. Our ``sqladdcontent/tutorial/views.py`` is almost unchanged from the
    version in the ``addcontent`` step:
 
-   .. literalinclude:: sqlroot/tutorial/initialize_db.py
+   .. literalinclude:: sqladdcontent/tutorial/views.py
       :linenos:
 
 #. Our templates are all unchanged from addcontent. Let's bring them
