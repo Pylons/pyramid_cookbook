@@ -2,7 +2,7 @@ from pyramid.config import Configurator
 
 from sqlalchemy import engine_from_config
 
-from .models import (
+from .sqltraversal import (
     DBSession,
     Base,
     root_factory

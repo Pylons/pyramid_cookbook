@@ -9,13 +9,16 @@ from pyramid.paster import (
     setup_logging,
     )
 
-from .models import (
+from .sqltraversal import (
     DBSession,
-    Document,
     Node,
+    Base,
+    )
+
+from .models import (
+    Document,
     Folder,
     Root,
-    Base,
     )
 
 
