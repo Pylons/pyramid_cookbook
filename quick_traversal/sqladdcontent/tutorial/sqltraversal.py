@@ -1,7 +1,6 @@
 from sqlalchemy import (
     Column,
     Integer,
-    Text,
     Unicode,
     ForeignKey,
     String
@@ -13,7 +12,7 @@ from sqlalchemy.orm import (
     relationship,
     backref
     )
-
+from sqlalchemy.orm.exc import NoResultFound
 from zope.sqlalchemy import ZopeTransactionExtension
 
 DBSession = scoped_session(
@@ -30,7 +29,7 @@ def u(s):
 
 
 def root_factory(request):
-    return DBSession.query(Node).filter(Node.parent_id == None).one()
+    return DBSession.query(Node).filter_by(parent_id=None).one()
 
 
 class Node(Base):
@@ -48,12 +47,10 @@ class Node(Base):
         with_polymorphic='*'
     )
 
-
     def __setitem__(self, key, node):
         node.name = u(key)
-        DBSession.add(node)
-        DBSession.flush()
         node.parent_id = self.id
+        DBSession.add(node)
 
     def __getitem__(self, key):
         try:
@@ -72,9 +69,3 @@ class Node(Base):
     @property
     def __parent__(self):
         return self.parent
-
-    @property
-    def is_empty(self):
-        return self.values().count() == 0
-
-
