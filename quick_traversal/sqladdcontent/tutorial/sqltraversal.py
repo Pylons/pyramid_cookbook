@@ -13,6 +13,7 @@ from sqlalchemy.orm import (
     backref
     )
 from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.util import classproperty
 from zope.sqlalchemy import ZopeTransactionExtension
 
 DBSession = scoped_session(
@@ -41,16 +42,22 @@ class Node(Base):
                             backref=backref('parent', remote_side=[id])
     )
     type = Column(String(50))
-    __mapper_args__ = dict(
-        polymorphic_on=type,
-        polymorphic_identity='node',
-        with_polymorphic='*'
-    )
+
+    @classproperty
+    def __mapper_args__(cls):
+        return dict(
+            polymorphic_on='type',
+            polymorphic_identity=cls.__name__.lower(),
+            with_polymorphic='*',
+        )
 
     def __setitem__(self, key, node):
         node.name = u(key)
+        if self.id is None:
+            DBSession.flush()
         node.parent_id = self.id
         DBSession.add(node)
+        DBSession.flush()
 
     def __getitem__(self, key):
         try:
