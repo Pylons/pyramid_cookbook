@@ -42,8 +42,14 @@ Steps
     $ $VENV/bin/python setup.py develop
 
 
-#. ``sqladdcontent/tutorial/models.py`` gains a ``Node`` parent class
-   and two more models (``Folder`` and ``Document``):
+#. Make a Python module for a generic ``Node`` base class that gives us
+   traversal-y behavior in ``sqladdcontent/tutorial/sqltraveral.py``:
+
+   .. literalinclude:: sqladdcontent/tutorial/sqltraveral.py
+      :linenos:
+
+#. ``sqladdcontent/tutorial/models.py`` is very simple,
+    with the heavy lifting moved to the common module:
 
    .. literalinclude:: sqladdcontent/tutorial/models.py
       :linenos:
@@ -101,3 +107,24 @@ We had no changes to our templates from the ``addcontent`` and
 ``zodb`` steps, and almost no change to the views. We made a one-line
 change when creating a new object. We also had to "stack" an extra
 ``@view_config`` (although that can be solved in other ways.)
+
+We gained a resource tree that gave us hierarchies. And for the most
+part, these are already full-fledged "resources" in Pyramid:
+
+- Traverse through a tree and match a view on a content type
+
+- Know how to get to the parents of any resource (even if outside the
+  current URL)
+
+- All the traversal-oriented view predicates apply
+
+- Ability to generate full URLs for any resource in the system
+
+Even better, the data for the resource tree is stored in a table
+separate from the core business data. Equally, the ORM code for moving
+through the tree is in a separate module. You can stare at the data and
+the code for your business objects and ignore the the Pyramid part.
+
+This is most useful for projects starting with a blank slate,
+with no existing data or schemas they have to adhere to. Retrofitting a
+tree on non-tree data is possible, but harder.
