@@ -9,13 +9,15 @@ from pyramid.paster import (
     setup_logging,
     )
 
-from .models import (
+from .sqltraversal import (
     DBSession,
-    Document,
     Node,
-    Folder,
-    Root,
     Base,
+    )
+
+from .models import (
+    Document,
+    Folder,
     )
 
 
@@ -37,13 +39,7 @@ def main(argv=sys.argv):
     Base.metadata.create_all(engine)
 
     with transaction.manager:
-        root = Root(name='', title='My SQLTraversal Root')
+        root = Folder(name='', title='My SQLTraversal Root')
         DBSession.add(root)
-        DBSession.flush()
-        root = DBSession.query(Node).filter_by(name=u'').one()
-        f1 = Folder(title='Folder 1')
-        DBSession.add(f1)
-        root['f1'] = f1
-        da = Document(title='Document A')
-        DBSession.add(da)
-        f1['da'] = da
+        f1 = root['f1'] = Folder(title='Folder 1')
+        f1['da'] = Document(title='Document A')
