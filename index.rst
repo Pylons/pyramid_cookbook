@@ -68,10 +68,10 @@ name/link          ET* title                   description                     c
                        Pyramid                 for Pyramid using Pycharm
 `traversal`_       2d  Quick Tour for          Overview of traversal:          `pyramid_tutorials`_ * Site root
                        Traversal               Hierarchies, views, etc.        (this site)          * Hierarchy
-		       			       		    	   	       	     		                                * Type-specific views
-												                                                    * Adding content
-												                                                    * ZODB persistence
-												                                                    * SQL persistence
+                                                                                                    * Type-specific views
+                                                                                                    * Adding content
+                                                                                                    * ZODB persistence
+                                                                                                    * SQL persistence
 ================== === ======================= =============================== ==================== ========================================
 
 
@@ -109,6 +109,8 @@ Indices and tables
    getting_started/index
    single_file_tasks/single_file_tasks
    humans/index
-   quick_traversal/index
    _themes/README
    pycharm/index
+   quick_traversal/index.rst
+   pyramid_addons/README.rst
+   quick_traversal/sqlauthentication.rst
