@@ -1,4 +1,4 @@
-Nginx + pserve + supervisord ( with optional ssl support )
+Nginx + pserve + supervisord
 ++++++++++++++++++++++++++++
 
 This setup can be accomplished simply and is capable of serving a large amount
@@ -14,10 +14,10 @@ between multiple instances of an application.
 
 ::
 
-    Client <-(optional ssl)--> Nginx [0.0.0.0:80] <---> (static files)
-                                /|\
-                                 |-------> WSGI App [localhost:5000]
-                                 `-------> WSGI App [localhost:5001]
+    Client <---> Nginx [0.0.0.0:80] <---> (static files)
+            /|\
+             |-------> WSGI App [localhost:5000]
+             `-------> WSGI App [localhost:5001]
 
 Our target setup is going to be an Nginx server listening on port 80 and
 load-balancing between 2 pserve processes. It will also serve the static files
@@ -40,7 +40,7 @@ Let's assume a basic project setup::
     `-- supervisord.conf (optional)
 
 
-Step 1: Configuring Nginx ( with optional SSL )
+Step 1: Configuring Nginx
 =========================
 
 Nginx needs to be configured as a proxy for your application. An example
@@ -155,10 +155,12 @@ configuration is shown here:
 
 
 The optional ``listen`` directive, as well as the 2 following lines,
-are the only configuration changes required to enable SSL from the Client to Nginx.
-You will need to have already created your SSL certificate and key for this to work.  More details on this process can be found in
-the `OpenSSL <http://www.openssl.org/docs/HOWTO/certificates.txt>`_ howto. You will also need to update the
-paths that are shown to match the actual path to your SSL certificates.
+are the only configuration changes required to enable SSL from the Client
+to Nginx. You will need to have already created your SSL certificate and
+key for this to work.  More details on this process can be found in
+the `OpenSSL <http://www.openssl.org/docs/HOWTO/certificates.txt>`_ howto.
+You will also need to update the paths that are shown to match the actual
+path to your SSL certificates.
 
 
 The ``upstream`` directive sets up a round-robin load-balancer between two
