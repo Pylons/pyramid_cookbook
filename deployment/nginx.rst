@@ -121,8 +121,8 @@ configuration is shown here:
         # optional ssl configuration
         
         listen 443 ssl;
-        ssl_certificate /path/to/ssl/pem_file
-        ssl_certificate_key /path/to/ssl/certificate_key
+        ssl_certificate /path/to/ssl/pem_file;
+        ssl_certificate_key /path/to/ssl/certificate_key;
         
         # end of optional ssl configuration
     
