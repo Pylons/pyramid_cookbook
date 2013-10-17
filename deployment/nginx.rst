@@ -15,9 +15,9 @@ between multiple instances of an application.
 ::
 
     Client <---> Nginx [0.0.0.0:80] <---> (static files)
-            /|\
-             |-------> WSGI App [localhost:5000]
-             `-------> WSGI App [localhost:5001]
+                  /|\
+                   |-------> WSGI App [localhost:5000]
+                   `-------> WSGI App [localhost:5001]
 
 Our target setup is going to be an Nginx server listening on port 80 and
 load-balancing between 2 pserve processes. It will also serve the static files
