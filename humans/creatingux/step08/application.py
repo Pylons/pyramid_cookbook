@@ -4,6 +4,7 @@ from pyramid.config import Configurator
 
 def main():
     config = Configurator()
+    config.include('pyramid_chameleon')
     config.scan("views")
     config.add_static_view('static', 'static/',
                            cache_max_age=86400)
