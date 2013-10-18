@@ -8,7 +8,8 @@ class ProjectorViewsUnitTests(unittest.TestCase):
     def setUp(self):
         request = DummyRequest()
         self.config = setUp(request=request)
-
+        self.config.include
+        
     def tearDown(self):
         tearDown()
 
