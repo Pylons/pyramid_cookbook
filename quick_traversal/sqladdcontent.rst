@@ -45,7 +45,7 @@ Steps
 #. Make a Python module for a generic ``Node`` base class that gives us
    traversal-y behavior in ``sqladdcontent/tutorial/sqltraveral.py``:
 
-   .. literalinclude:: sqladdcontent/tutorial/sqltraveral.py
+   .. literalinclude:: sqladdcontent/tutorial/sqltraversal.py
       :linenos:
 
 #. ``sqladdcontent/tutorial/models.py`` is very simple,
