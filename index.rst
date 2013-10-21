@@ -15,8 +15,8 @@ Several Pyramid tutorials exist. Some are part of the main
 `Pyramid Documentation`_, some are in this `Pyramid Tutorials`_
 community project, and others are published elsewhere.
 
-.. _Pyramid Documentation: http://docs.pylonsproject.org/en/latest/docs/pyramid.html
-.. _Pyramid Tutorials: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/#tutorials
+.. _Pyramid Documentation: http://docs.pylonsproject.org/projects/pyramid/en/latest/#tutorials
+.. _Pyramid Tutorials: http://docs.pylonsproject.org/projects/pyramid_tutorials/en/latest/
 
 
 These are the Pyramid tutorials we could locate during the PyCon USA sprints in March, 2013.
@@ -75,9 +75,9 @@ name/link          ET* title                   description                     c
 ================== === ======================= =============================== ==================== ========================================
 
 
-.. _firstapp: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/narr/firstapp.html
-.. _wiki: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/tutorials/wiki/index.html
-.. _wiki2: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/tutorials/wiki2/index.html
+.. _firstapp: http://docs.pylonsproject.org/projects/pyramid/en/latest1/narr/firstapp.html
+.. _wiki: http://docs.pylonsproject.org/projects/pyramid/en/latest/tutorials/wiki/index.html
+.. _wiki2: http://docs.pylonsproject.org/projects/pyramid/en/latest/tutorials/wiki2/index.html
 .. _single_file: http://docs.pylonsproject.org/projects/pyramid_tutorials/en/latest/single_file_tasks/single_file_tasks.html
 .. _humans: http://docs.pylonsproject.org/projects/pyramid_tutorials/en/latest/humans/index.html
 .. _getting_started: http://docs.pylonsproject.org/projects/pyramid_tutorials/en/latest/getting_started/index.html
@@ -86,8 +86,8 @@ name/link          ET* title                   description                     c
 .. _todopyramid: https://github.com/indypy/todopyramid
 .. _pycharm: http://docs.pylonsproject.org/projects/pyramid_tutorials/en/latest/pycharm/index.html
 
-.. _Narrative Documentation: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/#narrative-documentation
-.. _Tutorials: http://docs.pylonsproject.org/projects/pyramid/en/1.4-branch/#tutorials
+.. _Narrative Documentation: http://docs.pylonsproject.org/projects/pyramid/en/latest/#narrative-documentation
+.. _Tutorials: http://docs.pylonsproject.org/projects/pyramid/en/latest/#tutorials
 
 .. _pyramid: https://github.com/Pylons/pyramid
 .. _pyramid_tutorials: https://github.com/Pylons/pyramid_tutorials

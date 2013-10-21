@@ -42,7 +42,7 @@ Steps
 
    This should report the ``easy_install`` from ``venv/bin``.
 
-#. ``$ easy_install pyramid WebTest nose``
+#. ``$ easy_install pyramid pyramid_chameleon WebTest nose``
 
 #. ``$ export PYRAMID_RELOAD_TEMPLATES=1`` lets you edit templates and
    not have to restart your Pyramid application.

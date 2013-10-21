@@ -4,6 +4,7 @@ from pyramid.config import Configurator
 
 def main():
     config = Configurator()
+    config.include('pyramid_chameleon')
     config.scan("views")
     app = config.make_wsgi_app()
     return app
