@@ -53,3 +53,7 @@ Pyramid Tutorial/Informational Videos
 * Dylan Jay's DjangoCon AU 2013 Keynote, `The myth of goldilocks and the three
   frameworks, Pyramid, Django and Plone
   <http://www.youtube.com/watch?v=vW1ZhO-_ZQk>`_ (~45 mins).
+
+* Paul Everitt: `Python 3 Web Development with Pyramid and PyCharm
+  <http://blog.jetbrains.com/blog/2013/10/21/webinar-recording-production-python-3-web-development-with-pyramid-and-pycharm/>`_
+  (~1 hr).
