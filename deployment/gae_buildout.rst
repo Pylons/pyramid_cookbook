@@ -47,6 +47,7 @@ create a virtual environment
 .. code-block:: text
 
    $ virtualenv -p /usr/bin/python2.7 --no-site-packages --distribute myenv
+   $ myenv/bin/pip install buildout
 
 
 install pyramid_appengine into your virtual environment
