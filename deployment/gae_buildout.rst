@@ -47,6 +47,7 @@ create a virtual environment
 .. code-block:: text
 
    $ virtualenv -p /usr/bin/python2.7 --no-site-packages --distribute myenv
+   $ myenv/bin/pip install buildout
 
 
 install pyramid_appengine into your virtual environment
@@ -96,7 +97,7 @@ commands.
 .. code-block:: text
 
    ~/ $ cd newproject
-   ~/newproject $ /usr/bin/python2.7 bootstrap.py
+   ~/newproject $ ../bin/python2.7 bootstrap.py
 
 You typically only need to do this once to generate your
 buildout command. See the `buildout documentation <http://www.buildout.org/docs/tutorial.html#buildout-steps>`_ for more information.
