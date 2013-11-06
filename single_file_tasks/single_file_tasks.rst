@@ -33,8 +33,8 @@ Step 1 - Organizing The Project
     For help getting Pyramid set up, try the `install guide
     <http://docs.pylonsproject.org/en/latest/docs/pyramid_install.html>`_.
     
-    **New in Pyramid 1.5+:** If you're running Pyramid 1.5 or later, you need
-    to install the mako template support separately as indicated `here
+    To use Mako templates you need to install the ``pyramid_mako`` add-on as 
+    indicated `here
     <http://docs.pylonsproject.org/projects/pyramid/en/master/whatsnew-1.5.html>`_.
 
 Before getting started, we will create the directory hierarchy needed for
@@ -312,7 +312,7 @@ modifying the application configuration settings in ``tasks.py``::
     ...
     settings['mako.directories'] = os.path.join(here, 'templates')
     ...
-    # add mako templating (for Pyramid 1.5+)
+    # add mako templating
     config.include('pyramid_mako')
     ...
 
