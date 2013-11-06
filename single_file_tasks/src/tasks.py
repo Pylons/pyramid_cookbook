@@ -92,6 +92,8 @@ if __name__ == '__main__':
     session_factory = UnencryptedCookieSessionFactoryConfig('itsaseekreet')
     # configuration setup
     config = Configurator(settings=settings, session_factory=session_factory)
+    # add mako templating
+    config.include('pyramid_mako')
     # routes setup
     config.add_route('list', '/')
     config.add_route('new', '/new')
