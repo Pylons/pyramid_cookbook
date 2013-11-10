@@ -75,7 +75,7 @@ name/link          ET* title                   description                     c
 ================== === ======================= =============================== ==================== ========================================
 
 
-.. _firstapp: http://docs.pylonsproject.org/projects/pyramid/en/latest1/narr/firstapp.html
+.. _firstapp: http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/firstapp.html
 .. _wiki: http://docs.pylonsproject.org/projects/pyramid/en/latest/tutorials/wiki/index.html
 .. _wiki2: http://docs.pylonsproject.org/projects/pyramid/en/latest/tutorials/wiki2/index.html
 .. _single_file: http://docs.pylonsproject.org/projects/pyramid_tutorials/en/latest/single_file_tasks/single_file_tasks.html
