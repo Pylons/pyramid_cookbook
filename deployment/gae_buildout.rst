@@ -25,14 +25,6 @@ you use for your own development you should install it in a local
 Creating a virtual environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Update distribute
-+++++++++++++++++
-
-.. code-block:: text
-
-   $ sudo pip install --upgrade distribute
-
-
 Install virtualenv
 ++++++++++++++++++
 
@@ -46,7 +38,7 @@ create a virtual environment
 
 .. code-block:: text
 
-   $ virtualenv -p /usr/bin/python2.7 --no-site-packages --distribute myenv
+   $ virtualenv myenv
 
 
 install pyramid_appengine into your virtual environment
@@ -90,13 +82,23 @@ Before you do anything with a new buildout directory you need to
 bootstrap it, which installs buildout locally and everything necessary
 to manage the project dependencies.
 
+Before bootstrap, you have to clean everything installed through pip, run the following
+commands.
+
+.. code-block:: text
+
+  ~/ $ virtualenv --no-setuptools --no-site-packages --clear myenv
+  ~/ $ source myenv/bin/activate
+
 As with all buildouts, it can be bootstrapped running the following
 commands. 
 
 .. code-block:: text
 
    ~/ $ cd newproject
-   ~/newproject $ ../bin/python2.7 bootstrap.py
+   ~/newproject $ rm bootstrap.py
+   ~/newproject $ wget http://downloads.buildout.org/2/bootstrap.py
+   ~/newproject $ python bootstrap.py
 
 You typically only need to do this once to generate your
 buildout command. See the `buildout documentation <http://www.buildout.org/docs/tutorial.html#buildout-steps>`_ for more information.
@@ -112,7 +114,7 @@ edit to suit your needs.
 
 .. code-block:: text
 
-   ~/newproject $ ./bin/buildout 
+   ~/newproject $ bin/buildout 
 
 In the case of this particular buildout, when run, it will take care
 of several things that you need to do....
