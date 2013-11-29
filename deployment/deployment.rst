@@ -39,6 +39,8 @@ server supporting WSGI.
 There are many different servers implementing the WSGI standard in existance.
 A short list includes:
 
++ ``waitress``
+
 + ``paste.httpserver``
 
 + ``CherryPy``
