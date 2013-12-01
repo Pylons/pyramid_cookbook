@@ -271,7 +271,7 @@ Enter ``supervisord``::
 
 This is a great program that will manage arbitrary processes, restarting them
 when they fail, providing hooks for sending emails, etc when things change,
-and even exposing and XML-RPC interface for determining the status of your
+and even exposing an XML-RPC interface for determining the status of your
 system.
 
 Below is an example configuration that starts up two instances of the pserve
