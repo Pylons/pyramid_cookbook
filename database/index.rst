@@ -7,5 +7,3 @@ Databases
    sqlalchemy
    couchdb
    mongodb
-   zodb_zeo
-   catalog

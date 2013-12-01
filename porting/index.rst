@@ -9,4 +9,3 @@ Porting Applications to Pyramid
 
    legacy
    wsgi
-   cmf/index
