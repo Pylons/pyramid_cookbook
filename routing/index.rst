@@ -1,5 +1,5 @@
-Traversal and URL dispatch
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+Routing: Traversal and URL Dispatch
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 .. toctree::
    :maxdepth: 2
