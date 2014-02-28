@@ -22,8 +22,14 @@ attached to each new request::
 
    from pyramid.config import Configurator
 
+   try:
+       # for python 2
+       from urlparse import urlparse
+   except ImportError:
+       # for python 3
+       from urllib.parse import urlparse
+
    from gridfs import GridFS
-   from urlparse import urlparse
    import pymongo
 
 
