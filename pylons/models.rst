@@ -199,7 +199,7 @@ application.  ::
         def by_name(class_):
             """Return a query of users sorted by name."""
             User = class_
-            q = Session.query(User)
+            q = DBSession.query(User)
             q = q.order_by(User.name)
             return q
         
