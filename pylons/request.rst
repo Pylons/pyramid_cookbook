@@ -20,7 +20,7 @@ pylons.response
 
     The HTTP response status and document. Pyramid does not have a global
     response object. Instead, your view should create a
-    ``pyramid.response.Response`` instance and return it. If you're using an
+    ``pyramid.response.Response`` instance and return it. If you're using a
     renderer, it will create a response object for you. 
     
     For convenience, there's a ``request.response`` object available which you
