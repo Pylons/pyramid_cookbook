@@ -106,3 +106,10 @@ setup.py so that Babel can use it when invoking it's commands)::
        ...
        )
 
+In the above triples the last element, ``None`` in this snippet, may be used
+to pass an options dictionary to the specified extractor. For instance, you may
+need to set Mako input encoding using the corresponding option::
+    
+    ...
+               ('templates/**.mako', 'mako', {'input_encoding': 'utf-8'}),
+    ...
