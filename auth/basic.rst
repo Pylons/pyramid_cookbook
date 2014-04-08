@@ -5,8 +5,6 @@ Here's an implementation of an HTTP basic auth Pyramid authentication policy::
 
    import binascii
 
-   from zope.interface import implements
-
    from paste.httpheaders import AUTHORIZATION
    from paste.httpheaders import WWW_AUTHENTICATE
 
