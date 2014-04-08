@@ -17,18 +17,18 @@ Here's an implementation of an HTTP basic auth Pyramid authentication policy::
        authorization = AUTHORIZATION(request.environ)
        try:
            authmeth, auth = authorization.split(' ', 1)
-       except ValueError: # not enough values to unpack
+       except ValueError:  # not enough values to unpack
            return None
        if authmeth.lower() == 'basic':
            try:
                auth = auth.strip().decode('base64')
-           except binascii.Error: # can't decode
+           except binascii.Error:  # can't decode
                return None
            try:
                login, password = auth.split(':', 1)
-           except ValueError: # not enough values to unpack
+           except ValueError:  # not enough values to unpack
                return None
-           return {'login':login, 'password':password}
+           return {'login': login, 'password': password}
 
        return None
 
@@ -60,7 +60,7 @@ Here's an implementation of an HTTP basic auth Pyramid authentication policy::
            if credentials is None:
                return None
            userid = credentials['login']
-           if self.check(credentials, request) is not None: # is not None!
+           if self.check(credentials, request) is not None:  # is not None!
                return userid
 
        def effective_principals(self, request):
@@ -70,7 +70,7 @@ Here's an implementation of an HTTP basic auth Pyramid authentication policy::
                return effective_principals
            userid = credentials['login']
            groups = self.check(credentials, request)
-           if groups is None: # is None!
+           if groups is None:  # is None!
                return effective_principals
            effective_principals.append(Authenticated)
            effective_principals.append(userid)
