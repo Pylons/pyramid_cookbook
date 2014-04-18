@@ -36,7 +36,7 @@ said session.
 We'll assume you have an ``.ini`` file with ``sqlalchemy.`` settings that
 specify your database properly::
 
-    # __init__.py
+   # __init__.py
 
    from pyramid.config import Configurator
    from sqlalchemy import engine_from_config
@@ -47,6 +47,10 @@ specify your database properly::
        session = maker()
 
        def cleanup(request):
+           if request.exception is not None:
+               session.rollback()
+           else:
+               session.commit()
            session.close()
        request.add_finished_callback(cleanup)
 
