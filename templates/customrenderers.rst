@@ -66,6 +66,7 @@ decided upon. To use the renderer, create a view:
    def main(global_config, **settings):
        config = Configurator(settings=settings)
        config.add_route('data', '/data')
+       config.scan()
        return config.make_wsgi_app()
 
 This view does a few things, not all of which are required. Query your database
