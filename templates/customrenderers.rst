@@ -3,12 +3,12 @@
 Custom Renderers
 ----------------
 
-Pyramid supports completely custom renderers, alongside the
+Pyramid supports custom renderers, alongside the
 :ref:`default renderers <pyramid:built_in_renderers>` shipped with Pyramid.
 
-Here's a basic CSV renderer to output a csv file to the browser.
-Add the following to a ``renderers.py`` module in your application (or
-anywhere else you'd like to place such things):
+Here's a basic comma-separated value (CSV) renderer to output a CSV file to
+the browser. Add the following to a ``renderers.py`` module in your
+application (or anywhere else you'd like to place such things):
 
 .. code-block:: python
 
@@ -69,13 +69,13 @@ decided upon. To use the renderer, create a view:
        config.scan()
        return config.make_wsgi_app()
 
-This view does a few things, not all of which are required. Query your database
-in your ``query`` variable, establish your headers and initialize ``rows[]``.
-Then it determines the filename. You only need a name here, but I've added the
-month and day using ``datetime()`` and ``strftime()``
+This view does a few things, not all of which are required. Query your
+database in your ``query`` variable, establish your headers and initialize
+``rows[]``. Then it determines the filename. You only need a name here, but
+I've added the month and day using ``datetime()`` and ``strftime()``.
 
 Then it loops the query in ``items[]`` and then appends the result into the
-``rows[]`` array we intialized earlier.
+``rows[]`` array we initialized earlier.
 
 Lastly, we return all of our data to pass it to the CSV renderer. Not all of
 what you see is required. The only thing the renderer requires is a header,
