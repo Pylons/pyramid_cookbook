@@ -4,7 +4,7 @@ Custom Renderers
 ----------------
 
 Pyramid supports completely custom renderers, alongside the
-:ref:`default renderers <pyramid:build_in_renderers>` shipped with Pyramid.
+:ref:`default renderers <pyramid:built_in_renderers>` shipped with Pyramid.
 
 Here's a basic CSV renderer to output a csv file to the browser.
 Add the following to a ``renderers.py`` module in your application (or
