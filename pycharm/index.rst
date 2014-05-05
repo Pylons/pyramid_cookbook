@@ -182,7 +182,7 @@ documentation.
 * Name the configuration "setup dev".
 * Either manually enter the path to the `setup.py` script or click the ellipsis
   button to navigate to the `pyramid/setup.py` path and select it.
-* For Script parameters enter `dev`.
+* For Script parameters enter `develop`.
 * Click the "Apply" button to save the run configuration.
 
 While we're here, let's duplicate this run configuration for installing the
