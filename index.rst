@@ -58,14 +58,14 @@ name/link          ET* title                   description                     c
                                                USA 2012
 
 `todopyramid`_     4h  ``ToDo Pyramid App``    ToDo App from Python Web        `todopyramid`_       * URL dispatch
-                       Tutorial                Shotout by SixFeet, Inc                              * SQLAlchemy
+                       Tutorial                Shootout by SixFeet, Inc                             * SQLAlchemy
                                                Demo here:                                           * Deform (with bootstrap)
                                                http://demo.todo.sixfeetup.com                       * Chameleon
-                                                                                                    * Mozilla Person (using pyramid_persona)
-                                                                                                    * WebHelps
+                                                                                                    * Mozilla Persona (using pyramid_persona)
+                                                                                                    * WebHelpers
                                                                                                     * Custom NotFound view
-`pycharm`_         1h  Using Pycharm with      A getting started guide
-                       Pyramid                 for Pyramid using Pycharm
+`pycharm`_         1h  Using PyCharm with      A getting started guide
+                       Pyramid                 for Pyramid using PyCharm
 `traversal`_       2d  Quick Tour for          Overview of traversal:          `pyramid_tutorials`_ * Site root
                        Traversal               Hierarchies, views, etc.        (this site)          * Hierarchy
                                                                                                     * Type-specific views
