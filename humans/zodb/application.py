@@ -14,6 +14,7 @@ def root_factory(request):
 def main():
     settings = {"zodbconn.uri": "file://Data.fs"}
     config = Configurator(root_factory=root_factory, settings=settings)
+    config.include('pyramid_chameleon')
     config.include("pyramid_zodbconn")
     config.include("pyramid_tm")
     config.add_static_view('static', 'deform:static')

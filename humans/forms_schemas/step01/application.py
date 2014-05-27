@@ -5,6 +5,7 @@ from pyramid.config import Configurator
 
 def main():
     config = Configurator()
+    config.include('pyramid_chameleon')
     config.scan("views")
     config.add_static_view('deform_static', 'deform:static')
     app = config.make_wsgi_app()

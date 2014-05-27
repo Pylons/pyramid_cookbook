@@ -24,4 +24,4 @@ you'd like to go ahead and get all of it now:
 
 .. code-block:: bash
 
-  (env33)$ easy_install-3.3 pyramid nose webtest deform sqlalchemy
+  (env33)$ easy_install-3.3 pyramid nose webtest deform sqlalchemy pyramid_chameleon

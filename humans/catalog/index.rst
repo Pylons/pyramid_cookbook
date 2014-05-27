@@ -6,7 +6,8 @@ Goals
 =====
 
 - Index and and search for content using ``repoze.catalog``, a Python
-  indexing system tool based on ZODB.
+  indexing system tool based on ZODB. Note that ``repoze.catalog`` doesn't
+  run on python 3.x.
 
 .. warning::
 
