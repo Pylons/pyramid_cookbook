@@ -10,7 +10,7 @@ Background
 In this traversal tutorial we'll have a number of views and templates,
 each with some styling and layout. Let's work efficiently and produce
 decent visual appeal by getting some views and Jinja2 templates with
-out basic layout.
+our basic layout.
 
 Objectives
 ==========

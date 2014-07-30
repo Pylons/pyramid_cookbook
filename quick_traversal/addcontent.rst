@@ -93,11 +93,3 @@ views to resource types, giving them a natural system for
 object-oriented operations.
 
 To enforce uniqueness, we randomly choose a satisfactorily large number.
-
-As a note, this usage of SQLAlchemy's adjacency list relationship and
-polymorphic table inheritance came from
-`Kotti <https://pypi.python.org/pypi/Kotti>`_, a Pyramid-based CMS
-inspired by Plone. Daniel Nouri has advanced the ideas of first-class
-traversal in SQL databases with a variety of techniques and ideas.
-Kotti is certainly the place to look for the most modern approach to
-traversal hierarchies in SQL.

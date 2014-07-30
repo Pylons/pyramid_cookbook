@@ -28,6 +28,16 @@ a context. We will use :doc:`siteroot` as a starting point.
   This step presumes you are familiar with the material in
   :ref:`Databases Using SQLAlchemy <pyramid:qtut_databases>`
 
+.. note::
+
+  Traversal's usage of SQLAlchemy's adjacency list relationship and
+  polymorphic table inheritance came from
+  `Kotti <https://pypi.python.org/pypi/Kotti>`_, a Pyramid-based CMS
+  inspired by Plone. Daniel Nouri has advanced the ideas of first-class
+  traversal in SQL databases with a variety of techniques and ideas.
+  Kotti is certainly the place to look for the most modern approach to
+  traversal hierarchies in SQL.
+
 Goals
 =====
 
@@ -65,8 +75,7 @@ Steps
     :language: ini
 
 #. The ``setup.py`` had an entry point for a console script at
-   ``sqlroot/tutorial/initialize_db.py`` gets
-   some bootstrapping changes:
+   ``sqlroot/tutorial/initialize_db.py``:
 
    .. literalinclude:: sqlroot/tutorial/initialize_db.py
       :linenos:
@@ -128,7 +137,7 @@ templates. Rather than have our view/template code query the database,
 our root factory gets the top and Pyramid does the rest by passing in a
 ``context``.
 
-This point is emphasized by the fact that we didn't have to change our
+This point is illustrated by the fact that we didn't have to change our
 view logic or our templates. They depended on a context. Pyramid found
 the context and passed it into our views.
 

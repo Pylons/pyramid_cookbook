@@ -49,7 +49,7 @@ Steps
       :linenos:
 
 #. ``sqladdcontent/tutorial/models.py`` is very simple,
-    with the heavy lifting moved to the common module:
+   with the heavy lifting moved to the common module:
 
    .. literalinclude:: sqladdcontent/tutorial/models.py
       :linenos:

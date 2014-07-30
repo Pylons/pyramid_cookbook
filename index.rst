@@ -113,4 +113,3 @@ Indices and tables
    pycharm/index
    quick_traversal/index.rst
    pyramid_addons/README.rst
-   quick_traversal/sqlauthentication.rst

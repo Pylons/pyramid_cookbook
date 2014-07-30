@@ -65,8 +65,8 @@ Steps
       :language: html
       :linenos:
 
-#. The ``hierarchy/tutorial/templates/breadcrumbs.jinja2`` now have
-   a hierarchy to show:
+#. The ``hierarchy/tutorial/templates/breadcrumbs.jinja2`` template now
+   has a hierarchy to show:
 
    .. literalinclude:: hierarchy/tutorial/templates/breadcrumbs.jinja2
       :language: html

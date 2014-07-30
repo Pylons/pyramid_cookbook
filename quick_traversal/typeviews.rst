@@ -89,7 +89,7 @@ Analysis
 ========
 
 For the most significant change, our ``@view_config`` now matches on a
-``context`` view predicate. We can say "use this view for when looking
+``context`` view predicate. We can say "use this view when looking
 at *this* kind of thing." The concept of a route as an intermediary
 step between URLs and views has been eliminated.
 
