@@ -4,7 +4,6 @@ from pyramid.config import Configurator
 
 from .security import groupfinder
 
-
 def main(global_config, **settings):
     config = Configurator(settings=settings,
                           root_factory='tutorial.models.Root')
@@ -13,6 +12,8 @@ def main(global_config, **settings):
     authn_policy = AuthTktAuthenticationPolicy(
         'sosecret', callback=groupfinder, hashalg='sha512')
     authz_policy = ACLAuthorizationPolicy()
+    config = Configurator(settings=settings,
+                          root_factory='tutorial.models.Root')
     config.set_authentication_policy(authn_policy)
     config.set_authorization_policy(authz_policy)
 
