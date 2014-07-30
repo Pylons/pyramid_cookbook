@@ -115,7 +115,7 @@ class WikiViews(object):
     def login(self):
         request = self.request
         login_url = request.route_url('login')
-        referrer = request.url
+        referrer = request.referer
         if referrer == login_url:
             referrer = '/'  # never use login form itself as came_from
         came_from = request.params.get('came_from', referrer)

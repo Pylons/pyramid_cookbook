@@ -58,7 +58,7 @@ Steps
     :linenos:
     :language: html
 
-#. ``tutorial/templats/layout.pt`` needs a conditional link to appear
+#. ``tutorial/templates/layout.pt`` needs a conditional link to appear
    on all pages, for either logging in or logging out:
 
    .. literalinclude:: tutorial/templates/layout.pt

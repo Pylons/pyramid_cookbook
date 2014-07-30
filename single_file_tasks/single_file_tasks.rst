@@ -31,7 +31,14 @@ Step 1 - Organizing The Project
 .. note::
 
     For help getting Pyramid set up, try the `install guide
-    <http://docs.pylonsproject.org/en/latest/docs/pyramid_install.html>`_.
+    <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/install.html#installing-chapter>`_.
+    
+    To use Mako templates you need to install the ``pyramid_mako`` add-on as 
+    indicated `here
+    <http://docs.pylonsproject.org/projects/pyramid/en/master/whatsnew-1.5.html>`_.
+
+    In short, you'll need to have both the ``pyramid`` and ``pyramid_mako`` packages installed. 
+    Use ``easy_install pyramid pyramid_mako`` to install these packages.
 
 Before getting started, we will create the directory hierarchy needed for
 our application layout. Create the following directory layout on your
@@ -307,6 +314,9 @@ modifying the application configuration settings in ``tasks.py``::
 
     ...
     settings['mako.directories'] = os.path.join(here, 'templates')
+    ...
+    # add mako templating
+    config.include('pyramid_mako')
     ...
 
 Step 6 - Styling Your Templates
