@@ -112,4 +112,3 @@ Indices and tables
    _themes/README
    pycharm/index
    quick_traversal/index.rst
-   pyramid_addons/README.rst
