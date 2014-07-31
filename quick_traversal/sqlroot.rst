@@ -16,7 +16,7 @@ awareness".
 Relational databases, though, aren't hierarchical. We can, though,
 use the SQLAlchemy's
 `adjacency list relationship
-<docs.sqlalchemy.org/en/latest/orm/relationships.html#adjacency-list-relationships>`_
+<http://docs.sqlalchemy.org/en/latest/orm/relationships.html#adjacency-list-relationships>`_
 to provide a tree-like structure. We will do this in the next two steps.
 
 In the first step, though, we get the basics in place: SQLAlchemy,
