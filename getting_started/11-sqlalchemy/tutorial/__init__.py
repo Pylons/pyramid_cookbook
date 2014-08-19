@@ -14,7 +14,8 @@ def main(global_config, **settings):
     Base.metadata.bind = engine
     config = Configurator(settings=settings,
                           root_factory='tutorial.models.Root')
-
+    config.include('pyramid_chameleon')
+    
     # Security policies
     authn_policy = AuthTktAuthenticationPolicy(
         'sosecret', callback=groupfinder, hashalg='sha512')

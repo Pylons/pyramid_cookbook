@@ -11,6 +11,7 @@ def main():
         root_factory=bootstrap,
         authentication_policy=AuthTktAuthenticationPolicy('seekr1t'),
     )
+    config.include('pyramid_chameleon')
 
     config.scan("views")
     app = config.make_wsgi_app()

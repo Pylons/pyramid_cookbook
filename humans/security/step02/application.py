@@ -15,6 +15,7 @@ def main():
             'seekr1t',
             callback=groupfinder)
     )
+    config.include('pyramid_chameleon')
     config.scan("views")
     app = config.make_wsgi_app()
     return app
