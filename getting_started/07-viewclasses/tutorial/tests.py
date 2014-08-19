@@ -6,6 +6,7 @@ from pyramid import testing
 class WikiViewTests(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
+        self.config.include('pyramid_chameleon')
 
     def tearDown(self):
         testing.tearDown()
