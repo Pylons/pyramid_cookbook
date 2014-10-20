@@ -170,7 +170,6 @@ imported without requiring that you import each "by hand" within
 Writing Tests For Pyramid + SQLAlchemy
 --------------------------------------
 
-John Anderson's blog entry at
-http://sontek.net/writing-tests-for-pyramid-and-sqlalchemy describes a
-strategy for writing tests for systems which integrate Pyramid and
-SQLAlchemy.
+John Anderson's blog entry describes a strategy for
+`writing tests for systems which integrate Pyramid and SQLAlchemy
+<http://www.sontek.net/blog/2011/12/01/writing_tests_for_pyramid_and_sqlalchemy.html>`_.
