@@ -24,6 +24,7 @@ It supplements the `main documentation
    templates/index
    testing/index
    views/index
+   automating_development_process/index
    misc/index
    todo
 
