@@ -18,6 +18,7 @@ Thanks to Yeoman you can improve your developer experience when you are in **dev
 - image assets optimization
 - html template minification
 - switch to CDN versions of you vendor plugins in production mode
+- uncss
 - much more (you can add features adding new Grunt tasks)
 
 We will see later how you can clone `pyramid_starter_seed` from github, add new features (eg: authentication, SQLAlchemy support, user models, a json REST API, add a modern Javascript framework as AngularJS, etc) and then launch a console script that helps you to rename the entire project with your more opinionated modifications, for example `pyramid_yourawesomeproduct`.
