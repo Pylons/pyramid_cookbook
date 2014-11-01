@@ -10,11 +10,10 @@ Tutorial Approach
 
 This "Getting Started" tutorial is broken into independent steps,
 starting with the smallest possible "single file WSGI app" example.
-Each of these steps introduce a topic and a very small set of concepts
-via working code. The steps each correspond to a directory in this
+Each of these steps introduces a topic and a very small set of concepts
+via working code. Each step corresponds to a directory in this
 repo, where each step/topic/directory is a Python package.
-
-To successfully run each step::
+To successfully run each step, for example only (do not run this code now)::
 
   $ cd 02-hellopackage
   $ python3.3 setup.py develop
