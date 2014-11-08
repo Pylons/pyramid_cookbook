@@ -6,6 +6,7 @@ Automating the Development Process
   
   part1
   part2
+  part3
 
 Based on `Davide Moro <http://davidemoro.blogspot.it>`_ articles (how to integrate the Yeoman workflow with Pyramid):
 
