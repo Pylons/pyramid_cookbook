@@ -1,14 +1,16 @@
 Prerequisites
 %%%%%%%%%%%%%
 
-If you want to play with *pyramid_starter_seed* you'll need to install `NodeJS <http://nodejs.org/>`_ and, obviously, Python.
-Once installed Python and Pyramid, you'll have to clone the pyramid_starter_seed repository from github and initialize the
-Yeoman stuff.
+If you want to play with *pyramid_starter_seed* you'll need to install
+ `NodeJS <http://nodejs.org/>`_ and, obviously, Python.
+Once installed Python and Pyramid, you'll have to clone the 
+pyramid_starter_seed repository from github and initialize the Yeoman stuff.
 
 Python and Pyramid
 ==================
 pyramid_starter_seed was tested with Python 2.7.
-Create an isolated Python environment as explained in the official Pyramid documentation and install Pyramid.
+Create an isolated Python environment as explained in the official Pyramid 
+documentation and install Pyramid.
 
 Official Pyramid installation documentation
 * http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/install.html#installing-chapter
@@ -16,9 +18,13 @@ Official Pyramid installation documentation
 NodeJS
 ======
 
-You won't use NodeJS at all in your code, you just need to install development dependencies required by the Yeoman tools.
+You won't use NodeJS at all in your code, you just need to install 
+development dependencies required by the Yeoman tools.
 
-Once installed NodeJS (if you want to easily install different versions on your system and manage them you can use the NodeJS Version Manager utility: `NVM <https://github.com/creationix/nvm>`_), you need to enable the following tools:
+Once installed NodeJS (if you want to easily install different versions 
+on your system and manage them you can use the NodeJS Version Manager 
+utility: `NVM <https://github.com/creationix/nvm>`_), you need to 
+enable the following tools:
 
 .. code-block:: bash
 
@@ -44,7 +50,8 @@ Yeoman initialization
 
 Go to the folder where it lives our Yeoman project and initialize it.
 
-These are the standard commands (but, wait a moment, see the "Notes and known issues" subsection):
+These are the standard commands (but, wait a moment, see the "Notes and 
+known issues" subsection):
 
 .. code-block:: bash
 
@@ -55,7 +62,9 @@ These are the standard commands (but, wait a moment, see the "Notes and known is
 Known issues
 ------------
 
-You'll need to perform these additional steps in order to get a working environment (the generator-webapp's version used by pyramid_starter_seed has a couple of known issues).
+You'll need to perform these additional steps in order to get a working 
+environment (the generator-webapp's version used by pyramid_starter_seed 
+has a couple of known issues).
 
 Avoid imagemin errors on build:
 
@@ -64,7 +73,8 @@ Avoid imagemin errors on build:
     $ npm cache clean
     $ npm install grunt-contrib-imagemin
 
-Avoid Mocha/PhantomJS issue (see `issues #446 <https://github.com/yeoman/generator-webapp/issues/446>`_):
+Avoid Mocha/PhantomJS issue (see 
+`issues #446 <https://github.com/yeoman/generator-webapp/issues/446>`_):
 
 .. code-block:: bash
 
@@ -85,7 +95,8 @@ Run pyramid_starter_seed
 
 Now can choose to run Pyramid in development or production mode.
 
-Go to the root of your project directory, where the files `development.ini` and `production.ini` are located.
+Go to the root of your project directory, where the files `development.ini` 
+and `production.ini` are located.
 
 .. code-block:: bash
 
