@@ -61,11 +61,14 @@ Css and javascript
 .. code-block:: html
 
     <tal:production tal:condition="production">
-        <script src="${request.static_url('pyramid_starter_seed:webapp/%s/scripts/plugins.js' % minify)}"></script>
+        <script src="${request.static_url('pyramid_starter_seed:webapp/%s/scripts/plugins.js' % minify)}">
+        </script>
     </tal:production>
     <tal:not_production tal:condition="not:production">
-        <script src="${request.static_url('pyramid_starter_seed:webapp/%s/bower_components/bootstrap/js/alert.js' % minify)}"></script>
-        <script src="${request.static_url('pyramid_starter_seed:webapp/%s/bower_components/bootstrap/js/dropdown.js' % minify)}"></script>
+        <script src="${request.static_url('pyramid_starter_seed:webapp/%s/bower_components/bootstrap/js/alert.js' % minify)}">
+        </script>
+        <script src="${request.static_url('pyramid_starter_seed:webapp/%s/bower_components/bootstrap/js/dropdown.js' % minify)}">
+        </script>
     </tal:not_production>
     <!-- build:js scripts/plugins.js -->
     <tal:comment replace="nothing">
