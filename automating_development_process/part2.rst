@@ -7,7 +7,11 @@ Yeoman stuff.
 
 Python and Pyramid
 ==================
+pyramid_starter_seed was tested with Python 2.7.
 Create an isolated Python environment as explained in the official Pyramid documentation and install Pyramid.
+
+Official Pyramid installation documentation
+* http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/install.html#installing-chapter
 
 NodeJS
 ======
@@ -21,6 +25,8 @@ Once installed NodeJS (if you want to easily install different versions on your 
     $ npm install -g bower
     $ npm install -g grunt-cli
     $ npm install -g karma
+
+Tested with NodeJS version 0.10.31.
 
 How to install pyramid_starter_seed
 ===================================
@@ -44,7 +50,7 @@ These are the standard commands (but, wait a moment, see the "Notes and known is
 
     $ cd pyramid_starter_seed/webapp
     $ bower install
-    $ npm install --loglevel verbose
+    $ npm install
 
 Known issues
 ------------
@@ -78,6 +84,13 @@ Run pyramid_starter_seed
 ========================
 
 Now can choose to run Pyramid in development or production mode.
+
+Go to the root of your project directory, where the files `development.ini` and `production.ini` are located.
+
+.. code-block:: bash
+
+    cd ../../..
+
 Just type:
 
 .. code-block:: bash
