@@ -127,8 +127,8 @@ improving the console script.
 But if you provide tests you can check immediately if something went wrong 
 during the cloning process and fix.
 
-Link
-====
+How pyramid_starter_seed works under the hood
+=============================================
 
 More details explained on the original article (part 3): 
 
