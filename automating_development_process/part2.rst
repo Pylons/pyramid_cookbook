@@ -1,19 +1,21 @@
 Prerequisites
 %%%%%%%%%%%%%
 
-If you want to play with *pyramid_starter_seed* you'll need to install
- `NodeJS <http://nodejs.org/>`_ and, obviously, Python.
+If you want to play with *pyramid_starter_seed* you'll need to install 
+`NodeJS <http://nodejs.org/>`_ and, obviously, Python.
 Once installed Python and Pyramid, you'll have to clone the 
 pyramid_starter_seed repository from github and initialize the Yeoman stuff.
 
 Python and Pyramid
 ==================
+
 pyramid_starter_seed was tested with Python 2.7.
 Create an isolated Python environment as explained in the official Pyramid 
 documentation and install Pyramid.
 
 Official Pyramid installation documentation
-* http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/install.html#installing-chapter
+
+- http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/install.html#installing-chapter
 
 NodeJS
 ======
