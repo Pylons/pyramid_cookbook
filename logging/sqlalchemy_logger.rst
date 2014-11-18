@@ -8,7 +8,7 @@ First we need to define a Log model for SQLAlchemy (do this in
 ``myapp.models``)::
 
    from sqlalchemy import Column
-   from sqlalchemy.types DateTime, Integer, String
+   from sqlalchemy.types import DateTime, Integer, String
    from sqlalchemy.sql import func
    from sqlalchemy.ext.declarative import declarative_base
 
