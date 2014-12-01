@@ -12,6 +12,7 @@ class WikiViewTests(unittest.TestCase):
 
     def test_wiki_view(self):
         from tutorial.views import WikiViews
+        self.config.include('pyramid_chameleon')
 
         request = testing.DummyRequest()
         inst = WikiViews(request)
