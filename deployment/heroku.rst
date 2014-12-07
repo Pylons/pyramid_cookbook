@@ -161,7 +161,7 @@ Tips & Tricks
 =============
 
 The CherryPy WSGI server is fast, efficient, and multi-threaded to easily 
-handle many requests at once. If you want to use it you can add `cherrpy` 
+handle many requests at once. If you want to use it you can add `cherrypy` 
 and `pastescript` to your setup.py:requires section (be sure to re-run 
 `pip freeze` to update the requirements.txt file as explained above) and 
 setup your runapp.py to look like:
