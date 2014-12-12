@@ -5,7 +5,6 @@ requires = [
     'pyramid_jinja2',
     'pyramid_tm',
     'sqlalchemy',
-    'pyramid_tm',
     'zope.sqlalchemy',
     'pyramid_debugtoolbar'
 ]
