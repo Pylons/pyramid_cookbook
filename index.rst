@@ -26,8 +26,12 @@ These are the Pyramid tutorials we could locate during the PyCon USA sprints in 
 ================== === ======================= =============================== ==================== ========================================
 name/link          ET* title                   description                     code repo            features
 ================== === ======================= =============================== ==================== ========================================
-`firstapp`_        1h  Creating Your First     chapter 4 in the
-                       Pyramid Application     `Narrative Documentation`_ part `pyramid`_           * URL dispatch
+`quick_tutorial`_  8h  Quick Tutorial for      Introduction to and high-level  `pyramid`_           * Most, if not all
+                       Pyramid                 tour of Pyramid's major
+                                               features.
+
+`firstapp`_        1h  Creating Your First     chapter 4 in the                                     * URL dispatch
+                       Pyramid Application     `Narrative Documentation`_ part `pyramid`_
                                                of the main Pyramid docs
 
 `wiki`_            4h  ZODB + Traversal Wiki   chapter 37 in the `Tutorials`_  `pyramid`_           * traversal
