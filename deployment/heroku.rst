@@ -58,6 +58,7 @@ Create ``run`` with the following:
 .. code-block:: text
     
     #!/bin/bash
+    set -e
     python setup.py develop
     python runapp.py
 
