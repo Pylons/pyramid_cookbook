@@ -28,7 +28,8 @@ Steps
     (env33)$ python3.3 setup.py develop
     (env33)$ mkdir tutorial/templates
     
-#. Since we are using Chameleon, ``tutorial/__init__.py`` needs an additional configuration:
+#. Since we are using Chameleon, ``tutorial/__init__.py`` needs an additional
+   configuration:
   .. literalinclude:: tutorial/__init__.py
     :lineos:
 
