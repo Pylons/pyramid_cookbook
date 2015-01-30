@@ -27,6 +27,10 @@ Steps
     (env33)$ cd ..; cp -r step05 step06; cd step06
     (env33)$ python3.3 setup.py develop
     (env33)$ mkdir tutorial/templates
+    
+#. Since we are using Chameleon, ``tutorial/__init__.py`` needs an additional configuration:
+  .. literalinclude:: tutorial/__init__.py
+    :lineos:
 
 #. Our ``tutorial/views.py`` is now data-centric:
 
