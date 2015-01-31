@@ -15,10 +15,14 @@ document, and corrections and improvements through a pull request are most
 welcome.
 
 .. note:: This guide was written for PyCharm 2.7.3, although many of the
-    topics apply for `PyCharm 3 <http://www.jetbrains.com/pycharm/>`_.  In
-    addition there are now two editions for PyCharm 3, a Professional and a
-    free Community Edition.  Furthermore, PyCharm 3 includes support for
-    Pyramid, making installation and configuration of Pyramid much easier.
+    topics apply for `PyCharm 4 <http://www.jetbrains.com/pycharm/>`_. In
+    addition there are now three editions for PyCharm 4: Professional Edition,
+    a free Community Edition, and a free `Educational Edition
+    <https://www.jetbrains.com/pycharm-educational/>`_. Furthermore, PyCharm
+    4 Professional Edition includes support for Pyramid, making installation
+    and configuration of Pyramid much easier. Pyramid integration is not
+    available in the free editions, so this tutorial will help you get started
+    with Pyramid in those versions.
 
 To get started with Pyramid in PyCharm, we need to install prerequisite
 software.
