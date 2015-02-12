@@ -28,6 +28,7 @@ request object as a ``cgi.FieldStorage`` object accessible through the
 
     import os
     import uuid
+    import shutil
     from pyramid.response import Response
 
     def store_mp3_view(request):
@@ -56,20 +57,11 @@ request object as a ``cgi.FieldStorage`` object accessible through the
         # being used.
 
         temp_file_path = file_path + '~'
-        output_file = open(temp_file_path, 'wb')
 
         # Finally write the data to a temporary file
         input_file.seek(0)
-        while True:
-            data = input_file.read(2<<16)
-            if not data:
-                break
-            output_file.write(data)
-
-        # If your data is really critical you may want to force it to disk first
-        # using output_file.flush(); os.fsync(output_file.fileno())
-
-        output_file.close()
+        with open(temp_file, 'wb') as output_file:
+            shutil.copyfileobj(input_file, output_file)
 
         # Now that we know the file has been fully saved to disk move it into place.
 
