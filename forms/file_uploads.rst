@@ -60,7 +60,7 @@ request object as a ``cgi.FieldStorage`` object accessible through the
 
         # Finally write the data to a temporary file
         input_file.seek(0)
-        with open(temp_file, 'wb') as output_file:
+        with open(temp_file_path, 'wb') as output_file:
             shutil.copyfileobj(input_file, output_file)
 
         # Now that we know the file has been fully saved to disk move it into place.
