@@ -138,30 +138,30 @@ Inside IIS using the WSGI bridge with ISAPI-WSGI.
 
 1.  IIS configuration
 
-    Turn on windows feature for IIS 
+    Turn on windows feature for IIS.
     
-    Control panel->Turn windows features on off and select
+    Control panel -> "Turn windows features on off" and select
     
 - Internet Information service (all)
 - World Wide Web Services (all)
             
 2. Create Website 
 
-   Go to: Internet Information Services Manager and add website
+   Go to Internet Information Services Manager and add website
     
 - Site name (your choice)
-- Physical path (point to the dir of your pyramid porject)
+- Physical path (point to the directory of your pyramid porject)
 - select port
 - select the name of your website
         
-3. Pyhon 
+3. Python 
 
-- Install pywin32 (accordiong to your instalation 32 or 64 bit) `pywin32 <http://sourceforge.net/projects/pywin32/files/pywin32/>`_
+- Install pywin32 (according to your installation 32 or 64 bit) `pywin32 <http://sourceforge.net/projects/pywin32/files/pywin32/>`_
 - Install `isapi-wsgi <https://code.google.com/p/isapi-wsgi/downloads/list>`_
 
 4. Create bridging script
 
-create a file install_website.py and place it in your pyramid project::
+Create a file install_website.py and place it in your pyramid project::
     
     # path to your site packages in your environment
     # needs to be put in here
@@ -218,13 +218,13 @@ create a file install_website.py and place it in your pyramid project::
         params.VirtualDirs = [vd]
         HandleCommandLine(params)
 
-5. Install your pramid project as Virtual Host or root feature of your IIS website
+5. Install your pyramid project as Virtual Host or root feature of your IIS website.
 
-activate your virtual env
-and run the stript::
+Activate your virtual env and run the stript::
+
     python install_website.py install --server=<name of your website>
     
-restart your website from IIS.
+Restart your website from IIS.
 
     
     
