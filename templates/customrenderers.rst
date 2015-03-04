@@ -14,6 +14,7 @@ application (or anywhere else you'd like to place such things):
 
    import csv
    import StringIO
+   # If on Python 3, import io instead
 
    class CSVRenderer(object):
       def __init__(self, info):
@@ -32,6 +33,8 @@ application (or anywhere else you'd like to place such things):
                response.content_type = 'text/csv'      
          
          fout = StringIO.StringIO()
+         # If on Python 3, use io.StringIO() instead
+         
          writer = csv.writer(fout, delimiter=',', quotechar=',', quoting=csv.QUOTE_MINIMAL)
          
          writer.writerow(value.get('header', []))
