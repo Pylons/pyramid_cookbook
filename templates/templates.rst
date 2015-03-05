@@ -91,7 +91,7 @@ Using a BeforeRender Event to Expose Chameleon ``base`` Template
 ----------------------------------------------------------------
 
 To avoid defining the same basic things in each template in your application,
-you can define one ``base`` tamplate, and inherit from it in other templates.
+you can define one ``base`` template, and inherit from it in other templates.
 
 .. note:: Pyramid example application - `shootout
    <https://github.com/Pylons/shootout>`_ using this approach.
