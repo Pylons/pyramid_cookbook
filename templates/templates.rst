@@ -91,7 +91,7 @@ Using a BeforeRender Event to Expose Chameleon ``base`` Template
 ----------------------------------------------------------------
 
 To avoid defining the same basic things in each template in your application,
-you can define one ``base`` tamplate, and inherit from it in other templates.
+you can define one ``base`` template, and inherit from it in other templates.
 
 .. note:: Pyramid example application - `shootout
    <https://github.com/Pylons/shootout>`_ using this approach.
@@ -148,7 +148,7 @@ Content inside ``<tal:block metal:fill-slot="content"></tal:block>`` tags
 will replace corresponding block in ``base`` template. You can define
 as many slots in as you want. For more information please see
 `Macro Expansion Template Attribute Language
-<http://chameleon.repoze.org/docs/latest/metal.html>`_ documentation.
+<http://chameleon.readthedocs.org/en/latest/reference.html#macros-metal>`_ documentation.
 
 Using Building Blocks with Chameleon
 ------------------------------------
