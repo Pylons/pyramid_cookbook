@@ -148,7 +148,7 @@ Content inside ``<tal:block metal:fill-slot="content"></tal:block>`` tags
 will replace corresponding block in ``base`` template. You can define
 as many slots in as you want. For more information please see
 `Macro Expansion Template Attribute Language
-<http://chameleon.repoze.org/docs/latest/metal.html>`_ documentation.
+<http://chameleon.readthedocs.org/en/latest/reference.html#macros-metal>`_ documentation.
 
 Using Building Blocks with Chameleon
 ------------------------------------
