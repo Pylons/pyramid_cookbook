@@ -15,8 +15,8 @@ support for an entire site can be done using a tween::
             if response.last_modified is not None:
                 response.conditional_response = True
 
-            # We want to only enable the conditional machinery if we were
-            # either given an explicit ETag header by the view or if we have a
+            # We want to only enable the conditional machinery if either we
+            # were given an explicit ETag header by the view or we have a
             # buffered response and can generate the ETag header ourself.
             if response.etag is not None:
                 response.conditional_response = True
