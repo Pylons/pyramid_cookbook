@@ -16,7 +16,7 @@ support for an entire site can be done using a tween::
                 response.conditional_response = True
 
             # We want to only enable the conditional machinery if we were
-            # either given an explicit ETag header by the view, or if we have a
+            # either given an explicit ETag header by the view or if we have a
             # buffered response and can generate the ETag header ourself.
             if response.etag is not None:
                 response.conditional_response = True
@@ -28,11 +28,11 @@ support for an entire site can be done using a tween::
             return response
         return conditional_http_tween
 
-The effect of this tween, is that it will first check the response to determine
-if it already has a ``Last-Modified`` or ``ETag`` header set, and if it does it
-will enable the conditional response processing. If the response does not have
-an ``ETag`` header set, it will attempt to determine if the response is already
-loaded entirely into memory (to avoid loading what might be a very large object
-into memory) and if it is already loaded into memory, it will generate an
-``ETag`` header from the MD5 digest of the response body and again enable the
-conditional response processing.
+The effect of this tween is that it will first check the response to determine
+if it already has a ``Last-Modified`` or ``ETag`` header set. If it does, then
+it will enable the conditional response processing. If the response does not
+have an ``ETag`` header set, then it will attempt to determine if the response
+is already loaded entirely into memory (to avoid loading what might be a very
+large object into memory). If it is already loaded into memory, then it will
+generate an ``ETag`` header from the MD5 digest of the response body, and
+again enable the conditional response processing.
