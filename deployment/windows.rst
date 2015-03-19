@@ -7,8 +7,8 @@ There are 3 possible deployment scenarios for windows:
     Twisted.
 2.  Run as a windows service behind another web server (either IIS or Apache)
     using a reverse proxy.
-3.  Inside IIS using a in IIS WSGI bridge, either ISAPI-WSGI or PyISAPIe. These
-    methods are more complicated and won't be covered by this guide.
+3.  Inside IIS using the WSGI bridge with ISAPI-WSGI (see below).
+4.  Inside IIS using the WSGI bridge with PyISAPIe.
 
 
 Step 1: Install Dependencies
@@ -131,3 +131,100 @@ Helicon Ape is available without cost for up to 3 sites.
 If you aren't already using IIS Apache is available for Windows and works well.
 There are many reverse proxy tutorials available for Apache and they are equally
 applicable to Windows.
+
+
+Inside IIS using the WSGI bridge with ISAPI-WSGI.
+=================================================
+
+1.  IIS configuration
+
+    Turn on windows feature for IIS.
+    
+    Control panel -> "Turn windows features on off" and select
+    
+- Internet Information service (all)
+- World Wide Web Services (all)
+            
+2. Create Website 
+
+   Go to Internet Information Services Manager and add website
+    
+- Site name (your choice)
+- Physical path (point to the directory of your pyramid porject)
+- select port
+- select the name of your website
+        
+3. Python 
+
+- Install pywin32 (according to your installation 32 or 64 bit) `pywin32 <http://sourceforge.net/projects/pywin32/files/pywin32/>`_
+- Install `isapi-wsgi <https://code.google.com/p/isapi-wsgi/downloads/list>`_
+
+4. Create bridging script
+
+Create a file install_website.py and place it in your pyramid project::
+    
+    # path to your site packages in your environment
+    # needs to be put in here
+    import site
+    site.addsitedir('/path/to/your/site-packages')
+
+    # this is used for debugging
+    # after everything was installed and is ready to meka a http request
+    # run this from the command line:
+    # python -m python -m win32traceutil
+    # It will give you debug output from this script
+    # (remove the 3 lines for production use)
+    import sys
+    if hasattr(sys, "isapidllhandle"):
+        import win32traceutil
+
+
+    # this is for setting up a path to a temporary
+    # directory for egg cache.
+    import os
+    os.environ['PYTHON_EGG_CACHE'] = '/path/to/writable/dir'
+    
+    # The entry point for the ISAPI extension.
+    def __ExtensionFactory__():
+        from paste.deploy import loadapp
+        import isapi_wsgi
+        from logging.config import fileConfig
+    
+        appdir = '/path/to/your/pyramid/project'
+        configfile = 'production.ini'
+        con = appdir + configfile
+    
+        fileConfig(con)
+        application = loadapp('config:' + configfile, relative_to=appdir)
+        return isapi_wsgi.ISAPIThreadPoolHandler(application)
+    
+    # ISAPI installation
+    if __name__ == '__main__':
+        from isapi.install import ISAPIParameters, ScriptMapParams, VirtualDirParameters, HandleCommandLine
+    
+        params = ISAPIParameters()
+        sm = [
+            ScriptMapParams(Extension="*", Flags=0)
+        ]
+    
+        # if name = "/" then it will install on root 
+        # if any other name then it will install on virtual host for that name
+        vd = VirtualDirParameters(Name="/",
+                                  Description="Description of your proj",
+                                  ScriptMaps=sm,
+                                  ScriptMapUpdate="replace"
+        )
+    
+        params.VirtualDirs = [vd]
+        HandleCommandLine(params)
+
+5. Install your pyramid project as Virtual Host or root feature of your IIS website.
+
+Activate your virtual env and run the stript::
+
+    python install_website.py install --server=<name of your website>
+    
+Restart your website from IIS.
+
+    
+    
