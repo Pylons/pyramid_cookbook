@@ -13,7 +13,10 @@ application (or anywhere else you'd like to place such things):
 .. code-block:: python
 
    import csv
-   import io
+   try:
+       from StringIO import StringIO # python 2
+   except ImportError:
+       from io import StringIO # python 3
 
    class CSVRenderer(object):
       def __init__(self, info):
@@ -29,11 +32,11 @@ application (or anywhere else you'd like to place such things):
             response = request.response
             ct = response.content_type
             if ct == response.default_content_type:
-               response.content_type = 'text/csv'      
-         
+               response.content_type = 'text/csv'
+
          fout = io.StringIO()
          writer = csv.writer(fout, delimiter=',', quotechar=',', quoting=csv.QUOTE_MINIMAL)
-         
+
          writer.writerow(value.get('header', []))
          writer.writerows(value.get('rows', []))
 
