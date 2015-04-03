@@ -30,25 +30,26 @@ Steps
     
 #. Since we are using Chameleon, ``tutorial/__init__.py`` needs an additional
    configuration:
-  .. literalinclude:: tutorial/__init__.py
-    :lineos:
+   
+   .. literalinclude:: tutorial/__init__.py
+       :linenos:
 
 #. Our ``tutorial/views.py`` is now data-centric:
 
    .. literalinclude:: tutorial/views.py
-    :linenos:
+       :linenos:
 
 #. Create a Chameleon template in ``tutorial/templates/wiki_view.pt``:
 
-    .. literalinclude:: tutorial/templates/wiki_view.pt
-        :language: html
-        :linenos:
+   .. literalinclude:: tutorial/templates/wiki_view.pt
+       :language: html
+       :linenos:
 
 #. Our ``tutorial/tests.py`` has a unit test which is also now
    data-centric:
 
-    .. literalinclude:: tutorial/tests.py
-        :linenos:
+   .. literalinclude:: tutorial/tests.py
+       :linenos:
 
 #. Run the tests in your package using ``nose``:
 
