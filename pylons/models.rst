@@ -341,7 +341,7 @@ engine arguments that override any same-name ones in the INI file. ::
 At this point you have a choice. Do you want to bind different tables to
 different databases in the same DBSession? That's easy::
 
-    DBSession.configure(bind={models.Person: engine, models.Score: stats})
+    DBSession.configure(binds={models.Person: engine, models.Score: stats})
 
 The keys in the ``binds`` dict can be SQLAlchemy ORM classes, table objects, or
 mapper objects.
