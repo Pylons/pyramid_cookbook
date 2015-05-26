@@ -16,8 +16,8 @@ Step 1: Install Dependencies
 
 Both method one and two are quite similar to running the development server
 except that debugging info is turned off and you want to run the process as a
-windows service. Running as a windows service depends on the 
-`PyWin32 <http://sourceforge.net/projects/pywin32/>`_ project. You will need to
+windows service. Running as a windows service depends on the
+`PyWin32 <http://sourceforge.net/projects/pywin32/>`__ project. You will need to
 download the pre-built binary that matches your version of Python.
 
 You can install directly into the virtualenv if you run easy_install on the
@@ -156,7 +156,7 @@ Inside IIS using the WSGI bridge with ISAPI-WSGI.
         
 3. Python 
 
-- Install pywin32 (according to your installation 32 or 64 bit) `pywin32 <http://sourceforge.net/projects/pywin32/files/pywin32/>`_
+- Install `pywin32 <http://sourceforge.net/projects/pywin32/files/pywin32/>`__ (according to your installation 32 or 64 bit)
 - Install `isapi-wsgi <https://code.google.com/p/isapi-wsgi/downloads/list>`_
 
 4. Create bridging script
