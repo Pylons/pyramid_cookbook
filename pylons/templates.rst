@@ -40,7 +40,8 @@ Template filenames ending in ".mak" or ".mako" are sent to the Mako renderer.
 If you prefer a different extension such as ".html", you can put this
 in your main function::
 
-    config.add_renderer(".html", "pyramid.mako_templating.renderer_factory")
+   config.include('pyramid_mako')
+   config.add_mako_renderer('.html')
     
 If you have further questions about exactly how the Mako renderer is
 implemented, it's best to look at the source: ``pyramid.mako_templating``. You
