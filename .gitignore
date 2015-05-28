@@ -1,1 +1,9 @@
-_build
+*.egg
+*.egg-info
+.eggs/
+*.pyc
+build/
+dist/
+docs/_build
+env/
+.DS_Store
