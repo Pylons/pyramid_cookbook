@@ -1,7 +1,9 @@
 Pyramid Cookbook
 ================
 
-The Pyramid Cookbook presents topic-oriented "recipes" for using Pyramid.
+The Pyramid Cookbook presents topical, practical "recipes" of using
+Pyramid. It supplements the `main Pyramid documentation
+<http://docs.pylonsproject.org/projects/pyramid/en/latest/>`_.
 
-See http://docs.pylonsproject.org/en/latest/docs/pyramid.html for other
-Pyramid documentation.
+To contribute your recipe to the Pyramid Cookbook, read `Contributing
+<https://github.com/Pylons/pyramid_cookbook/blob/master/contibuting.md>`_.
