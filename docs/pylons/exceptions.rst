@@ -34,7 +34,7 @@ otherwise each need an ``if`` to pass the error condition through.
 
 Exception rules:
 
-1. Pyramid internally raises ``HTTNotFound`` if no route matches the request,
+1. Pyramid internally raises ``HTTPNotFound`` if no route matches the request,
    or if no view matches the route and request. It raises ``HTTPForbidden`` if the
    request is denied based on the current authorization policy.
 
