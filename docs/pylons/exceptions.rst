@@ -112,8 +112,8 @@ an exception view with a custom exception, borrowed from the Pyramid manual::
         # The context is always available as ``request.context`` too.
         msg = exc.args[0] if exc.args else ""
         response =  Response('Failed validation: %s' % msg)
-    response.status_int = 500
-    return response
+        response.status_int = 500
+        return response
 
 For convenience, Pyramid has special decorators and configurator methods to
 register a "Not Found" view or a "Forbidden" view. ``@notfound_view_config``
