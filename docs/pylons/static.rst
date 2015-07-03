@@ -41,7 +41,7 @@ Pyramid's static view has the following advantages over Pylons:
   pointing to other subdirectories or files instead. This is called "overriding
   assets" in the Pyramid manual.
 
-It has the following disadvantages compared to Pyramid:
+It has the following disadvantages compared to Pylons:
 
 * Static URLs have the prefix "/static". 
 * It can't serve top-level file URLs such as "/robots.txt" and "/favicon.ico".
