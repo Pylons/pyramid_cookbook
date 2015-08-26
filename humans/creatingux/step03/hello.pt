@@ -1,8 +1,0 @@
-<html>
-<head>
-    <title>Hello</title>
-</head>
-<body>
-<p>Hello, ${tutorial}</p>
-</body>
-</html>
