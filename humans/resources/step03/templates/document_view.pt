@@ -1,3 +1,0 @@
-<div>
-    <h2>Document Title: ${context.title}</h2>
-</div>

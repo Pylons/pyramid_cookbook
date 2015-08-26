@@ -43,9 +43,6 @@ name/link          ET* title                   description                     c
 `single_file`_     ?   Todo List Application   very short; a.k.a. The Single   `pyramid_tutorials`_
                        in One File             ``tasks`` Tutorial              (this site)
 
-`humans`_          12h Pyramid for Plone       Pyramid for Plone Developers    `pyramid_tutorials`_
-                       Developers                                              (this site)
-
 `blogr`_           4h  ``pyramid_blogr``       inspired by Flaskr app from the `pyramid_blogr`_     * URL dispatch
                        Tutorial                Flask Web Framework Tutorial                         * SQLAlchemy
                                                                                                     * Mako
@@ -78,7 +75,6 @@ name/link          ET* title                   description                     c
 .. _wiki: http://docs.pylonsproject.org/projects/pyramid/en/latest/tutorials/wiki/index.html
 .. _wiki2: http://docs.pylonsproject.org/projects/pyramid/en/latest/tutorials/wiki2/index.html
 .. _single_file: http://docs.pylonsproject.org/projects/pyramid_tutorials/en/latest/single_file_tasks/single_file_tasks.html
-.. _humans: http://docs.pylonsproject.org/projects/pyramid_tutorials/en/latest/humans/index.html
 .. _blogr: http://pyramid-blogr.readthedocs.org/en/latest/
 .. _birdie: https://github.com/cguardia/Pyramid-Tutorial/blob/master/presentation/pyramid_tutorial.pdf
 .. _todopyramid: https://github.com/indypy/todopyramid

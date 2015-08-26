@@ -1,7 +1,0 @@
-<div>
-    <h2>Document Title: ${context.title} in Folder
-        <a
-                href="${view.parent_info.url}">${view.parent_info.title}</a>
-        <a
-    </h2>
-</div>
