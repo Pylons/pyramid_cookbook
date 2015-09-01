@@ -64,8 +64,16 @@ namespace and an i18n:domain to the <html> tag:
 
 
 The important bit -- the one the author was missing -- is that the i18n:domain
-must be spelled exactely like the POT/PO/MO files created later on, including
+must be spelled exactly like the POT/PO/MO files created later on, including
 case. Without this, the translations will not be picked up.
+
+If your templates are organized in a template hierarchy, you must include
+i18n:domain in every file that contains messages to extract:
+
+.. code-block:: text
+
+   -<tal:block>
+   +<tal:block i18n:domain="ChameleonI18n">
 
 So now we can mark a part of the template for translation:
 
@@ -95,9 +103,9 @@ Now you need to run these commands in your project's directory:
    (env)$ python setup.py update_catalog
    (env)$ python setup.py compile_catalog
 
-Repeat the ``init_catalog`` step for each of the langauges you need.
+Repeat the ``init_catalog`` step for each of the languages you need.
 
-The first command will extract the strings for translation to your projects
+The first command will extract the strings for translation to your project's
 locale/<project-name>.pot file, in this case ChameleonI18n.pot
 
 The ``init`` commands create new catalogs for different languages and the
