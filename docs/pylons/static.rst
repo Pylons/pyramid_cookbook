@@ -49,9 +49,9 @@ It has the following disadvantages compared to Pylons:
 You can serve any URL directory with a static view, so you could have a
 separate view for each URL directory like this::
 
-    config.add_images_view('images', 'static/images')
-    config.add_stylesheets_view('stylesheets', 'static/stylesheets')
-    config.add_javascript_view('javascript', 'static/javascript')
+    config.add_static_view('images', 'static/images')
+    config.add_static_view('stylesheets', 'static/stylesheets')
+    config.add_static_view('javascript', 'static/javascript')
 
 This configures URL "/images" pointing to directory "pyramidapp/static/images",
 etc. 
