@@ -8,7 +8,7 @@ The Pyramid Cookbook presents topical, practical "recipes" of using
 <http://docs.pylonsproject.org/projects/pyramid/en/latest/>`_.
 
 To contribute your recipe to the Pyramid Cookbook, read `Contributing
-<https://github.com/Pylons/pyramid_cookbook/blob/master/contibuting.md>`_.
+<https://github.com/Pylons/pyramid_cookbook/blob/master/contributing.md>`_.
 
 Table of contents
 -----------------
