@@ -108,8 +108,8 @@ exclude_patterns = ['_build', 'env2*', 'env3*', '_themes/README.rst', 'contribut
 # -- Options for HTML output ---------------------------------------------------
 
 # Add and use pylons_sphinx_themes
-# html_theme = 'pyramid'
-# html_theme_path = pylons_sphinx_themes.get_html_themes_path()
+html_theme = 'pyramid'
+html_theme_path = pylons_sphinx_themes.get_html_themes_path()
 html_theme_options = dict(
     github_url='https://github.com/Pylons/pyramid_tutorials',
     canonical_url='http://docs.pylonsproject.org/projects/pyramid-tutorials/en/latest/'
