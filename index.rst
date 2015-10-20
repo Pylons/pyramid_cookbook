@@ -103,6 +103,5 @@ Indices and tables
    getting_started/index
    single_file_tasks/single_file_tasks
    humans/index
-   _themes/README
    pycharm/index
-   quick_traversal/index.rst
+   quick_traversal/index
