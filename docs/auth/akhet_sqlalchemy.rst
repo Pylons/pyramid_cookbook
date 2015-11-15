@@ -6,7 +6,7 @@ http://pyramid.chromaticleaves.com/simpleauth/.
 
 .. warning::
 
-    In this recipe, uses a method that is INSECURE and UNSAFE for storing and
+    This recipe uses a method that is INSECURE and UNSAFE for storing and
     verifying user passwords. Please use a library that provides secure
     password storage, such as `passlib <http://pythonhosted.org/passlib/>`_
     which is specifically designed to securely store passwords.
