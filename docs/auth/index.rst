@@ -8,7 +8,6 @@ Authentication and Authorization
    user_object
    wiki2_auth
    auth_tutorial
-   akhet_sqlalchemy
    open_id_auth
    enterprise
 
