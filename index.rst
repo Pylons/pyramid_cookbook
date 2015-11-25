@@ -45,7 +45,7 @@ name/link          ET* title                   description                     c
 
 `blogr`_           4h  ``pyramid_blogr``       inspired by Flaskr app from the `pyramid_blogr`_     * URL dispatch
                        Tutorial                Flask Web Framework Tutorial                         * SQLAlchemy
-                                                                                                    * Mako
+                                                                                                    * Jinja2
                                                                                                     * security
                                                                                                     * WTForms
                                                                                                     * pagination
