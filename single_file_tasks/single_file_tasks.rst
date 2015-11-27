@@ -1,7 +1,7 @@
 .. _single-file-tutorial:
 
 Todo List Application in One File
-===================================
+=================================
 
 This tutorial is intended to provide you with a feel of how a Pyramid web
 application is created. The tutorial is very short, and focuses on the
