@@ -4,12 +4,11 @@ Todo List Application in One File
 =================================
 
 This tutorial is intended to provide you with a feel of how a Pyramid web
-application is created. The tutorial is very short, and focuses on the
-creation of a minimal todo list application using common idioms. For brevity,
-the tutorial uses a "single-file" application development approach
-instead of the more complex (but more common) "scaffolds" described in
-`the main Pyramid documentation
-<http://docs.pylonsproject.org/projects/pyramid/en/latest/>`_.
+application is created. The tutorial is very short, and focuses on the creation
+of a minimal todo list application using common idioms. For brevity, the
+tutorial uses a "single-file" application development approach instead of the
+more complex (but more common) "scaffolds" described in the :ref:`main Pyramid
+documentation <pyramid:index>`.
 
 At the end of the tutorial, you'll have a minimal application which:
 
@@ -25,24 +24,27 @@ Here's a screenshot of the final application:
 
 .. image:: single_file_tasks.png
 
-Step 1 - Organizing The Project
+
+Step 1 - Organizing the project
 -------------------------------
 
 .. note::
 
-    For help getting Pyramid set up, try the `install guide
-    <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/install.html#installing-chapter>`_.
+    For help getting Pyramid set up, try the guide :ref:`Installing Pyramid
+    <pyramid:installing_chapter>`.
     
-    To use Mako templates you need to install the ``pyramid_mako`` add-on as 
-    indicated `here
-    <http://docs.pylonsproject.org/projects/pyramid/en/master/whatsnew-1.5.html>`_.
+    To use Mako templates, you need to install the ``pyramid_mako`` add-on as
+    indicated under `Major Backwards Incompatibilities under What's New In
+    Pyramid 1.5
+    <http://docs.pylonsproject.org/projects/pyramid/en/master/whatsnew-1.5.html#major-backwards-incompatibilities>`_.
 
-    In short, you'll need to have both the ``pyramid`` and ``pyramid_mako`` packages installed. 
-    Use ``easy_install pyramid pyramid_mako`` to install these packages.
+    In short, you'll need to have both the ``pyramid`` and ``pyramid_mako``
+    packages installed. Use ``easy_install pyramid pyramid_mako`` or ``pip
+    install pyramid`` and ``pip install pyramid_mako`` to install these
+    packages.
 
-Before getting started, we will create the directory hierarchy needed for
-our application layout. Create the following directory layout on your
-filesystem:
+Before getting started, we will create the directory hierarchy needed for our
+application layout. Create the following directory layout on your filesystem:
 
 .. code-block:: text
 
@@ -50,10 +52,11 @@ filesystem:
         /static
         /templates
 
-Note that the ``tasks`` directory will not be used as a Python package,
-it'll just serve as a container in which we can put our project.
+Note that the ``tasks`` directory will not be used as a Python package; it will
+just serve as a container in which we can put our project.
 
-Step 2 - Application Setup
+
+Step 2 - Application setup
 --------------------------
 
 To begin our application, start by adding a Python source file named
