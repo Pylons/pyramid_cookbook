@@ -60,8 +60,12 @@ Step 2 - Application setup
 --------------------------
 
 To begin our application, start by adding a Python source file named
-``tasks.py`` to the ``tasks`` directory.  We'll add a few basic imports
-within the newly created file::
+``tasks.py`` to the ``tasks`` directory.  We'll add a few basic imports within
+the newly created file.
+
+.. code-block:: python
+   :linenos:
+   :lineno-start: 1
 
     import os
     import logging
@@ -71,17 +75,24 @@ within the newly created file::
 
     from wsgiref.simple_server import make_server
 
-Then we'll set up logging and the current working directory path::
+Then we'll set up logging and the current working directory path.
     
+.. code-block:: python
+   :linenos:
+   :lineno-start: 9
+
     logging.basicConfig()
     log = logging.getLogger(__file__)
     
     here = os.path.dirname(os.path.abspath(__file__))
 
-Finally, in a block that runs only when the file is directly executed
-(i.e. not imported), we'll configure the Pyramid application,
-establish rudimentary sessions, obtain the WSGI app,
-and serve it::
+Finally, in a block that runs only when the file is directly executed (i.e.,
+not imported), we'll configure the Pyramid application, establish rudimentary
+sessions, obtain the WSGI app, and serve it.
+
+.. code-block:: python
+   :linenos:
+   :lineno-start: 14
 
     if __name__ == '__main__':
         # configuration settings
@@ -97,10 +108,10 @@ and serve it::
         server = make_server('0.0.0.0', 8080, app)
         server.serve_forever()
 
-We now have the basic project layout needed to run our application, but
-we still need to add database support, routing, views, and templates.
+We now have the basic project layout needed to run our application, but we
+still need to add database support, routing, views, and templates.
 
-Step 3 - Database And Schema
+Step 3 - Database and schema
 ----------------------------
 
 To make things straightforward, we'll use the widely installed SQLite
