@@ -114,10 +114,10 @@ still need to add database support, routing, views, and templates.
 Step 3 - Database and schema
 ----------------------------
 
-To make things straightforward, we'll use the widely installed SQLite
-database for our project. The schema for our tasks is simple: an **id**
-to uniquely identify the task, a **name** not longer than 100 characters, and
-a **closed** boolean to indicate if the task is closed or not.
+To make things straightforward, we'll use the widely installed SQLite database
+for our project. The schema for our tasks is simple: an *id* to uniquely
+identify the task, a *name* not longer than 100 characters, and a *closed*
+boolean to indicate whether the task is closed.
 
 Add to the ``tasks`` directory a file named ``schema.sql`` with the following
 content:
@@ -125,48 +125,67 @@ content:
 .. literalinclude:: src/schema.sql
    :language: sql
 
+Add a few more imports to the top of the ``tasks.py`` file as indicated by the
+emphasized lines.
 
-Add a few more imports to the top of the ``tasks.py`` file::
-
-    from pyramid.events import NewRequest
-    from pyramid.events import subscriber
-    from pyramid.events import ApplicationCreated
-    import sqlite3
+.. literalinclude:: src/tasks.py
+   :language: python
+   :lines: 1-8
+   :linenos:
+   :lineno-start: 1
+   :emphasize-lines: 3,6-8
 
 To make the process of creating the database slightly easier, rather than
 requiring a user to execute the data import manually with SQLite, we'll create
 a function that subscribes to a Pyramid system event for this purpose. By
-subscribing a function to the ``ApplicationCreated`` event, each time we'll
-start the application, our subscribed function will be executed.
-Consequently, our database will be created or updated as necessary when the
-application is started.
+subscribing a function to the ``ApplicationCreated`` event, for each time we
+start the application, our subscribed function will be executed. Consequently,
+our database will be created or updated as necessary when the application is
+started.
 
 .. literalinclude:: src/tasks.py
-   :lines: 72-80
+   :language: python
+   :lines: 72-84
+   :linenos:
+   :lineno-start: 19
+   :emphasize-lines: 1-9
 
 We also need to make our database connection available to the application.
 We'll provide the connection object as an attribute of the application's
-request. By subscribing to the Pyramid ``NewRequest`` event we'll initialize
-a connection to the database when a Pyramid request begins.  It will be
-available as ``request.db``.  We'll arrange to close it down by the end of
-the request lifecycle using the ``request.add_finished_callback`` method.
+request. By subscribing to the Pyramid ``NewRequest`` event, we'll initialize a
+connection to the database when a Pyramid request begins.  It will be available
+as ``request.db``.  We'll arrange to close it down by the end of the request
+lifecycle using the ``request.add_finished_callback`` method.
 
 .. literalinclude:: src/tasks.py
-   :lines: 61-70
+   :language: python
+   :lines: 61-73
+   :linenos:
+   :lineno-start: 19
+   :emphasize-lines: 1-10
 
 To make those changes active, we'll have to specify the database location in
 the configuration settings and make sure our ``@subscriber`` decorator is
-scanned by the application at runtime using config.scan()::
+scanned by the application at runtime using ``config.scan()``.
 
-    if __name__ == '__main__':
-        ...
-        settings['db'] = os.path.join(here, 'tasks.db')
-        ...
-        config.scan()
-        ...
+.. literalinclude:: src/tasks.py
+   :language: python
+   :lines: 84-89
+   :linenos:
+   :lineno-start: 42
+   :emphasize-lines: 6
 
-We now have the basic mechanism in place to create and talk to the database 
-in the application through ``request.db``.
+
+.. literalinclude:: src/tasks.py
+   :language: python
+   :lines: 103-105
+   :linenos:
+   :lineno-start: 52
+   :emphasize-lines: 1-2
+
+We now have the basic mechanism in place to create and talk to the database in
+the application through ``request.db``.
+
 
 Step 4 - View Functions And Routes
 ----------------------------------
