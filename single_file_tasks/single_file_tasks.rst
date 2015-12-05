@@ -115,8 +115,8 @@ Step 3 - Database and schema
 ----------------------------
 
 To make things straightforward, we'll use the widely installed SQLite database
-for our project. The schema for our tasks is simple: an *id* to uniquely
-identify the task, a *name* not longer than 100 characters, and a *closed*
+for our project. The schema for our tasks is simple: an ``id`` to uniquely
+identify the task, a ``name`` not longer than 100 characters, and a ``closed``
 boolean to indicate whether the task is closed.
 
 Add to the ``tasks`` directory a file named ``schema.sql`` with the following
@@ -145,9 +145,9 @@ started.
 
 .. literalinclude:: src/tasks.py
    :language: python
-   :lines: 72-84
+   :lines: 73-85
    :linenos:
-   :lineno-start: 19
+   :lineno-start: 21
    :emphasize-lines: 1-9
 
 We also need to make our database connection available to the application.
@@ -159,9 +159,9 @@ lifecycle using the ``request.add_finished_callback`` method.
 
 .. literalinclude:: src/tasks.py
    :language: python
-   :lines: 61-73
+   :lines: 62-74
    :linenos:
-   :lineno-start: 19
+   :lineno-start: 21
    :emphasize-lines: 1-10
 
 To make those changes active, we'll have to specify the database location in
@@ -170,53 +170,62 @@ scanned by the application at runtime using ``config.scan()``.
 
 .. literalinclude:: src/tasks.py
    :language: python
-   :lines: 84-89
+   :lines: 85-90
    :linenos:
-   :lineno-start: 42
+   :lineno-start: 44
    :emphasize-lines: 6
 
 
 .. literalinclude:: src/tasks.py
    :language: python
-   :lines: 103-105
+   :lines: 104-106
    :linenos:
-   :lineno-start: 52
+   :lineno-start: 54
    :emphasize-lines: 1-2
 
 We now have the basic mechanism in place to create and talk to the database in
 the application through ``request.db``.
 
 
-Step 4 - View Functions And Routes
+Step 4 - View functions and routes
 ----------------------------------
 
 It's now time to expose some functionality to the world in the form of view
 functions. We'll start by adding a few imports to our ``tasks.py`` file.  In
 particular, we're going to import the ``view_config`` decorator, which will
-let the application discover and register views::
+let the application discover and register views:
 
-    ...
-    from pyramid.exceptions import NotFound
-    from pyramid.httpexceptions import HTTPFound
-    from pyramid.view import view_config
-    ...
+.. literalinclude:: src/tasks.py
+   :language: python
+   :lines: 8-12
+   :linenos:
+   :lineno-start: 8
+   :emphasize-lines: 2-3,5
+
+Note that our imports are sorted alphabetically within the ``pyramid``
+Python-dotted name which makes them easier to find as their number increases.
 
 We'll now add some view functions to our application for listing, adding, and
-closing todos. 
+closing todos.
 
-List View
+
+List view
 +++++++++
 
 This view is intended to show all open entries, according to our ``tasks``
 table in the database. It uses the ``list.mako`` template available under the
 ``templates`` directory by defining it as the ``renderer`` in the
-``view_config`` decorator. The results returned by the query are tuples but we
+``view_config`` decorator. The results returned by the query are tuples, but we
 convert them into a dictionary for easier accessibility within the template.
 The view function will pass a dictionary defining ``tasks`` to the
 ``list.mako`` template.
 
 .. literalinclude:: src/tasks.py
-   :lines: 23-27
+   :language: python
+   :lines: 20-28
+   :linenos:
+   :lineno-start: 20
+   :emphasize-lines: 4-
 
 When using the ``view_config`` decorator, it's important to specify a
 ``route_name`` to match a defined route, and a ``renderer`` if the function is
@@ -224,17 +233,23 @@ intended to render a template. The view function should then return a
 dictionary defining the variables for the renderer to use.  Our ``list_view``
 above does both.
 
-New View
+
+New view
 ++++++++
 
 This view lets the user add new tasks to the application. If a ``name`` is
 provided to the form, a task is added to the database. Then an information
 message is flashed to be displayed on the next request, and the user's browser
-is redirected back to the *list_view*. If nothing is provided, a warning
-message is flashed and the *new_view* is displayed again.
+is redirected back to the ``list_view``. If nothing is provided, a warning
+message is flashed and the ``new_view`` is displayed again.  Insert the
+following code immediately after the ``list_view``.
 
 .. literalinclude:: src/tasks.py
-   :lines: 30-42
+   :language: python
+   :lines: 31-43
+   :linenos:
+   :lineno-start: 31
+   :emphasize-lines: 1-
 
 .. warning::
 
@@ -242,52 +257,67 @@ message is flashed and the *new_view* is displayed again.
     ``db.execute``, otherwise your application will be vulnerable to SQL
     injection when using string formatting.
 
-Close View
+
+Close view
 ++++++++++
 
 This view lets the user mark a task as closed, flashes a success message, and
-redirects back to the *list_view* page.
+redirects back to the ``list_view`` page. Insert the following code immediately
+after the ``new_view``.
 
 .. literalinclude:: src/tasks.py
-   :lines: 45-52
+   :language: python
+   :lines: 46-53
+   :linenos:
+   :lineno-start: 46
+   :emphasize-lines: 1-
 
-NotFound View
+
+NotFound view
 +++++++++++++
 
 This view lets us customize the default ``NotFound`` view provided by Pyramid,
 by using our own template. The ``NotFound`` view is displayed by Pyramid when
 a URL cannot be mapped to a Pyramid view.  We'll add the template in a
-subsequent step.
+subsequent step. Insert the following code immediately after the
+``close_view``.
 
 .. literalinclude:: src/tasks.py
-   :lines: 55-57
+   :language: python
+   :lines: 56-58
+   :linenos:
+   :lineno-start: 56
+   :emphasize-lines: 1-
 
-Adding Routes
+
+Adding routes
 +++++++++++++
 
 We finally need to add some routing elements to our application configuration
-if we want our view functions to be matched to application URLs::
+if we want our view functions to be matched to application URLs. Insert the
+following code immediately after the configuration setup code.
 
-    ...
-    # routes setup
-    config.add_route('list', '/')
-    config.add_route('new', '/new')
-    config.add_route('close', '/close/{id}')
-    ...
+.. literalinclude:: src/tasks.py
+   :language: python
+   :lines: 98-101
+   :linenos:
+   :lineno-start: 95
+   :emphasize-lines: 1-
 
 We've now added functionality to the application by defining views exposed
 through the routes system.
 
-Step 5 - View Templates
+
+Step 5 - View templates
 -----------------------
 
 The views perform the work, but they need to render something that the web
-browser understands: **HTML**.  We have seen that the view configuration
-accepts a renderer argument with the name of a template. We'll use one of
-the default templating engines supported out of the box by Pyramid: *Mako
-Templates*.
+browser understands: HTML.  We have seen that the view configuration accepts a
+renderer argument with the name of a template. We'll use one of the templating
+engines, Mako, supported by the Pyramid add-on, `pyramid_mako
+<http://docs.pylonsproject.org/projects/pyramid-mako/en/latest/>`_.
 
-We'll also use Mako template inheritance.  Template inheritance makes it
+We'll also use Mako template inheritance. Template inheritance makes it
 possible to reuse a generic layout across multiple templates, easing layout
 maintenance and uniformity.
 
