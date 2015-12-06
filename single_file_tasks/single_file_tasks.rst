@@ -324,40 +324,43 @@ maintenance and uniformity.
 Create the following templates in the ``templates`` directory with the
 respective content:
 
+
 layout.mako
 +++++++++++
 
 This template contains the basic layout structure that will be shared with
-other templates. Inside the body tag we've defined a block to display flash
-messages sent by the application and another block to display the content of
-the page inheriting this master layout by using the mako directive
+other templates. Inside the body tag, we've defined a block to display flash
+messages sent by the application, and another block to display the content of
+the page, inheriting this master layout by using the mako directive
 ``${next.body()}``.
 
 .. literalinclude:: src/templates/layout.mako
    :language: html+mako
 
+
 list.mako
 +++++++++
 
 This template is used by the ``list_view`` view function.  This template
-extends the master ``layout.mako`` template by providing a listing of
-tasks. The loop uses the passed ``tasks`` dictionary sent from the
-``list_view`` function using Mako syntax. We also use the
-``request.route_url`` function to generate a url based on a route name and
-its arguments instead of statically defining the url path.
+extends the master ``layout.mako`` template by providing a listing of tasks.
+The loop uses the passed ``tasks`` dictionary sent from the ``list_view``
+function using Mako syntax. We also use the ``request.route_url`` function to
+generate a URL based on a route name and its arguments instead of statically
+defining the URL path.
 
 .. literalinclude:: src/templates/list.mako
    :language: html+mako
 
+
 new.mako
 ++++++++
 
-This template is used by the ``new_view`` view function.  The template
-extends the master ``layout.mako`` template by providing a basic form to add
-new tasks.
+This template is used by the ``new_view`` view function. The template extends
+the master ``layout.mako`` template by providing a basic form to add new tasks.
 
 .. literalinclude:: src/templates/new.mako
    :language: html+mako
+
 
 notfound.mako
 +++++++++++++
@@ -368,45 +371,53 @@ template for our custom ``NotFound`` view.
 .. literalinclude:: src/templates/notfound.mako
    :language: html+mako
 
-Configuring Template Locations
+
+Configuring template locations
 ++++++++++++++++++++++++++++++
 
 To make it possible for views to find the templates they need by renderer
-name, we now need to specify where the Mako templates can be found by
-modifying the application configuration settings in ``tasks.py``::
+name, we now need to specify where the Mako templates can be found by modifying
+the application configuration settings in ``tasks.py``. Insert the emphasized
+lines as indicated in the following.
 
-    ...
-    settings['mako.directories'] = os.path.join(here, 'templates')
-    ...
-    # add mako templating
-    config.include('pyramid_mako')
-    ...
+.. literalinclude:: src/tasks.py
+   :language: python
+   :lines: 90-98
+   :linenos:
+   :lineno-start: 90
+   :emphasize-lines: 2,7-8
 
-Step 6 - Styling Your Templates
+
+Step 6 - Styling your templates
 -------------------------------
 
-It's now time to add some styling to the application templates by adding a
-**CSS** file named ``style.css`` to the ``static`` directory with the
-following content:
+It's now time to add some styling to the application templates by adding a CSS
+file named ``style.css`` to the ``static`` directory with the following
+content:
 
 .. literalinclude:: src/static/style.css
    :language: css
 
 To cause this static file to be served by the application, we must add a
-"static view" directive to the application configuration::
+"static view" directive to the application configuration.
 
-    ...
-    config.add_static_view('static', os.path.join(here, 'static'))
-    ...
+.. literalinclude:: src/tasks.py
+   :language: python
+   :lines: 101-104
+   :linenos:
+   :lineno-start: 101
+   :emphasize-lines: 2-3
 
-Step 7 - Running The Application
+
+Step 7 - Running the application
 --------------------------------
 
 We have now completed all steps needed to run the application in its final
 version. Before running it, here's the complete main code for ``tasks.py`` for
-review:
+review.
 
 .. literalinclude:: src/tasks.py
+   :language: python
    :linenos:
 
 And now let's run ``tasks.py``:
@@ -416,13 +427,12 @@ And now let's run ``tasks.py``:
     $ python tasks.py 
     WARNING:tasks.py:Initializing database...
 
-It will be listening on port 8080.
+It will be listening on port 8080. Open a web browser to the URL
+http://localhost:8080/ to view and interact with the app.
 
 Conclusion
 ----------
 
-This introduction to Pyramid was inspired by **flask** and **bottle** 
-tutorials with the same minimalistic approach in mind. Big thanks Chris 
-McDonough, Carlos de la Guardia, and Casey Duncan for their support and 
-friendship.
-
+This introduction to Pyramid was inspired by Flask and Bottle tutorials with
+the same minimalistic approach in mind. Big thanks to Chris McDonough, Carlos
+de la Guardia, and Casey Duncan for their support and friendship.
