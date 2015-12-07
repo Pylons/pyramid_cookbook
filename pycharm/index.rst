@@ -15,14 +15,19 @@ document, and corrections and improvements through a pull request are most
 welcome.
 
 .. note:: This guide was written for PyCharm 2.7.3, although many of the
-    topics apply for `PyCharm 4 <http://www.jetbrains.com/pycharm/>`_. In
-    addition there are now three editions for PyCharm 4: Professional Edition,
-    a free Community Edition, and a free `Educational Edition
-    <https://www.jetbrains.com/pycharm-educational/>`_. Furthermore, PyCharm
-    4 Professional Edition includes support for Pyramid, making installation
-    and configuration of Pyramid much easier. Pyramid integration is not
-    available in the free editions, so this tutorial will help you get started
-    with Pyramid in those versions.
+    topics apply for `PyCharm 5 <https://www.jetbrains.com/pycharm/>`_. There
+    are now `two editions for PyCharm 5
+    <https://www.jetbrains.com/pycharm/features/editions_comparison_matrix.html>`_:
+    Professional Edition and a free Community Edition. PyCharm 5 Professional
+    Edition includes support for Pyramid, making installation and configuration
+    of Pyramid much easier. Pyramid integration is not available in the free
+    edition, so this tutorial will help you get started with Pyramid in that
+    version.
+
+    There is also a free `PyCharm Edu
+    <https://www.jetbrains.com/pycharm-edu/>`_ which is designed to help
+    programmers learn Python programming and for educators to create lessons in
+    Python programming.
 
 To get started with Pyramid in PyCharm, we need to install prerequisite
 software.
@@ -31,6 +36,7 @@ software.
 * PyCharm and certain Python packages
 * Pyramid and its requirements
 
+
 Install Python
 ==============
 
@@ -38,17 +44,21 @@ You can download installers for Mac OS X and Windows, or source tarballs for
 Linux, Unix, or Mac OS X from `python.org Download
 <http://python.org/download/>`_.  Follow the instructions in the README files.
 
+
 Install PyCharm
 ===============
 
-PyCharm is a commercial application that requires a license.  Several license
-types are available depending on your usage.
+PyCharm is a commercial application that requires a license.  `Several license
+types are available depending on your usage
+<https://www.jetbrains.com/pycharm/buy/index.jsp>`_.
 
 Pyramid is an open source project, and on an annual basis fulfills the terms of
-the Open Source License with JetBrains for the use of PyCharm to develop for
-Pyramid under the Pylons Project.  If you contribute to Pyramid or the Pylons
-Project, and would like to use our 1-year license, please contact the license
-maintainer `stevepiercy` in the `#pyramid` channel on `irc.freenode.net`.
+the `Free Open Source License
+<https://www.jetbrains.com/buy/opensource/?product=pycharm>`_ with JetBrains
+for the use of PyCharm to develop for Pyramid and other projects under the
+Pylons Project.  If you are a contributor to Pyramid or the Pylons Project, and
+would like to use our annual license, please contact the license maintainer
+`stevepiercy` in the `#pyramid` channel on `irc.freenode.net`.
 
 Alternatively you can download a 30-day trial of PyCharm or `purchase a license
 <http://www.jetbrains.com/pycharm/buy/index.jsp>`_ for development or training
@@ -57,8 +67,10 @@ purposes under any other license.
 `Download PyCharm <http://www.jetbrains.com/pycharm/download/index.html>`_ and
 follow the installation instructions on that web page.
 
+
 Configure PyCharm
 =================
+
 
 Create a New Project
 --------------------
@@ -86,6 +98,7 @@ In the Create New Project dialog window do the following.
 
 A new window appears, "Python Interpreters".
 
+
 Create or Select a Python Interpreter
 -------------------------------------
 
@@ -98,6 +111,7 @@ Create or Select a Python Interpreter
   new interpreter.
 
 .. image:: images/python_interpreters_2.png
+
 
 Create a Virtual Environment
 ----------------------------
@@ -116,6 +130,7 @@ Create a Virtual Environment
 * Leave the box unchecked for "Inherit global site packages".
 * Click "OK".  PyCharm will set up libraries and packages, and return you to
   the Python Interpreters window.
+
 
 Install setuptools and pyramid Packages
 ---------------------------------------
@@ -149,6 +164,7 @@ In the Create New Project window, click the OK button.
 If PyCharm displays a warning, click the Yes button.  PyCharm opens the new
 project.
 
+
 Clone the Pyramid repository
 ============================
 
@@ -161,12 +177,14 @@ project.
 In PyCharm, select *VCS > Enable Version Control Integration...*, then select
 Git as your VCS and click the OK button.
 
-See `Cloning a Repository from GitHub <http://www.jetbrains.com/pycharm/webhelp/cloning-a-repository-from-github.html>`_
+See `Cloning a Repository from GitHub
+<http://www.jetbrains.com/pycharm/webhelp/cloning-a-repository-from-github.html>`_
 in the PyCharm documentation for more information on using GitHub and git in
 PyCharm.
 
 We will refer to the cloned repository of Pyramid on your computer as your
 "local Pyramid repository".
+
 
 Install development and documentation requirements
 ==================================================
@@ -208,31 +226,20 @@ First select "setup dev", and click the "run" button (the green triangle).  It
 may take some time to install the requirements.  Second select "setup docs",
 and click the "run" button again.
 
-As of this writing, PyCharm does not yet have a command line interface to a
-shell.  So there are some things that require you to go into a shell to enter
-commands.  This next step requires doing just so.
+To build docs, let's create a new run configuration.
 
-* In your shell, navigate to your project directory, e.g., `cd
-  ~/projects/pycharm_pyramid/`.
-* Enter the command `source bin/activate` to activate your virtual environment.
-* Navigate into your local Pyramid repository, e.g., `cd pyramid`.
-* Issue the command `git submodule update --init --recursive`.
-* Navigate to the `docs` directory in your local Pyramid repository with the
-  command `cd docs`.
-* Issue the command `make clean html` to generate the HTML documentation from
-  reStructuredText files.
-* The HTML files are in `_build/html`.  Open up `index.html` in a web browser
-  to see the result.
-* Whenever you want to edit existing docs and see the effect of your changes,
-  simply run `make html` from within the `docs` directory.
-
-Unfortunately, the author was unable to figure out how to generate docs in
-PyCharm using either a "Python docs" or "Python" run configuration.  If anyone
-knows, please submit a pull request.
+* In PyCharm, select *Run > Edit Configurations...*.
+* Click the "+" button, then select *Python docs > Sphinx Task* to add a new
+  docs build run configuration.
+* Select the command *HTML*.
+* The Project and Project interpreter should already be selected.
+* Enter appropriate values for the source, build, and current working
+  directories.
 
 You will now be ready to hack in and contribute to Pyramid.
 
-Template Languages
+
+Template languages
 ==================
 
 To configure the template languages Mako and Jinja, see the PyCharm
@@ -251,14 +258,14 @@ extension.
   window opens.  Enter `*.pt` in the Add Wildcard window, and click the OK
   button.  Click OK again to save the settings.
 
-Creating a Pyramid Project
+Creating a Pyramid project
 ==========================
 
 The information for this section is derived from `Creating a Pyramid Project
 <http://docs.pylonsproject.org/projects/pyramid/en/master/narr/project.html>`_
 and adapted for use in PyCharm.
 
-Creating a Pyramid Project Using Scaffolds
+Creating a Pyramid project using scaffolds
 ------------------------------------------
 
 Within PyCharm, you can start a project using a scaffold by doing the
@@ -287,7 +294,8 @@ following.
   that the project is using the same virtual environment as the parent project.
 * If a yellow bar warns you to install requirements, then click link to do so.
 
-Installing your Newly Created Project for Development
+
+Installing your newly created project for development
 -----------------------------------------------------
 
 We will create another run configuration, just like before.
@@ -307,7 +315,8 @@ We will create another run configuration, just like before.
 * Finally run the run configuration "MyProject setup develop".  Your project
   will be installed.
 
-Running The Tests For Your Application
+
+Running the tests for your application
 --------------------------------------
 
 We will create yet another run configuration.  [If you know of an easier method
@@ -326,7 +335,8 @@ while in PyCharm, please submit a pull request.]
 * Finally run the run configuration "MyProject setup test".  Your project will
   run its unit tests.
 
-Running The Project Application
+
+Running the project application
 -------------------------------
 
 When will creation of run configurations end?  Not today!
