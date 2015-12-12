@@ -2,29 +2,28 @@
 1: Template Layout Preparation
 ==============================
 
-Get a Bootstrap-themed set of Jinja2 templates in place.
+Get a Twitter Bootstrap-themed set of Jinja2 templates in place.
 
 Background
 ==========
 
-In this traversal tutorial we'll have a number of views and templates,
-each with some styling and layout. Let's work efficiently and produce
-decent visual appeal by getting some views and Jinja2 templates with
-our basic layout.
+In this traversal tutorial, we'll have a number of views and templates, each
+with some styling and layout. Let's work efficiently and produce decent visual
+appeal by getting some views and Jinja2 templates with our basic layout.
 
 Objectives
 ==========
 
-- Get a basic Pyramid project in place with views and templates
-  based on ``pyramid_jinja2``
+- Get a basic Pyramid project in place with views and templates based on
+  ``pyramid_jinja2``.
 
-- Have a "layout" master template and some included subtemplates
+- Have a "layout" master template and some included subtemplates.
 
 Steps
 =====
 
-#. Let's start with an empty hierarchy of directories. Starting in a
-   tutorial workspace (e.g. ``traversal``):
+#. Let's start with an empty hierarchy of directories. Starting in a tutorial
+   workspace (e.g., ``quick_traversal``):
 
    .. code-block:: bash
 
@@ -48,14 +47,14 @@ Steps
     :language: ini
     :linenos:
 
-#. In ``layout/tutorial/__init__.py`` wire up ``pyramid_jinja2``
-   and scan for views:
+#. In ``layout/tutorial/__init__.py`` wire up ``pyramid_jinja2`` and scan for
+   views:
 
    .. literalinclude:: layout/tutorial/__init__.py
       :linenos:
 
-#. Our views in ``layout/tutorial/views.py`` just has a single
-   view that will answer an incoming request for ``/hello``:
+#. Our views in ``layout/tutorial/views.py`` just has a single view that will
+   answer an incoming request for ``/hello``:
 
    .. literalinclude:: layout/tutorial/views.py
       :linenos:
@@ -64,28 +63,28 @@ Steps
    ``layout/tutorial/templates/site.jinja2``:
 
    .. literalinclude:: layout/tutorial/templates/site.jinja2
-    :language: html
+    :language: jinja
     :linenos:
 
 #. That template asks to use a master "layout" template at
    ``layout/tutorial/templates/layout.jinja2``:
 
    .. literalinclude:: layout/tutorial/templates/layout.jinja2
-    :language: html
+    :language: jinja
     :linenos:
 
 #. The layout includes a header at
    ``layout/tutorial/templates/header.jinja2``:
 
    .. literalinclude:: layout/tutorial/templates/header.jinja2
-    :language: html
+    :language: jinja
     :linenos:
 
 #. The layout also includes a subtemplate for breadcrumbs at
    ``layout/tutorial/templates/breadcrumbs.jinja2``:
 
    .. literalinclude:: layout/tutorial/templates/breadcrumbs.jinja2
-    :language: html
+    :language: jinja
     :linenos:
 
 #. Simplified tests in ``layout/tutorial/tests.py``:
@@ -96,7 +95,6 @@ Steps
 #. Now run the tests:
 
    .. code-block:: bash
-
 
     $ $VENV/bin/nosetests tutorial
     .
@@ -116,11 +114,10 @@ Steps
 Analysis
 ========
 
-The ``@view_config`` uses a new attribute: ``name="hello"``. This,
-as we'll see in this traversal tutorial, makes a ``hello`` hop
-available in URLs.
+The ``@view_config`` uses a new attribute: ``name='hello'``. This, as we'll see
+in this traversal tutorial, makes a ``hello`` location available in URLs.
 
-The view's renderer uses Jinja2's mechanism for pointing at a master
-layout and filling certain areas from the view templates. The layout
-points at Twitter Bootstrap CSS on the network provides a basic HTML
-layout.
+The view's renderer uses Jinja2's mechanism for pointing at a master layout and
+filling certain areas from the view templates. The layout provides a basic HTML
+layout and points at Twitter Bootstrap CSS on a content delivery network for
+styling.
