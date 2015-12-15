@@ -1,10 +1,9 @@
 import unittest
 
 from pyramid.testing import DummyRequest
-from pyramid.testing import DummyResource
+
 
 class TutorialViewsUnitTests(unittest.TestCase):
-
     def _makeOne(self, request):
         from .views import TutorialViews
         inst = TutorialViews(request)
@@ -15,6 +14,7 @@ class TutorialViewsUnitTests(unittest.TestCase):
         inst = self._makeOne(request)
         result = inst.site()
         self.assertIn('Site View', result['page_title'])
+
 
 class TutorialFunctionalTests(unittest.TestCase):
     def setUp(self):
