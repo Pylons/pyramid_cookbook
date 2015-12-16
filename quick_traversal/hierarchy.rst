@@ -7,9 +7,8 @@ Objects with subobjects and views, all via URLs.
 Background
 ==========
 
-In :doc:`siteroot` we took the simplest possible step: a
-root object with little need for the stitching-together of a tree known
-as traversal.
+In :doc:`siteroot` we took the simplest possible step: a root object with
+little need for the stitching together of a tree known as traversal.
 
 In this step we remain simple, but make a basic hierarchy::
 
@@ -23,11 +22,11 @@ In this step we remain simple, but make a basic hierarchy::
 Objectives
 ==========
 
-- Multi-level nested hierarchy of Python objects
+- Use a multi-level nested hierarchy of Python objects.
 
-- Show how ``__name__`` and ``__parent__`` glue the hierarchy together
+- Show how ``__name__`` and ``__parent__`` glue the hierarchy together.
 
-- Objects which last between requests
+- Use objects which last between requests.
 
 Steps
 =====
@@ -39,43 +38,37 @@ Steps
     $ cd ..; cp -r siteroot hierarchy; cd hierarchy
     $ $VENV/bin/python setup.py develop
 
-#. Provide a richer set of objects in
-   ``hierarchy/tutorial/resources.py``:
+#. Provide a richer set of objects in ``hierarchy/tutorial/resources.py``:
 
    .. literalinclude:: hierarchy/tutorial/resources.py
       :linenos:
 
-#. Have ``hierarchy/tutorial/views.py`` show information about
-   the resource tree:
+#. Have ``hierarchy/tutorial/views.py`` show information about the resource
+   tree:
 
    .. literalinclude:: hierarchy/tutorial/views.py
       :linenos:
+      :emphasize-lines: 1,9
 
-#. Update the ``hierarchy/tutorial/templates/home.jinja2``
-   view template:
+#. Update the ``hierarchy/tutorial/templates/home.jinja2`` view template:
 
    .. literalinclude:: hierarchy/tutorial/templates/home.jinja2
-      :language: html
+      :language: jinja
       :linenos:
+      :emphasize-lines: 4-12
 
-#. Update the ``hierarchy/tutorial/templates/hello.jinja2`` view
-   template as well:
-
-   .. literalinclude:: hierarchy/tutorial/templates/hello.jinja2
-      :language: html
-      :linenos:
-
-#. The ``hierarchy/tutorial/templates/breadcrumbs.jinja2`` template now
-   has a hierarchy to show:
+#. The ``hierarchy/tutorial/templates/breadcrumbs.jinja2`` template now has a
+   hierarchy to show:
 
    .. literalinclude:: hierarchy/tutorial/templates/breadcrumbs.jinja2
-      :language: html
+      :language: jinja
       :linenos:
 
 #. Update the tests in ``hierarchy/tutorial/tests.py``:
 
    .. literalinclude:: hierarchy/tutorial/tests.py
       :linenos:
+      :emphasize-lines: 8,13,26-28
 
 #. Now run the tests:
 
@@ -83,7 +76,7 @@ Steps
 
 
     $ $VENV/bin/nosetests tutorial
-    .
+    ..
     ----------------------------------------------------------------------
     Ran 2 tests in 0.141s
 
@@ -95,29 +88,29 @@ Steps
 
     $ $VENV/bin/pserve development.ini --reload
 
-#. Open ``http://localhost:6543/`` in your browser.
+#. Open http://localhost:6543/ in your browser.
 
 Analysis
 ========
 
-In this example we have to manage our tree by assigning ``__name__`` as
-an identifier on each child and ``__parent__`` as a reference to the
-parent. The template used now shows different information based on the
-object URL which you traversed to.
+In this example we have to manage our tree by assigning ``__name__`` as an
+identifier on each child, and ``__parent__`` as a reference to the parent. The
+template used now shows different information based on the object URL to which
+you traversed.
 
-We also show that ``@view_config`` can set a "default" view on a
-context by omitting the ``@name`` attribute. Thus, if you visit
-``http://localhost:6543/folder1/`` without providing anything after,
-the configured default view is used.
+We also show that ``@view_config`` can set a "default" view on a context by
+omitting the ``@name`` attribute. Thus, if you visit
+``http://localhost:6543/folder1/`` without providing anything after, the
+configured default view is used.
 
 Extra Credit
 ============
 
-#. In ``resources.py``, we moved the instantiation of ``root`` out to
-   global scope. Why?
+#. In ``resources.py``, we moved the instantiation of ``root`` out to global
+   scope. Why?
 
 #. If you go to a resource that doesn't exist, will Pyramid handle it
    gracefully?
 
-#. If you ask for a default view on a resource and none is configured,
+#. If you ask for a default view on a resource and none is configured, will
    Pyramid handle it gracefully?
