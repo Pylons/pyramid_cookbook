@@ -36,10 +36,8 @@ class TutorialViewsUnitTests(unittest.TestCase):
 class TutorialFunctionalTests(unittest.TestCase):
     def setUp(self):
         from tutorial import main
-
         app = main({})
         from webtest import TestApp
-
         self.testapp = TestApp(app)
 
     def test_it(self):
