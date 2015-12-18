@@ -14,20 +14,20 @@ class TutorialViews:
         self.request = request
         self.parents = reversed(list(lineage(context)))
 
-    @view_config(renderer="templates/root.jinja2",
+    @view_config(renderer='templates/root.jinja2',
                  context=Root)
     def root(self):
         page_title = 'Quick Tutorial: Root'
         return dict(page_title=page_title)
 
-    @view_config(renderer="templates/folder.jinja2",
+    @view_config(renderer='templates/folder.jinja2',
                  context=Folder)
     def folder(self):
         page_title = 'Quick Tutorial: Folder'
         return dict(page_title=page_title)
 
 
-    @view_config(renderer="templates/document.jinja2",
+    @view_config(renderer='templates/document.jinja2',
                  context=Document)
     def document(self):
         page_title = 'Quick Tutorial: Document'
