@@ -17,19 +17,19 @@ class TutorialViews(object):
         self.request = request
         self.parents = reversed(list(lineage(context)))
 
-    @view_config(renderer="templates/root.jinja2",
+    @view_config(renderer='templates/root.jinja2',
                  context=Root)
     def root(self):
         page_title = 'Quick Tutorial: Root'
         return dict(page_title=page_title)
 
-    @view_config(renderer="templates/folder.jinja2",
+    @view_config(renderer='templates/folder.jinja2',
                  context=Folder)
     def folder(self):
         page_title = 'Quick Tutorial: Folder'
         return dict(page_title=page_title)
 
-    @view_config(name="add_folder", context=Folder)
+    @view_config(name='add_folder', context=Folder)
     def add_folder(self):
         # Make a new Folder
         title = self.request.POST['folder_title']
@@ -43,7 +43,7 @@ class TutorialViews(object):
         url = self.request.resource_url(new_folder)
         return HTTPFound(location=url)
 
-    @view_config(name="add_document", context=Folder)
+    @view_config(name='add_document', context=Folder)
     def add_document(self):
         # Make a new Document
         title = self.request.POST['document_title']
@@ -57,7 +57,7 @@ class TutorialViews(object):
         url = self.request.resource_url(new_document)
         return HTTPFound(location=url)
 
-    @view_config(renderer="templates/document.jinja2",
+    @view_config(renderer='templates/document.jinja2',
                  context=Document)
     def document(self):
         page_title = 'Quick Tutorial: Document'
