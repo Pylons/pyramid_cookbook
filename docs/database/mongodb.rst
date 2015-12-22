@@ -30,7 +30,7 @@ attached to each new request::
        from urllib.parse import urlparse
 
    from gridfs import GridFS
-   import pymongo
+   from pymongo import MongoClient
 
 
    def main(global_config, **settings):
@@ -40,7 +40,7 @@ attached to each new request::
       config.add_static_view('static', 'static', cache_max_age=3600)
 
       db_url = urlparse(settings['mongo_uri'])
-      config.registry.db = pymongo.Connection(
+      config.registry.db = MongoClient(
           host=db_url.hostname,
           port=db_url.port,
       )
