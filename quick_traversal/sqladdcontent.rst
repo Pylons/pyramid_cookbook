@@ -2,33 +2,33 @@
 8: SQL Traversal and Adding Content
 ===================================
 
-Traverse through a resource tree of data stored in an RDBMS,
-adding folders and documents at any point.
+Traverse through a resource tree of data stored in an RDBMS, adding folders and
+documents at any point.
 
 Background
 ==========
 
-We now have SQLAlchemy providing us a persistent root. How do we
-arrange an infinitely-nested URL space where URL segments point to
-instances of our classes, nested inside of other instances?
+We now have SQLAlchemy providing us a persistent root. How do we arrange an
+infinitely-nested URL space where URL segments point to instances of our
+classes, nested inside of other instances?
 
-SQLAlchemy, as mentioned previously, uses the adjacency list
-relationship to allow self-joining in a table. This allows a resource
-to store the identifier of its parent. With this we can make a generic
-"Node" model in SQLAlchemy which holds the parts needed by Pyramid's
-traversal.
+SQLAlchemy, as mentioned previously, uses the adjacency list relationship to
+allow self-joining in a table. This allows a resource to store the identifier
+of its parent. With this we can make a generic "Node" model in SQLAlchemy which
+holds the parts needed by Pyramid's traversal.
 
-In a nutshell, we are giving RDBMS data Python dictionary behavior,
-using built-in SQLAlchemy relationships. This lets us define our own
-kinds of containers and own kinds of types, nested in any way we like.
+In a nutshell, we are giving Python dictionary behavior to RDBMS data, using
+built-in SQLAlchemy relationships. This lets us define our own kinds of
+containers and types, nested in any way we like.
+
 
 Goals
 =====
 
 - Recreate the :doc:`addcontent` and :doc:`zodb` steps, where you can
-  add folders inside folders
+  add folders inside folders.
 
-- Extend traversal/dictionary behavior to SQLAlchemy models
+- Extend traversal and dictionary behavior to SQLAlchemy models.
 
 
 Steps
@@ -41,54 +41,85 @@ Steps
     $ cd ..; cp -r sqlroot sqladdcontent; cd sqladdcontent
     $ $VENV/bin/python setup.py develop
 
-
 #. Make a Python module for a generic ``Node`` base class that gives us
-   traversal-y behavior in ``sqladdcontent/tutorial/sqltraversal.py``:
+   traversal-like behavior in ``sqladdcontent/tutorial/sqltraversal.py``:
 
    .. literalinclude:: sqladdcontent/tutorial/sqltraversal.py
       :linenos:
 
-#. ``sqladdcontent/tutorial/models.py`` is very simple,
-   with the heavy lifting moved to the common module:
+#. Update the import in ``__init__.py`` to use the new module we just created.
+
+   .. literalinclude:: sqladdcontent/tutorial/__init__.py
+      :linenos:
+      :emphasize-lines: 5
+
+#. ``sqladdcontent/tutorial/models.py`` is very simple, with the heavy lifting
+   moved to the common module:
 
    .. literalinclude:: sqladdcontent/tutorial/models.py
       :linenos:
+      :emphasize-lines: 5,8-
 
-#. Our ``sqladdcontent/tutorial/views.py`` is almost unchanged from the
-   version in the ``addcontent`` step:
+#. Our ``sqladdcontent/tutorial/views.py`` is almost unchanged from the version
+   in the :doc:`addcontent` step:
 
    .. literalinclude:: sqladdcontent/tutorial/views.py
       :linenos:
 
-#. Our templates are all unchanged from addcontent. Let's bring them
-   back. Make a re-usable snippet in
+#. Our templates are all unchanged from :doc:`addcontent`. Let's bring them
+   back by copying them from the ``addcontent/tutorial/templates`` directory to
+   ``sqladdcontent/tutorial/templates/``. Make a re-usable snippet in
    ``sqladdcontent/tutorial/templates/addform.jinja2`` for adding content:
 
    .. literalinclude:: sqladdcontent/tutorial/templates/addform.jinja2
-      :language: html
+      :language: jinja
       :linenos:
 
-#. Need this snippet added to
-   ``sqladdcontent/tutorial/templates/root.jinja2``:
+#. Create this snippet in ``sqladdcontent/tutorial/templates/root.jinja2``:
 
    .. literalinclude:: sqladdcontent/tutorial/templates/root.jinja2
-      :language: html
+      :language: jinja
       :linenos:
 
-#. Need a view template for ``folder`` at
+#. Add a view template for ``folder`` at
    ``sqladdcontent/tutorial/templates/folder.jinja2``:
 
    .. literalinclude:: sqladdcontent/tutorial/templates/folder.jinja2
-      :language: html
+      :language: jinja
       :linenos:
 
-#. Also need a view template for ``document`` at
+#. Add a view template for ``document`` at
    ``sqladdcontent/tutorial/templates/document.jinja2``:
 
    .. literalinclude:: sqladdcontent/tutorial/templates/document.jinja2
-      :language: html
+      :language: jinja
       :linenos:
 
+#. Add a view template for ``contents`` at
+   ``sqladdcontent/tutorial/templates/contents.jinja2``:
+
+   .. literalinclude:: sqladdcontent/tutorial/templates/contents.jinja2
+      :language: jinja
+      :linenos:
+
+#. Update ``breadcrumbs`` at
+   ``sqladdcontent/tutorial/templates/breadcrumbs.jinja2``:
+
+   .. literalinclude:: sqladdcontent/tutorial/templates/breadcrumbs.jinja2
+      :language: jinja
+      :linenos:
+
+#. Modify the ``initialize_db.py`` script.
+
+   .. literalinclude:: sqladdcontent/tutorial/__init__.py
+      :linenos:
+      :emphasize-lines: 12,14,18-23,42-
+
+#. Update the database by running the script.
+
+   .. code-block:: bash
+
+    $VENV/bin/initialize_tutorial_db development.ini
 
 #. Run your Pyramid application with:
 
@@ -96,7 +127,8 @@ Steps
 
     $ $VENV/bin/pserve development.ini --reload
 
-#. Open ``http://localhost:6543/`` in your browser.
+#. Open http://localhost:6543/ in your browser.
+
 
 Analysis
 ========
