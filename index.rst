@@ -50,8 +50,8 @@ name/link          ET* title                   description                     c
                                                                                                     * WTForms
                                                                                                     * pagination
 
-`pycharm`_         1h  Using PyCharm with      A getting started guide
-                       Pyramid                 for Pyramid using PyCharm
+`pycharm`_         1h  Using PyCharm with      A getting started guide         `pyramid_tutorials`_
+                       Pyramid                 for Pyramid using PyCharm       (this site)
 
 `single_file`_     ?   Todo List Application   very short; a.k.a. The Single   `pyramid_tutorials`_
                        in One File             ``tasks`` Tutorial              (this site)
@@ -64,12 +64,13 @@ name/link          ET* title                   description                     c
                                                                                                     * WebHelpers
                                                                                                     * Custom NotFound view
 
-`traversal`_       2d  Quick Tour for          Overview of traversal:          `pyramid_tutorials`_ * Site root
+`traversal`_       2d  Quick Tutorial for      Overview of traversal:          `pyramid_tutorials`_ * Site root
                        Traversal               Hierarchies, views, etc.        (this site)          * Hierarchy
                                                                                                     * Type-specific views
                                                                                                     * Adding content
                                                                                                     * ZODB persistence
                                                                                                     * SQL persistence
+                                                                                                    * SQLAlchemy
 ================== === ======================= =============================== ==================== ========================================
 
 .. _quick_tutorial: http://docs.pylonsproject.org/projects/pyramid/en/latest/quick_tutorial/index.html

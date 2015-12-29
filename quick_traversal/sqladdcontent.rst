@@ -119,7 +119,7 @@ Steps
 
    .. code-block:: bash
 
-    $VENV/bin/initialize_tutorial_db development.ini
+    $ $VENV/bin/initialize_tutorial_db development.ini
 
 #. Run your Pyramid application with:
 
