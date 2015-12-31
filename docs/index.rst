@@ -17,10 +17,12 @@ Table of contents
    :maxdepth: 2
 
    auth/index
+   automating_development_process/index
    configuration/index
    database/index
    debugging/index
    deployment/index
+   development_tools/index
    forms/index
    logging/index
    porting/index
@@ -30,7 +32,6 @@ Table of contents
    templates/index
    testing/index
    views/index
-   automating_development_process/index
    misc/index
    todo
 
