@@ -6,5 +6,4 @@ Miscellaneous
 
    interfaces
    events
-   mac_install
    videos
