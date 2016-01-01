@@ -4,20 +4,25 @@
 Pyramid Tutorials
 =================
 
-This is the home of tutorial and patterns content for the Pyramid web
-framework.
+This is the listing of tutorials for the Pyramid web framework.
 
-Available Pyramid tutorials
-===========================
+The source of various tutorials is noted under the column "code repo". The
+tutorials which are officially supported by Pyramid's core contributors are in
+the code repo "pyramid".
 
-Pyramid tutorials exist in the official `Pyramid Documentation
-<http://docs.pylonsproject.org/projects/pyramid/en/latest/#tutorials>`_,
-appear in this community project `Pyramid Tutorials
-<http://docs.pylonsproject.org/projects/pyramid_tutorials/en/latest/>`_, and
-others are published elsewhere.
+* Official tutorials in the `Pyramid Documentation
+  <http://docs.pylonsproject.org/projects/pyramid/en/latest/#tutorials>`_.
+* The `Pyramid Community Cookbook
+  <http://docs.pylonsproject.org/projects/pyramid_cookbook/en/latest/>`_ is a
+  community-based collection of tutorials and recipes. Only the recipes that
+  are of a tutorial nature and are supported by their authors are included in
+  this list.
+* Other sources have sufficient support by their authors to merit their
+  inclusion in this list.
 
-These are the Pyramid tutorials we could locate during the PyCon USA sprints in
-March, 2013.
+If you know of other tutorials, please submit an issue or pull request via the
+`Pyramid Tutorials repo on GitHub
+<https://github.com/Pylons/pyramid_tutorials/issues>`_ to add it to this list.
 
 **ET** is the estimated time to complete each tutorial.
 
@@ -51,9 +56,9 @@ name/link          ET* title                   description                     c
                                                                                                     * pagination
 
 `pycharm`_         1h  Using PyCharm with      A getting started guide         `pyramid_cookbook`_
-                       Pyramid                 for Pyramid using PyCharm       (this site)
+                       Pyramid                 for Pyramid using PyCharm
 
-`single_file`_     ?   Todo List Application   very short; a.k.a. The Single   `pyramid_tutorials`_
+`single_file`_     2h  Todo List Application   very short; a.k.a. The Single   `pyramid_tutorials`_
                        in One File             ``tasks`` Tutorial              (this site)
 
 `todopyramid`_     4h  ``ToDo Pyramid App``    ToDo App from Python Web        `todopyramid`_       * URL dispatch
