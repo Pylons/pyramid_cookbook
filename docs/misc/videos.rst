@@ -1,5 +1,5 @@
-Pyramid Tutorial/Informational Videos
--------------------------------------
+Pyramid Tutorial and Informational Videos
+-----------------------------------------
 
 * Six Feet Up's `Intro to Basic Pyramid
   <http://www.sixfeetup.com/blog/intro-to-the-python-framework-pyramid-and-a-sample-app>`_.
@@ -21,10 +21,10 @@ Pyramid Tutorial/Informational Videos
   <http://www.youtube.com/watch?v=DBV0MsRu72M>`_ from PyCon AU 2011 (~37 mins).
 
 * Carlos de la Guardia's `Patterns for building large Pyramid applications
-  <http://www.youtube.com/watch?v=NUQMr5R3dlk>`_" (~25 minutes).
+  <http://www.youtube.com/watch?v=NUQMr5R3dlk>`_ (~25 minutes).
 
 * Eric Bieschke's `Pyramid Turbo Start Tutorial
-  <http://www.youtube.com/watch?v=PscYR_4sQCU>`_" (very short, 2 mins, 2011).
+  <http://www.youtube.com/watch?v=PscYR_4sQCU>`_ (very short, 2 mins, 2011).
 
 * Chris McDonough `presentation
   <http://www.youtube.com/watch?v=XKYuKWqr_do&feature=youtu.be>`_
@@ -37,7 +37,7 @@ Pyramid Tutorial/Informational Videos
   <http://www.youtube.com/watch?v=_A8kDHozPoM>`_ (about 40 mins, 2010).
 
 * Kevin Gill's `What is Pyramid and where is it with respect to Django
-  <http://vimeo.com/23771511>`_" (~43 mins) via Python Ireland May 2011.
+  <http://vimeo.com/23771511>`_ (~43 mins) via Python Ireland May 2011.
 
 * Saiju M's `Create Pyramid Application With SQLAlchemy
   <http://www.youtube.com/watch?v=L2KSsqwwH9M>`_ (~ 17 mins).
@@ -51,7 +51,7 @@ Pyramid Tutorial/Informational Videos
   mins).
 
 * Dylan Jay's DjangoCon AU 2013 Keynote, `The myth of goldilocks and the three
-  frameworks, Pyramid, Django and Plone
+  frameworks, Pyramid, Django, and Plone
   <http://www.youtube.com/watch?v=vW1ZhO-_ZQk>`_ (~45 mins).
 
 * Paul Everitt: `Python 3 Web Development with Pyramid and PyCharm
