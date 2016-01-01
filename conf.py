@@ -33,7 +33,7 @@ from docutils import utils
 
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.intersphinx'
+    'sphinx.ext.intersphinx',
 ]
 
 intersphinx_mapping = {
@@ -41,7 +41,7 @@ intersphinx_mapping = {
     'python': ('http://docs.python.org', None),
     'python3': ('http://docs.python.org/3', None),
     'pyramid': ('http://docs.pylonsproject.org/projects/pyramid/en/latest/',
-                None)
+                None),
 }
 
 # Add any paths that contain templates here, relative to this directory.
