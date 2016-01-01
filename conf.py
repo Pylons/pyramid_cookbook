@@ -37,6 +37,7 @@ extensions = [
 ]
 
 intersphinx_mapping = {
+    'cookbook': ('http://docs.pylonsproject.org/projects/pyramid-cookbook/en/latest/', None),
     'python': ('http://docs.python.org', None),
     'python3': ('http://docs.python.org/3', None),
     'pyramid': ('http://docs.pylonsproject.org/projects/pyramid/en/latest/',
