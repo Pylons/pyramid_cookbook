@@ -50,7 +50,7 @@ name/link          ET* title                   description                     c
                                                                                                     * WTForms
                                                                                                     * pagination
 
-`pycharm`_         1h  Using PyCharm with      A getting started guide         `pyramid_tutorials`_
+`pycharm`_         1h  Using PyCharm with      A getting started guide         `pyramid_cookbook`_
                        Pyramid                 for Pyramid using PyCharm       (this site)
 
 `single_file`_     ?   Todo List Application   very short; a.k.a. The Single   `pyramid_tutorials`_
@@ -79,13 +79,14 @@ name/link          ET* title                   description                     c
 .. _wiki2: http://docs.pylonsproject.org/projects/pyramid/en/latest/tutorials/wiki2/index.html
 .. _birdie: https://github.com/cguardia/Pyramid-Tutorial/blob/master/presentation/pyramid_tutorial.pdf
 .. _blogr: http://pyramid-blogr.readthedocs.org/en/latest/
-.. _pycharm: http://docs.pylonsproject.org/projects/pyramid_tutorials/en/latest/pycharm/index.html
+.. _pycharm: http://docs.pylonsproject.org/projects/pyramid-cookbook/en/latest/development_tools/pycharm.html
 .. _single_file: http://docs.pylonsproject.org/projects/pyramid_tutorials/en/latest/single_file_tasks/single_file_tasks.html
 .. _todopyramid: https://github.com/indypy/todopyramid
 .. _traversal: http://docs.pylonsproject.org/projects/pyramid_tutorials/en/latest/quick_traversal/index.html
 
 .. _pyramid: https://github.com/Pylons/pyramid
 .. _pyramid_tutorials: https://github.com/Pylons/pyramid_tutorials
+.. _pyramid_cookbook: https://github.com/Pylons/pyramid_cookbook
 .. _pyramid_blogr: https://github.com/Pylons/pyramid_blogr
 .. _cguardia_tut: https://github.com/cguardia/Pyramid-Tutorial
 
