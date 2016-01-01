@@ -1,6 +1,5 @@
 .. _using_pycharm:
 
-**************************
 Using PyCharm with Pyramid
 **************************
 
