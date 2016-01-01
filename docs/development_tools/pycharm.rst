@@ -1,4 +1,4 @@
-.. _pycharm:
+.. _using_pycharm:
 
 **************************
 Using PyCharm with Pyramid
@@ -9,6 +9,11 @@ This tutorial is a very brief overview of how to use PyCharm with Pyramid.
 Environment (IDE) for Python programmers.  It has numerous features including
 code completion, project management, version control system (git, Subversion,
 etc.), debugger, and more.
+
+.. seealso:: See also Paul Everitt's video, `Python 3 Web Development with
+  Pyramid and PyCharm
+  <http://blog.jetbrains.com/blog/2013/10/21/webinar-recording-production-python-3-web-development-with-pyramid-and-pycharm/>`_
+  (about 1 hour in length).
 
 This tutorial is a continually evolving document. Both PyCharm and Pyramid are
 under active development, and changes to either may necessitate changes to
