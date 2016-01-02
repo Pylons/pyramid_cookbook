@@ -28,6 +28,7 @@ Table of contents
    porting/index
    pylons/index
    routing/index
+   sample_applications/index
    static_assets/index
    templates/index
    testing/index
