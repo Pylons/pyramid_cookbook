@@ -1,11 +1,11 @@
-.. _quick_traversal:
+.. _traversal_tutorial:
 
-============================
-Quick Tutorial for Traversal
-============================
+==================
+Traversal Tutorial
+==================
 
-Traversal is an alternate, object-oriented approach to mapping incoming
-web requests to objects and views in Pyramid.
+Traversal is an alternate, object-oriented approach to mapping incoming web
+requests to objects and views in Pyramid.
 
 .. note::
 
