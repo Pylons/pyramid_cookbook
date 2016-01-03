@@ -1,3 +1,5 @@
+.. _quick_traversal:
+
 ============================
 Quick Tutorial for Traversal
 ============================
@@ -12,12 +14,12 @@ web requests to objects and views in Pyramid.
 
 .. toctree::
 
-    requirements
-    layout
-    siteroot
-    hierarchy
-    typeviews
-    addcontent
-    zodb
-    sqlroot
-    sqladdcontent
+   requirements
+   layout
+   siteroot
+   hierarchy
+   typeviews
+   addcontent
+   zodb
+   sqlroot
+   sqladdcontent

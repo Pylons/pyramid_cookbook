@@ -122,13 +122,13 @@ boolean to indicate whether the task is closed.
 Add to the ``tasks`` directory a file named ``schema.sql`` with the following
 content:
 
-.. literalinclude:: src/schema.sql
+.. literalinclude:: single_file_tasks_src/schema.sql
    :language: sql
 
 Add a few more imports to the top of the ``tasks.py`` file as indicated by the
 emphasized lines.
 
-.. literalinclude:: src/tasks.py
+.. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 1-8
    :linenos:
@@ -143,7 +143,7 @@ start the application, our subscribed function will be executed. Consequently,
 our database will be created or updated as necessary when the application is
 started.
 
-.. literalinclude:: src/tasks.py
+.. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 73-85
    :linenos:
@@ -157,7 +157,7 @@ connection to the database when a Pyramid request begins.  It will be available
 as ``request.db``.  We'll arrange to close it down by the end of the request
 lifecycle using the ``request.add_finished_callback`` method.
 
-.. literalinclude:: src/tasks.py
+.. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 62-74
    :linenos:
@@ -168,7 +168,7 @@ To make those changes active, we'll have to specify the database location in
 the configuration settings and make sure our ``@subscriber`` decorator is
 scanned by the application at runtime using ``config.scan()``.
 
-.. literalinclude:: src/tasks.py
+.. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 85-90
    :linenos:
@@ -176,7 +176,7 @@ scanned by the application at runtime using ``config.scan()``.
    :emphasize-lines: 6
 
 
-.. literalinclude:: src/tasks.py
+.. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 104-106
    :linenos:
@@ -195,7 +195,7 @@ functions. We'll start by adding a few imports to our ``tasks.py`` file.  In
 particular, we're going to import the ``view_config`` decorator, which will
 let the application discover and register views:
 
-.. literalinclude:: src/tasks.py
+.. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 8-12
    :linenos:
@@ -220,7 +220,7 @@ convert them into a dictionary for easier accessibility within the template.
 The view function will pass a dictionary defining ``tasks`` to the
 ``list.mako`` template.
 
-.. literalinclude:: src/tasks.py
+.. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 20-28
    :linenos:
@@ -244,7 +244,7 @@ is redirected back to the ``list_view``. If nothing is provided, a warning
 message is flashed and the ``new_view`` is displayed again.  Insert the
 following code immediately after the ``list_view``.
 
-.. literalinclude:: src/tasks.py
+.. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 31-43
    :linenos:
@@ -265,7 +265,7 @@ This view lets the user mark a task as closed, flashes a success message, and
 redirects back to the ``list_view`` page. Insert the following code immediately
 after the ``new_view``.
 
-.. literalinclude:: src/tasks.py
+.. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 46-53
    :linenos:
@@ -282,7 +282,7 @@ a URL cannot be mapped to a Pyramid view.  We'll add the template in a
 subsequent step. Insert the following code immediately after the
 ``close_view``.
 
-.. literalinclude:: src/tasks.py
+.. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 56-58
    :linenos:
@@ -297,7 +297,7 @@ We finally need to add some routing elements to our application configuration
 if we want our view functions to be matched to application URLs. Insert the
 following code immediately after the configuration setup code.
 
-.. literalinclude:: src/tasks.py
+.. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 98-101
    :linenos:
@@ -334,7 +334,7 @@ messages sent by the application, and another block to display the content of
 the page, inheriting this master layout by using the mako directive
 ``${next.body()}``.
 
-.. literalinclude:: src/templates/layout.mako
+.. literalinclude:: single_file_tasks_src/templates/layout.mako
    :language: html+mako
 
 
@@ -348,7 +348,7 @@ function using Mako syntax. We also use the ``request.route_url`` function to
 generate a URL based on a route name and its arguments instead of statically
 defining the URL path.
 
-.. literalinclude:: src/templates/list.mako
+.. literalinclude:: single_file_tasks_src/templates/list.mako
    :language: html+mako
 
 
@@ -358,7 +358,7 @@ new.mako
 This template is used by the ``new_view`` view function. The template extends
 the master ``layout.mako`` template by providing a basic form to add new tasks.
 
-.. literalinclude:: src/templates/new.mako
+.. literalinclude:: single_file_tasks_src/templates/new.mako
    :language: html+mako
 
 
@@ -368,7 +368,7 @@ notfound.mako
 This template extends the master ``layout.mako`` template.  We use it as the
 template for our custom ``NotFound`` view.
 
-.. literalinclude:: src/templates/notfound.mako
+.. literalinclude:: single_file_tasks_src/templates/notfound.mako
    :language: html+mako
 
 
@@ -380,7 +380,7 @@ name, we now need to specify where the Mako templates can be found by modifying
 the application configuration settings in ``tasks.py``. Insert the emphasized
 lines as indicated in the following.
 
-.. literalinclude:: src/tasks.py
+.. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 90-98
    :linenos:
@@ -395,13 +395,13 @@ It's now time to add some styling to the application templates by adding a CSS
 file named ``style.css`` to the ``static`` directory with the following
 content:
 
-.. literalinclude:: src/static/style.css
+.. literalinclude:: single_file_tasks_src/static/style.css
    :language: css
 
 To cause this static file to be served by the application, we must add a
 "static view" directive to the application configuration.
 
-.. literalinclude:: src/tasks.py
+.. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 101-104
    :linenos:
@@ -416,7 +416,7 @@ We have now completed all steps needed to run the application in its final
 version. Before running it, here's the complete main code for ``tasks.py`` for
 review.
 
-.. literalinclude:: src/tasks.py
+.. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :linenos:
 
