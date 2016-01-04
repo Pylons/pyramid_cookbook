@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ page_title }}</title>
+    <link rel="stylesheet"
+          href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="navbar navbar-inverse">
+    <div class="container">
+        {% include "templates/header.jinja2" %}
+    </div>
+</div>
+
+<div class="container">
+
+    <div>
+        {% include "templates/breadcrumbs.jinja2" %}
+    </div>
+
+    <h1>{{ page_title }}</h1>
+    {% block content %}
+    {% endblock content %}
+
+</div>
+
+</body>
+</html>

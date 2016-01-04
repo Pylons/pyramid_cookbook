@@ -1,0 +1,9 @@
+<div class="pull-right">
+    {% if view.logged_in %}
+        {{ view.logged_in }} <a href="/logout">Logout</a>
+    {% else %}
+        <a href="/login">Login</a>
+    {% endif %}
+</div>
+<a class="navbar-brand"
+   href="{{ request.resource_url(request.root) }}">Tutorial</a>

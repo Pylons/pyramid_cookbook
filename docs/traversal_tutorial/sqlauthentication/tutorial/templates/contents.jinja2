@@ -1,0 +1,8 @@
+<h4>Contents</h4>
+<ul>
+    {% for child in context.values() %}
+        <li>
+            <a href="{{ request.resource_url(child) }}">{{ child.title }}</a>
+        </li>
+    {% endfor %}
+</ul>

@@ -32,6 +32,7 @@ Table of contents
    static_assets/index
    templates/index
    testing/index
+   traversal_tutorial/index
    views/index
    misc/index
    todo

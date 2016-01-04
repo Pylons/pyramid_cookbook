@@ -1,0 +1,18 @@
+{% extends "templates/layout.jinja2" %}
+{% block content %}
+
+  <ul>
+    <li><a href="/">Site Folder</a></li>
+    <li><a href="/doc1">Document 01</a></li>
+    <li><a href="/doc2">Document 02</a></li>
+    <li><a href="/folder1">Folder 01</a></li>
+    <li><a href="/folder1/doc1">Document 01 in Folder 01</a></li>
+  </ul>
+
+  <h2>{{ context.title }}</h2>
+
+  <p>Welcome to {{ context.title }}. Visit
+    <a href="{{ request.resource_url(context, 'hello') }}">hello</a>
+  </p>
+
+{% endblock content %}
