@@ -1,13 +1,13 @@
 .. _pyramid-cookbook:
 
-Pyramid Cookbook
-================
+Pyramid Community Cookbook
+==========================
 
-The Pyramid Cookbook presents topical, practical "recipes" of using
+The Pyramid Community Cookbook presents topical, practical "recipes" of using
 :mod:`Pyramid`. It supplements the `main documentation
 <http://docs.pylonsproject.org/projects/pyramid/en/latest/>`_.
 
-To contribute your recipe to the Pyramid Cookbook, read `Contributing
+To contribute your recipe to the Pyramid Community Cookbook, read `Contributing
 <https://github.com/Pylons/pyramid_cookbook/blob/master/contributing.md>`_.
 
 Table of contents
