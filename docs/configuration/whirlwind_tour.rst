@@ -1,3 +1,5 @@
+.. _whirlwind-adv-conf:
+
 A Whirlwind Tour of Advanced Pyramid Configuration Tactics
 ==========================================================
 
