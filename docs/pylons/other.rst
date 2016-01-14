@@ -49,7 +49,7 @@ decorator. Instead we recommend the "pyramid_simpleform_" package, which
 replaces @validate with a more flexible structure. 
 
 There are several other form libraries people use with Pyramid. These are
-discussed in the regular Forms_ section in the Pyramid Cookbook.
+discussed in the regular Forms_ section in the Pyramid Community Cookbook.
 
 WebHelpers
 ==========
