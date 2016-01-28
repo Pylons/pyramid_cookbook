@@ -1,8 +1,9 @@
-# Contribute to the Pyramid Cookbook
+# Contribute to the Pyramid Community Cookbook
 
-The Pyramid Cookbook is a collection of "recipes" that are contributed by
-members of the Pyramid community. The recipes are supplemental material to
-the [main Pyramid documentation](http://docs.pylonsproject.org/projects/pyramid/en/latest/).
+The Pyramid Community Cookbook is a collection of "recipes" that are
+contributed by members of the Pyramid community. The recipes are supplemental
+material to the [main Pyramid
+documentation](http://docs.pylonsproject.org/projects/pyramid/en/latest/).
 
 ## Write a recipe
 
@@ -30,17 +31,17 @@ pull request to the repository.
 
 ### Getting started
 
-1. While logged into your GitHub account, navigate to the Pyramid Cookbook repo
-   on GitHub.
+1. While logged into your GitHub account, navigate to the Pyramid Community
+   Cookbook repo on GitHub.
 
         https://github.com/Pylons/pyramid_cookbook
 
-2. Fork and clone the Pyramid Cookbook repository to your GitHub account by
-   clicking the "Fork" button.
+2. Fork and clone the Pyramid Community Cookbook repository to your GitHub
+   account by clicking the "Fork" button.
 
-3. Clone your fork of the Pyramid Cookbook from your GitHub account to your
-   local computer, substituting your account username and specifying the
-   destination as "hack-on-cookbook".
+3. Clone your fork of the Pyramid Community Cookbook from your GitHub account
+   to your local computer, substituting your account username and specifying
+   the destination as "hack-on-cookbook".
 
         $ cd ~
         $ git clone git@github.com:USERNAME/pyramid_cookbook.git hack-on-cookbook
@@ -60,8 +61,8 @@ pull request to the repository.
         $ export VENV=~/hack-on-cookbook/env
         $ virtualenv $VENV
 
-5. Install the Pyramid Cookbook from the checkout into the virtualenv using
-   the following command.
+5. Install the Pyramid Community Cookbook from the checkout into the virtualenv
+   using the following command.
 
         $ $VENV/bin/python setup.py install
 
