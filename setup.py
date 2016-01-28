@@ -26,7 +26,7 @@ except IOError:
 
 install_requires=[
     'setuptools',
-    'Sphinx >= 1.3.1',
+    'Sphinx >= 1.3.5',
     'docutils',
     'repoze.sphinx.autointerface',
     'pylons-sphinx-themes',
@@ -34,7 +34,7 @@ install_requires=[
 
 setup(name='pyramid_cookbook',
       version='0.2',
-      description='The Pyramid Cookbook: topical, practical "recipes" of using Pyramid.',
+      description='The Pyramid Community Cookbook: topical, practical "recipes" of using Pyramid.',
       long_description=README + '\n\n',
       classifiers=[
         "Development Status :: 6 - Mature",

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Pyramid Cookbook documentation build configuration file, created by
+# Pyramid Community Cookbook documentation build configuration file, created by
 # sphinx-quickstart on Thu Nov 11 23:40:28 2010.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -56,7 +56,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Pyramid Cookbook'
+project = u'Pyramid Community Cookbook'
 thisyear = datetime.datetime.now().year
 copyright = u'2011-%s, Agendaless Consulting' % thisyear
 
@@ -129,7 +129,7 @@ html_theme_options = dict(
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = 'The Pyramid Cookbook v%s' % release
+html_title = 'The Pyramid Community Cookbook v%s' % release
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -204,7 +204,7 @@ htmlhelp_basename = 'pyramidcookbook'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'pyramidcookbook.tex', u'Pyramid Cookbook',
+  ('index', 'pyramidcookbook.tex', u'Pyramid Community Cookbook',
    u'Pylons Project Contributors', 'manual'),
 ]
 
@@ -237,7 +237,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'pyramidcookbook', u'Pyramid Cookbook',
+    ('index', 'pyramidcookbook', u'Pyramid Community Cookbook',
      [u'Pylons Project Contributors'], 1)
 ]
 
