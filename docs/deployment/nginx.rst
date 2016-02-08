@@ -117,6 +117,7 @@ configuration is shown here:
     }
 
     server {
+        listen 80;
     
         # optional ssl configuration
         
