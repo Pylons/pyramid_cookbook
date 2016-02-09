@@ -26,10 +26,6 @@ TODO
 
 - http://blog.dannynavarro.net/2011/01/14/async-web-apps-with-pyramid/
 
-- http://pylonshq.com/pasties/e4b933da7f577c541cc2f2489f825fdd (facebook)
-
-- http://pylonshq.com/pasties/c549d2be586797da17c7fad5ae875372 (twitter)
-
 - http://alexmarandon.com/articles/zodb_bfg_pyramid_notes/
 
 - http://www.serverzen.net/2010/11/20/pyramid-setting-up-debug-werkzeug
