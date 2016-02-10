@@ -97,11 +97,6 @@ configuration is shown here:
         # Virtual Host Configs
         ##
 
-        server {
-            server_name _;
-            return 444;
-        }
-
         include /etc/nginx/conf.d/*.conf;
         include /etc/nginx/sites-enabled/*;
     }
