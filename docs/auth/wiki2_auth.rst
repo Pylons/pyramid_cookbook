@@ -1,6 +1,15 @@
 Wiki Flow of Authentication
 ===========================
 
+.. warning::
+
+   This recipe has not received significant updates since its creation around
+   the time Pyramid 1.0 was released. Since then, the wiki tutorial to which
+   this recipe refers has received numerous significant updates. Pyramid 1.6.1
+   was released on 2016-02-02, and a major update to the wiki tutorial has been
+   merged for the Pyramid 1.7 release. Upon the release of Pyramid 1.7, this
+   recipe will be removed as obsolete.
+
 This tutorial describes the "flow of authentication" of the result of the
 completing the :ref:`wiki2_adding_authorization` tutorial chapter from the
 main Pyramid documentation.
