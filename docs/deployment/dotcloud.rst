@@ -10,7 +10,9 @@ Step 0: Install DotCloud
 ========================
 
 `Install DotCloud's CLI
-<http://docs.dotcloud.com/firststeps/install/>`_ by running::
+<http://docs.dotcloud.com/firststeps/install/>`_ by running:
+
+.. code-block:: bash
 
     $ pip install dotcloud
 
@@ -52,7 +54,9 @@ root directory of your app. Here are some samples for a basic Pyramid app:
 
 Learn more about the `DotCloud buildfile <http://docs.dotcloud.com/guides/build-file/>`_.
 
-``wsgi.py``::
+``wsgi.py``:
+
+.. code-block:: python
 
     # Your WSGI callable should be named “application”, be located in a
     # "wsgi.py" file, itself located at the top directory of the service.
@@ -76,7 +80,9 @@ If you specified a database service in your dotcloud.yml, the connection info
 will be made available to your service in a JSON file at
 /home/dotcloud/environment.json. For example, the following code would read
 the environment.json file and add the PostgreSQL URL to the settings of
-your pyramid app::
+your pyramid app:
+
+.. code-block:: python
 
     import json
 
@@ -97,7 +103,9 @@ Step 3: Deploy your app
 
 Now you can deploy your app. Remember to commit your changes if you're
 using Mercurial or Git, then run these commands in the top directory
-of your app::
+of your app:
+
+.. code-block:: bash
 
     $ dotcloud create your_app_name
     $ dotcloud push your_app_name

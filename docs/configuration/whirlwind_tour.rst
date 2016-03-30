@@ -4,7 +4,7 @@ A Whirlwind Tour of Advanced Pyramid Configuration Tactics
 ==========================================================
 
 Concepts:  Configuration, Directives, and Statements
------------------------------------------------------
+----------------------------------------------------
 
 This article attempts to demonstrate some of Pyramid's more advanced
 startup-time configuration features.  The stuff below talks about
@@ -157,7 +157,9 @@ temporarily within ``app.py``::
        server = make_server('0.0.0.0', 8080, app)
        server.serve_forever()
 
-When we attempt to run this Pyramid application, we get a traceback::
+When we attempt to run this Pyramid application, we get a traceback:
+
+.. code-block:: text
 
     Traceback (most recent call last):
       File "app.py", line 12, in <module>

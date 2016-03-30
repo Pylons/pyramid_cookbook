@@ -1,5 +1,5 @@
-Basic Authentication Policy
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+HTTP Basic Authentication Policy
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Here's an implementation of an HTTP basic auth Pyramid authentication policy::
 
@@ -98,3 +98,4 @@ Use it something like::
 
    config = Configurator(
                  authentication_policy=BasicAuthenticationPolicy(mycheck))
+

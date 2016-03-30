@@ -12,7 +12,7 @@ static content as well as acting as a proxy between other applications and the
 outside world. As a proxy, it also has good support for basic load balancing
 between multiple instances of an application.
 
-::
+.. code-block:: text
 
     Client <---> Nginx [0.0.0.0:80] <---> (static files)
                   /|\
@@ -23,9 +23,11 @@ Our target setup is going to be an Nginx server listening on port 80 and
 load-balancing between 2 pserve processes. It will also serve the static files
 from our project's directory.
 
-Let's assume a basic project setup::
+Let's assume a basic project setup:
 
-    /home/example/myapp
+ .. code-block:: text
+
+   /home/example/myapp
     |
     |-- env (your virtualenv)
     |
@@ -46,7 +48,7 @@ Step 1: Configuring Nginx
 Nginx needs to be configured as a proxy for your application. An example
 configuration is shown here:
 
-.. code-block:: ini
+.. code-block:: nginx
     :linenos:
 
     # nginx.conf
@@ -106,7 +108,7 @@ configuration is shown here:
         include /etc/nginx/sites-enabled/*;
     }
 
-.. code-block:: ini
+.. code-block:: nginx
     :linenos:
 
     # myapp.conf
@@ -150,8 +152,8 @@ configuration is shown here:
 
 .. note::
 
-   myapp.conf is actually included into the ``http {}`` section of the
-   main nginx.conf file.
+   ``myapp.conf`` is actually included into the ``http {}`` section of the main
+   ``nginx.conf`` file.
 
 
 The optional ``listen`` directive, as well as the 2 following lines,
@@ -161,7 +163,6 @@ key for this to work.  More details on this process can be found in
 the `OpenSSL <http://www.openssl.org/docs/HOWTO/certificates.txt>`_ howto.
 You will also need to update the paths that are shown to match the actual
 path to your SSL certificates.
-
 
 The ``upstream`` directive sets up a round-robin load-balancer between two
 processes. The proxy is then configured to pass requests through the balancer
@@ -189,7 +190,7 @@ can distinguish between different domains, HTTP vs. HTTPS, and with some
 extra configuration to the ``paste_prefix`` filter it can even handle
 hosting the application under a different URL than ``/``.
 
-.. code-block:: ini
+.. code-block:: nginx
     :linenos:
 
     #---------- App Configuration ----------
@@ -238,10 +239,7 @@ be proxied to your WSGI application and can be served directly.
    to be public. It will not respect any view permissions you've placed on
    this directory.
 
-.. code-block:: ini
-    :linenos:
-
-    ...
+.. code-block:: nginx
 
     location / {
         # all of your proxy configuration
@@ -265,9 +263,11 @@ works for the simplest setups, but for a really robust server, you're going
 to want to automate the startup and shutdown of those processes, as well as
 have some way of managing failures.
 
-Enter ``supervisord``::
+Enter ``supervisord``:
 
-    pip install supervisor
+.. code-block:: bash
+
+    $ pip install supervisor
 
 This is a great program that will manage arbitrary processes, restarting them
 when they fail, providing hooks for sending emails, etc when things change,

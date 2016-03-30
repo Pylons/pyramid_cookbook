@@ -122,9 +122,11 @@ Running/Debugging Pyramid under Pydev
 We will set up PyDev to run pserve as part of a run or debug configuration.
 
 First, copy ``pserve.py`` from your virtualenv to a location outside of your
-project library path::
+project library path:
 
-	cp $WORKON_HOME/proj_venv/bin/pserve.py $WORKSPACE
+.. code-block:: bash
+
+    $ cp $WORKON_HOME/proj_venv/bin/pserve.py $WORKSPACE
 
 .. note::
 
@@ -136,14 +138,14 @@ configuration, right click on the project and select
 configuration type, and click on the new configuration icon. Add your
 project name (or browse to it), in this case "tutorial".
 
-Add these values to the *Main* tab::
+Add these values to the *Main* tab:
 
-	Project: RunPyramid
-	Main Module: ${workspace_loc}/pserve.py
+* Project: ``RunPyramid``
+* Main Module: ``${workspace_loc}/pserve.py``
 	
-Add these values to the *Arguments* tab::
+Add these values to the *Arguments* tab:
 
-	Program arguments: ${workspace_loc:tutorial/development.ini} --reload
+* Program arguments: ``${workspace_loc:tutorial/development.ini} --reload``
 
 .. note::
 
@@ -154,10 +156,10 @@ Add these values to the *Arguments* tab::
    without the ``--reload``, and instead of checking "Run"
    in the "Display in favorites menu", check "Debug".
 
-On the *Common* tab::
+On the *Common* tab:
 
-	Uncheck "Launch in background"
-	In the box labeled "Display in favorites menu", check "Run"
+* Uncheck "Launch in background"
+* In the box labeled "Display in favorites menu", check "Run"
 
 Hit *Run* (*Debug*) to run (debug) your configuration immediately,
 or *Apply* to create the configuration without running it.
