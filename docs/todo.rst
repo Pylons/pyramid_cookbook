@@ -10,7 +10,9 @@ TODO
 
 - Provide an example of a catchall 500 error view.
 
-- Redirecting to a URL with Parameters::
+- Redirecting to a URL with Parameters:
+
+.. code-block:: irc
 
     [22:04] <AGreatJewel> How do I redirect to a url and set some GET params? 
     some thing like return HTTPFound(location="whatever", params={ params here })

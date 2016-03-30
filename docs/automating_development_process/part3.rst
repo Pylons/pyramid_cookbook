@@ -21,8 +21,6 @@ Production:
     PRODUCTION = true
     minify = dist
 
-    ...
-
 Development:
 
 .. code-block:: ini
@@ -32,7 +30,7 @@ Development:
     
     PRODUCTION = false
     minify = app
-    ...
+
 
 View callables
 ==============
