@@ -15,7 +15,6 @@ in the settings:
 .. code-block:: ini
 
    [app:main]
-   ...
    mako.directories = pyramidapp:templates
 
 This enables relative template paths like ``renderer="/mytemplate.mak"`` and
