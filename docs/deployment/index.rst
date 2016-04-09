@@ -13,4 +13,5 @@ Deployment
    expresscloud
    gae_buildout
    gae
+   gunicorn
    windows
