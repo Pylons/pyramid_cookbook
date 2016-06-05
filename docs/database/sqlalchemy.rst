@@ -10,7 +10,7 @@ for more information.
 
 Alternatively, you can try to follow
 :ref:`wiki tutorial <bfg_sql_wiki_tutorial>` or
-`blogr tutorial <http://pyramid-blogr.readthedocs.org>`_.
+`blogr tutorial <http://docs.pylonsproject.org/projects/pyramid-blogr/en/latest/>`_.
 
 Using a Non-Global Session
 --------------------------

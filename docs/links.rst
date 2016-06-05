@@ -21,20 +21,20 @@
     Note: this isn't working for me with multiword terms with spaces.
 
 
-.. _Pyramid manual: http://docs.pylonsproject.org/projects/pyramid/en/1.3-branch/index.html
-.. _Tutorials: http://docs.pylonsproject.org/projects/pyramid/en/1.3-branch/index.html#tutorials
-.. _Installing Pyramid: http://docs.pylonsproject.org/projects/pyramid/en/1.3-branch/narr/install.html
-.. _Creating a Pyramid Project: http://docs.pylonsproject.org/projects/pyramid/en/1.3-branch/narr/project.html
+.. _Pyramid manual: http://docs.pylonsproject.org/projects/pyramid/en/latest/
+.. _Tutorials: http://docs.pylonsproject.org/projects/pyramid/en/latest/#tutorials
+.. _Installing Pyramid: http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/install.html
+.. _Creating a Pyramid Project: http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/project.html
 
 .. _Akhet:   http://docs.pylonsproject.org/projects/akhet/en/latest/
-.. _Beaker:  http://beaker.readthedocs.org/en/latest/sessions.html
-.. _SQLAlchemy manual:  http://docs.sqlalchemy.org/
-.. _pyramid_handlers:  http://docs.pylonsproject.org/projects/pyramid_handlers/en/latest/
+.. _Beaker:  https://beaker.readthedocs.io/en/latest/sessions.html
+.. _SQLAlchemy manual:  http://docs.sqlalchemy.org/en/latest/
+.. _pyramid_handlers:  http://docs.pylonsproject.org/projects/pyramid-handlers/en/latest/
 .. _pyramid_routehelper:  https://github.com/Pylons/pyramid_routehelper/blob/master/pyramid_routehelper/__init__.py
 
 .. _Deform:  http://docs.pylonsproject.org/projects/deform/en/latest/
-.. _pyramid_simpleform:  http://packages.python.org/pyramid_simpleform/
+.. _pyramid_simpleform:  http://pythonhosted.org/pyramid_simpleform/
 
-.. _Kotti:  http://kotti.readthedocs.org/en/latest/index.html
-.. _Ptah:  http://ptahproject.readthedocs.org/en/latest/index.html
-.. _Khufu: http://pypi.python.org/pypi?%3Aaction=search&term=khufu&submit=search
+.. _Kotti:  https://kotti.readthedocs.io/en/latest/
+.. _Ptah:  https://ptahproject.readthedocs.io/en/latest/
+.. _Khufu: https://github.com/khufuproject
