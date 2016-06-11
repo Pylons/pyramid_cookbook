@@ -13,4 +13,4 @@ section of the Pyramid documentation.
 For additional information on other testing packages see:
 
 - `WebTest <http://webtest.pythonpaste.org/en/latest/>`_
-- `nose <https://nose.readthedocs.org/en/latest/>`_
+- `nose <https://nose.readthedocs.io/en/latest/>`_

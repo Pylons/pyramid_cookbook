@@ -103,7 +103,7 @@ recursively. Kotti is a content management system that, yes, lets users define
 arbitrarily deep URLs. Specifically, Kotti allows users to define a page with
 subpages; e.g., a "directory" of pages.
 
-.. _Kotti: http://kotti.readthedocs.org/en/latest/index.html
+.. _Kotti: https://kotti.readthedocs.io/en/latest/
 
 Kotti is rather complex and takes some time to study. It uses SQLAlchemy's
 polymorphism to make tables "inherit" from other tables. This is an advanced

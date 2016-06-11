@@ -205,5 +205,5 @@ Of course, if you have the files in the static directory they'll still be
 visible as "/static/robots.txt" as well as "/robots.txt". If that bothers you,
 make another directory outside the static directory for them.
 
-.. _pyramid_assetviews: https://pyramid_assetviews.readthedocs.org/en/latest/
+.. _pyramid_assetviews: https://pyramid-assetviews.readthedocs.io/en/latest/
 
