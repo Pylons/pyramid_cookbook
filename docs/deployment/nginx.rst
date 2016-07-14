@@ -204,7 +204,6 @@ hosting the application under a different URL than ``/``.
     [pipeline:main]
     pipeline =
         paste_prefix
-        # a good spot for some logging middleware!
         myapp
 
     #---------- Server Configuration ----------
