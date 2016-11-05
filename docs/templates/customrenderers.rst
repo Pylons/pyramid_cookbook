@@ -34,7 +34,7 @@ application (or anywhere else you'd like to place such things):
             if ct == response.default_content_type:
                response.content_type = 'text/csv'
 
-         fout = io.StringIO()
+         fout = StringIO()
          writer = csv.writer(fout, delimiter=',', quotechar=',', quoting=csv.QUOTE_MINIMAL)
 
          writer.writerow(value.get('header', []))
