@@ -15,3 +15,4 @@ Deployment
    gae
    gunicorn
    windows
+   aws_via_eb
