@@ -5,14 +5,14 @@ Deployment
    :maxdepth: 1
 
    deployment
-   nginx
    apache
    gevent
-   heroku
-   dotcloud
-   expresscloud
-   gae_buildout
-   gae
    gunicorn
+   nginx
    windows
    aws_via_eb
+   dotcloud
+   gae_buildout
+   gae
+   heroku
+   expresscloud
