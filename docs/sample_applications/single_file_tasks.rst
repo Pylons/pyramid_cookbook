@@ -132,7 +132,7 @@ emphasized lines.
    :language: python
    :lines: 1-8
    :linenos:
-   :lineno-start: 1
+   :lineno-match:
    :emphasize-lines: 3,6-8
 
 To make the process of creating the database slightly easier, rather than
@@ -145,7 +145,7 @@ started.
 
 .. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
-   :lines: 73-85
+   :lines: 74-85
    :linenos:
    :lineno-start: 21
    :emphasize-lines: 1-9
@@ -197,10 +197,9 @@ let the application discover and register views:
 
 .. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
-   :lines: 8-12
-   :linenos:
-   :lineno-start: 8
-   :emphasize-lines: 2-3,5
+   :lines: 8-11
+   :lineno-match:
+   :emphasize-lines: 2,4
 
 Note that our imports are sorted alphabetically within the ``pyramid``
 Python-dotted name which makes them easier to find as their number increases.
@@ -222,9 +221,8 @@ The view function will pass a dictionary defining ``tasks`` to the
 
 .. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
-   :lines: 20-28
-   :linenos:
-   :lineno-start: 20
+   :lines: 19-27
+   :lineno-match:
    :emphasize-lines: 4-
 
 When using the ``view_config`` decorator, it's important to specify a
@@ -246,9 +244,8 @@ following code immediately after the ``list_view``.
 
 .. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
-   :lines: 31-43
-   :linenos:
-   :lineno-start: 31
+   :lines: 30-42
+   :lineno-match:
    :emphasize-lines: 1-
 
 .. warning::
@@ -267,9 +264,8 @@ after the ``new_view``.
 
 .. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
-   :lines: 46-53
-   :linenos:
-   :lineno-start: 46
+   :lines: 45-52
+   :lineno-match:
    :emphasize-lines: 1-
 
 
@@ -284,9 +280,8 @@ subsequent step. Insert the following code immediately after the
 
 .. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
-   :lines: 56-58
-   :linenos:
-   :lineno-start: 56
+   :lines: 55-58
+   :lineno-match:
    :emphasize-lines: 1-
 
 
@@ -383,8 +378,7 @@ lines as indicated in the following.
 .. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 90-98
-   :linenos:
-   :lineno-start: 90
+   :lineno-match:
    :emphasize-lines: 2,7-8
 
 
@@ -404,8 +398,7 @@ To cause this static file to be served by the application, we must add a
 .. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
    :lines: 101-104
-   :linenos:
-   :lineno-start: 101
+   :lineno-match:
    :emphasize-lines: 2-3
 
 
