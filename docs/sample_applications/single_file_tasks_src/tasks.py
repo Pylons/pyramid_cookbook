@@ -3,10 +3,9 @@ import logging
 import sqlite3
 
 from pyramid.config import Configurator
+from pyramid.events import ApplicationCreated
 from pyramid.events import NewRequest
 from pyramid.events import subscriber
-from pyramid.events import ApplicationCreated
-from pyramid.exceptions import NotFound
 from pyramid.httpexceptions import HTTPFound
 from pyramid.session import UnencryptedCookieSessionFactoryConfig
 from pyramid.view import view_config
@@ -23,7 +22,7 @@ here = os.path.dirname(os.path.abspath(__file__))
 # views
 @view_config(route_name='list', renderer='list.mako')
 def list_view(request):
-    rs = request.db.execute("select id, name from tasks where closed = 0")
+    rs = request.db.execute('select id, name from tasks where closed = 0')
     tasks = [dict(id=row[0], name=row[1]) for row in rs.fetchall()]
     return {'tasks': tasks}
 
@@ -46,7 +45,7 @@ def new_view(request):
 @view_config(route_name='close')
 def close_view(request):
     task_id = int(request.matchdict['id'])
-    request.db.execute("update tasks set closed = ? where id = ?",
+    request.db.execute('update tasks set closed = ? where id = ?',
                        (1, task_id))
     request.db.commit()
     request.session.flash('Task was successfully closed!')
@@ -66,6 +65,7 @@ def new_request_subscriber(event):
     settings = request.registry.settings
     request.db = sqlite3.connect(settings['db'])
     request.add_finished_callback(close_db_connection)
+
 
 def close_db_connection(request):
     request.db.close()

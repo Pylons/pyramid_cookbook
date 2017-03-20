@@ -145,7 +145,7 @@ started.
 
 .. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
-   :lines: 73-85
+   :lines: 74-85
    :linenos:
    :lineno-start: 21
    :emphasize-lines: 1-9
@@ -197,10 +197,10 @@ let the application discover and register views:
 
 .. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
-   :lines: 8-12
+   :lines: 8-11
    :linenos:
    :lineno-start: 8
-   :emphasize-lines: 2-3,5
+   :emphasize-lines: 2,4
 
 Note that our imports are sorted alphabetically within the ``pyramid``
 Python-dotted name which makes them easier to find as their number increases.
@@ -222,9 +222,9 @@ The view function will pass a dictionary defining ``tasks`` to the
 
 .. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
-   :lines: 20-28
+   :lines: 19-27
    :linenos:
-   :lineno-start: 20
+   :lineno-start: 19
    :emphasize-lines: 4-
 
 When using the ``view_config`` decorator, it's important to specify a
@@ -246,9 +246,9 @@ following code immediately after the ``list_view``.
 
 .. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
-   :lines: 31-43
+   :lines: 30-42
    :linenos:
-   :lineno-start: 31
+   :lineno-start: 30
    :emphasize-lines: 1-
 
 .. warning::
@@ -267,9 +267,9 @@ after the ``new_view``.
 
 .. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
-   :lines: 46-53
+   :lines: 45-52
    :linenos:
-   :lineno-start: 46
+   :lineno-start: 45
    :emphasize-lines: 1-
 
 
@@ -284,9 +284,9 @@ subsequent step. Insert the following code immediately after the
 
 .. literalinclude:: single_file_tasks_src/tasks.py
    :language: python
-   :lines: 56-58
+   :lines: 55-58
    :linenos:
-   :lineno-start: 56
+   :lineno-start: 55
    :emphasize-lines: 1-
 
 
