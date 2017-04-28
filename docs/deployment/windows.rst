@@ -73,7 +73,7 @@ your service::
         _svc_description_ = SERVICE_DESCRIPTION
         
         def SvcDoRun(self):
-            from cherrypy import wsgiserver
+            from cheroot import wsgi
             from pyramid.paster import get_app
             import os, sys
 
@@ -83,7 +83,7 @@ your service::
 
             app = get_app(CONFIG_FILE)
 
-            self.server = wsgiserver.CherryPyWSGIServer(
+            self.server = wsgi.Server(
                     ('0.0.0.0', PORT_TO_BIND), app,
                     server_name=SERVER_NAME)
 
