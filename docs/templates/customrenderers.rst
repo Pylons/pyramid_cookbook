@@ -35,7 +35,7 @@ application (or anywhere else you'd like to place such things):
                response.content_type = 'text/csv'
 
          fout = StringIO()
-         writer = csv.writer(fout, delimiter=',', quotechar=',', quoting=csv.QUOTE_MINIMAL)
+         writer = csv.writer(fout, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
          writer.writerow(value.get('header', []))
          writer.writerows(value.get('rows', []))
