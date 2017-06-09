@@ -111,9 +111,9 @@ Steps
 
 #. Modify the ``initialize_db.py`` script.
 
-   .. literalinclude:: sqladdcontent/tutorial/__init__.py
+   .. literalinclude:: sqladdcontent/tutorial/initialize_db.py
       :linenos:
-      :emphasize-lines: 12,14,18-23,42-
+      :emphasize-lines: 12,14,18-23,42,44-
 
 #. Update the database by running the script.
 
