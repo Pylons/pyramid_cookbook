@@ -15,4 +15,4 @@ Use it something like::
        return ['groups', 'that', 'login', 'is', 'member', 'of']
 
    config = Configurator(
-                 authentication_policy=BasicAuthenticationPolicy(mycheck))
+                 authentication_policy=BasicAuthAuthenticationPolicy(mycheck))
