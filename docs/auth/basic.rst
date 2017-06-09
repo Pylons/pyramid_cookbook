@@ -1,10 +1,9 @@
 HTTP Basic Authentication Policy
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-To adopt basic HTTP authentication, you can use build-in authentication policy
-``BasicAuthAuthenticationPolicy``
+To adopt basic HTTP authentication, you can use Pyramid's built-in authentication policy, :class:`pyramid.authentication.BasicAuthAuthenticationPolicy`.
 
-Use it something like::
+Use it like this::
 
    from pyramid.authentication import BasicAuthAuthenticationPolicy
 
