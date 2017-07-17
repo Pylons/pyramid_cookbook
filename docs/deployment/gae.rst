@@ -31,9 +31,10 @@ Add the following lines:
 
 #. Edit ``main.py``
 
-Add the following lines::
+Add the following lines
 
 .. code-block:: python
+
     from pyramid.paster import get_app, setup_logging
     ini_path = 'production.ini'
     setup_logging(ini_path)
@@ -41,7 +42,7 @@ Add the following lines::
 
 #. Edit ``appengine_config.py``
 
-Add the following lines::
+Add the following lines
 
 .. code-block:: python
 
