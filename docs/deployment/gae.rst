@@ -1,108 +1,92 @@
 .. _appengine_tutorial:
 
-:app:`Pyramid` on Google's App Engine
-==============================================================
+:app:`Pyramid` on Google App Engine
+===================================
 
-It is possible to run a :app:`Pyramid` application on Google's `App
-Engine <https://cloud.google.com/appengine/>`_.  This
-tutorial is written in terms of using the command line on a UNIX
-system; it should be possible to perform similar actions on a Windows
-system. This tutorial also assumes you've already installed and created a :app:`Pyramid` application,
-and that you have an App Engine account to deploy to.
+It is possible to run a :app:`Pyramid` application on `Google App Engine <https://cloud.google.com/appengine/>`_.  This tutorial is written in terms of using the command line on a UNIX system. It should be possible to perform similar actions on a Windows system. This tutorial also assumes you've already installed and created a :app:`Pyramid` application, and that you have a Google App Engine account.
 
 Setup
 -----
 
 First we'll need to create a few files so that App Engine can communicate with our project properly.
 
-Create a ``requirements.txt`` file, a ``main.py`` file, an ``app.yaml`` file, and an ``appengine_config.py`` file.
+Create the files with content as follows.
 
-#. Edit ``requirements.txt``
+#.  ``requirements.txt``
 
-Add the following lines:
+    .. code-block:: text
 
-.. code-block:: text
-    :linenos:
+        Pyramid
+        waitress
+        pyramid_debugtoolbar
+        pyramid_chameleon
 
-    Pyramid
-    waitress
-    pyramid_debugtoolbar
-    pyramid_chameleon
+#.  ``main.py``
 
-#. Edit ``main.py``
+    .. code-block:: python
 
-Add the following lines
+        from pyramid.paster import get_app, setup_logging
+        ini_path = 'production.ini'
+        setup_logging(ini_path)
+        application = get_app(ini_path, 'main')
 
-.. code-block:: python
+#.  ``appengine_config.py``
 
-    from pyramid.paster import get_app, setup_logging
-    ini_path = 'production.ini'
-    setup_logging(ini_path)
-    application = get_app(ini_path, 'main')
+    .. code-block:: python
 
-#. Edit ``appengine_config.py``
+        from google.appengine.ext import vendor
+        vendor.add('lib')
 
-Add the following lines
+#.  ``app.yaml``
 
-.. code-block:: python
+    .. code-block:: yaml
 
-    from google.appengine.ext import vendor
-    vendor.add('lib')
+        application: application-id
+        version: version
+        runtime: python27
+        api_version: 1
+        threadsafe: false
 
-#. Edit ``app.yaml``
+        handlers:
+        - url: /static
+          static_dir: pyramid_project/static
+        - url: /.*
+          script: main.application
 
-Add the following lines:
+    Configure this file with the following values:
 
-.. code-block:: yaml
+    * Replace "application-id" with your App Engine application's ID.
+    * Replace "version" with the version you want to deploy.
+    * Replace "pyramid_project" in the definition for ``static_dir`` with the parent directory name of your static assets. If your static assets are in the root directory, you can just put "static".
 
-    application: application-id
-    version: version
-    runtime: python27
-    api_version: 1
-    threadsafe: false
+    For more details about ``app.yaml``, see `app.yaml Reference <https://cloud.google.com/appengine/docs/standard/python/config/appref>`_.
 
-    handlers:
-    - url: /static
-      static_dir: pyramid_project/static
-    - url: /.*
-      script: main.application
+#.  Install dependencies.
 
-Replace `application` with your App Engine app ID, `version` with the version you want to deploy to, and `pyramid_project`
-in the `static_dir` definition with the directory name above your static assets. If your static assets are in the root
-directory, you can just put `static`
+    .. code-block:: bash
 
-For more details about app.yaml, see `app.yaml Reference <https://cloud.google.com/appengine/docs/standard/python/config/appref>`_.
+        $ pip install -t lib -r requirements.txt
 
 
-#. Install dependencies
+Running locally
+---------------
+
+At this point you should have everything you need to run your Pyramid application locally using ``dev_appserver``. Assuming you have appengine in your ``$PATH``:
 
 .. code-block:: bash
 
-    $ pip install -t lib -r requirements.txt
-
-
-Running Locally
----------------
-
-At this point you should have everything you need to run your Pyramid application locally using dev_appserver.
-Assuming you have appengine in your $PATH,
-
-.. code-block:: text
-
   $ dev_appserver.py app.yaml
 
-And voilà! You should have a perfectly-running Pyramid application running under Google App Engine, on your local machine.
+And voilà! You should have a perfectly-running Pyramid application via Google App Engine on your local machine.
+
 
 Deploying
 ---------
 
-Deploying to App Engine is pretty straight forward. If you've successfully launched your application locally,
-deploying is just as easy.
+If you've successfully launched your application locally, deploy with a single command.
 
-.. code-block:: text
+.. code-block:: bash
 
-  $ appcfg.py update app.yaml
+    $ appcfg.py update app.yaml
 
-Your Pyramid application is now live to the world! You can access it by navigation to your domain name, or by
-`applicationid.appspot.com`, or if you've specified a version outside of your default, it would
-be `version-dot-applicationid.appspot.com`
+Your Pyramid application is now live to the world! You can access it by navigating to your domain name, by "<applicationid>.appspot.com", or if you've specified a version outside of your default then it would be "<version-dot-applicationid>.appspot.com".
