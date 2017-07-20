@@ -262,7 +262,7 @@ Creating a Pyramid project
 ==========================
 
 The information for this section is derived from `Creating a Pyramid Project
-<http://docs.pylonsproject.org/projects/pyramid/en/master/narr/project.html>`_
+<https://docs.pylonsproject.org/projects/pyramid/en/master/narr/project.html>`_
 and adapted for use in PyCharm.
 
 Creating a Pyramid project using scaffolds

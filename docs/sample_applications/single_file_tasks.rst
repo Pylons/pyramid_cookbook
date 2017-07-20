@@ -36,7 +36,7 @@ Step 1 - Organizing the project
     To use Mako templates, you need to install the ``pyramid_mako`` add-on as
     indicated under `Major Backwards Incompatibilities under What's New In
     Pyramid 1.5
-    <http://docs.pylonsproject.org/projects/pyramid/en/master/whatsnew-1.5.html#major-backwards-incompatibilities>`_.
+    <https://docs.pylonsproject.org/projects/pyramid/en/master/whatsnew-1.5.html#major-backwards-incompatibilities>`_.
 
     In short, you'll need to have both the ``pyramid`` and ``pyramid_mako``
     packages installed. Use ``easy_install pyramid pyramid_mako`` or ``pip
@@ -310,7 +310,7 @@ The views perform the work, but they need to render something that the web
 browser understands: HTML.  We have seen that the view configuration accepts a
 renderer argument with the name of a template. We'll use one of the templating
 engines, Mako, supported by the Pyramid add-on, `pyramid_mako
-<http://docs.pylonsproject.org/projects/pyramid-mako/en/latest/>`_.
+<https://docs.pylonsproject.org/projects/pyramid-mako/en/latest/>`_.
 
 We'll also use Mako template inheritance. Template inheritance makes it
 possible to reuse a generic layout across multiple templates, easing layout

@@ -8,5 +8,5 @@ Static Assets (Static Files)
 
 
 For more information on static assets, see the `Static Assets
-<http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/assets.html>`_
+<https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/assets.html>`_
 section of the Pyramid documentation.

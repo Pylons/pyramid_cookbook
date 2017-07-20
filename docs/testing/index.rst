@@ -7,7 +7,7 @@ Testing
    testing_post_curl
 
 For more information on testing see the `Testing
-<http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/testing.html>`_
+<https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/testing.html>`_
 section of the Pyramid documentation.
 
 For additional information on other testing packages see:

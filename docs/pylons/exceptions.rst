@@ -133,8 +133,8 @@ redirect to it. This is useful only for sites that prefer a trailing slash
 Reference
 =========
 
-* `HTTP exceptions <http://docs.pylonsproject.org/projects/pyramid/en/latest/api/httpexceptions.html>`_
-* `HTTP exception usage and exception views <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/views.html#using-special-exceptions-in-view-callables>`_
+* `HTTP exceptions <https://docs.pylonsproject.org/projects/pyramid/en/latest/api/httpexceptions.html>`_
+* `HTTP exception usage and exception views <https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/views.html#using-special-exceptions-in-view-callables>`_
 
 
 .. [1] The three temporary redirect statuses are largely interchangeable

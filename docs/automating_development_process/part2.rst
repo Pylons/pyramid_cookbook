@@ -15,7 +15,7 @@ documentation and install Pyramid.
 
 Official Pyramid installation documentation
 
-- http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/install.html#installing-chapter
+- https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/install.html#installing-chapter
 
 NodeJS
 ======

@@ -70,7 +70,7 @@ See Also
 
 - The "Virginia" sample application: https://github.com/Pylons/virginia/blob/master/virginia/views.py
 
-- ZODB and Traversal in Pyramid tutorial: http://docs.pylonsproject.org/projects/pyramid/en/latest/tutorials/wiki/index.html#bfg-wiki-tutorial
+- ZODB and Traversal in Pyramid tutorial: https://docs.pylonsproject.org/projects/pyramid/en/latest/tutorials/wiki/index.html#bfg-wiki-tutorial
 
 - "Pyramid Traversal and Mongodb": http://kusut.web.id/2011/03/27/pyramid-traversal-and-mongodb/
 

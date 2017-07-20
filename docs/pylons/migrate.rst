@@ -34,5 +34,5 @@ libraries which haven't been.
 .. include:: ../links.rst
 
 
-.. _pyramid.wsgiapp.wsgiapp2: http://docs.pylonsproject.org/projects/pyramid/en/latest/api/wsgi.html#pyramid.wsgi.wsgiapp2
+.. _pyramid.wsgiapp.wsgiapp2: https://docs.pylonsproject.org/projects/pyramid/en/latest/api/wsgi.html#pyramid.wsgi.wsgiapp2
 .. _Porting Applications to Pyramid: ../porting/index.html

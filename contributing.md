@@ -3,7 +3,7 @@
 The Pyramid Community Cookbook is a collection of "recipes" that are
 contributed by members of the Pyramid community. The recipes are supplemental
 material to the [main Pyramid
-documentation](http://docs.pylonsproject.org/projects/pyramid/en/latest/).
+documentation](https://docs.pylonsproject.org/projects/pyramid/en/latest/).
 
 ## Write a recipe
 
@@ -26,7 +26,7 @@ pull request to the repository.
 - PEP8 compliance.  Whitespace rules are relaxed: it is not necessary to put
   two newlines between classes.  But 79-column lines, in particular, are
   mandatory.  See
-  http://docs.pylonsproject.org/en/latest/community/codestyle.html for more
+  https://pylonsproject.org/community-coding-style-standards.html for more
   information.
 
 ### Getting started

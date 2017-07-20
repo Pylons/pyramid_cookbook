@@ -111,7 +111,7 @@ Running/Debugging Pyramid under Pydev
    ``$WORKSPACE`` is the name of the PyDev workspace containing your project
    
    To create a working example, copy the `pyramid tutorial step03 
-   <http://docs.pylonsproject.org/projects/pyramid/en/latest/quick_tutorial/ini.html>`_
+   <https://docs.pylonsproject.org/projects/pyramid/en/latest/quick_tutorial/ini.html>`_
    code into $WORKSPACE/tutorial.
    
    After copying the code, cd to ``$WORKSPACE/tutorial`` and run

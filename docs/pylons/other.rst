@@ -83,9 +83,9 @@ You can register the event with ``@asubscriber`` or
 
 For more details see:
 
-* `Using Events * <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/events.html>`_
-* `Using The Before Render Event <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/hooks.html#using-the-before-render-event>`_
-* `pyramid.event API <http://docs.pylonsproject.org/projects/pyramid/en/latest/api/events.html>`_
+* `Using Events * <https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/events.html>`_
+* `Using The Before Render Event <https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/hooks.html#using-the-before-render-event>`_
+* `pyramid.event API <https://docs.pylonsproject.org/projects/pyramid/en/latest/api/events.html>`_
 
 URL generation
 ==============
@@ -182,5 +182,5 @@ severely.
 .. include::  ../links.rst
 
 .. _Forms: ../forms/index.html
-.. _Writing a Script: http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/commandline.html?highlight=pshell#writing-a-script
-.. _Hello World: http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/firstapp.html#hello-world
+.. _Writing a Script: https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/commandline.html?highlight=pshell#writing-a-script
+.. _Hello World: https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/firstapp.html#hello-world

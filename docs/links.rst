@@ -5,7 +5,7 @@
     The Cookbook configuration has an "intersphinx inventory", which allows you
     to link to sections in the Pyramid manual and glossary without providing
     absolute URLs. To get a list of current reference names, download
-    http://docs.pylonsproject.org/projects/pyramid/dev/objects.inv and
+    https://docs.pylonsproject.org/projects/pyramid/en/latest/objects.inv and
     uncompress it (GZIP format). It will be a text file with lines like this:
 
     response std:term -1 glossary.html#term-$ -
@@ -21,18 +21,18 @@
     Note: this isn't working for me with multiword terms with spaces.
 
 
-.. _Pyramid manual: http://docs.pylonsproject.org/projects/pyramid/en/latest/
-.. _Tutorials: http://docs.pylonsproject.org/projects/pyramid/en/latest/#tutorials
-.. _Installing Pyramid: http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/install.html
-.. _Creating a Pyramid Project: http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/project.html
+.. _Pyramid manual: https://docs.pylonsproject.org/projects/pyramid/en/latest/
+.. _Tutorials: https://docs.pylonsproject.org/projects/pyramid/en/latest/#tutorials
+.. _Installing Pyramid: https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/install.html
+.. _Creating a Pyramid Project: https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/project.html
 
-.. _Akhet:   http://docs.pylonsproject.org/projects/akhet/en/latest/
+.. _Akhet:   https://docs.pylonsproject.org/projects/akhet/en/latest/
 .. _Beaker:  https://beaker.readthedocs.io/en/latest/sessions.html
 .. _SQLAlchemy manual:  http://docs.sqlalchemy.org/en/latest/
-.. _pyramid_handlers:  http://docs.pylonsproject.org/projects/pyramid-handlers/en/latest/
+.. _pyramid_handlers:  https://docs.pylonsproject.org/projects/pyramid-handlers/en/latest/
 .. _pyramid_routehelper:  https://github.com/Pylons/pyramid_routehelper/blob/master/pyramid_routehelper/__init__.py
 
-.. _Deform:  http://docs.pylonsproject.org/projects/deform/en/latest/
+.. _Deform:  https://docs.pylonsproject.org/projects/deform/en/latest/
 .. _pyramid_simpleform:  http://pythonhosted.org/pyramid_simpleform/
 
 .. _Kotti:  https://kotti.readthedocs.io/en/latest/
