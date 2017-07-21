@@ -13,14 +13,12 @@ console within the terminal that you used to start your application.
 There are lots of great resources that can help you learn PDB.
 
 - Doug Hellmann's PyMOTW blog entry entitled "pdb - Interactive Debugger" at
-  http://blog.doughellmann.com/2010/09/pymotw-pdb-interactive-debugger.html
-  is the canonical text resource to learning PDB.
+  https://pymotw.com/3/pdb/ is the canonical text resource to learning PDB.
 
 - The PyCon video presentation by Chris McDonough entitled "Introduction to
   PDB" at http://pyvideo.org/video/644/introduction-to-pdb is a good place to
   start learning PDB.
 
-- The video at http://marakana.com/forums/python/python/423.html shows you
+- The video at http://pyvideo.org/pycon-us-2012/introduction-to-pdb.html shows you
   how to start how to start to using pdb.  The video describes using ``pdb``
   in a command-line program.
-

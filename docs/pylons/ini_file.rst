@@ -78,4 +78,4 @@ developers worry about those issues; you can just write a tween and be out on th
 golf course by 3pm.
 
 
-.. _PasteDeploy manual: http://pythonpaste.org/deploy/
+.. _PasteDeploy manual: https://web.archive.org/web/20161013165027/http://pythonpaste.org/deploy/

@@ -170,6 +170,5 @@ imported without requiring that you import each "by hand" within
 Writing Tests For Pyramid + SQLAlchemy
 --------------------------------------
 
-John Anderson's blog entry describes a strategy for
-`writing tests for systems which integrate Pyramid and SQLAlchemy
-<http://www.sontek.net/blog/2011/12/01/writing_tests_for_pyramid_and_sqlalchemy.html>`_.
+* `pyramid_sqlalchemy - Writing Tests <https://pyramid-sqlalchemy.readthedocs.io/en/latest/tests.html>`_
+* `Pyramid SQLAlchemy + URL Dispatch wiki tutorial <https://docs.pylonsproject.org/projects/pyramid/en/latest/tutorials/wiki2/tests.html>`_

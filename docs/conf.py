@@ -37,8 +37,8 @@ extensions = [
     ]
 
 intersphinx_mapping = {
-    'python': ('http://docs.python.org', None),
-    'python3': ('http://docs.python.org/3', None),
+    'python': ('https://docs.python.org', None),
+    'python3': ('https://docs.python.org/3', None),
     'pyramid': ('https://docs.pylonsproject.org/projects/pyramid/en/latest', None),
     'tutorials': ('https://docs.pylonsproject.org/projects/pyramid-tutorials/en/latest/', None),
 }
@@ -259,3 +259,13 @@ rst_prolog = '''
 .. highlight:: python
    :linenothreshold: 5
 '''
+
+# -- Options for linkcheck builder -------------------------------------------
+
+linkcheck_ignore = [
+    r'http://0\.0\.0\.0:\d+',
+    r'http://localhost:\d+',
+    r'http://mysite.com',
+    r'http://staticserver.com',
+    r'http://.*example.com',
+    r'http://dev.newproject.appspot.com']

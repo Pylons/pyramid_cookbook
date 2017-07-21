@@ -13,7 +13,7 @@ structure that we can use for traversal's "location awareness".
 
 Relational databases, though, aren't hierarchical. We can, however, use
 SQLAlchemy's `adjacency list relationship
-<http://docs.sqlalchemy.org/en/latest/orm/relationships.html#adjacency-list-relationships>`_
+<http://docs.sqlalchemy.org/en/latest/orm/self_referential.html>`_
 to provide a tree-like structure. We will do this in the next two steps.
 
 In the first step, we get the basics in place: SQLAlchemy, a SQLite table,

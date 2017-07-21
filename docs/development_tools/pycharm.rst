@@ -11,7 +11,7 @@ etc.), debugger, and more.
 
 .. seealso:: See also Paul Everitt's video, `Python 3 Web Development with
   Pyramid and PyCharm
-  <http://blog.jetbrains.com/blog/2013/10/21/webinar-recording-production-python-3-web-development-with-pyramid-and-pycharm/>`_
+  <https://blog.jetbrains.com/blog/2013/10/21/webinar-recording-production-python-3-web-development-with-pyramid-and-pycharm/>`_
   (about 1 hour in length).
 
 This tutorial is a continually evolving document. Both PyCharm and Pyramid are
@@ -48,7 +48,7 @@ Install Python
 
 You can download installers for Mac OS X and Windows, or source tarballs for
 Linux, Unix, or Mac OS X from `python.org Download
-<http://python.org/download/>`_.  Follow the instructions in the README files.
+<https://www.python.org/downloads/>`_.  Follow the instructions in the README files.
 
 
 Install PyCharm
@@ -184,7 +184,7 @@ In PyCharm, select *VCS > Enable Version Control Integration...*, then select
 Git as your VCS and click the OK button.
 
 See `Cloning a Repository from GitHub
-<http://www.jetbrains.com/pycharm/webhelp/cloning-a-repository-from-github.html>`_
+<https://www.jetbrains.com/help/pycharm/cloning-a-repository-from-github.html>`_
 in the PyCharm documentation for more information on using GitHub and git in
 PyCharm.
 
@@ -250,10 +250,10 @@ Template languages
 
 To configure the template languages Mako, Jinja 2, and Chameleon first see the
 PyCharm documentation `Python Template Languages
-<https://www.jetbrains.com/pycharm/help/python-template-languages.html>`_ to
+<https://www.jetbrains.com/help/pycharm/python-template-languages.html>`_ to
 select the template language for your project, then see `Configuring Template
 Languages
-<https://www.jetbrains.com/pycharm/help/configuring-template-languages.html>`_
+<https://www.jetbrains.com/help/pycharm/configuring-template-languages.html>`_
 to both configure the template language and mark folders as Sources and
 Templates for your project.
 
@@ -362,7 +362,7 @@ Debugging
 =========
 
 See the PyCharm documentation `Running and Debugging
-<http://www.jetbrains.com/pycharm/webhelp/running-and-debugging.html>`_ for
+<https://www.jetbrains.com/help/pycharm/running-and-debugging.html>`_ for
 details on how to debug your Pyramid app in PyCharm.
 
 First, you cannot simultaneously run and debug your app.  Terminate your app if

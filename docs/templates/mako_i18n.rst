@@ -5,25 +5,29 @@ Mako Internationalization
 
 .. note:: This recipe is extracted, with permission, from a `blog post made
    by Alexandre Bourget
-   <http://blog.abourget.net/2011/1/13/pyramid-and-mako:-how-to-do-i18n-the-pylons-way/>`_.
+   <http://web.archive.org/web/20111216150257/http://blog.abourget.net/2011/1/13/pyramid-and-mako:-how-to-do-i18n-the-pylons-way/>`_.
 
-First, add subscribers within your Pyramid project's ``__init__.py``::
+First, add subscribers within your Pyramid project's ``__init__.py``.
+
+.. code-block:: python
 
    def main(...):
-       ...
+       # ...
        config.add_subscriber('YOURPROJECT.subscribers.add_renderer_globals',
                              'pyramid.events.BeforeRender')
        config.add_subscriber('YOURPROJECT.subscribers.add_localizer',
                              'pyramid.events.NewRequest')
 
-Then add, a ``subscribers.py`` module to your project's package directory::
+Then add, a ``subscribers.py`` module to your project's package directory.
+
+.. code-block:: python
 
    # subscribers.py
 
    from pyramid.i18n import get_localizer, TranslationStringFactory
 
    def add_renderer_globals(event):
-       ...
+       # ...
        request = event['request']
        event['_'] = request.translate
        event['localizer'] = request.localizer
@@ -54,14 +58,14 @@ something like::
 
 For all that to work, you'll need to:
 
-.. code-block:: text
+.. code-block:: bash
    :linenos:
 
    (env)$ easy_install Babel
 
 And you'll also need to run these commands in your project's directory:
 
-.. code-block:: text
+.. code-block:: bash
    :linenos:
 
    (env)$ python setup.py extract_messages
@@ -81,35 +85,43 @@ Repeat the ``init_catalog`` step for each of the langauges you need.
    setup.cfg of a Pyramid project.
 
 At this point you'll also need to add your local directory to your 
-project's configuration::
+project's configuration.
+
+.. code-block:: python
 
     def main(...):
-       ...
+       # ...
        config.add_translation_dirs('YOURPROJECT:locale')
 
 Lastly, you'll want to have your Mako files extracted when you run
 extract_messages, so add these to your setup.py (yes, you read me right, in
-setup.py so that Babel can use it when invoking it's commands)::
+setup.py so that Babel can use it when invoking it's commands).
+
+.. code-block:: python
 
    setup(
-       ...
+       # ...
        install_requires=[
-           ...
+           # ...
            Babel,
-           ...
+           # ...
            ],
        message_extractors = {'yourpackage': [
                ('**.py', 'python', None),
                ('templates/**.html', 'mako', None),
                ('templates/**.mako', 'mako', None),
                ('static/**', 'ignore', None)]},
-       ...
+       # ...
        )
 
 In the above triples the last element, ``None`` in this snippet, may be used
 to pass an options dictionary to the specified extractor. For instance, you may
-need to set Mako input encoding using the corresponding option::
+need to set Mako input encoding using the corresponding option.
+
+.. code-block:: python
     
-    ...
+    # ...
                ('templates/**.mako', 'mako', {'input_encoding': 'utf-8'}),
-    ...
+    # ...
+
+.. seealso:: See also `Pyramid Internationalization HowTo <http://danilodellaquila.com/en/blog/pyramid-internationalization-howto>`_

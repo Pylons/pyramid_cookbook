@@ -29,11 +29,11 @@ the downloaded installer. For example::
 
     easy_install pywin32-217.win32-py2.7.exe
 
-Since the web server for `CherryPy <http://www.cherrypy.org>`_ has good
+Since the web server for `CherryPy <http://cherrypy.org>`_ has good
 Windows support, is available for Python 2 and 3, and can be gracefully
 started and stopped on demand from the service, we'll use that as the web
 server. You could also substitute another web server, like the one from
-`Twisted <http://www.twistedmatrix.com>`_.
+`Twisted <https://twistedmatrix.com/trac/>`_.
 
 To install CherryPy run::
 
@@ -122,7 +122,7 @@ back to the appropriate service.
 
 There are several options available for reverse proxy with IIS. In versions
 starting with IIS 7, you can install and use the `Application Request Routing
-<http://learn.iis.net/page.aspx/489/using-the-application-request-routing-module/>`_
+<https://docs.microsoft.com/en-us/iis/extensions/planning-for-arr/using-the-application-request-routing-module>`_
 if you want to use a Microsoft-provided solution. Another option is one of the
 several solutions from `Helicon Tech <http://www.helicontech.com/>`_. Helicon
 Ape is available without cost for up to 3 sites.
@@ -158,7 +158,7 @@ Python
 ------
 
 - Install `PyWin32`_, according to your 32- or 64-bit installation
-- Install `isapi-wsgi <https://code.google.com/p/isapi-wsgi/downloads/list>`_
+- Install `isapi-wsgi <https://code.google.com/archive/p/isapi-wsgi/downloads>`_
 
 Create bridging script
 ----------------------
@@ -229,4 +229,4 @@ Activate your virtual env and run the stript::
 
 Restart your website from IIS.
 
-.. _PyWin32: http://sourceforge.net/projects/pywin32/
+.. _PyWin32: https://sourceforge.net/projects/pywin32/

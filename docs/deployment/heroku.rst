@@ -1,8 +1,8 @@
 Heroku
 ++++++
 
-`Heroku <http://www.heroku.com/>`_ recently added `support for a process model
-<http://blog.heroku.com/archives/2011/5/31/celadon_cedar/>`_ which allows
+`Heroku <https://www.heroku.com/>`_ recently added `support for a process model
+<https://blog.heroku.com/celadon_cedar>`_ which allows
 deployment of Pyramid applications.
 
 This recipe assumes that you have a Pyramid application setup using a Paste
@@ -15,8 +15,7 @@ appropriate.
 Step 0: Install Heroku
 ======================
 
-Install the heroku gem `per their instructions
-<http://devcenter.heroku.com/articles/quickstart>`_.
+Install the heroku gem `per their instructions <https://devcenter.heroku.com/start>`_.
 
 Step 1: Add files needed for Heroku
 ===================================
