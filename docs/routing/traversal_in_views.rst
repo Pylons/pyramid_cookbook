@@ -1,12 +1,14 @@
 .. _traversal_in_views:
 
 Using Traversal in Pyramid Views
-=================================
+================================
 
 A trivial example of how to use :term:`traversal` in your view code.
 
 You may remember that a Pyramid :term:`view` is called with a
-:term:`context` argument::
+:term:`context` argument.
+
+.. code-block:: python
 
     def my_view(context, request):
         return render_view_to_response(context, request)
@@ -15,9 +17,9 @@ You may remember that a Pyramid :term:`view` is called with a
 When using traversal, ``context`` will be the :term:`resource` object
 that was found by traversal.  Configuring which resources a view
 responds to can be done easily via either the ``@view.config``
-decorator...
+decorator.
 
-::
+.. code-block:: python
 
     from models import MyResource
 
@@ -40,8 +42,9 @@ Optional: Using Interfaces
 
 If your resource classes implement :term:`interfaces <interface>`,
 you can configure your views by interface. This is one way to decouple
-view code from a specific resource implementation::
+view code from a specific resource implementation.
 
+.. code-block:: python
 
     # models.py
     from zope.interface import implements
@@ -70,8 +73,6 @@ See Also
 
 - The "Virginia" sample application: https://github.com/Pylons/virginia/blob/master/virginia/views.py
 
-- ZODB and Traversal in Pyramid tutorial: http://docs.pylonsproject.org/projects/pyramid/en/latest/tutorials/wiki/index.html#bfg-wiki-tutorial
+- ZODB and Traversal in Pyramid tutorial: https://docs.pylonsproject.org/projects/pyramid/en/latest/tutorials/wiki/index.html#bfg-wiki-tutorial
 
-- "Pyramid Traversal and Mongodb": http://kusut.web.id/2011/03/27/pyramid-traversal-and-mongodb/
-
-- Resources which implement interfaces: http://readthedocs.org/docs/pyramid/en/latest/narr/resources.html#resources-which-implement-interfaces
+- Resources which implement interfaces: https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/resources.html#resources-which-implement-interfaces

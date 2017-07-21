@@ -10,7 +10,7 @@ to the basic command line environment, with support for git and other
 development tools. In many cases, however, debugging support basically
 ends up being simply a wrapper around basic ``pdb`` functionality.
 
-`PyDev <http://pydev.org>`_ is an `Eclipse <http://eclipse.org>`_ plugin
+`PyDev <http://www.pydev.org/>`_ is an `Eclipse <http://www.eclipse.org/>`_ plugin
 for the Python language, providing an integrated development environment
 that includes a built in python interpreter, Git support, integration with
 task management, and other useful development functionality.
@@ -20,7 +20,7 @@ to set breakpoints, and has a gui interface that allows you to inspect
 and modify internal state.
 
 Lars Vogella has provided a clear `tutorial
-<http://www.vogella.com/articles/Python/article.html>`_
+<http://www.vogella.com/tutorials/Python/article.html>`_
 on setting up pydev and getting started with the PyDev debugger. Full
 documentation on using the PyDev debugger may be found `here
 <http://www.pydev.org/manual_adv_debugger.html>`_. You can also debug
@@ -111,7 +111,7 @@ Running/Debugging Pyramid under Pydev
    ``$WORKSPACE`` is the name of the PyDev workspace containing your project
    
    To create a working example, copy the `pyramid tutorial step03 
-   <http://docs.pylonsproject.org/projects/pyramid/en/latest/quick_tutorial/ini.html>`_
+   <https://docs.pylonsproject.org/projects/pyramid/en/latest/quick_tutorial/ini.html>`_
    code into $WORKSPACE/tutorial.
    
    After copying the code, cd to ``$WORKSPACE/tutorial`` and run

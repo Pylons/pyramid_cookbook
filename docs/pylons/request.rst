@@ -89,11 +89,11 @@ URLs.
 Rather than repeating the existing documentation for these attributes and
 methods, we'll just refer you to the original docs:
 
-* `Pyramd Request and Response Objects <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/webob.html>`_
-* `Pyramid Request API <http://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#request-module>`_
-* `Pyramid Response API <http://docs.pylonsproject.org/projects/pyramid/en/latest/api/response.html>`_
-* `WebOb Request API <http://docs.webob.org/en/latest/reference.html#id1>`_
-* `WebOb Response API <http://docs.webob.org/en/latest/reference.html#id2>`_
+* `Pyramd Request and Response Objects <https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/webob.html>`_
+* `Pyramid Request API <https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#request-module>`_
+* `Pyramid Response API <https://docs.pylonsproject.org/projects/pyramid/en/latest/api/response.html>`_
+* `WebOb Request API <https://docs.pylonsproject.org/projects/webob/en/latest/reference.html#id1>`_
+* `WebOb Response API <https://docs.pylonsproject.org/projects/webob/en/latest/reference.html#id2>`_
 
 Response examples::
 
@@ -112,3 +112,4 @@ Response examples::
         ("Set-Cookie", "abc=123"), ("X-My-Header", "foo")]
     response_cache_for = 3600    # Seconds
     return response
+

@@ -1,5 +1,5 @@
 MongoDB and Pyramid
-====================
+===================
 
 Basics
 ------
@@ -77,25 +77,24 @@ connection.  For example::
         vendors = request.db['vendors'].find()
         return {'vendors':vendors}
 
+
 Scaffolds
 ---------
 
 Niall O'Higgins provides a `pyramid_mongodb
-<http://pypi.python.org/pypi/pyramid_mongodb/1.0>`_ scaffold for Pyramid that
+<https://pypi.python.org/pypi/pyramid_mongodb>`_ scaffold for Pyramid that
 provides an easy way to get started with Pyramid and MongoDB.
+
 
 Video
 -----
 
 Niall O'Higgins provides a presentation he gave at a Mongo conference in San
-Francisco at
-https://www.10gen.com/presentation/mongosf-2011/mongodb-with-python-pylons-pyramid
+Francisco at https://www.mongodb.com/presentations/weather-century
+
 
 Other Information
-------------------
-
-- Pyramid traversal and MongoDB:
-  http://kusut.web.id/2011/03/27/pyramid-traversal-and-mongodb/
+-----------------
 
 - Pyramid, Aket and MongoDB:
   http://niallohiggins.com/2011/05/18/mongodb-python-pyramid-akhet/

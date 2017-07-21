@@ -191,5 +191,5 @@ When this view code is executed, you'll see up to three (depending
 on the level of logging you allow in your configuation file) records!
 
 For more power, match this up with pyramid_exclog at
-http://docs.pylonsproject.org/projects/pyramid_exclog/en/latest/
+https://docs.pylonsproject.org/projects/pyramid_exclog/en/latest/
 

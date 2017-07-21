@@ -2,7 +2,7 @@ OpenShift Express Cloud
 +++++++++++++++++++++++
 
 `This blog entry
-<https://www.redhat.com/openshift/community/blogs/deploying-a-pyramid-application-to-openshift-express>`_
+<https://blog.openshift.com/how-to-deploy-a-pyramid-application-on-openshift/>`_
 describes deploying a Pyramid application to RedHat's OpenShift Express Cloud
 platform.
 

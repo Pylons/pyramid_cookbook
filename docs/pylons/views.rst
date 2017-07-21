@@ -260,4 +260,4 @@ same.  ::
 
 .. include::  ../links.rst
 
-.. _View Configuration:  http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/viewconfig.html#view-configuration-parameters
+.. _View Configuration:  https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/viewconfig.html#view-configuration-parameters

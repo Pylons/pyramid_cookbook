@@ -26,20 +26,18 @@ TODO
 
 - Explore static file return from handler action using wsgiapp2 + fileapp.
 
-- http://blog.dannynavarro.net/2011/01/14/async-web-apps-with-pyramid/
+- http://dannynavarro.net/2011/01/14/async-web-apps-with-pyramid/
 
 - http://alexmarandon.com/articles/zodb_bfg_pyramid_notes/
 
-- http://www.serverzen.net/2010/11/20/pyramid-setting-up-debug-werkzeug
-
-- http://groups.google.com/group/pylons-devel/msg/ab58353594b135c9
+- https://groups.google.com/forum/#!msg/pylons-devel/0QxHTgeswrw/yTWxlDU1WKsJ
   (pyramid_jinja2 i18n), also
   https://github.com/Pylons/pyramid_jinja2/pull/14
 
-- Simple asynchronous task queue: http://blog.dannynavarro.net/2011/01/23/async-pyramid-example-done-right/
+- Simple asynchronous task queue: http://dannynavarro.net/2011/01/23/async-pyramid-example-done-right/
 
 - `Installing Pyramid on Red Hat Enterprise Linux 6
-  <http://jfulton.org/pyramid1-rhel6-install.html>`_ (John Fulton).
+  <http://fultonj.xen.prgmr.com/?page=Code&file=pyramid1-rhel6-install.php>`_ (John Fulton).
 
 - Chameleon main template injected via BeforeRender.
 
@@ -47,9 +45,9 @@ TODO
 
 - http://whippleit.blogspot.com/2011/04/pyramid-on-google-app-engine-take-1-for.html
 
-- Custom events: http://blog.dannynavarro.net/2011/06/12/using-custom-events-in-pyramid/
+- Custom events: http://dannynavarro.net/2011/06/12/using-custom-events-in-pyramid/
 
-- TicTacToe and Long Polling With Pyramid: http://www.merickel.org/2011/6/21/tictactoe-and-long-polling-with-pyramid/
+- TicTacToe and Long Polling With Pyramid: https://michael.merickel.org/2011/6/21/tictactoe-and-long-polling-with-pyramid/
 
 - Jim Penny's rolodex tutorial: http://jpenny.im/
 
@@ -57,9 +55,9 @@ TODO
 
 - The Python Ecosystem, an Introduction: http://mirnazim.org/writings/python-ecosystem-introduction/
 
-- Outgrowing Pyramid Handlers: http://michael.merickel.org/2011/8/23/outgrowing-pyramid-handlers/
+- Outgrowing Pyramid Handlers: https://michael.merickel.org/2011/8/23/outgrowing-pyramid-handlers/
 
-- Incorporate Google Analytics into a Pyramid Application: http://russell.ballestrini.net/incorporate-google-analytics-into-a-pyramid-application/
+- Incorporate Custom Configuration (Google Analytics) into a Pyramid Application: http://russell.ballestrini.net/how-to-incorporate-custom-configuration-in-a-pyramid-application/
 
 - Cookbook docs reorg
 

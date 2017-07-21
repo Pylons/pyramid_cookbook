@@ -12,6 +12,6 @@ Authentication and Authorization
    enterprise
 
 For basic information on authentication and authorization, see the
-`security <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/security.html>`_
+`security <https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/security.html>`_
 section of the Pyramid documentation.
 

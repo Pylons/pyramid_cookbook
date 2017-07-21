@@ -6,7 +6,7 @@ of traffic. The advantage in deployment is that by using ``pserve``, it is not
 unlike the basic development environment you're probably using on your local
 machine.
 
-`Nginx <http://wiki.nginx.org/Main>`_ is a highly optimized HTTP server, very
+`Nginx <https://www.nginx.com/resources/wiki/>`_ is a highly optimized HTTP server, very
 capable of serving
 static content as well as acting as a proxy between other applications and the
 outside world. As a proxy, it also has good support for basic load balancing
@@ -156,7 +156,7 @@ The optional ``listen`` directive, as well as the 2 following lines,
 are the only configuration changes required to enable SSL from the Client
 to Nginx. You will need to have already created your SSL certificate and
 key for this to work.  More details on this process can be found in
-the `OpenSSL <http://www.openssl.org/docs/HOWTO/certificates.txt>`_ howto.
+the `OpenSSL wiki for Command Line Utilities <https://wiki.openssl.org/index.php/Command_Line_Utilities>`_.
 You will also need to update the paths that are shown to match the actual
 path to your SSL certificates.
 

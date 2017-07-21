@@ -220,7 +220,7 @@ custom_predicates
 Other arguments available: accept, factory, header, path_info, traverse.
 
 
-.. _Configurator API: http://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html
+.. _Configurator API: https://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html
 
 
 .. include:: ../links.rst

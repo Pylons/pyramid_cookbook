@@ -1,7 +1,9 @@
 DotCloud
 ++++++++
 
-`DotCloud <http://www.dotcloud.com/>`_ offers support for all WSGI frameworks.
+.. note:: This cookbook recipe is obsolete because DotCloud has been acquired by Docker.  Please `submit a pull request <https://github.com/Pylons/pyramid_cookbook/>`_ to update this recipe.
+
+`DotCloud <https://cloud.docker.com/>`_ offers support for all WSGI frameworks.
 Below is a quickstart guide for Pyramid apps. You can also read the `DotCloud
 Python documentation <http://docs.dotcloud.com/services/python/>`_ for
 a complete overview.

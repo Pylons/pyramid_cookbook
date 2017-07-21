@@ -85,5 +85,5 @@ Lastly, we pass ``headers`` and ``rows`` to the CSV renderer.
 For more information on how to add custom Renderers, see the following sections
 of the Pyramid documentation:
 
-- `Adding a new Renderer <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/renderers.html#adding-a-new-renderer>`_
-- `Varying Attributes of Rendered Responses <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/renderers.html#varying-attributes-of-rendered-responses>`_
+- `Adding a new Renderer <https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/renderers.html#adding-a-new-renderer>`_
+- `Varying Attributes of Rendered Responses <https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/renderers.html#varying-attributes-of-rendered-responses>`_

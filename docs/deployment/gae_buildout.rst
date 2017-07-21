@@ -5,8 +5,8 @@
 ======================================================
 
 This is but one way to develop applications to run on Google's `App
-Engine <http://code.google.com/appengine/>`_. This one uses `buildout
-<http://www.buildout.org>`_ . For a different approach, you may want
+Engine <https://cloud.google.com/appengine/>`_. This one uses `buildout
+<http://www.buildout.org/en/latest/>`_ . For a different approach, you may want
 to look at :ref:`appengine_tutorial`.
 
 
@@ -16,11 +16,11 @@ Install the pyramid_appengine scaffold
 Let's take it step by step.
 
 You can get `pyramid_appengine
-<http://pypi.python.org/pypi/pyramid_appengine/>`_ from pypi via `pip <http://pypi.python.org/pypi/pip>`_
+<https://pypi.python.org/pypi/pyramid_appengine/>`_ from pypi via `pip <https://pypi.python.org/pypi/pip>`_
 just as you typically would any other python package, however to reduce the
 chances of the system installed python packages intefering with tools
 you use for your own development you should install it in a local
-`virtual environment <http://pypi.python.org/pypi/virtualenv>`_
+`virtual environment <https://pypi.python.org/pypi/virtualenv>`_
 
 Creating a virtual environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -77,7 +77,7 @@ scaffold just as you would using any other project scaffold.
 
    $ myenv/bin/pcreate -t appengine_starter newproject
 
-Once successfully ran, you will have a new `buildout <http://www.buildout.org>`_ directory for your project. The app engine
+Once successfully ran, you will have a new `buildout <http://www.buildout.org/en/latest/>`_ directory for your project. The app engine
 application source is located at newproject/src/newproject.
 
 This buildout directory can be added to version control if you like,
@@ -99,7 +99,7 @@ commands.
    ~/newproject $ ../bin/python2.7 bootstrap.py
 
 You typically only need to do this once to generate your
-buildout command. See the `buildout documentation <http://www.buildout.org/docs/tutorial.html#buildout-steps>`_ for more information.
+buildout command. See the `buildout documentation <http://www.buildout.org/en/latest/docs/tutorial.html#buildout-steps>`_ for more information.
 
 
 Run buildout
@@ -117,14 +117,14 @@ edit to suit your needs.
 In the case of this particular buildout, when run, it will take care
 of several things that you need to do....
 
-  #. install the app engine SDK in parts/google_appengine `more info <http://pypi.python.org/pypi/rod.recipe.appengine>`_
+  #. install the app engine SDK in parts/google_appengine `more info <https://pypi.python.org/pypi/rod.recipe.appengine>`_
   #. Place tools from the appengine SDK in the buildout's "bin" directory.
   #. Download/install the dependencies for your project including pyramid and all it's
      dependencies not already provided by the app engine SDK. 
-     `more info <http://pypi.python.org/pypi/rod.recipe.appengine>`_
+     `more info <https://pypi.python.org/pypi/rod.recipe.appengine>`_
   #. A directory structure appropriate for deploying to app engine at
-     newproject/parts/newproject. `more info <http://pypi.python.org/pypi/rod.recipe.appengine>`_
-  #. Download/Install tools to support unit testing including `pytest <http://pytest.org>`_, and `coverage <http://nedbatchelder.com/code/coverage/>`_.
+     newproject/parts/newproject. `more info <https://pypi.python.org/pypi/rod.recipe.appengine>`_
+  #. Download/Install tools to support unit testing including `pytest <https://docs.pytest.org/en/latest/>`_, and `coverage <http://coverage.readthedocs.io/en/latest/>`_.
 
 
 Run your tests
@@ -137,13 +137,13 @@ Your project is configured to run all tests found in files that begin with "test
    ~/newproject/ $ cd src/newproject
    ~/newproject/src/newproject/ $ ../../bin/python setup.py test
 
-Your project incorporates the `unit testing tools <http://code.google.com/appengine/docs/python/tools/localunittesting.html>`_ provided by the app engine SDK to setUp and tearDown the app engine environment for each of your tests. In addition to that, running the unit tests will keep your projects `index.yaml <http://code.google.com/appengine/docs/python/config/indexconfig.html>`_ up to date. As a result, maintaining a thorough test suite will be your best chance at insuring that your application is ready for deployment.
+Your project incorporates the `unit testing tools <https://cloud.google.com/appengine/docs/standard/python/tools/localunittesting?csw=1>`_ provided by the app engine SDK to setUp and tearDown the app engine environment for each of your tests. In addition to that, running the unit tests will keep your projects `index.yaml <https://cloud.google.com/appengine/docs/standard/python/config/indexconfig?csw=1>`_ up to date. As a result, maintaining a thorough test suite will be your best chance at insuring that your application is ready for deployment.
 
 You can adjust how the app engine api's are initialized for your tests by editing newproject/src/newproject/newproject/conftest.py.
 
 Run your application locally
 ----------------------------
-You can run your application using the app engine SDK's `Development Server <http://code.google.com/appengine/docs/python/tools/devserver.html>`_
+You can run your application using the app engine SDK's `Development Server <https://cloud.google.com/appengine/docs/standard/python/tools/using-local-server?csw=1>`_
 
 .. code-block:: text
 
@@ -156,9 +156,9 @@ to see it working.
 Deploy to App Engine
 --------------------
 
-Note: Before you can upload any appengine application you must create an `application ID <http://code.google.com/appengine/docs/python/gettingstarted/uploading.html>`_ for it. 
+Note: Before you can upload any appengine application you must create an `application ID <https://cloud.google.com/appengine/docs/standard/python/console/>`_ for it.
 
-To upload your application to app engine, run the following command. For more information see App Engine Documentation for `appcfg <http://code.google.com/appengine/docs/python/tools/uploadinganapp.html#Uploading_the_App>`_
+To upload your application to app engine, run the following command. For more information see App Engine Documentation for `appcfg <https://cloud.google.com/appengine/docs/standard/python/tools/uploadinganapp?csw=1>`_
 
 .. code-block:: text
 
@@ -167,10 +167,10 @@ To upload your application to app engine, run the following command. For more in
 Point your browser at `http://dev.newproject.appspot.com <http://dev.newproject.appspot.com>`_ to see it working.
 
 The above command will most likely not work for you, it is just an
-example. the "-A" switch indicates an `Application ID <http://code.google.com/appengine/docs/python/gettingstarted/uploading.html>`_ to deploy to and overrides the setting in the app.yaml, use the Application ID you created when you registered the application instead. The "-V" switch specifies the version and overrides the setting in your app.yaml. 
+example. the "-A" switch indicates an `Application ID <https://cloud.google.com/appengine/docs/standard/python/console/>`_ to deploy to and overrides the setting in the app.yaml, use the Application ID you created when you registered the application instead. The "-V" switch specifies the version and overrides the setting in your app.yaml.
 
 You can set which version of your application handles requests by
-default in the `admin console <http://appengine.google.com>`_. However you can also specify a version of your application to hit in the URL like so...
+default in the `admin console <https://console.cloud.google.com/appengine?project=handy-platform-116923&pli=1>`_. However you can also specify a version of your application to hit in the URL like so...
 
 .. code-block:: text
 
