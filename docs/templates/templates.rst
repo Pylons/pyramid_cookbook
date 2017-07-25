@@ -229,6 +229,9 @@ You can now use these building blocks like this:
      </tal:block>
    </html>
 
+
+.. _rendering-none-as-the-empty-string-in-mako-templates:
+
 Rendering ``None`` as the Empty String in Mako Templates
 --------------------------------------------------------
 
