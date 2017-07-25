@@ -52,7 +52,9 @@ templates may have some sloppy placeholders not guarded by "% if".
 
 *Caution 2:* Supposedly you can pass an asset spec instead of a template path
 but I couldn't get it to work.
-    
+
+.. seealso:: See also :ref:`rendering-none-as-the-empty-string-in-mako-templates`.
+
 
 Chameleon
 =========
