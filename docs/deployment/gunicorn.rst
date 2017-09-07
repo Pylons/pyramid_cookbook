@@ -46,7 +46,7 @@ Keep in mind that settings defined within a gunicorn configuration file or
 command line arguments given to gunicorn take precedence over the settings
 established within the INI file.
 
-For all of this to work, the Python interpreter used by quicken also needs to
+For all of this to work, the Python interpreter used by gunicorn also needs to
 be able to load your application. In other words, gunicorn and your application
 need to be installed and used inside the same ``virtualenv``.
 
