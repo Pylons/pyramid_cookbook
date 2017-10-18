@@ -25,7 +25,7 @@ will act as an event subscriber::
    from myapp import helpers
 
    def add_renderer_globals(event):
-      event['h'] = helpers
+       event['h'] = helpers
 
 Within the ``main`` function in the same ``__init__``, wire the subscriber up
 so that it is called when the ``BeforeRender`` event is emitted::
