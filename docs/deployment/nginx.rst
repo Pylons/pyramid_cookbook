@@ -217,8 +217,15 @@ hosting the application under a different URL than ``/``.
 
 Running the pserve processes::
 
-    pserve --daemon --pid-file=pserve_5000.pid production.ini http_port=5000
-    pserve --daemon --pid-file=pserve_5001.pid production.ini http_port=5001
+    pserve production.ini http_port=5000
+    pserve production.ini http_port=5001
+
+.. note::
+
+   Daemonization of pserve was `deprecated in
+   Pyramid 1.6 <https://docs.pylonsproject.org/projects/pyramid/en/latest/whatsnew-1.6.html#deprecations>`_,
+   then `removed in Pyramid 1.8
+   <https://docs.pylonsproject.org/projects/pyramid/en/latest/whatsnew-1.8.html#backwards-incompatibilities>`_.
 
 Step 3: Serving Static Files with Nginx (Optional)
 ==================================================
