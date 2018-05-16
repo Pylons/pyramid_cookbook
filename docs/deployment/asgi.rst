@@ -22,7 +22,6 @@ Simple WSGI -> ASGI WebSocket application
 
     from pyramid.config import Configurator
     from pyramid.response import Response
-    from pyramid.renderers import render_to_response
 
 
     class ExtendedWsgiToAsgi(WsgiToAsgi):
