@@ -10,7 +10,7 @@ are listing places that may be worth looking at for ideas when developing one:
 Authentication
 --------------
 
-* `adpasswd project on pypi <https://pypi.python.org/pypi/adpasswd/0.2>`_
+* `adpasswd project on pypi <https://pypi.org/project/adpasswd/>`_
 * `Tim Golden's Active Directory Cookbook <http://timgolden.me.uk/python/ad_cookbook.html>`_
 * `python-ad <https://code.google.com/archive/p/python-ad/>`_
 * `python-ldap.org <https://www.python-ldap.org/>`_

@@ -82,7 +82,7 @@ Scaffolds
 ---------
 
 Niall O'Higgins provides a `pyramid_mongodb
-<https://pypi.python.org/pypi/pyramid_mongodb>`_ scaffold for Pyramid that
+<https://pypi.org/project/pyramid_mongodb/>`_ scaffold for Pyramid that
 provides an easy way to get started with Pyramid and MongoDB.
 
 

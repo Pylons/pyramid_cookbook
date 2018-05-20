@@ -15,11 +15,11 @@ Install the pyramid_appengine scaffold
 Let's take it step by step.
 
 You can get `pyramid_appengine
-<https://pypi.python.org/pypi/pyramid_appengine/>`_ from pypi via `pip <https://pypi.python.org/pypi/pip>`_
+<https://pypi.org/project/pyramid_appengine/>`_ from pypi via `pip <https://pypi.org/project/pip/>`_
 just as you typically would any other python package, however to reduce the
 chances of the system installed python packages intefering with tools
 you use for your own development you should install it in a local
-`virtual environment <https://pypi.python.org/pypi/virtualenv>`_
+`virtual environment <https://pypi.org/project/virtualenv/>`_
 
 Creating a virtual environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -116,13 +116,13 @@ edit to suit your needs.
 In the case of this particular buildout, when run, it will take care
 of several things that you need to do....
 
-  #. install the app engine SDK in parts/google_appengine `more info <https://pypi.python.org/pypi/rod.recipe.appengine>`_
+  #. install the app engine SDK in parts/google_appengine `more info <https://pypi.org/project/rod.recipe.appengine/>`_
   #. Place tools from the appengine SDK in the buildout's "bin" directory.
   #. Download/install the dependencies for your project including pyramid and all it's
      dependencies not already provided by the app engine SDK. 
-     `more info <https://pypi.python.org/pypi/rod.recipe.appengine>`_
+     `more info <https://pypi.org/project/rod.recipe.appengine/>`_
   #. A directory structure appropriate for deploying to app engine at
-     newproject/parts/newproject. `more info <https://pypi.python.org/pypi/rod.recipe.appengine>`_
+     newproject/parts/newproject. `more info <https://pypi.org/project/rod.recipe.appengine/>`_
   #. Download/Install tools to support unit testing including `pytest <https://docs.pytest.org/en/latest/>`_, and `coverage <http://coverage.readthedocs.io/en/latest/>`_.
 
 
