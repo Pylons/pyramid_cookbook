@@ -1,8 +1,7 @@
 .. _appengine_buildout_tutorial:
 
-
-:app:`Pyramid` on Google's App Engine (using buildout)
-======================================================
+Google App Engine (using buildout) and :app:`Pyramid`
+=====================================================
 
 This is but one way to develop applications to run on Google's `App
 Engine <https://cloud.google.com/appengine/>`_. This one uses `buildout
@@ -16,11 +15,11 @@ Install the pyramid_appengine scaffold
 Let's take it step by step.
 
 You can get `pyramid_appengine
-<https://pypi.python.org/pypi/pyramid_appengine/>`_ from pypi via `pip <https://pypi.python.org/pypi/pip>`_
+<https://pypi.org/project/pyramid_appengine/>`_ from pypi via `pip <https://pypi.org/project/pip/>`_
 just as you typically would any other python package, however to reduce the
 chances of the system installed python packages intefering with tools
 you use for your own development you should install it in a local
-`virtual environment <https://pypi.python.org/pypi/virtualenv>`_
+`virtual environment <https://pypi.org/project/virtualenv/>`_
 
 Creating a virtual environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -99,7 +98,7 @@ commands.
    ~/newproject $ ../bin/python2.7 bootstrap.py
 
 You typically only need to do this once to generate your
-buildout command. See the `buildout documentation <http://www.buildout.org/en/latest/docs/tutorial.html#buildout-steps>`_ for more information.
+buildout command. See the `buildout documentation <http://www.buildout.org/en/latest/getting-started.html>`_ for more information.
 
 
 Run buildout
@@ -117,13 +116,13 @@ edit to suit your needs.
 In the case of this particular buildout, when run, it will take care
 of several things that you need to do....
 
-  #. install the app engine SDK in parts/google_appengine `more info <https://pypi.python.org/pypi/rod.recipe.appengine>`_
+  #. install the app engine SDK in parts/google_appengine `more info <https://pypi.org/project/rod.recipe.appengine/>`_
   #. Place tools from the appengine SDK in the buildout's "bin" directory.
   #. Download/install the dependencies for your project including pyramid and all it's
      dependencies not already provided by the app engine SDK. 
-     `more info <https://pypi.python.org/pypi/rod.recipe.appengine>`_
+     `more info <https://pypi.org/project/rod.recipe.appengine/>`_
   #. A directory structure appropriate for deploying to app engine at
-     newproject/parts/newproject. `more info <https://pypi.python.org/pypi/rod.recipe.appengine>`_
+     newproject/parts/newproject. `more info <https://pypi.org/project/rod.recipe.appengine/>`_
   #. Download/Install tools to support unit testing including `pytest <https://docs.pytest.org/en/latest/>`_, and `coverage <http://coverage.readthedocs.io/en/latest/>`_.
 
 
@@ -170,7 +169,7 @@ The above command will most likely not work for you, it is just an
 example. the "-A" switch indicates an `Application ID <https://cloud.google.com/appengine/docs/standard/python/console/>`_ to deploy to and overrides the setting in the app.yaml, use the Application ID you created when you registered the application instead. The "-V" switch specifies the version and overrides the setting in your app.yaml.
 
 You can set which version of your application handles requests by
-default in the `admin console <https://console.cloud.google.com/appengine?project=handy-platform-116923&pli=1>`_. However you can also specify a version of your application to hit in the URL like so...
+default in the `admin console <https://console.cloud.google.com/appengine>`_. However you can also specify a version of your application to hit in the URL like so...
 
 .. code-block:: text
 

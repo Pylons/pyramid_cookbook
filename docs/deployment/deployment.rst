@@ -16,7 +16,7 @@ from a client, into your application, and return the response.
     Client <---> WSGI Server <---> Your Application
 
 Due to the beauty of standards, many different configurations can be used to
-generate this basic setup, injecting caching layers, load balancers, etc into
+generate this basic setup, injecting caching layers, load balancers, and so on into
 the basic workflow.
 
 Disclaimer
@@ -36,7 +36,7 @@ application. The entry point to your pyramid application is an object
 implementing the WSGI interface. Thus, your application can be served by any
 server supporting WSGI.
 
-There are many different servers implementing the WSGI standard in existance.
+There are many different servers implementing the WSGI standard in existence.
 A short list includes:
 
 + ``waitress``

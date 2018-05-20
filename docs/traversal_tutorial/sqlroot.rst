@@ -28,7 +28,7 @@ transaction-awareness, and a root factory that gives us a context. We will use
 .. note::
 
   Traversal's usage of SQLAlchemy's adjacency list relationship and polymorphic
-  table inheritance came from `Kotti <https://pypi.python.org/pypi/Kotti>`_, a
+  table inheritance came from `Kotti <https://pypi.org/project/Kotti/>`_, a
   Pyramid-based CMS inspired by Plone. Daniel Nouri has advanced the ideas of
   first-class traversal in SQL databases with a variety of techniques and
   ideas. Kotti is certainly the place to look for the most modern approach to

@@ -10,10 +10,10 @@ are listing places that may be worth looking at for ideas when developing one:
 Authentication
 --------------
 
-* `adpasswd project on pypi <https://pypi.python.org/pypi/adpasswd/0.2>`_
+* `adpasswd project on pypi <https://pypi.org/project/adpasswd/>`_
 * `Tim Golden's Active Directory Cookbook <http://timgolden.me.uk/python/ad_cookbook.html>`_
 * `python-ad <https://code.google.com/archive/p/python-ad/>`_
-* `python-ldap.org <https://www.python-ldap.org/>`_
+* `python-ldap.org <https://www.python-ldap.org/en/latest/>`_
 * `python-ntmlm <https://github.com/mullender/python-ntlm>`_
 * `Blog post on managing AD from Python in Linux <http://marcitland.blogspot.com/2011/02/python-active-directory-linux.html>`_
 

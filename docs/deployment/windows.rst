@@ -29,7 +29,7 @@ the downloaded installer. For example::
 
     easy_install pywin32-217.win32-py2.7.exe
 
-Since the web server for `CherryPy <http://cherrypy.org>`_ has good
+Since the web server for `CherryPy <https://cherrypy.org>`_ has good
 Windows support, is available for Python 2 and 3, and can be gracefully
 started and stopped on demand from the service, we'll use that as the web
 server. You could also substitute another web server, like the one from

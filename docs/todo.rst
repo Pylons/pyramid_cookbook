@@ -26,7 +26,7 @@ TODO
 
 - Explore static file return from handler action using wsgiapp2 + fileapp.
 
-- http://dannynavarro.net/2011/01/14/async-web-apps-with-pyramid/
+- https://dannynavarro.net/2011/01/14/async-web-apps-with-pyramid/
 
 - http://alexmarandon.com/articles/zodb_bfg_pyramid_notes/
 
@@ -34,7 +34,7 @@ TODO
   (pyramid_jinja2 i18n), also
   https://github.com/Pylons/pyramid_jinja2/pull/14
 
-- Simple asynchronous task queue: http://dannynavarro.net/2011/01/23/async-pyramid-example-done-right/
+- Simple asynchronous task queue: https://dannynavarro.net/2011/01/23/async-pyramid-example-done-right/
 
 - `Installing Pyramid on Red Hat Enterprise Linux 6
   <http://fultonj.xen.prgmr.com/?page=Code&file=pyramid1-rhel6-install.php>`_ (John Fulton).
@@ -45,7 +45,7 @@ TODO
 
 - http://whippleit.blogspot.com/2011/04/pyramid-on-google-app-engine-take-1-for.html
 
-- Custom events: http://dannynavarro.net/2011/06/12/using-custom-events-in-pyramid/
+- Custom events: https://dannynavarro.net/2011/06/12/using-custom-events-in-pyramid/
 
 - TicTacToe and Long Polling With Pyramid: https://michael.merickel.org/2011/6/21/tictactoe-and-long-polling-with-pyramid/
 
@@ -57,7 +57,7 @@ TODO
 
 - Outgrowing Pyramid Handlers: https://michael.merickel.org/2011/8/23/outgrowing-pyramid-handlers/
 
-- Incorporate Custom Configuration (Google Analytics) into a Pyramid Application: http://russell.ballestrini.net/how-to-incorporate-custom-configuration-in-a-pyramid-application/
+- Incorporate Custom Configuration (Google Analytics) into a Pyramid Application: https://russell.ballestrini.net/how-to-incorporate-custom-configuration-in-a-pyramid-application/
 
 - Cookbook docs reorg
 

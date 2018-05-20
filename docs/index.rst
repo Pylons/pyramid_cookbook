@@ -21,7 +21,15 @@ Table of contents
    configuration/index
    database/index
    debugging/index
+
+.. toctree::
+   :maxdepth: 3
+
    deployment/index
+
+.. toctree::
+   :maxdepth: 2
+
    development_tools/index
    forms/index
    logging/index

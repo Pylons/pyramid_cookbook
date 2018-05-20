@@ -2,7 +2,7 @@ CouchDB and Pyramid
 ===================
 
 If you want to use CouchDB (via the
-`couchdbkit package <https://pypi.python.org/pypi/couchdbkit>`_)
+`couchdbkit package <https://pypi.org/project/couchdbkit/>`_)
 in Pyramid, you can use the following pattern to make your CouchDB database
 available as a ``request`` attribute. This example uses the starter scaffold.
 (This follows the same pattern as the :doc:`mongodb` example.)
@@ -74,7 +74,7 @@ CouchDB Views
 First let's create a view for our page data in CouchDB. We will use the
 ApplicationCreated event and make sure our view containing our page data.
 For more information on views in CouchDB see
-`Introduction to CouchDB views <https://wiki.apache.org/couchdb/Introduction_to_CouchDB_views>`_.
+`Introduction to Views <http://docs.couchdb.org/en/latest/ddocs/views/intro.html>`_.
 In __init__.py::
 
     from pyramid.events import subscriber, ApplicationCreated
