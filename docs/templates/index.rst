@@ -8,6 +8,7 @@ Templates and Renderers
    mako_i18n
    chameleon_i18n
    customrenderers
+   customrendererxlsx
 
 For more information on Templates and Renderers, see the following sections
 of the Pyramid documentation:
