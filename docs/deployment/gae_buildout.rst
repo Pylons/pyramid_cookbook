@@ -98,7 +98,7 @@ commands.
    ~/newproject $ ../bin/python2.7 bootstrap.py
 
 You typically only need to do this once to generate your
-buildout command. See the `buildout documentation <http://www.buildout.org/en/latest/docs/tutorial.html#buildout-steps>`_ for more information.
+buildout command. See the `buildout documentation <http://www.buildout.org/en/latest/getting-started.html>`_ for more information.
 
 
 Run buildout
@@ -169,7 +169,7 @@ The above command will most likely not work for you, it is just an
 example. the "-A" switch indicates an `Application ID <https://cloud.google.com/appengine/docs/standard/python/console/>`_ to deploy to and overrides the setting in the app.yaml, use the Application ID you created when you registered the application instead. The "-V" switch specifies the version and overrides the setting in your app.yaml.
 
 You can set which version of your application handles requests by
-default in the `admin console <https://console.cloud.google.com/appengine?project=handy-platform-116923&pli=1>`_. However you can also specify a version of your application to hit in the URL like so...
+default in the `admin console <https://console.cloud.google.com/appengine>`_. However you can also specify a version of your application to hit in the URL like so...
 
 .. code-block:: text
 

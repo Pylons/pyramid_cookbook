@@ -74,7 +74,7 @@ CouchDB Views
 First let's create a view for our page data in CouchDB. We will use the
 ApplicationCreated event and make sure our view containing our page data.
 For more information on views in CouchDB see
-`Introduction to CouchDB views <https://wiki.apache.org/couchdb/Introduction_to_CouchDB_views>`_.
+`Introduction to Views <http://docs.couchdb.org/en/latest/ddocs/views/intro.html>`_.
 In __init__.py::
 
     from pyramid.events import subscriber, ApplicationCreated

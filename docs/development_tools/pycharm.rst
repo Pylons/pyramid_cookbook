@@ -4,7 +4,7 @@ Using PyCharm with Pyramid
 **************************
 
 This tutorial is a very brief overview of how to use PyCharm with Pyramid.
-`PyCharm <http://www.jetbrains.com/pycharm/>`_ is an Integrated Development
+`PyCharm <https://www.jetbrains.com/pycharm/>`_ is an Integrated Development
 Environment (IDE) for Python programmers.  It has numerous features including
 code completion, project management, version control system (git, Subversion,
 etc.), debugger, and more.
@@ -21,10 +21,10 @@ document, and corrections and improvements through a pull request are most
 welcome.
 
 .. note:: This guide was written for PyCharm 2.7.3, although many of the
-    topics apply for `PyCharm 5 <https://www.jetbrains.com/pycharm/>`_. There
-    are now `two editions for PyCharm 5
+    topics apply for `current versions of PyCharm <https://www.jetbrains.com/pycharm/>`_. There
+    are now `two editions for PyCharm
     <https://www.jetbrains.com/pycharm/features/editions_comparison_matrix.html>`_:
-    Professional Edition and a free Community Edition. PyCharm 5 Professional
+    Professional Edition and a free Community Edition. PyCharm Professional
     Edition includes support for Pyramid, making installation and configuration
     of Pyramid much easier. Pyramid integration is not available in the free
     edition, so this tutorial will help you get started with Pyramid in that
@@ -250,7 +250,7 @@ Template languages
 
 To configure the template languages Mako, Jinja 2, and Chameleon first see the
 PyCharm documentation `Python Template Languages
-<https://www.jetbrains.com/help/pycharm/python-template-languages.html>`_ to
+<https://www.jetbrains.com/help/pycharm/template-languages.html>`_ to
 select the template language for your project, then see `Configuring Template
 Languages
 <https://www.jetbrains.com/help/pycharm/configuring-template-languages.html>`_
@@ -361,8 +361,8 @@ automatically by using the Script parameters `development.ini --reload`.
 Debugging
 =========
 
-See the PyCharm documentation `Running and Debugging
-<https://www.jetbrains.com/help/pycharm/running-and-debugging.html>`_ for
+See the PyCharm documentation `Working with Run/Debug Configurations
+<https://www.jetbrains.com/help/pycharm/run-debug-configuration.html>`_ for
 details on how to debug your Pyramid app in PyCharm.
 
 First, you cannot simultaneously run and debug your app.  Terminate your app if

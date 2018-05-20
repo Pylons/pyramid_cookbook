@@ -33,7 +33,7 @@
 .. _pyramid_routehelper:  https://github.com/Pylons/pyramid_routehelper/blob/master/pyramid_routehelper/__init__.py
 
 .. _Deform:  https://docs.pylonsproject.org/projects/deform/en/latest/
-.. _pyramid_simpleform:  http://pythonhosted.org/pyramid_simpleform/
+.. _pyramid_simpleform:  https://pythonhosted.org/pyramid_simpleform/
 
 .. _Kotti:  https://kotti.readthedocs.io/en/latest/
 .. _Ptah:  https://ptahproject.readthedocs.io/en/latest/

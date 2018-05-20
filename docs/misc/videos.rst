@@ -2,7 +2,7 @@ Pyramid Tutorial and Informational Videos
 -----------------------------------------
 
 * Six Feet Up's `Intro to Basic Pyramid
-  <http://www.sixfeetup.com/blog/intro-to-the-python-framework-pyramid-and-a-sample-app>`_.
+  <https://sixfeetup.com/blog/intro-to-the-python-framework-pyramid-and-a-sample-app>`_.
 
 * Daniel Nouri's "Writing A Pyramid Application" (long, 3+ hours), from
   EuroPython 2012:
