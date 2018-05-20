@@ -30,8 +30,8 @@ system. Our renderer will have to lookup the template, render
 it, and return as an xlsx document.
 
 Let's define the template interface. Our templates will be plain
-python files placed into the project's xlsx subdirectory,
-with 2 functions defined:
+Python files placed into the project's ``xlsx`` subdirectory,
+with two functions defined:
 
   - ``get_header`` will return the table header cells
   - ``iterate_rows`` will yield the table rows
@@ -49,7 +49,7 @@ to ``.xlsx`` so that we can configure our view. In the renderer
 we look up that filename with the ``.py`` suffix instead
 of ``.xlsx``.
 
-Add following into a ``xlsxrenderer.py`` in your application.
+Add the following code into a file named ``xlsxrenderer.py`` in your application.
 
 .. code-block:: python
 
@@ -89,14 +89,14 @@ Add following into a ``xlsxrenderer.py`` in your application.
            return openpyxl.writer.excel.save_virtual_workbook(wb)
 
 
-Now you have a renderer. Let's register with our application's
+Now you have a renderer. Let's register it with our application's
 ``Configurator``:
 
 .. code-block:: python
 
    config.add_renderer('.xlsx', 'myapp.renderers.CSVRenderer')
 
-Of course, modify the dotted-string to point to the module location you
+Of course, you need to modify the dotted-string to point to the module location you
 decided upon. You must also write the templates in the directory
 ``myapp/xlsx``, such as ``myapp/xlsx/dbtable.py``. Here is an example
 of a dummy template:
@@ -104,7 +104,7 @@ of a dummy template:
 .. code-block:: python
 
     def get_header(system, value):
-        # value is the dictionaty returned from the view
+        # value is the dictionary returned from the view
         # request = system["request"]
         # context = system["context"]
         return ["Row number", "A number", "A string"]
@@ -122,9 +122,9 @@ There is a Czech version of this recipe here:
 
 - `XLSX z Pyramid bezbolestně <https://www.blahos.com/blog/pyramid-render-xlsx/>`_
 
-For more information on how to add custom Renderers, see the following sections
-of the Pyramid documentation:
+For more information on how to add custom renderers, see the following sections
+of the Pyramid documentation and Pyramid Community Cookbook:
 
-- `Adding a new Renderer <https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/renderers.html#adding-a-new-renderer>`_
-- `Varying Attributes of Rendered Responses <https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/renderers.html#varying-attributes-of-rendered-responses>`_
-- :ref:`Custom renderers recipe <customrenderers>`
+- :ref:`pyramid:adding_a_renderer`
+- :ref:`pyramid:request_response_attr`
+- :ref:`customrenderers`
