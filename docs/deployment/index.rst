@@ -1,19 +1,46 @@
 Deployment
 ++++++++++
 
+Introduction
+------------
+
 .. toctree::
    :maxdepth: 1
 
    deployment
+
+
+Web Servers
+-----------
+
+.. toctree::
+   :maxdepth: 1
+
    apache
+   asgi
    gevent
    gunicorn
    nginx
-   windows
+
+
+Cloud Providers
+---------------
+
+.. toctree::
+   :maxdepth: 1
+
    aws_via_eb
    dotcloud
-   gae_buildout
    gae
+   gae_buildout
    heroku
    expresscloud
-   asgi
+
+
+Windows
+-------
+
+.. toctree::
+   :maxdepth: 1
+
+   windows
