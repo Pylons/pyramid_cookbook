@@ -1,7 +1,7 @@
 .. _appengine_tutorial:
 
-:app:`Pyramid` on Google App Engine
-===================================
+Google App Engine and :app:`Pyramid`
+====================================
 
 It is possible to run a :app:`Pyramid` application on `Google App Engine <https://cloud.google.com/appengine/>`_.  This tutorial is written in terms of using the command line on a UNIX system. It should be possible to perform similar actions on a Windows system. This tutorial also assumes you've already installed and created a :app:`Pyramid` application, and that you have a Google App Engine account.
 

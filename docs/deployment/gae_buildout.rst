@@ -1,8 +1,7 @@
 .. _appengine_buildout_tutorial:
 
-
-:app:`Pyramid` on Google's App Engine (using buildout)
-======================================================
+Google App Engine (using buildout) and :app:`Pyramid`
+=====================================================
 
 This is but one way to develop applications to run on Google's `App
 Engine <https://cloud.google.com/appengine/>`_. This one uses `buildout
