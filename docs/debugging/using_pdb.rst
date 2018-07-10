@@ -16,9 +16,9 @@ There are lots of great resources that can help you learn PDB.
   https://pymotw.com/3/pdb/ is the canonical text resource to learning PDB.
 
 - The PyCon video presentation by Chris McDonough entitled "Introduction to
-  PDB" at http://pyvideo.org/video/644/introduction-to-pdb is a good place to
+  PDB" at https://pyvideo.org/video/644/introduction-to-pdb is a good place to
   start learning PDB.
 
-- The video at http://pyvideo.org/pycon-us-2012/introduction-to-pdb.html shows you
+- The video at https://pyvideo.org/pycon-us-2012/introduction-to-pdb.html shows you
   how to start how to start to using pdb.  The video describes using ``pdb``
   in a command-line program.

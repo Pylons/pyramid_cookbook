@@ -169,7 +169,7 @@ The above command will most likely not work for you, it is just an
 example. the "-A" switch indicates an `Application ID <https://cloud.google.com/appengine/docs/standard/python/console/>`_ to deploy to and overrides the setting in the app.yaml, use the Application ID you created when you registered the application instead. The "-V" switch specifies the version and overrides the setting in your app.yaml.
 
 You can set which version of your application handles requests by
-default in the `admin console <https://console.cloud.google.com/appengine>`_. However you can also specify a version of your application to hit in the URL like so...
+default in the `admin console <https://accounts.google.com/ServiceLogin?service=cloudconsole&passive=1209600&osid=1&continue=https://console.cloud.google.com/appengine&followup=https://console.cloud.google.com/appengine>`_. However you can also specify a version of your application to hit in the URL like so...
 
 .. code-block:: text
 

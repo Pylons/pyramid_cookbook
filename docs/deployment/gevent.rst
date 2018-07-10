@@ -4,7 +4,7 @@ gevent
 gevent + pyramid_socketio
 =========================
 
-Alexandre Bourget explains how he uses gevent + socketio to add functionality to a Pyramid application at http://pyvideo.org/pycon-ca-2012/gevent-socketio-cross-framework-real-time-web-li.html
+Alexandre Bourget explains how he uses gevent + socketio to add functionality to a Pyramid application at https://pyvideo.org/pycon-ca-2012/gevent-socketio-cross-framework-real-time-web-li.html
 
 gevent + long polling
 =====================

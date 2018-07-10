@@ -18,7 +18,7 @@ URLs and Pylons serve the unported URLs. There are several ways to do this:
   Pylons serves static files.)
 * Wrap the Pylons application in a Pyramid view. See pyramid.wsgiapp.wsgiapp2_.
 
-Also see the `Porting Applications to Pyramid`_ section in the Cookbook.
+Also see the :ref:`porting` section in the Cookbook.
 
 *Caution:* running a Pyramid and a Pylons application simultaneously may bring up
 some tricky issues such as coordiating database connections, sessions, data
@@ -35,4 +35,3 @@ libraries which haven't been.
 
 
 .. _pyramid.wsgiapp.wsgiapp2: https://docs.pylonsproject.org/projects/pyramid/en/latest/api/wsgi.html#pyramid.wsgi.wsgiapp2
-.. _Porting Applications to Pyramid: ../porting/index.html

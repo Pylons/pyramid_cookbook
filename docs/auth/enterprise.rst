@@ -21,6 +21,6 @@ Authorization
 -------------
 
 * `Microsoft Authorization Manager <https://msdn.microsoft.com/en-us/library/aa480244.aspx>`_
-* `Fundamentals of WCF Security <http://www.codemag.com/article/0611051>`_
+* `Fundamentals of WCF Security <https://www.codemag.com/article/0611051>`_
 * `Calling WCF Services from C++ using gSOAP <https://coab.wordpress.com/2009/10/15/calling-wcf-services-from-a-linux-c-client-using-gsoap/>`_
 

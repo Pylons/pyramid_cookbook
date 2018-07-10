@@ -49,7 +49,7 @@ decorator. Instead we recommend the "pyramid_simpleform_" package, which
 replaces @validate with a more flexible structure. 
 
 There are several other form libraries people use with Pyramid. These are
-discussed in the regular Forms_ section in the Pyramid Community Cookbook.
+discussed in the regular :ref:`forms` section in the Pyramid Community Cookbook.
 
 WebHelpers
 ==========
@@ -181,6 +181,5 @@ severely.
 
 .. include::  ../links.rst
 
-.. _Forms: ../forms/index.html
 .. _Writing a Script: https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/commandline.html?highlight=pshell#writing-a-script
 .. _Hello World: https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/firstapp.html#hello-world

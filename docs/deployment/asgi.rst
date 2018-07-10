@@ -3,7 +3,7 @@ ASGI (Asynchronous Server Gateway Interface)
 
 This chapter contains information about using ASGI with Pyramid. Read about the `ASGI specification <https://asgi.readthedocs.io/en/latest/index.html>`_.
 
-The example app below uses the WSGI to ASGI wrapper from the `asgiref library <https://pypi.org/project/asgiref/>`_ to transform normal WSGI requests into ASGI responses.  This allows the application to be run with an ASGI server, such as `uvicorn <https://www.uvicorn.org/>`_ or `daphne <https://github.com/django/daphne/>`_.
+The example app below uses the WSGI to ASGI wrapper from the `asgiref library <https://pypi.org/project/asgiref/>`_ to transform normal WSGI requests into ASGI responses.  This allows the application to be run with an ASGI server, such as `uvicorn <http://www.uvicorn.org/>`_ or `daphne <https://github.com/django/daphne/>`_.
 
 
 WSGI -> ASGI application

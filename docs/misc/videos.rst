@@ -47,7 +47,7 @@ Pyramid Tutorial and Informational Videos
   EuroPython 2013 (~34 mins).
 
 * Chris McDonough at PyCon 2013, `Pyramid Auth Is Hard, Let's Ride Bikes
-  <http://pyvideo.org/video/1691/pyramid-auth-is-hard-lets-ride-bikes>`_ (~30
+  <https://pyvideo.org/video/1691/pyramid-auth-is-hard-lets-ride-bikes>`_ (~30
   mins).
 
 * Dylan Jay's DjangoCon AU 2013 Keynote, `The myth of goldilocks and the three
