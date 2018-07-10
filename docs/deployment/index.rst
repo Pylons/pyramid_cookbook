@@ -21,6 +21,7 @@ Web Servers
    gevent
    gunicorn
    nginx
+   uwsgi
 
 
 Cloud Providers
