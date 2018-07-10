@@ -1,7 +1,9 @@
 uWSGI + Nginx + systemd
 +++++++++++++++++++++++
 
-Below you can find (almost) production ready configuration. Almost, because some ``uwsgi`` parameters might need tweaking to fit your needs.
+This chapter provides an example for configuring `uWSGI <https://uwsgi-docs.readthedocs.io/en/latest/>`_, nginx, and systemd for a Pyramid application.
+
+Below you can find an almost production ready configuration. "Almost" because some ``uwsgi`` parameters might need tweaking to fit your needs.
 
 An example systemd configuration file is shown here:
 
