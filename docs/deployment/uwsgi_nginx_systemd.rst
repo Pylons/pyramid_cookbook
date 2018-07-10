@@ -1,11 +1,11 @@
 uWSGI + Nginx + systemd
 +++++++++++++++++++++++
 
-Below you can find (almost) production ready configuration. Almost, because some `uwsgi` params might need tweaking to fit your needs/resources.
+Below you can find (almost) production ready configuration. Almost, because some ``uwsgi`` parameters might need tweaking to fit your needs.
 
 An example systemd configuration file is shown here:
 
-.. code-block:: text
+.. code-block:: ini
     :linenos:
 
     # /etc/systemd/system/pyramid.service
@@ -45,23 +45,23 @@ An example systemd configuration file is shown here:
     [Install]
     WantedBy=multi-user.target
 
-Save the file, run 
+Save the file, and run it.
 
 .. code-block:: bash
     
     systemctl enable pyramid.service
     systemctl start pyramid.service
 
-Validate, if `/tmp/pyramid` directory was created and contains `uwsgi.sock`.
+Verify that the ``/tmp/pyramid`` directory was created and contains ``uwsgi.sock``.
 
-Few handy commands:
+Here are a few useful commands:
 
 .. code-block:: bash
 
     systemctl restart pyramid.service # restarts app
     journalctl -fu pyramid.service # tail logs
 
-Next we need to configure vhost in nginx. Below you can find example config:
+Next we need to configure a virtual host in nginx. Below is an example configuration:
 
 .. code-block:: nginx
     :linenos:
@@ -105,5 +105,4 @@ Next we need to configure vhost in nginx. Below you can find example config:
         }
     }
 
-Better explanation for some of those nginx directives can be found on page :doc:`Nginx + pserve + supervisord <nginx>`.
-
+A better explanation for some of those nginx directives can be found on page :doc:`Nginx + pserve + supervisord <nginx>`.
