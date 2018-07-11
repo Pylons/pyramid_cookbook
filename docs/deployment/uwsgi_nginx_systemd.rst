@@ -36,16 +36,23 @@ An example systemd configuration file is shown here:
     NotifyAccess=all
 
     # Main process
-    ExecStartPre=/bin/mkdir -p /tmp/pyramid
-    ExecStartPre=/bin/chown app:app /tmp/pyramid
-    ExecStart=/opt/env/bin/uwsgi \
-      --ini-paste-logged /opt/env/wiki/development.ini \
-      -s /tmp/pyramid/uwsgi.sock \
-      --chmod-socket=666 \
-      --protocol=http
+    ExecStart=/opt/env/bin/uwsgi --ini-paste-logged /opt/env/wiki/development.ini
 
     [Install]
     WantedBy=multi-user.target
+
+uWSGI can be configured in .ini files, for instance:
+
+.. code-block:: ini
+    :linenos:
+
+    # development.ini
+    # ...
+
+    [uwsgi]
+    socket = /tmp/pyramid.sock
+    chmod-socket = 666
+    protocol = http
 
 Save the file, and run it.
 
@@ -54,7 +61,7 @@ Save the file, and run it.
     systemctl enable pyramid.service
     systemctl start pyramid.service
 
-Verify that the ``/tmp/pyramid`` directory was created and contains ``uwsgi.sock``.
+Verify that the ``/tmp/pyramid.sock`` was created.
 
 Here are a few useful commands:
 
@@ -71,7 +78,7 @@ Next we need to configure a virtual host in nginx. Below is an example configura
     # myapp.conf
 
     upstream pyramid {
-        server unix:///tmp/pyramid/uwsgi.sock;
+        server unix:///tmp/pyramid.sock;
     }
 
     server {
