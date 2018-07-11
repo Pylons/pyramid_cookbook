@@ -51,4 +51,4 @@ A short list includes:
 
 + ``mod_wsgi``
 
-For more information on WSGI, see the `WSGI home <http://wsgi.readthedocs.io/en/latest/>`_
+For more information on WSGI, see the `WSGI home <http://wsgi.readthedocs.io/en/latest/>`_.
