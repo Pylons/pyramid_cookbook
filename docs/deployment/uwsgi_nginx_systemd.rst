@@ -61,7 +61,7 @@ Save the file, and run it.
     systemctl enable pyramid.service
     systemctl start pyramid.service
 
-Verify that the ``/tmp/pyramid.sock`` was created.
+Verify that the file ``/tmp/pyramid.sock`` was created.
 
 Here are a few useful commands:
 
