@@ -41,6 +41,12 @@ An example systemd configuration file is shown here:
     [Install]
     WantedBy=multi-user.target
 
+.. note:: In order to use ``--ini-paste-logged`` parameter (and have logs from an app), `PasteScript <https://pypi.org/project/PasteScript/>`_ is required. To install, run:
+
+    .. code-block:: bash
+
+        pip install PasteScript
+
 uWSGI can be configured in .ini files, for instance:
 
 .. code-block:: ini
@@ -54,7 +60,7 @@ uWSGI can be configured in .ini files, for instance:
     chmod-socket = 666
     protocol = http
 
-Save the file, and run it.
+Save files and run below commands to start process:
 
 .. code-block:: bash
     
