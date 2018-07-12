@@ -31,14 +31,14 @@ The postfork routine is provided as a function in a configuration python script.
 
 For example a script ``config.py`` might look like the following.
 
-.. code_block:: python
+.. code-block:: python
 
     def post_fork(server, worker):
         log.debug("gunicorn - post_fork")
 
 Invoking the script would look like the following.
 
-.. code_block:: bash
+.. code-block:: bash
 
     gunicorn --paste production.ini -c config.py
 
@@ -52,7 +52,7 @@ uWSGI offers a decorator to handle forking.
 
 Your application should include code like the following.
 
-.. code_block:: python
+.. code-block:: python
 
     from uwsgidecorators import postfork
     
@@ -94,7 +94,7 @@ If your Pyramid application connects to a database during the application
 startup however, then you must use ``Engine.dispose`` to reset the connections.
 It would look like the following.
 
-.. code_block:: python
+.. code-block:: python
 
     @postfork
     def reset_sqlalchemy():
