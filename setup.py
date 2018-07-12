@@ -26,7 +26,7 @@ except IOError:
 
 install_requires=[
     'setuptools',
-    'Sphinx >= 1.3.5',
+    'Sphinx >= 1.7.5',
     'docutils',
     'repoze.sphinx.autointerface',
     'pylons-sphinx-themes',

@@ -188,6 +188,9 @@ html_domain_indices = False
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'pyramidcookbook'
 
+# Do not use smart quotes.
+smartquotes = False
+
 
 # -- Options for LaTeX output --------------------------------------------------
 
