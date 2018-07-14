@@ -22,6 +22,7 @@ Web Servers
    gunicorn
    nginx
    uwsgi
+   uwsgi_cookiecutter_nginx
    uwsgi_nginx_systemd
 
 
