@@ -1,19 +1,20 @@
 .. _uwsgi_cookiecutter_part_2:
 
-uWSGI with Cookiecutter :app:`Pyramid` App Part 2: Adding Emperor and systemd
-=============================================================================
+uWSGI with cookiecutter :app:`Pyramid` Application Part 2: Adding Emperor and systemd
+=====================================================================================
 
 This guide will outline broad steps that can be used to add the
 `uWSGI Emperor <https://uwsgi-docs.readthedocs.io/en/latest/Emperor.html>`_
-and `systemd <https://en.wikipedia.org/wiki/Systemd>`_
-to our Cookiecutter app that is being served by ``uWSGI``.
+and `systemd <https://freedesktop.org/wiki/Software/systemd/>`_
+to our cookiecutter application that is being served by ``uWSGI``.
 
-This is Part 2 of a 2-part tutorial, and assumes that you have already
-completed part 1: :ref:`uwsgi_cookiecutter_part_1`.
+This is Part 2 of a two-part tutorial, and assumes that you have already
+completed Part 1: :ref:`uwsgi_cookiecutter_part_1`.
 
 This tutorial was developed under Ubuntu 18.04, but the instructions should be
 largely the same for all systems, where you may adjust specific path information
 for commands and files.
+
 
 Conventional Invocation of uWSGI
 --------------------------------
@@ -21,14 +22,13 @@ Conventional Invocation of uWSGI
 In Part 1 we used ``--init-paste-logged`` which got us two things almost
 for free: logging and an implicit WSGI entry point.
 
-In order to run our :term:`cookiecutter` app with the
+In order to run our :term:`pyramid:cookiecutter` application with the
 `uWSGI Emperor <https://uwsgi-docs.readthedocs.io/en/latest/Emperor.html>`_,
 we will need to follow the conventional route of providing an (explicit)
 WSGI entry point.
 
 #.  Within the project directory (``~/myproject``), create a script
-    named ``wsgi.py``.  This script is our WSGI entry point. Give it these
-    contents:
+    named ``wsgi.py`` with the following code. This script is our WSGI entry point.
 
     .. code-block:: python
 
@@ -55,7 +55,7 @@ WSGI entry point.
     :ref:`pyramid:logging_config`.
 
 #.  Create a directory for your project's log files, and set ownership on the
-    directory
+    directory.
 
     .. code-block:: bash
 
@@ -63,13 +63,11 @@ WSGI entry point.
         $ sudo mkdir uwsgi
         $ sudo chown ubuntu:www-data uwsgi
 
+#.  Uncomment these three lines of your ``production.ini`` file.
 
-#.  Uncomment these three lines of your ``production.ini`` file
-
-    .. code-block:: text
+    .. code-block:: ini
 
         [uwsgi]
-        ...
         # Uncomment `wsgi-file`, `callable`, and `logto` during Part 2 of this tutorial
         wsgi-file = wsgi.py
         callable = app
@@ -77,15 +75,15 @@ WSGI entry point.
 
     ``wsgi-file`` points to the explicit entry point that we created in the
     previous step. ``callable`` is the name of the callable symbol
-    (the variable ``app``) exposed in wsgi.py. ``logto`` specifies
-    where your apps logs will be written, which means logs will no longer be
-    written to STDOUT.
+    (the variable ``app``) exposed in ``wsgi.py``. ``logto`` specifies
+    where your application's logs will be written, which means logs will no longer be
+    written to ``STDOUT``.
 
-#.  Invoke uWSGI with ``--ini``
+#.  Invoke uWSGI with ``--ini``.
 
-    Invoking uWSGI with ``--ini`` and passing it an .ini file is the
+    Invoking uWSGI with ``--ini`` and passing it an ``.ini`` file is the
     conventional way of invoking uWSGI. (uWSGI can also be invoked
-    will all configuration options specified as command-line arguments,
+    with all configuration options specified as command-line arguments,
     but that method does not lend itself to easy configuration with Emperor,
     so we will not present that method here.)
 
@@ -94,7 +92,7 @@ WSGI entry point.
         $ cd ~/myproject
         $ sudo uwsgi --ini production.ini
 
-    Make sure you call it with ``sudo``, or your app will not be
+    Make sure you call it with ``sudo``, or your application will not be
     able to masquerade as the users we specified for ``uid`` and ``gid``.
 
     Also note that since we specified the ``logto`` parameter to be in
@@ -106,7 +104,7 @@ WSGI entry point.
         $ sudo uwsgi --ini production.ini
         [uWSGI] getting INI configuration from production.ini
 
-#.  Tail the log file at ``var/log/uwsgi/myproject.log``
+#.  Tail the log file at ``var/log/uwsgi/myproject.log``.
 
     .. code-block:: bash
 
@@ -121,33 +119,32 @@ WSGI entry point.
 
     If any errors occurred, you will need to correct them. If you get a
     ``callable not found or import error``, make sure that your ``production.ini``
-    properly sets ``wsgi-file`` to ``wsgi.py`` and that ``~/myproject/wsgi.py`` exists
+    properly sets ``wsgi-file`` to ``wsgi.py``, and that ``~/myproject/wsgi.py`` exists
     and contains the contents provided in a previous step. Also make sure that your
-    ``production.ini`` properly sets ``callable`` to ``app`` and that ``app`` is
-    the name of the callable symbol in wsgi.py.
+    ``production.ini`` properly sets ``callable`` to ``app``, and that ``app`` is
+    the name of the callable symbol in ``wsgi.py``.
 
     An import error that looks like ``ImportError: No module named 'wsgi'``
     probably indicates that your ``wsgi-file`` specified in ``production.ini``
     does not match the ``wsgi.py`` file that you actually created.
 
-    Any other `import` errors probably mean that the package it's failing to
-    import either is not installed or is not accessible by the user. That's why
+    For any other import errors, it probably means that the package either is not installed or is not accessible by the user. That's why
     we chose to masquerade as the normal user that you log in as, so you would
     for sure have access to installed packages.
 
-
-#.  Visit http://localhost in a browser. Alternatively, call ``curl localhost``
+#.  Visit http://localhost in a browser. Alternatively call ``curl localhost``
     from a terminal.  You should see the sample application rendered.
 
-#.  If the app does not render, follow the same steps you followed in
-    :ref:`uwsgi_cookiecutter_part_1` to get the Nginx connection flowing.
+#.  If the application does not render, follow the same steps you followed in
+    :ref:`uwsgi_cookiecutter_part_1` to get the nginx connection flowing.
 
-#.  Stop your application. Now that we've demonstrated that your app can run
-    with an explicit WSGI entry point, your app is ready to be
+#.  Stop your application. Now that we've demonstrated that your application can run
+    with an explicit WSGI entry point, your application is ready to be
     managed by the uWSGI Emperor.
 
-Running Your App via the Emperor
---------------------------------
+
+Running Your application via the Emperor
+----------------------------------------
 
 #.  Create two new directories in ``/etc``.
 
@@ -156,9 +153,9 @@ Running Your App via the Emperor
         $ sudo mkdir /etc/uwsgi/
         $ sudo mkdir /etc/uwsgi/vassals
 
-#.  Create an .ini file for the uWSGI emperor and place it in ``/etc/uwsgi/emperor.ini``
+#.  Create an ``.ini`` file for the uWSGI emperor and place it in ``/etc/uwsgi/emperor.ini``.
 
-    .. code-block:: text
+    .. code-block:: ini
 
         # /etc/uwsgi/emperor.ini
         [uwsgi]
@@ -168,9 +165,9 @@ Running Your App via the Emperor
         uid = ubuntu
         gid = www-data
 
-    Your app is going to run as a vassal.  The ``emperor`` line in
+    Your application is going to run as a vassal.  The ``emperor`` line in
     ``emperor.ini`` specifies a directory where the Emperor will look for
-    vassal config files. That is, any vassal config file (an .ini file) that
+    vassal config files. That is, for any vassal config file (an ``.ini`` file) that
     appears in ``/etc/uwsgi/vassals``, the Emperor will attempt to start and manage
     that vassal.
 
@@ -197,15 +194,15 @@ Running Your App via the Emperor
 
     Verify that you see this line in the emperor's output:
 
-    .. code-block:: bash
+    .. code-block:: text
 
         *** starting uWSGI Emperor ***
 
-    Keep this window open so you can see new entries in the emperor's log
+    Keep this window open so you can see new entries in the Emperor's log
     during the next steps.
 
 #.  From the vassals directory, create a symbolic link that points to your
-    app's ``production.ini``.
+    applications's ``production.ini``.
 
     .. code-block:: bash
 
@@ -213,7 +210,7 @@ Running Your App via the Emperor
         $ sudo ln -s ~/myproject/production.ini
 
     As soon as you create that symbolic link, you should see traffic in the
-    emperor log that looks like this:
+    Emperor log that looks like this:
 
     .. code-block:: text
 
@@ -233,7 +230,7 @@ Running Your App via the Emperor
 
         WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x563aa0193bf0 pid: 14984 (default app)
 
-#.  Verify that your vassal is available via Nginx. As in Part 1, you can do this
+#.  Verify that your vassal is available via nginx. As in Part 1, you can do this
     by opening http://localhost in a browser, or by curling localhost in a terminal
     window.
 
@@ -243,13 +240,14 @@ Running Your App via the Emperor
 
 #.  Stop the uWSGI Emperor, as now we will start it via systemd.
 
+
 Running the Emperor via systemd
 -------------------------------
 
-#.  Create a systemd unit file for the emperor with these contents,
-    and place it in ``/lib/systemd/system/emperor.uwsgi.service``:
+#.  Create a systemd unit file for the Emperor with the following code,
+    and place it in ``/lib/systemd/system/emperor.uwsgi.service``.
 
-    .. code-block:: text
+    .. code-block:: ini
 
         # /lib/systemd/system/emperor.uwsgi.service
         [Unit]
@@ -276,7 +274,7 @@ Running the Emperor via systemd
         $ sudo systemctl start emperor.uwsgi.service
         $ sudo systemctl enable emperor.uwsgi.service
 
-#.  Verify that the uWSGI Emperor is running, and that your app is running and
+#.  Verify that the uWSGI Emperor is running, and that your application is running and
     available on localhost. Here are some commands that you can use to verify:
 
     .. code-block:: bash
@@ -301,12 +299,12 @@ Running the Emperor via systemd
 
         $ curl localhost
 
-#.  Congratulations! You've just deployed your app in robust fashion.
+#.  Congratulations! You've just deployed your application in robust fashion.
 
 `uWSGI` has many knobs and a great variety of deployment modes. This
-is just one representation of how you might use it to serve up a CookieCutter :app:`Pyramid`
+is just one representation of how you might use it to serve up a cookiecutter :app:`Pyramid`
 application.  See the `uWSGI documentation
 <https://uwsgi-docs.readthedocs.io/en/latest/>`_
 for more in-depth configuration information.
 
-This tutorial is modified from the `original tutorial for mod_wsgi <https://docs.pylonsproject.org/projects/pyramid/en/latest/tutorials/modwsgi/index.html>`_.
+This tutorial is modified from the original tutorial :ref:`pyramid:modwsgi_tutorial`.

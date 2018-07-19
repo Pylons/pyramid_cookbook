@@ -1,4 +1,4 @@
-uWSGI + Nginx + systemd
+uWSGI + nginx + systemd
 +++++++++++++++++++++++
 
 This chapter provides an example for configuring `uWSGI <https://uwsgi-docs.readthedocs.io/en/latest/>`_, `nginx <https://nginx.org/en/docs/>`_, and `systemd <https://www.freedesktop.org/wiki/Software/systemd/>`_ for a Pyramid application.
@@ -120,4 +120,4 @@ Next we need to configure a virtual host in nginx. Below is an example configura
         }
     }
 
-A better explanation for some of the above nginx directives can be found in the cookbook recipe :doc:`Nginx + pserve + supervisord <nginx>`.
+A better explanation for some of the above nginx directives can be found in the cookbook recipe :doc:`nginx + pserve + supervisord <nginx>`.
