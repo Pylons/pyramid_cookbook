@@ -264,6 +264,7 @@ rst_prolog = '''
 linkcheck_ignore = [
     r'http://0\.0\.0\.0:\d+',
     r'http://localhost:\d+',
+    r'http://localhost',
     r'http://mysite.com',
     r'http://staticserver.com',
     r'http://.*example.com',
