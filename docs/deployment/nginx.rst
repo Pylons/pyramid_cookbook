@@ -1,4 +1,4 @@
-Nginx + pserve + supervisord
+nginx + pserve + supervisord
 ++++++++++++++++++++++++++++
 
 This setup can be accomplished simply and is capable of serving a large amount
@@ -6,7 +6,7 @@ of traffic. The advantage in deployment is that by using ``pserve``, it is not
 unlike the basic development environment you're probably using on your local
 machine.
 
-`Nginx <https://www.nginx.com/resources/wiki/>`_ is a highly optimized HTTP server, very
+`nginx <https://www.nginx.com/resources/wiki/>`_ is a highly optimized HTTP server, very
 capable of serving
 static content as well as acting as a proxy between other applications and the
 outside world. As a proxy, it also has good support for basic load balancing
@@ -14,12 +14,12 @@ between multiple instances of an application.
 
 .. code-block:: text
 
-    Client <---> Nginx [0.0.0.0:80] <---> (static files)
+    Client <---> nginx [0.0.0.0:80] <---> (static files)
                   /|\
                    |-------> WSGI App [localhost:5000]
                    `-------> WSGI App [localhost:5001]
 
-Our target setup is going to be an Nginx server listening on port 80 and
+Our target setup is going to be an nginx server listening on port 80 and
 load-balancing between 2 pserve processes. It will also serve the static files
 from our project's directory.
 
@@ -42,10 +42,10 @@ Let's assume a basic project setup:
     `-- supervisord.conf (optional)
 
 
-Step 1: Configuring Nginx
+Step 1: Configuring nginx
 =========================
 
-Nginx needs to be configured as a proxy for your application. An example
+nginx needs to be configured as a proxy for your application. An example
 configuration is shown here:
 
 .. code-block:: nginx
@@ -154,7 +154,7 @@ configuration is shown here:
 
 The optional ``listen`` directive, as well as the 2 following lines,
 are the only configuration changes required to enable SSL from the Client
-to Nginx. You will need to have already created your SSL certificate and
+to nginx. You will need to have already created your SSL certificate and
 key for this to work.  More details on this process can be found in
 the `OpenSSL wiki for Command Line Utilities <https://wiki.openssl.org/index.php/Command_Line_Utilities>`_.
 You will also need to update the paths that are shown to match the actual
@@ -227,7 +227,7 @@ Running the pserve processes::
    then `removed in Pyramid 1.8
    <https://docs.pylonsproject.org/projects/pyramid/en/latest/whatsnew-1.8.html#backwards-incompatibilities>`_.
 
-Step 3: Serving Static Files with Nginx (Optional)
+Step 3: Serving Static Files with nginx (Optional)
 ==================================================
 
 Assuming your static files are in a subdirectory of your pyramid application,
@@ -255,7 +255,7 @@ be proxied to your WSGI application and can be served directly.
     }
 
 It's somewhat odd that the ``root`` doesn't point to the ``static`` directory,
-but it works because Nginx will append the actual URL to the specified path.
+but it works because nginx will append the actual URL to the specified path.
 
 Step 4: Managing Your pserve Processes with Supervisord (Optional)
 ==================================================================

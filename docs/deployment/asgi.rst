@@ -162,7 +162,7 @@ or
 There are several potential deployment options, one example would be to use `nginx <https://nginx.org/>`_ and `supervisor <http://supervisord.org/>`_. Below are example configuration files that run the application using ``uvicorn``, however ``daphne`` may be used as well.
 
 
-Example Nginx configuration
+Example nginx configuration
 ===========================
 
 .. code-block:: nginx
