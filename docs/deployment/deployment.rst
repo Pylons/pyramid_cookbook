@@ -45,7 +45,7 @@ A short list includes:
 
 + ``CherryPy``
 
-+ ``uwsgi``
++ ``uWSGI``
 
 + ``gevent``
 
