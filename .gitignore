@@ -2,8 +2,10 @@
 *.egg-info
 .eggs/
 *.pyc
+*.swp
 build/
 dist/
 docs/_build
 env/
 .DS_Store
+

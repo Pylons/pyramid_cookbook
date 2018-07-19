@@ -18,10 +18,13 @@ Web Servers
 
    apache
    asgi
+   forked_threaded_servers
    gevent
    gunicorn
    nginx
    uwsgi
+   uwsgi_cookiecutter_1_nginx
+   uwsgi_cookiecutter_2_emperor
    uwsgi_nginx_systemd
 
 
