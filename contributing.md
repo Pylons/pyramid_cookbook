@@ -56,15 +56,15 @@ pull request to the repository.
    Now your local repo is set up such that you will push changes to your
    GitHub repo, from which you can submit a pull request.
 
-4. Create a virtualenv:
+4. Create a virtual environment:
 
         $ export VENV=~/hack-on-cookbook/env
-        $ virtualenv $VENV
+        $ python3 -m venv $VENV
 
 5. Install the Pyramid Community Cookbook from the checkout into the virtualenv
    using the following command.
 
-        $ $VENV/bin/python setup.py install
+        $ $VENV/bin/pip install -e .
 
 ### Build the HTML docs
 
