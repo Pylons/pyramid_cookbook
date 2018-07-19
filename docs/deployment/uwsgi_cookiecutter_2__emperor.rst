@@ -57,6 +57,14 @@ WSGI entry point.
     to allow logging within your application. See
     :ref:`pyramid:logging_config`.
 
+#.  Create a directory for your project's log files, and set ownership on the
+    directory
+
+    .. code-block:: bash
+
+        $ cd /var/log
+        $ sudo mkdir uwsgi
+        $ sudo chown ubuntu:www-data uwsgi
 
 
 #.  Uncomment these three lines of your ``production.ini`` file
@@ -65,9 +73,10 @@ WSGI entry point.
 
         [uwsgi]
         ...
-        wsgi-file = wsgi.py                 # Used in part 2 of this tutorial
-        callable = app                      # Used in part 2 of this tutorial
-        logto = /var/log/uwsgi/%(proj).log  # Used in part 2 of this tutorial
+        # Uncomment `wsgi-file`, `callable`, and `logto` during Part 2 of this tutorial
+        wsgi-file = wsgi.py
+        callable = app
+        logto = /var/log/uwsgi/%(proj).log
 
 
     ``wsgi-file`` points to the explicit entry point that we created in the
@@ -169,6 +178,8 @@ Running Your App via the Emperor
         emperor = /etc/uwsgi/vassals
         limit-as = 1024
         logto = /var/log/uwsgi/emperor.log
+        uid = ubuntu
+        gid = www-data
 
     Your app is going to run as a vassal.  The ``emperor`` line in
     ``emperor.ini`` specifies a directory where the Emperor will look for

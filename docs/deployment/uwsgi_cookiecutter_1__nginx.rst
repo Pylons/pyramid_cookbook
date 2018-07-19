@@ -100,9 +100,10 @@ With that said, let's begin.
         virtualenv = %(chdir)/env
         uid = ubuntu
         gid = www-data
-        #wsgi-file = wsgi.py                 # Used in part 2 of this tutorial
-        #callable = app                      # Used in part 2 of this tutorial
-        #logto = /var/log/uwsgi/%(proj).log  # Used in part 2 of this tutorial
+        # Uncomment `wsgi-file`, `callable`, and `logto` during Part 2 of this tutorial
+        #wsgi-file = wsgi.py
+        #callable = app
+        #logto = /var/log/uwsgi/%(proj).log
 
     And here is an explanation of the salient options:
 
