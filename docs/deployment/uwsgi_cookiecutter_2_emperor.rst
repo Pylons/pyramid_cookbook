@@ -12,8 +12,8 @@ This is Part 2 of a 2-part tutorial, and assumes that you have already
 completed part 1: :ref:`uwsgi_cookiecutter_part_1`.
 
 This tutorial was developed under Ubuntu 18.04, but the instructions should be
-largely the same for all systems, delta specific path information for commands
-and files.
+largely the same for all systems, where you may adjust specific path information
+for commands and files.
 
 Conventional Invocation of uWSGI
 --------------------------------
@@ -25,9 +25,6 @@ In order to run our :term:`cookiecutter` app with the
 `uWSGI Emperor <https://uwsgi-docs.readthedocs.io/en/latest/Emperor.html>`_,
 we will need to follow the conventional route of providing an (explicit)
 WSGI entry point.
-
-
-
 
 #.  Within the project directory (``~/myproject``), create a script
     named ``wsgi.py``.  This script is our WSGI entry point. Give it these
@@ -78,14 +75,11 @@ WSGI entry point.
         callable = app
         logto = /var/log/uwsgi/%(proj).log
 
-
     ``wsgi-file`` points to the explicit entry point that we created in the
     previous step. ``callable`` is the name of the callable symbol
     (the variable ``app``) exposed in wsgi.py. ``logto`` specifies
     where your apps logs will be written, which means logs will no longer be
     written to STDOUT.
-
-
 
 #.  Invoke uWSGI with ``--ini``
 
@@ -95,13 +89,12 @@ WSGI entry point.
     but that method does not lend itself to easy configuration with Emperor,
     so we will not present that method here.)
 
-
     .. code-block:: bash
 
         $ cd ~/myproject
         $ sudo uwsgi --ini production.ini
 
-    Make sure you call it with ``sudo``, or it your app will not be
+    Make sure you call it with ``sudo``, or your app will not be
     able to masquerade as the users we specified for ``uid`` and ``gid``.
 
     Also note that since we specified the ``logto`` parameter to be in
@@ -112,8 +105,6 @@ WSGI entry point.
 
         $ sudo uwsgi --ini production.ini
         [uWSGI] getting INI configuration from production.ini
-
-
 
 #.  Tail the log file at ``var/log/uwsgi/myproject.log``
 
@@ -151,16 +142,12 @@ WSGI entry point.
 #.  If the app does not render, follow the same steps you followed in
     :ref:`uwsgi_cookiecutter_part_1` to get the Nginx connection flowing.
 
-
 #.  Stop your application. Now that we've demonstrated that your app can run
     with an explicit WSGI entry point, your app is ready to be
     managed by the uWSGI Emperor.
 
-
-
 Running Your App via the Emperor
 --------------------------------
-
 
 #.  Create two new directories in ``/etc``.
 
@@ -187,8 +174,6 @@ Running Your App via the Emperor
     appears in ``/etc/uwsgi/vassals``, the Emperor will attempt to start and manage
     that vassal.
 
-
-
 #.  Invoke the uWSGI Emperor.
 
     .. code-block:: bash
@@ -203,7 +188,6 @@ Running Your App via the Emperor
 
         $ sudo uwsgi --ini emperor.ini
         [uWSGI] getting INI configuration from emperor.ini
-
 
 #.  In a new terminal window, start tailing the emperor's log.
 
@@ -237,9 +221,6 @@ Running Your App via the Emperor
         Sun Jul 15 13:34:15 2018 - [emperor] vassal production.ini has been spawned
         Sun Jul 15 13:34:15 2018 - [emperor] vassal production.ini is ready to accept requests
 
-
-
-
 #.  Tail your vassal's log to be sure that it started correctly.
 
     .. code-block:: bash
@@ -261,8 +242,6 @@ Running Your App via the Emperor
         $ curl localhost
 
 #.  Stop the uWSGI Emperor, as now we will start it via systemd.
-
-
 
 Running the Emperor via systemd
 -------------------------------
@@ -289,7 +268,6 @@ Running the Emperor via systemd
 
         [Install]
         WantedBy=multi-user.target
-
 
 #.  Start and enable the systemd unit.
 
@@ -324,11 +302,6 @@ Running the Emperor via systemd
         $ curl localhost
 
 #.  Congratulations! You've just deployed your app in robust fashion.
-
-
-
-
-
 
 `uWSGI` has many knobs and a great variety of deployment modes. This
 is just one representation of how you might use it to serve up a CookieCutter :app:`Pyramid`

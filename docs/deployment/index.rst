@@ -8,7 +8,6 @@ Introduction
    :maxdepth: 1
 
    deployment
-   forked_threaded_servers
 
 
 Web Servers
@@ -19,12 +18,13 @@ Web Servers
 
    apache
    asgi
+   forked_threaded_servers
    gevent
    gunicorn
    nginx
    uwsgi
-   uwsgi_cookiecutter_1__nginx
-   uwsgi_cookiecutter_2__emperor
+   uwsgi_cookiecutter_1_nginx
+   uwsgi_cookiecutter_2_emperor
    uwsgi_nginx_systemd
 
 

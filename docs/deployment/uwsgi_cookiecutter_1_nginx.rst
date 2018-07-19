@@ -8,22 +8,21 @@ It is named after the Web Server Gateway Interface (the `WSGI <https://wsgi.read
 to which many Python web frameworks conform).
 
 This guide will outline broad steps that can be used to get a Cookiecutter
-:app:`Pyramid` application running under under ``uWSGI`` and Nginx.  This particular
+:app:`Pyramid` application running under ``uWSGI`` and Nginx.  This particular
 tutorial was developed and tested on Ubuntu 18.04, but the instructions should be
-largely the same for all systems, delta specific path information for commands
-and files.
+largely the same for all systems, where you may adjust specific path information
+for commands and files.
 
 .. note::
 
-    For those of you with your hearts set on running your pyramid
-    application under uWSGI, this be your guide.
+    For those of you with your hearts set on running your Pyramid
+    application under uWSGI, this is your guide.
 
     However, if you are simply looking for a decent-performing
     production-grade server with auto-start capability, waitress + Systemd
     has a much gentler learning curve.
 
 With that said, let's begin.
-
 
 #.  Install prerequisites
 
@@ -38,7 +37,7 @@ With that said, let's begin.
 
     .. code-block:: bash
 
-        $ cd
+        $ cd ~
         $ python3 -m cookiecutter gh:Pylons/pyramid-cookiecutter-starter
 
     If prompted for the first item, accept the default ``yes`` by hitting return.
@@ -69,11 +68,10 @@ With that said, let's begin.
 
         $ env/bin/pip install -e ".[testing]"
 
-
 #.  Create a new directory at ``~/myproject/tmp`` to house a pidfile and a unix
     socket.  However, you'll need to make sure that *two* users have access to
     change into the ``~/myproject/tmp`` directory: your current user (mine is
-    ``ubuntu`` and the user that Nginx will run as often named ``www-data`` or
+    ``ubuntu``), and the user that Nginx will run as (often named ``www-data`` or
     ``nginx``).
 
 #.  Add a ``[uwsgi]`` section to ``production.ini``. Here are the lines
@@ -118,7 +116,7 @@ With that said, let's begin.
         # chmod-socket = 020                  # Change permissions on socket to
         #                                       at least 020 so that in combination
         #                                       with "--gid www-data", Nginx will be able
-        #                                       to write to it after  uWSGI creates it
+        #                                       to write to it after uWSGI creates it
         #
         # enable-threads                      # Execute threads that are in your app
         #
@@ -137,11 +135,8 @@ With that said, let's begin.
         #                                       (which runs as the www-data group)
         #                                       access to the socket file.
         #
-        # virtualenv = (chdir)/env            # Use packages installed in your venv
-
-
-
-
+        # virtualenv = (chdir)/env            # Use packages installed in your
+        #                                       virtual environment
 
 #.  Invoke uWSGI with ``--ini-paste-logged``.
 
@@ -164,21 +159,15 @@ With that said, let's begin.
         #                                       so that you don' have to.
         #                                       Also enables logging
 
-
-
-
 #.  Verify that the output of the previous step includes a line that looks
     approximately like this:
-
 
     .. code-block:: bash
 
         WSGI app 0 (mountpoint='/') ready in 1 seconds on interpreter 0x5615894a69a0 pid: 8827 (default app)
 
-
-
     If any errors occurred, you will need to correct them. If you get a
-    ``uwsgi: unrecognized option '--ini-paste-logged'``, may sure you are
+    ``uwsgi: unrecognized option '--ini-paste-logged'``, make sure you are
     specifying the python3 plugin.
 
     If you get an error like this:
@@ -188,11 +177,11 @@ With that said, let's begin.
         Fatal Python error: Py_Initialize: Unable to get the locale encoding
         ModuleNotFoundError: No module named 'encodings'
 
-    check that the ``virtualenv`` option in the [uwsgi] section of your
+    check that the ``virtualenv`` option in the ``[uwsgi]`` section of your
     .ini file points to the correct directory. Specifically, it should
     end in ``env``, not ``bin``.
 
-    Any import errors probably means that the package it's failing to
+    Any `import` errors probably mean that the package it's failing to
     import either is not installed or is not accessible by the user. That's why
     we chose to masquerade as the normal user that you log in as, so you would
     for sure have access to installed packages.
@@ -218,7 +207,6 @@ With that said, let's begin.
         }
 
       }
-
 
 #.  If there is a file at /var/nginx/sites-enabled/default,
     remove it so your new nginx config file will catch all traffic.
@@ -277,14 +265,12 @@ With that said, let's begin.
     permissions more open than ``020``, but in testing this tutorial ``020``
     was all that was required.
 
-
 #.  Once your app is accessible via Nginx, you have cause to celebrate.
 
     If you wish to also add the
     `uWSGI Emperor <https://uwsgi-docs.readthedocs.io/en/latest/Emperor.html>`_
     and `Systemd <https://en.wikipedia.org/wiki/Systemd>`_ to the mix, proceed
     to part 2 of this tutorial: :ref:`uwsgi_cookiecutter_part_2`.
-
 
 `uWSGI` has many knobs and a great variety of deployment modes. This
 is just one representation of how you might use it to serve up a CookieCutter :app:`Pyramid`
