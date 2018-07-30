@@ -17,7 +17,7 @@ Here's how to send redirects and HTTP errors in Pyramid compared to Pylons::
 
     # Pyramid -- in view code
     import pyramid.httpexceptions as exc
-    raise exc.exception_response(400)   # Not Found
+    raise exc.exception_response(404)   # Not Found
     raise exc.HTTPNotFound()            # Same thing
     return exc.HTTPNotFound()           # Same thing
     raise exc.HTTPForbidden()
