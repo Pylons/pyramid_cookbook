@@ -33,7 +33,7 @@ Since the web server for `CherryPy <https://cherrypy.org>`_ has good
 Windows support, is available for Python 2 and 3, and can be gracefully
 started and stopped on demand from the service, we'll use that as the web
 server. You could also substitute another web server, like the one from
-`Twisted <https://twistedmatrix.com/>`_.
+`Twisted <https://twistedmatrix.com/trac/>`_.
 
 To install CherryPy run::
 
