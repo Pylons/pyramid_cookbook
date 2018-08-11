@@ -7,7 +7,7 @@ Type-specific views by registering a view against a class.
 Background
 ==========
 
-In :doc:`hierarchy` we had 3 "content types" (SiteFolder, Folder, and
+In :doc:`hierarchy` we had 3 "content types" (Root, Folder, and
 Document.) All, however, used the same view and template.
 
 Pyramid traversal lets you bind a view to a particular content type. This
