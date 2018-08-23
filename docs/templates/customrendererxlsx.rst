@@ -94,7 +94,7 @@ Now you have a renderer. Let's register it with our application's
 
 .. code-block:: python
 
-   config.add_renderer('.xlsx', 'myapp.renderers.CSVRenderer')
+   config.add_renderer('.xlsx', 'myapp.xlsxrenderer.XLSXRenderer')
 
 Of course, you need to modify the dotted-string to point to the module location you
 decided upon. You must also write the templates in the directory
