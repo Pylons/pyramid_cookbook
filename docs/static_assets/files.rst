@@ -189,3 +189,161 @@ request object as a ``cgi.FieldStorage`` object accessible through the
 
         return Response('OK')
 
+
+Building JavaScript/CSS assets via Pyramid application command
+--------------------------------------------------------------
+
+Modern applications often require some kind of build step required for production static assets
+bundling.
+This recipe illustrates how to build a command that can help with this task, it also tries to
+adhere some requirements:
+
+* Frontend source code can be distributed as python packages
+* Source code repository/site-packages is not being written to during building
+* Make it possible to provide plugin architecture within your application with multiple
+  static packages
+* Application home directory as the destination of build process for easy HTTP serving by Apache
+  or Nginx.
+* Flexible - you can use Yarn, Webpack, Rollup or other favourite frontend tooling for JS/CSS
+  to compose bigger pipelines
+
+First we need to tell Pyramid it will have to serve static content from additional build directory
+(this is useful for development, in production this will be often handled by Nginx).
+
+In ini/configuration add locations for build process:
+
+.. code-block:: ini
+
+    # build result directory
+    statics.dir = %(here)s/static
+    # intermediate directory for build process
+    statics.build_dir = %(here)s/static_build
+
+In routing section of application:
+
+.. code-block:: py3
+
+    import pathlib
+    # after default static view add bundled static support
+    config.add_static_view(
+        "static_bundled", "static_bundled", cache_max_age=1
+    )
+    path = pathlib.Path(config.registry.settings["statics.dir"])
+    # create the directory if missing otherwise pyramid will not start
+    path.mkdir(exist_ok=True)
+    config.override_asset(
+        to_override="yourapp:static_bundled/",
+        override_with=config.registry.settings["statics.dir"],
+    )
+
+Now in your templates you can reference your build artifacts.
+
+.. code-block:: html
+
+    <script src="{{ request.static_url('yourapp:static_bundled/some-package.min.js') }}"></script>
+
+In your application create a file ``build_static_assets.py``, for example in ``app/scripts`` package.
+
+.. code-block:: py3
+
+    import argparse
+    import io
+    import json
+    import logging
+    import os
+    import pathlib
+    import shutil
+    import subprocess
+    import sys
+
+    import pkg_resources
+    from pyramid.paster import bootstrap, setup_logging
+
+    log = logging.getLogger(__name__)
+
+
+    def build_assets(registry, *cmd_args, **cmd_kwargs):
+        settings = registry.settings
+        build_dir = settings["statics.build_dir"]
+        try:
+            shutil.rmtree(build_dir)
+        except FileNotFoundError as exc:
+            log.warning(exc)
+        # your application frontend source code and configuration directory
+        # usually the containing main package.json
+        assets_path = os.path.abspath(
+            pkg_resources.resource_filename("yourapp", "../../frontend")
+        )
+        # copy package static sources to temporary build dir
+        shutil.copytree(
+            assets_path,
+            build_dir,
+            ignore=shutil.ignore_patterns(
+                "node_modules", "bower_components", "__pycache__"
+            ),
+        )
+        # configuration files/variables can be picked up by webpack/rollup/gulp
+        os.environ["FRONTEND_ASSSET_ROOT_DIR"] = settings["statics.dir"]
+        worker_config = {'frontendAssetRootDir': settings["statics.dir"]}
+        with io.open(pathlib.Path(build_dir) / 'pyramid_config.json', 'w') as f:
+            f.write(json.dumps(worker_config))
+        # your actual build commands to execute:
+
+        # download all requirements
+        subprocess.run(["yarn"], env=os.environ, cwd=build_dir, check=True)
+        # run build process
+        subprocess.run(["yarn", "build"], env=os.environ, cwd=build_dir, check=True)
+
+
+    def parse_args(argv):
+        parser = argparse.ArgumentParser()
+        parser.add_argument("config_uri", help="Configuration file, e.g., development.ini")
+        return parser.parse_args(argv[1:])
+
+
+    def main(argv=sys.argv):
+        args = parse_args(argv)
+        setup_logging(args.config_uri)
+        env = bootstrap(args.config_uri)
+        request = env["request"]
+        build_assets(request.registry)
+
+Finally, tell package tools to create shell script you can use to start the process.
+
+.. code-block:: py3
+
+    setup(
+        name='yourapp',
+        ....
+        install_requires=requires,
+        entry_points={
+            'paste.app_factory': [
+                'main = channelstream_landing:main',
+            ],
+            'console_scripts': [
+                'yourapp_build_statics = yourapp.scripts.build_static_assets:main',
+            ]
+        },
+    )
+
+Run ``pip install -e`` . again to register the console script.
+
+Now you can configure/run your frontend pipeline with webpack/gulp/rollup or other solution.
+
+If you run the command:
+
+.. code-block:: bash
+
+    yourapp_build_statics development.ini
+
+It will start the build process and its result will be a fresh ``static`` directory in same
+location that ini file was, it will contain all the build process artifacts ready for serving.
+
+You can retrieve variables from pyramid application in your node build configuration files:
+
+.. code-block:: javascript
+
+    destinationRootDir = process.env.FRONTEND_ASSSET_ROOT_DIR
+
+or you can load generated ``pyramid_config.json`` file in your node script for additional
+information.
