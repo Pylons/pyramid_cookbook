@@ -1,0 +1,3 @@
+[run]
+source = bundling_example
+omit = bundling_example/test*
