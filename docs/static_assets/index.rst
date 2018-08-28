@@ -1,12 +1,13 @@
+****************************
 Static Assets (Static Files)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+****************************
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   files
+    serving-files
+    uploading-files
+    bundling-static-assets
 
-
-For more information on static assets, see the `Static Assets
-<https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/assets.html>`_
+For more information on static assets, see the :ref:`pyramid:assets_chapter`
 section of the Pyramid documentation.
