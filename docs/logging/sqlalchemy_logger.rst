@@ -89,7 +89,7 @@ Let's subclass Handler now (put this in ``myapp.handlers``)::
            trace = None
            exc = record.__dict__['exc_info']
            if exc:
-               trace = traceback.format_exc(exc)
+               trace = traceback.format_exc()
            log = Log(
                logger=record.__dict__['name'],
                level=record.__dict__['levelname'],
