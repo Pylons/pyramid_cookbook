@@ -126,7 +126,8 @@ Also in this sub-directory, create a file ``build_static_assets.py`` to serve as
         # configuration files/variables can be picked up by webpack/rollup/gulp
         os.environ["FRONTEND_ASSSET_ROOT_DIR"] = settings["statics.dir"]
         worker_config = {'frontendAssetRootDir': settings["statics.dir"]}
-        with io.open(pathlib.Path(build_dir) / 'pyramid_config.json', 'w') as f:
+        worker_config_file = pathlib.Path(build_dir) / 'pyramid_config.json'
+        with worker_config_file.open('w') as f:
             f.write(json.dumps(worker_config))
         # your actual build commands to execute:
 
