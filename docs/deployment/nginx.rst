@@ -217,8 +217,8 @@ hosting the application under a different URL than ``/``.
 
 Running the pserve processes::
 
-    pserve production.ini http_port=5000
-    pserve production.ini http_port=5001
+    pserve production.ini?http_port=5000
+    pserve production.ini?http_port=5001
 
 .. note::
 
@@ -307,7 +307,7 @@ for a full breakdown of all of the great options provided.
 
     [program:myapp]
     autorestart=true
-    command=%(here)s/env/bin/pserve %(here)s/production.ini http_port=50%(process_num)02d
+    command=%(here)s/env/bin/pserve %(here)s/production.ini?http_port=50%(process_num)02d
     process_name=%(program_name)s-%(process_num)01d
     numprocs=2
     numprocs_start=0
