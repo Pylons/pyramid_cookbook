@@ -211,10 +211,12 @@ can distinguish between different domains, HTTP vs. HTTPS.
     #---------- Logging Configuration ----------
     # ...
 
-Running the pserve processes::
+Running the pserve processes:
 
-    pserve production.ini?http_port=5000
-    pserve production.ini?http_port=5001
+.. code-block:: bash
+
+    $ pserve production.ini\?http_port=5000
+    $ pserve production.ini\?http_port=5001
 
 .. note::
 
