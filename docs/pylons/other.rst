@@ -107,7 +107,7 @@ fragment. Other special keyword arguments are ``_scheme``, ``_host``,
 ``_port``, and ``_app_url``.
 
 The advantage of using these methods rather than hardcoding the URL, is that it
-automatically addds the application prefix (which may be something more than
+automatically adds the application prefix (which may be something more than
 "/" if the application is mounted on a sub-URL).
 
 You can also pass additional positional arguments, and they will be appended
