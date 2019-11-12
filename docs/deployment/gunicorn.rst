@@ -19,14 +19,14 @@ your application. Just supply the ``--paste`` command line option together with
 the path of your configuration file to the ``gunicorn`` command, and it will
 try to load the app.
 
-As documented in the section `Paster Applications
-<http://docs.gunicorn.org/en/stable/configure.html#paster-applications>`_, you
+As documented in the section `Paste Deployment
+<http://docs.gunicorn.org/en/stable/run.html#paste-deployment>`_, you
 may also add gunicorn specific settings to the ``[server:main]`` section of
-your INI file.
+your INI file and continue using the ``pserve`` command.
 
 The following configuration will cause gunicorn to listen on a unix socket, use
-four workers, preload the application, reload it on file changes, output
-accesslog lines to stderr and use the debug loglevel.
+four workers, preload the application, output accesslog lines to stderr and use
+the debug loglevel.
 
 .. code-block:: ini
 
@@ -35,16 +35,14 @@ accesslog lines to stderr and use the debug loglevel.
     bind = unix:/var/run/app.sock
     workers = 4
     preload = true
-    reload = true
     accesslog = -
     loglevel = debug
 
 For all configuration options that may be used, have a look at the `available
 settings <http://docs.gunicorn.org/en/stable/settings.html>`_.
 
-Keep in mind that settings defined within a gunicorn configuration file or
-command line arguments given to gunicorn take precedence over the settings
-established within the INI file.
+Keep in mind that settings defined within a gunicorn configuration file
+take precedence over the settings established within the INI file.
 
 For all of this to work, the Python interpreter used by gunicorn also needs to
 be able to load your application. In other words, gunicorn and your application
