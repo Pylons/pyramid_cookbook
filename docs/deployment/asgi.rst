@@ -202,8 +202,9 @@ Example Supervisor configuration
 
     [program:asgiapp]
     directory=/path/to/app/
-    command=</path-to-virtualenv>bin/uvicorn app:app --bind unix:/tmp/uvicorn.sock --workers 2 --access-logfile /tmp/uvicorn-access.log --error-logfile /tmp/uvicorn-error.log
+    command=</path-to-virtualenv>/bin/uvicorn app:app --uds /tmp/uvicorn.sock --workers 2 --access-log --log-level error
     user=<app-user>
     autostart=true
     autorestart=true
     redirect_stderr=True
+    [supervisord]
