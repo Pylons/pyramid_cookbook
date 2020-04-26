@@ -57,7 +57,7 @@ This example extends the ``asgiref`` wrapper to enable routing ASGI consumers al
             super().__init__(*args, **kwargs)
             self.protocol_router = {"http": {}, "websocket": {}}
 
-        def __call__(self, scope, **kwargs):
+        async def __call__(self, scope, *args, **kwargs):
             protocol = scope["type"]
             path = scope["path"]
             try:
@@ -65,8 +65,8 @@ This example extends the ``asgiref`` wrapper to enable routing ASGI consumers al
             except KeyError:
                 consumer = None
             if consumer is not None:
-                return consumer(scope)
-            return super().__call__(scope, **kwargs)
+                await consumer(scope, *args, **kwargs)
+            await super().__call__(scope, *args, **kwargs)
 
         def route(self, rule, *args, **kwargs):
             try:
@@ -127,21 +127,17 @@ This example extends the ``asgiref`` wrapper to enable routing ASGI consumers al
 
     # Define ASGI consumers
     @app.route("/ws", protocol="websocket")
-    def hello_websocket(scope):
-
-        async def asgi_instance(receive, send):
-            while True:
-                message = await receive()
-                if message["type"] == "websocket.connect":
-                    await send({"type": "websocket.accept"})
-                if message["type"] == "websocket.receive":
-                    text = message.get("text")
-                    if text:
-                        await send({"type": "websocket.send", "text": text})
-                    else:
-                        await send({"type": "websocket.send", "bytes": message.get("bytes")})
-
-        return asgi_instance
+    async def hello_websocket(scope, receive, send):
+        while True:
+            message = await receive()
+            if message["type"] == "websocket.connect":
+                await send({"type": "websocket.accept"})
+            if message["type"] == "websocket.receive":
+                text = message.get("text")
+                if text:
+                    await send({"type": "websocket.send", "text": text})
+                else:
+                    await send({"type": "websocket.send", "bytes": message.get("bytes")})
 
 
 Running & Deploying
