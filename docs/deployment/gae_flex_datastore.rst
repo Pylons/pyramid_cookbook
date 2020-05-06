@@ -3,21 +3,31 @@
 Google App Engine Flexible with Datastore and :app:`Pyramid`
 ============================================================
 
-It is possible to run a :app:`Pyramid` application on `Google App Engine <https://cloud.google.com/appengine/>`_.  This tutorial is written "environement agnostic" meaning the commands here should work on Linux, Mac or Windows. This tutorial also assumes you've already installed and created a :app:`Pyramid` application, and that you have a Google App Engine account.
+It is possible to run a :app:`Pyramid` application on `Google App Engine <https://cloud.google.com/appengine/>`_.
+This tutorial is written "environment agnostic", meaning the commands here should work on Linux, macOS or Windows.
+This tutorial also assumes you've already installed and created a :app:`Pyramid` application, and that you have a Google App Engine account.
 
 Setup
 -----
 
-First we'll need to set up a few things in App Engine. If you don't need Datastore access for your project or any other GCP service, you can skip the Credentials section.
+First we'll need to set up a few things in App Engine.
+If you don't need Datastore access for your project or any other GCP service, you can skip the Credentials section.
 
 Credentials
 ###########
 
 Navigate to App Engine's IAM And Admin section and click on Service Accounts in the left sidebar, then create a `Service Account <https://cloud.google.com/iam/docs/service-accounts>`_.
 
-Once a service account is created, you will be given a ``.json`` key file. This will be used to allow your Pyramid application to communicate with GCP services. Move this file to your Pyramid project. A best practice here would be to make sure this file is listed in ``.gitignore`` so that it's not checked in with the rest of your code.
+Once a service account is created, you will be given a ``.json`` key file.
+This will be used to allow your Pyramid application to communicate with GCP services.
+Move this file to your Pyramid project.
+A best practice here would be to make sure this file is listed in ``.gitignore`` so that it's not checked in with the rest of your code.
 
-Now that we have a service account, we'll need to give it a couple of roles. Click *IAM* in the left sidebar of *IAM And Admin*. Find the service account you've just created and click the Edit button. Give this account the *Cloud Datastore User* role for read/write access. For read-only access, give it *Cloud Datastore Viewer*.
+Now that we have a service account, we'll need to give it a couple of roles.
+Click :guilabel:`IAM` in the left sidebar of :guilabel:`IAM And Admin`.
+Find the service account you've just created and click the :guilabel:`Edit` button.
+Give this account the *Cloud Datastore User* role for read/write access.
+For read-only access, give it *Cloud Datastore Viewer*.
 
 
 Project Files
@@ -69,7 +79,7 @@ Create the files with content as follows.
 
         CMD pserve development.ini
 
-    Replace ``my-gcp-key.json`` filename with the json file you were provided when you created the Service Account.
+    Replace ``my-gcp-key.json`` filename with the JSON file you were provided when you created the Service Account.
 
 #.  ``datastore_tween.py``
 
@@ -148,13 +158,16 @@ You could then query this model within any handler/endpoint like so:
 Running locally
 ---------------
 
-Unlike App Engine's Standard environment, we're running Pyramid in a pretty typical fashion. You can run this locally on your machine using the same line in the ``dockerfile`` we created earlier as ``pserve development.ini``, or you can run in a Docker container using the same ``dockerfile`` that Flexible will be using. No changes need to be made there. This is useful for debugging any issues you may run in to under Flexible, without needing to deploy to it.
+Unlike App Engine's Standard environment, we're running Pyramid in a pretty typical fashion.
+You can run this locally on your machine using the same line in the ``dockerfile`` we created earlier as ``pserve development.ini``, or you can run in a Docker container using the same ``dockerfile`` that Flexible will be using.
+No changes need to be made there.
+This is useful for debugging any issues you may run in to under Flexible, without needing to deploy to it.
 
 
 Deploying
 ---------
 
-Using the Google Cloud SDK, deploying is pretty straight-forward.
+Using the Google Cloud SDK, deploying is pretty straightforward.
 
 .. code-block:: bash
 
@@ -162,6 +175,7 @@ Using the Google Cloud SDK, deploying is pretty straight-forward.
 
 Replace ``my-version`` with some kind of identifier so you know what code is deployed. This can pretty much be anything.
 
-Replace ``my-gcp-project`` App Engine application's ID.
+Replace ``my-gcp-project`` with your App Engine application's ID.
 
-Your Pyramid application is now live to the world! You can access it by navigating to your domain name, by "<applicationid>.appspot.com", or if you've specified a version outside of your default then it would be "<version-dot-applicationid>.appspot.com".
+Your Pyramid application is now live to the world!
+You can access it by navigating to your domain name, by "<applicationid>.appspot.com", or if you've specified a version outside of your default then it would be "<version-dot-applicationid>.appspot.com".
