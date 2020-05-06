@@ -139,7 +139,7 @@ Create the files with content as follows.
 
     .. code-block:: ini
 
-        listen = 0.0.0.0:8080
+        listen = *:8080
 
 
 Now let's assume you have the following model defined somewhere in your code that relates to a Datastore "kind":
