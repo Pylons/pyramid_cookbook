@@ -77,7 +77,7 @@ Create the files with content as follows.
         # a dependency in requirements.txt.
         RUN pip install -e .
 
-        CMD pserve development.ini
+        CMD pserve production.ini
 
     Replace ``my-gcp-key.json`` filename with the JSON file you were provided when you created the Service Account.
 
@@ -130,6 +130,16 @@ Create the files with content as follows.
         config.add_tween('my_project.datastore_tween.datastore_tween_factory')
 
     This allows you to communicate with Datastore within every request.
+
+#.  ``production.ini``
+
+    Your :app:`Pyramid` application should already contain both a ``development.ini`` and a ``production.ini``.
+    For App Engine to communicate with your application, it will need to be listening on port 8080.
+    Assuming you are using the Waitress WSGI server, modify the ``listen`` variable within the ``server:main`` block.
+
+    .. code-block:: ini
+
+        listen = 0.0.0.0:8080
 
 
 Now let's assume you have the following model defined somewhere in your code that relates to a Datastore "kind":
