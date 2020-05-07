@@ -38,6 +38,7 @@ Cloud Providers
    dotcloud
    gae
    gae_buildout
+   gae_flex_datastore
    heroku
    expresscloud
 
