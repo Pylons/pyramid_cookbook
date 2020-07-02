@@ -1,9 +1,11 @@
 ASGI (Asynchronous Server Gateway Interface)
 ++++++++++++++++++++++++++++++++++++++++++++
 
-This chapter contains information about using ASGI with Pyramid. Read about the `ASGI specification <https://asgi.readthedocs.io/en/latest/index.html>`_.
+This chapter contains information about using ASGI with Pyramid.
+Read about the `ASGI specification <https://asgi.readthedocs.io/en/latest/index.html>`_.
 
-The example app below uses the WSGI to ASGI wrapper from the `asgiref library <https://pypi.org/project/asgiref/>`_ to transform normal WSGI requests into ASGI responses.  This allows the application to be run with an ASGI server, such as `uvicorn <https://www.uvicorn.org/>`_ or `daphne <https://github.com/django/daphne/>`_.
+The example app below uses the WSGI to ASGI wrapper from the `asgiref library <https://pypi.org/project/asgiref/>`_ to transform normal WSGI requests into ASGI responses.
+This allows the application to be run with an ASGI server, such as `uvicorn <https://www.uvicorn.org/>`_ or `daphne <https://github.com/django/daphne/>`_.
 
 
 WSGI -> ASGI application
@@ -14,7 +16,7 @@ This example uses the wrapper provided by ``asgiref`` to convert a WSGI applicat
 Please note that not all extended features of WSGI may be supported, such as file handles for incoming POST bodies.
 
 .. code-block:: python
-    
+
     # app.py
 
     from asgiref.wsgi import WsgiToAsgi
@@ -37,10 +39,11 @@ Please note that not all extended features of WSGI may be supported, such as fil
 Extended WSGI -> ASGI WebSocket application
 -------------------------------------------
 
-This example extends the ``asgiref`` wrapper to enable routing ASGI consumers alongside the converted WSGI application. This is just one potential solution for routing ASGI consumers.
+This example extends the ``asgiref`` wrapper to enable routing ASGI consumers alongside the converted WSGI application.
+This is just one potential solution for routing ASGI consumers.
 
 .. code-block:: python
-    
+
     # app.py
 
     from asgiref.wsgi import WsgiToAsgi
@@ -132,30 +135,33 @@ This example extends the ``asgiref`` wrapper to enable routing ASGI consumers al
             message = await receive()
             if message["type"] == "websocket.connect":
                 await send({"type": "websocket.accept"})
-            if message["type"] == "websocket.receive":
+            elif message["type"] == "websocket.receive":
                 text = message.get("text")
                 if text:
                     await send({"type": "websocket.send", "text": text})
                 else:
                     await send({"type": "websocket.send", "bytes": message.get("bytes")})
+            elif message["type"] == "websocket.disconnect":
+                break
 
 
 Running & Deploying
 -------------------
 
-The application can be run using an ASGI server: 
+The application can be run using an ASGI server:
 
 .. code-block:: bash
 
     $ uvicorn app:app
 
-or 
+or
 
 .. code-block:: bash
 
     $ daphne app:app
 
-There are several potential deployment options, one example would be to use `nginx <https://nginx.org/>`_ and `supervisor <http://supervisord.org/>`_. Below are example configuration files that run the application using ``uvicorn``, however ``daphne`` may be used as well.
+There are several potential deployment options, one example would be to use `nginx <https://nginx.org/>`_ and `supervisor <http://supervisord.org/>`_.
+Below are example configuration files that run the application using ``uvicorn``, however ``daphne`` may be used as well.
 
 
 Example nginx configuration
@@ -203,4 +209,5 @@ Example Supervisor configuration
     autostart=true
     autorestart=true
     redirect_stderr=True
+
     [supervisord]
