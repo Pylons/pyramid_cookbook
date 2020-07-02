@@ -71,6 +71,19 @@ This is just one potential solution for routing ASGI consumers.
                 await consumer(scope, *args, **kwargs)
             await super().__call__(scope, *args, **kwargs)
 
+            if consumer is not None:
+                await consumer(scope, *args, **kwargs)
+            try:
+                await super().__call__(scope, *args, **kwargs)
+            except ValueError as e:
+                # The developer may wish to improve handling of this exception.
+                # See https://github.com/Pylons/pyramid_cookbook/issues/225 and
+                # https://asgi.readthedocs.io/en/latest/specs/www.html#websocket
+                pass
+            except Exception as e:
+                raise e
+
+
         def route(self, rule, *args, **kwargs):
             try:
                 protocol = kwargs["protocol"]
