@@ -1,0 +1,61 @@
+# This file is development.yaml
+# This file is production.yaml
+###
+# app configuration
+# http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/environment.html
+###
+
+app:
+  "use": "egg:MYAPP"
+  "use": "egg:pyramid_scaffold"
+
+  # Pyramid settings; run in development mode
+  "pyramid.reload_templates": true
+  "pyramid.debug_authorization": false
+  "pyramid.debug_notfound": false
+  "pyramid.debug_routematch": false
+  "pyramid.default_locale_name": en
+  "pyramid.includes": ["pyramid_debugtoolbar"]
+
+  # # By default, the toolbar only appears for clients from IP addresses
+  # # '127.0.0.1' and '::1'.
+  # "debugtoolbar.hosts":= "127.0.0.1 ::1"
+
+  # Pyramid settings; run in production mode
+  "pyramid.reload_templates": false
+  "pyramid.debug_authorization": false
+  "pyramid.debug_notfound": false
+  "pyramid.debug_routematch": false
+  "pyramid.default_locale_name": en
+  "pyramid.includes": []
+
+  "hello_text": "Hello World!"
+  "sample_setting": 'Available in the registry''s "settings" dict'
+
+DEFAULT:
+  sample_global_setting: "Available to application startup code"
+
+server:
+  use: egg:waitress#main
+  host: 0.0.0.0
+  port: 6543
+
+logging:
+  version: 1
+  disable_existing_loggers: false
+  formatters:
+    console:
+      format: '%(asctime)s [%(levelname)s]: %(name)s - %(message)s'
+  handlers:
+    console:
+      class: logging.StreamHandler
+      level: INFO
+      stream: ext://sys.stdout
+      formatter: console
+  root:
+    level: INFO
+    handlers:
+      - console
+  loggers:
+    dummy:
+      level: DEBUG

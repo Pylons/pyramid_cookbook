@@ -6,6 +6,7 @@ Configuration
   
   whirlwind_tour
   django_settings
+  yaml_and_json_configs
 
 For more information on configuration see the following sections of the Pyramid documentation:
 
