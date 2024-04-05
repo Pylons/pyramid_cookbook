@@ -1,0 +1,67 @@
+# This file is: pyproject.toml
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+# See:
+# https://packaging.python.org/en/latest/specifications/pyproject-toml/
+[project]
+name = "MYAPP"                  # Name of the application's package
+name = "pyramid_scaffold"       # Name of the application's package
+version = "0.0"
+# authors = [{ name="", email="" }
+# ]
+description = "Pyramid Scaffold"
+readme = { file="README.txt", content-type="text/plain" }
+# [project.urls]
+# "Homepage" = ""
+
+classifiers = [
+    "Programming Language :: Python",
+    "Framework :: Pyramid",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
+]
+requires-python = ">=3.8"
+keywords = ['web', 'pyramid', 'pylons']
+
+dependencies = [
+    "plaster_pastedeploy",      # Support .ini configuration files
+    "plaster_yaml",             # Support YAML or JSON configuration files
+    "pyramid",
+    "pyramid_jinja2",
+    "pyramid_debugtoolbar",
+    "waitress",
+]
+
+[project.optional-dependencies]
+tests = [
+    'WebTest',
+    'pytest',
+    'pytest-cov',
+]
+
+[project.entry-points."paste.app_factory"]
+main = 'pyramid_scaffold:main'   # Name of package, and function that runs it
+main = 'MYAPP:main'              # Name of package, and function that runs it
+
+[project.entry-points.'plaster.loader_factory']
+'file+yaml' = 'plaster_yaml:Loader'
+'file+json' = 'plaster_yaml:Loader'
+
+[tool.setuptools.packages.find]
+exclude = ["tests"]
+
+[tool.coverage.run]
+source = [
+    "pyramid_scaffold",          # Name of package
+    "MYAPP",                     # Name of package
+]
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers"
+testpaths = [
+    "pyramid_scaffold",          # Name of package
+    "MYAPP",                     # Name of package
+    "tests",
+]
