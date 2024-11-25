@@ -224,7 +224,7 @@ be accessed like::
                     return None
                 else:
                     user = request.DBSession.query(User).\
-                        filter(User.user_name == token_response['sub']).first()
+                        filter(User.id == token_response['sub']).first()
                     return user
                 
         def permits(self, request, context, permission):
