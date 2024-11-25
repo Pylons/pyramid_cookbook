@@ -147,24 +147,24 @@ JWT token, here is an example of how this *could* be done (you can read more
 on the `PyJWT Docs <https://pyjwt.readthedocs.io/en/stable/>`_ )::
 
     def decode_jwt_token(token, secret):
-    ''' Function to decode our JWT token
-    '''
-    try:
-        decode_token = jwt.decode(
-            token,
-            secret,
-            algorithms=JWT_ALGO,
-            leeway=0,
-            audience=None,
-        )
-        return {
-            'user_id': decode_token['sub'],
-            'user_name': decode_token['user_name'],
-            'permissions': decode_token['permissions']
-        }
-    except jwt.exceptions.InvalidTokenError as e:
-        # Invalid token detected
-        return None
+        ''' Function to decode our JWT token
+        '''
+        try:
+            decode_token = jwt.decode(
+                token,
+                secret,
+                algorithms=JWT_ALGO,
+                leeway=0,
+                audience=None,
+            )
+            return {
+                'user_id': decode_token['sub'],
+                'user_name': decode_token['user_name'],
+                'permissions': decode_token['permissions']
+            }
+        except jwt.exceptions.InvalidTokenError as e:
+            # Invalid token detected
+            return None
 
 Nice and simple, if our token is valid and not expired, we will return 
 some information, such as user_id and available permissions, if not,
