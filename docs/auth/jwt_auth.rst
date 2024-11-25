@@ -23,7 +23,8 @@ application.
 2. Token is sent back to user/front end website
 3. Each subsequent request from the "front end" sends this token as a header
 4. API server then evaluates the JWT (checks it has not expired, that it can 
-5. be decoded with a secret), if all OK pyramid can then grant access to `protected 
+   be decoded with a secret)
+5. If all OK pyramid can then grant access to `protected 
    view <https://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-permissions>`_
    with this jwt.
 
