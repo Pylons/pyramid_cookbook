@@ -193,13 +193,12 @@ So we can now write a nice and concise security policy to match up with this dec
                     reason = "Invalid JWT token"
                     return Denied(reason)
                 else:
-                    for permission in token_response['permissions']:
-                        if permission == permission:
-                            reason = "User matched role, allow"
-                            return Allowed(reason)
-                        else:
-                            denied_reason = "No role matched"
-                            return Denied(reason)
+                    if permission in token_response['permissions']:
+                        reason = "User matched role, allow"
+                        return Allowed(reason)
+                    else:
+                        denied_reason = "No role matched"
+                        return Denied(reason)
             reason = "No Authorization present"
             return Denied(denied_reason)
 
@@ -230,7 +229,7 @@ and the rest *should probably* be accessed like
             identity = request.identity
             if identity.permissions:
                 # now we can evaluate said permissions
-                    for permission in identity.permissions:
+                    if permission in identity.permissions:
                         # same logic as before
 
 Hopefully this example helps you understand how to protect your API view with JWT and why it might be useful.
