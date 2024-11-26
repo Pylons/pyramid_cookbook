@@ -1,41 +1,42 @@
-Pyramid JWT Authentication Example
-==================================
+JSON Web Tokens (JWT) & Security Policy
+======================================
 
 Introduction
 ############
-`JWT <https://jwt.io/>`_ is a standard of token, mainly used for securing web API's. 
-This small tutorial aims to explain why a JWT is useful and how we can use it with 
-pyramid to create a secure authentication system for an API server, couples with 
-pyramid's built in `Security Policy 
-<https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/security.html>`_ 
-Before pyramid2.0 and the new style auth stack, there was a great library 
-`pyramid_jwt <https://github.com/wichert/pyramid_jwt>`_  
-that handled all of this automatically, the method to create a JWT has been
-taken from that library.
+This guide is for Pyramid 2.0 and above. `JWT (JSON Web Token) <https://jwt.io/>`_ is a standard of authentication token, mainly used for securing web APIs. 
+This small tutorial aims to explain why a JWT is useful and how we can use it with Pyramid,
+to create a secure authentication system for an API server, coupled with Pyramid's built in 
+`security policy. <https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/security.html>`_ 
+
+Pre 2.0 Pyramid
+###############
+
+Before Pyramid 2.0 and the new style security policy, there was a great library 
+`pyramid_jwt <https://github.com/wichert/pyramid_jwt>`_  that handled all of this automatically, the method to create a JWT has been taken from that library.
+If you have a codebase pre Pyramid 2.0 and want to learn more about the changes and how to upgrade to a security policy, please check out the
+`upgrading authentication/authorization. <https://docs.pylonsproject.org/projects/pyramid/en/latest/whatsnew-2.0.html#upgrading-auth-20>`_ 
 
 Workflow
 ########
-So, below is a brief overview of what an auth-cycle looks like with a JWT based 
-auth-stack. For the example below the "API Server" is this example pyramid 
-application.
+Below is a brief overview of what an JWT based login and authorization looks like with a JWT based security policy.
+For the example below the "API Server" is this example Pyramid application.
 
 1. API Server creates a JWT token
 2. Token is sent back to user/front end website
 3. Each subsequent request from the "front end" sends this token as a header
-4. API server then evaluates the JWT (checks it has not expired, that it can 
-   be decoded with a secret)
-5. If all OK pyramid can then grant access to `protected 
+4. API server then evaluates the JWT (checks it has not expired, and that it can be decoded with a secret)
+5. If all OK Pyramid can then grant access to `protected 
    view <https://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-permissions>`_
-   with this jwt.
+   with this JWT.
 
 Generating the JWT
 ###################
-It may be "out of scope" for your application to generate the JWT, but usually it's
-required, so I will include an example here, using the `PyJWT 
-<https://pyjwt.readthedocs.io/en/stable/>`_  library.
+It may be "out of scope" for your application to generate the JWT, but usually it's required,
+so I will include an example here, using the `PyJWT <https://pyjwt.readthedocs.io/en/stable/>`_ library.
 
-So, lets start of with a basic pyramid login view, that takes a username and 
-password from the request::
+So, let's start off with a basic Pyramid login view, that takes a username and password from the request
+
+.. code-block:: python
 
     import jwt
     # some global variables we will call later
@@ -67,14 +68,13 @@ password from the request::
 
 
 
-If we look at this a bit further, we can see we have a function called `create_token` 
-and another called `set_token_expiry`.  We will start with the expiry, as this is a 
-key function of the JWT. Once the token is expired, it is no longer meant to be used.
-When creating a JWT token, expiry is meant as in "how many seconds from now". There
-is no right or wrong method to work out when to expire JWT, but for arguments sake
-let's say we want them to last a week. I also like to set my tokens to expire at a
-time when they are unlikely to be being used, to save a user potentially getting a
-broken session ::
+If we look at this a bit further, we can see we have a function called ``create_token`` and another called ``set_token_expiry``.
+We will start with the expiry, as this is a key function of the JWT. Once the token is expired, it is no longer meant to be used.
+When creating a JWT token, expiry is meant as in "how many seconds from now". 
+There is no right or wrong method to work out when to expire JWT, but for arguments sake let's say we want them to last a week.
+I also like to set my tokens to expire at a time when they are unlikely to be being used, to save a user potentially getting a broken session
+
+.. code-block:: python
 
     def set_token_expiry():
         ''' We want to set the token expiry to be 7 days
@@ -90,8 +90,9 @@ broken session ::
 
 
 
-Now we have all of the information we need to create a basic JWT token, there are more
-examples of this online, but the below covers us for now::
+Now we have all of the information we need to create a basic JWT token, there are more examples of this online, but the below covers us for now
+
+.. code-block:: python
 
     def create_token(key, user_id, permissions, user_name, expiration, audience=None):
         # create an empty dict
@@ -115,37 +116,37 @@ examples of this online, but the below covers us for now::
             token = token.decode("ascii")
         return token
 
-Now the token should look something like::
+Now the token should look something like
 
-    eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjY1MDM5Ny4wLCJzdWIiOjk5OSwicGVybWl
-    zc2lvbnMiOlsidmlldyIsImVkaXQiXSwidXNlcl9uYW1lIjoiam9lIn0.dTCQxCorZtzIExeUtxB49_J
-    AKljS9M8FZEhBvT_JPudzGuOyTPGYpTaxgaYWEjvnMG1m_kKvASJcn77Klgb9lQ
+.. code-block:: text
 
-Now, we can work onto the next phase, intercepting this token in the security policy
-and evaluating it. It is important to note, that all data inside a JWT is available 
-for anyone to view it, all the secret does is verify the token, so NEVER send information
-inside a JWT that you don't mind getting out.
+    eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjY1MDM5Ny4wLCJzdWIiOjk5OSwicGVybWlzc2lvbnMiOlsidmlldyIsImVkaXQiXSwidXNlcl9uYW1lIjoiam9lIn0.dTCQxCorZtzIExeUtxB49_JAKljS9M8FZEhBvT_JPudzGuOyTPGYpTaxgaYWEjvnMG1m_kKvASJcn77Klgb9lQ
+
+We can work onto the next phase, intercepting this token in the security policy and evaluating it.
+It is important to note that all data inside a JWT is available for anyone to view it.
+All the secret does is verify the token has not been manipulated, so NEVER send information inside a JWT that you don't mind getting out.
 
 
-Evaluating with pyramid 
+Evaluating with Pyramid 
 #######################
 
-So, now we have send the JWT token to our front-end application, we can presume that
-it will get sent back to the pyramid application (`In the header
-<https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#pyramid.request.Request.authorization>`_
+Now we have sent the JWT token to our front-end application, we can presume that it will get sent back to the Pyramid application 
+(`In the header <https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#pyramid.request.Request.authorization>`_
 ) for evaluation to access protected views. So we will create a security policy to handle this.
 
-Lets assume we have a protected view::
+Lets assume we have a protected view
+
+.. code-block:: python
 
     @view_config(route_name='view_basket', renderer='json', permission="view")
     def view_basket(request):
 
-Only a JWT token that has the permission "view" *should* be able to access
-this view, so how does this work?
+Only a JWT token that has the permission ``view`` *should* be able to access this view, so how does this work?
 
-So, before we delve into our Security Policy, we need to be able to decode our
-JWT token, here is an example of how this *could* be done (you can read more
-on the `PyJWT Docs <https://pyjwt.readthedocs.io/en/stable/>`_ )::
+Before we delve into our security policy, we need to be able to decode our JWT token.
+Here is an example of how this *could* be done (you can read more on the `PyJWT Docs <https://pyjwt.readthedocs.io/en/stable/>`_ )
+
+.. code-block:: python
 
     def decode_jwt_token(token, secret):
         ''' Function to decode our JWT token
@@ -167,20 +168,18 @@ on the `PyJWT Docs <https://pyjwt.readthedocs.io/en/stable/>`_ )::
             # Invalid token detected
             return None
 
-Nice and simple, if our token is valid and not expired, we will return 
-some information, such as user_id and available permissions, if not,
-return `None`.
+If our token is valid and not expired, we will return some information, such as user_id and available permissions, if not, return ``None``.
 
-So we can now write a nice and concise `Security Policy 
-<https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/security.html>`_ 
-to match up with this decode function::
+So we can now write a nice and concise security policy to match up with this decode function
+
+.. code-block:: python
 
     class MySecurityPolicy:
         def __init__(self, secret):
             self.helper = AuthTktCookieHelper(secret)
 
         def permits(self, request, context, permission):
-            ''' permission argument comes from pyramid core, each time a view
+            ''' permission argument comes from Pyramid core, each time a view
                 protected with permission="foo" is called, so is this function
             '''
             # permission is the value of the permission set in the view
@@ -204,13 +203,12 @@ to match up with this decode function::
             reason = "No Authorization present"
             return Denied(denied_reason)
 
-There you go, you now have a working `Security Policy 
-<https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/security.html>`_
-with JWT and pyramid.
+There you go, you now have a working security policy with JWT and Pyramid.
 
-Let's clean this up a bit though, as in reality, you only *need* to send
-the user_id as the `'sub'` in the JWT token, and the rest *should probably*
-be accessed like::
+Let's clean this up a bit though, as in reality, you only *need* to send the ``user_id`` as the ``'sub'`` in the JWT token,
+and the rest *should probably* be accessed like
+
+.. code-block:: python
 
     class MySecurityPolicy:
         def __init__(self, secret):
@@ -235,7 +233,6 @@ be accessed like::
                     for permission in identity.permissions:
                         # same logic as before
 
-Hopefully this example helps you understand how to protect your API
-view with JWT and why it might be useful.
+Hopefully this example helps you understand how to protect your API view with JWT and why it might be useful.
 
 
