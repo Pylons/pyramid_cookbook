@@ -1,5 +1,5 @@
-JSON Web Tokens (JWT) & Security Policy
-======================================
+JSON Web Tokens (JWT) and Security Policy
+=========================================
 
 Introduction
 ############
@@ -25,7 +25,7 @@ For the example below the "API Server" is this example Pyramid application.
 2. Token is sent back to user/front end website
 3. Each subsequent request from the "front end" sends this token as a header
 4. API server then evaluates the JWT (checks it has not expired, and that it can be decoded with a secret)
-5. If all OK Pyramid can then grant access to `protected 
+5. If all is OK Pyramid can then grant access to the `protected 
    view <https://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-permissions>`_
    with this JWT.
 
@@ -34,7 +34,7 @@ Generating the JWT
 It may be "out of scope" for your application to generate the JWT, but usually it's required,
 so I will include an example here, using the `PyJWT <https://pyjwt.readthedocs.io/en/stable/>`_ library.
 
-So, let's start off with a basic Pyramid login view, that takes a username and password from the request
+So, let's start off with a basic Pyramid login view that takes a username and password from the request.
 
 .. code-block:: python
 
@@ -71,8 +71,8 @@ So, let's start off with a basic Pyramid login view, that takes a username and p
 If we look at this a bit further, we can see we have a function called ``create_token`` and another called ``set_token_expiry``.
 We will start with the expiry, as this is a key function of the JWT. Once the token is expired, it is no longer meant to be used.
 When creating a JWT token, expiry is meant as in "how many seconds from now". 
-There is no right or wrong method to work out when to expire JWT, but for arguments sake let's say we want them to last a week.
-I also like to set my tokens to expire at a time when they are unlikely to be being used, to save a user potentially getting a broken session
+There is no right or wrong method to work out when to expire JWT, but for argument's sake, let's say we want them to last a week.
+I also like to set my tokens to expire at a time when they are unlikely to be being used, to save a user potentially getting a broken session.
 
 .. code-block:: python
 
@@ -90,7 +90,7 @@ I also like to set my tokens to expire at a time when they are unlikely to be be
 
 
 
-Now we have all of the information we need to create a basic JWT token, there are more examples of this online, but the below covers us for now
+Now we have all of the information we need to create a basic JWT token, there are more examples of this online, but the below covers us for now.
 
 .. code-block:: python
 
@@ -134,7 +134,7 @@ Now we have sent the JWT token to our front-end application, we can presume that
 (`In the header <https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#pyramid.request.Request.authorization>`_
 ) for evaluation to access protected views. So we will create a security policy to handle this.
 
-Lets assume we have a protected view
+Let's assume we have a protected view.
 
 .. code-block:: python
 
@@ -144,7 +144,8 @@ Lets assume we have a protected view
 Only a JWT token that has the permission ``view`` *should* be able to access this view, so how does this work?
 
 Before we delve into our security policy, we need to be able to decode our JWT token.
-Here is an example of how this *could* be done (you can read more on the `PyJWT Docs <https://pyjwt.readthedocs.io/en/stable/>`_ )
+Here is an example of how this *could* be done.
+You can read more on the `PyJWT Docs <https://pyjwt.readthedocs.io/en/stable/>`_.
 
 .. code-block:: python
 
@@ -168,9 +169,9 @@ Here is an example of how this *could* be done (you can read more on the `PyJWT 
             # Invalid token detected
             return None
 
-If our token is valid and not expired, we will return some information, such as user_id and available permissions, if not, return ``None``.
+If our token is valid and not expired, we will return some information, such as ``user_id`` and available permissions, if not, return ``None``.
 
-So we can now write a nice and concise security policy to match up with this decode function
+So we can now write a nice and concise security policy to match up with this decode function.
 
 .. code-block:: python
 
@@ -205,7 +206,7 @@ So we can now write a nice and concise security policy to match up with this dec
 There you go, you now have a working security policy with JWT and Pyramid.
 
 Let's clean this up a bit though, as in reality, you only *need* to send the ``user_id`` as the ``'sub'`` in the JWT token,
-and the rest *should probably* be accessed like
+and the rest *should probably* be accessed as shown.
 
 .. code-block:: python
 
