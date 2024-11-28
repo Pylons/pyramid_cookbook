@@ -27,7 +27,7 @@ For the example below the "API Server" is this example Pyramid application.
 4. API server then evaluates the JWT (checks it has not expired, and that it can be decoded with a secret)
 5. If all is OK Pyramid can then grant access to the `protected 
    view <https://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-permissions>`_
-   with this JWT.
+   with this JWT
 
 Generating the JWT
 ###################
@@ -131,8 +131,8 @@ Evaluating with Pyramid
 #######################
 
 Now we have sent the JWT token to our front-end application, we can presume that it will get sent back to the Pyramid application 
-(`In the header <https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#pyramid.request.Request.authorization>`_
-) for evaluation to access protected views. So we will create a security policy to handle this.
+(`In the header <https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#pyramid.request.Request.authorization>`_)
+for evaluation to access protected views. So we will create a security policy to handle this.
 
 Let's assume we have a protected view.
 
@@ -206,7 +206,7 @@ So we can now write a nice and concise security policy to match up with this dec
 There you go, you now have a working security policy with JWT and Pyramid.
 
 Let's clean this up a bit though, as in reality, you only *need* to send the ``user_id`` as the ``'sub'`` in the JWT token,
-and the rest *should probably* be accessed as shown.
+and the rest *should probably* be accessed as shown. 
 
 .. code-block:: python
 
@@ -233,6 +233,11 @@ and the rest *should probably* be accessed as shown.
                     if permission in identity.permissions:
                         # same logic as before
 
-Hopefully this example helps you understand how to protect your API view with JWT and why it might be useful.
+The obvious advantage to the above approach is that the user permission can be revoked in the database and user access is denied immediately.
+If the permission is stored in the token, it will remain active until such time as the token expires. 
+The above method will increase database calls significantly, as one will be made to the ``User`` table, for each request.
+It is important to assess the security needs of your application and the merits to each approach before production use.
+
+Hopefully the examples in this tutorial will help you understand how to protect your API views with JWT and why it might be useful.
 
 
