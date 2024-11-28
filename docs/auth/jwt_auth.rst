@@ -116,7 +116,7 @@ Now we have all of the information we need to create a basic JWT token, there ar
             token = token.decode("ascii")
         return token
 
-Now the token should look something like
+Now the token should look something like the following.
 
 .. code-block:: text
 
@@ -130,7 +130,7 @@ All the secret does is verify the token has not been manipulated, so NEVER send 
 Evaluating with Pyramid 
 #######################
 
-Now we have sent the JWT token to our front-end application, we can presume that it will get sent back to the Pyramid application 
+Now that we have sent the JWT token to our front-end application, we can presume that it will get sent back to the Pyramid application 
 (`In the header <https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#pyramid.request.Request.authorization>`_)
 for evaluation to access protected views. So we will create a security policy to handle this.
 
