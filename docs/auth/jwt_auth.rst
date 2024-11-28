@@ -14,7 +14,7 @@ Pre 2.0 Pyramid
 Before Pyramid 2.0 and the new style security policy, there was a great library 
 `pyramid_jwt <https://github.com/wichert/pyramid_jwt>`_  that handled all of this automatically, the method to create a JWT has been taken from that library.
 If you have a codebase pre Pyramid 2.0 and want to learn more about the changes and how to upgrade to a security policy, please check out the
-`upgrading authentication/authorization. <https://docs.pylonsproject.org/projects/pyramid/en/latest/whatsnew-2.0.html#upgrading-auth-20>`_ 
+`upgrading authentication/authorization <https://docs.pylonsproject.org/projects/pyramid/en/latest/whatsnew-2.0.html#upgrading-auth-20>`_.
 
 Workflow
 ########
@@ -90,7 +90,8 @@ I also like to set my tokens to expire at a time when they are unlikely to be be
 
 
 
-Now we have all of the information we need to create a basic JWT token, there are more examples of this online, but the below covers us for now.
+Now we have all of the information we need to create a basic JWT token.
+There are more examples of this online, but the below covers us for now.
 
 .. code-block:: python
 
@@ -131,7 +132,7 @@ Evaluating with Pyramid
 #######################
 
 Now that we have sent the JWT token to our front-end application, we can presume that it will get sent back to the Pyramid application 
-(`In the header <https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#pyramid.request.Request.authorization>`_)
+(`in the header <https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#pyramid.request.Request.authorization>`_)
 for evaluation to access protected views. So we will create a security policy to handle this.
 
 Let's assume we have a protected view.
