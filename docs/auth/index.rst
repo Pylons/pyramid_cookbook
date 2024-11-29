@@ -5,6 +5,7 @@ Authentication and Authorization
 
    basic
    custom
+   jwt_auth
    user_object
    wiki2_auth
    auth_tutorial
